@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TRATON V2G Thesis Ideation — Heavy-Duty Truck Depots</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b22; --panel2:#1c2230; --border:#2a3140;
+    --text:#e6edf3; --muted:#9aa7b4; --accent:#3fb6ff; --accent2:#7ee787;
+    --warn:#ffd166; --crit:#ff7b72; --chip:#21304a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{display:grid;grid-template-columns:280px 1fr;max-width:1400px;margin:0 auto}
+  /* Sidebar TOC */
+  nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+    padding:28px 18px;border-right:1px solid var(--border);background:#0b0f14}
+  nav h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+  nav a{display:block;color:var(--muted);padding:5px 8px;border-radius:6px;font-size:14px}
+  nav a:hover{background:var(--panel2);color:var(--text);text-decoration:none}
+  nav .brand{font-weight:700;font-size:16px;color:var(--text);line-height:1.3}
+  nav .brand span{color:var(--accent)}
+  main{padding:40px 48px 120px;min-width:0}
+  header.hero{border:1px solid var(--border);background:linear-gradient(160deg,#15203a,#0f1420);
+    border-radius:16px;padding:34px 36px;margin-bottom:34px}
+  header.hero h1{margin:0 0 6px;font-size:30px;line-height:1.2}
+  header.hero .sub{color:var(--muted);font-size:15px}
+  .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--chip);border:1px solid var(--border);color:#bcd2f0;
+    padding:4px 11px;border-radius:999px;font-size:12.5px}
+  section{margin:38px 0;scroll-margin-top:20px}
+  h2.sec{font-size:23px;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:18px}
+  h3{font-size:19px;margin:26px 0 8px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin:18px 0}
+  .idea{border-left:4px solid var(--accent)}
+  .idea.head{border-left-color:var(--accent2)}
+  .idea .meta{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+  .pill{font-size:12px;padding:3px 10px;border-radius:6px;border:1px solid var(--border);background:var(--panel2);color:var(--muted)}
+  .pill.hi{color:#0e1117;background:var(--accent2);border-color:var(--accent2);font-weight:600}
+  .pill.crit{color:#0e1117;background:var(--crit);border-color:var(--crit);font-weight:600}
+  .pill.warn{color:#0e1117;background:var(--warn);border-color:var(--warn);font-weight:600}
+  .stars{color:var(--warn);letter-spacing:2px}
+  p{margin:10px 0}
+  .lead{color:var(--muted)}
+  strong{color:#fff}
+  blockquote{margin:14px 0;padding:12px 18px;border-left:3px solid var(--accent);
+    background:var(--panel2);border-radius:0 8px 8px 0;color:#cdd9e5}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#cdd9e5}
+  tr:nth-child(even) td{background:#12161d}
+  code{background:#0b0f14;border:1px solid var(--border);border-radius:5px;padding:1px 6px;font-size:13px}
+  .mermaid{background:var(--panel2);border:1px solid var(--border);border-radius:12px;
+    padding:18px;margin:16px 0;text-align:center;overflow:auto}
+  .callout{border:1px solid var(--warn);background:rgba(255,209,102,.08);border-radius:10px;padding:14px 18px;margin:16px 0}
+  .callout.good{border-color:var(--accent2);background:rgba(126,231,135,.08)}
+  ol li,ul li{margin:6px 0}
+  footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:18px;margin-top:50px}
+  .src li{margin:4px 0}
+  @media(max-width:980px){.wrap{grid-template-columns:1fr}nav{display:none}main{padding:24px 18px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand">TRATON · <span>V2G</span> Ideation</div>
+    <div style="color:var(--muted);font-size:12.5px;margin-top:4px">Heavy-Duty Truck Depots · 7–8 mo thesis</div>
+    <h2>Contents</h2>
+    <a href="#advantages">0 · Your unfair advantages</a>
+    <a href="#platform">1 · The layered platform</a>
+    <a href="#ideas">2 · The ideas (ranked)</a>
+    <a href="#i1">— Idea 1 · Sim-to-real calibration</a>
+    <a href="#i2">— Idea 2 · Warranty shadow price ★</a>
+    <a href="#i3">— Idea 3 · Firm ancillary capacity</a>
+    <a href="#i4">— Idea 4 · Value-of-fidelity</a>
+    <a href="#i5">— Idea 5 · EU↔China compiler</a>
+    <a href="#i6">— Idea 6 · Shadow-price bill</a>
+    <a href="#i7">— Idea 7 · Future scenarios</a>
+    <a href="#matrix">3 · Novelty matrix</a>
+    <a href="#fused">4 · Recommended thesis ★</a>
+    <a href="#euchina">5 · EU ↔ China</a>
+    <a href="#test">6 · Real-truck test plan</a>
+    <a href="#questions">7 · Open questions</a>
+    <a href="#bottom">8 · Bottom line</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <h1>V2G / Bidirectional Charging for Heavy-Duty Truck Depots</h1>
+      <div class="sub">Thesis idea map for TRATON / MAN R&amp;D · "UnPlugged Energisers" · Efficient Transport &nbsp;·&nbsp; 19 June 2026</div>
+      <p class="lead" style="margin-top:14px">
+        This is an opinionated map written so you can <em>imagine and choose</em>. Every idea has a flow diagram.
+        The core message: build novelty on the three things <strong>only you</strong> can do — sit inside the OEM that
+        writes the warranty, test a <strong>real truck + charger + V2G</strong>, and compare <strong>EU vs China</strong>.
+        Don't make "a bigger Simulink model" the contribution; make a <strong>new decision function</strong> the contribution.
+      </p>
+      <div class="tags">
+        <span class="tag">MILP / MPC</span><span class="tag">Battery aging</span><span class="tag">Warranty economics</span>
+        <span class="tag">Ancillary services (FCR)</span><span class="tag">15-min SDAC</span><span class="tag">EnWG 2026</span>
+        <span class="tag">NMC vs LFP</span><span class="tag">Digital twin (as lab)</span>
+      </div>
+    </header>
+
+    <!-- 0 -->
+    <section id="advantages">
+      <h2 class="sec">0 · The one thing that changes everything — your unfair advantages</h2>
+      <p>Most V2G theses are written by people with <strong>none</strong> of your three assets. Build the novelty on these.</p>
+      <table>
+        <tr><th>Asset</th><th>Why it is rare</th><th>What it unlocks</th></tr>
+        <tr><td><strong>You sit inside the OEM that writes the battery warranty</strong></td>
+          <td>Academics model the <em>owner's</em> fear ("will V2G void my warranty?"). Nobody optimizes from the
+            <em>OEM's</em> side, where the warranty is a <strong>design variable</strong>.</td>
+          <td>Warranty-budget-coupled dispatch + warranty <em>product</em> co-design (Idea 2).</td></tr>
+        <tr><td><strong>Real truck + charger + a few days of real V2G</strong></td>
+          <td>Almost every degradation model in V2G optimization is calibrated on <strong>lab cells</strong>, then scaled.
+            Nobody closes the loop on a real HD pack under <em>commanded</em> bidirectional events.</td>
+          <td>Sim-to-real calibration / residual learning (Idea 1) — your credibility anchor.</td></tr>
+        <tr><td><strong>EU + China is in your job description</strong></td>
+          <td>Most comparisons are descriptive tables.</td>
+          <td>A reusable <strong>policy compiler</strong> (Idea 5) — an internal TRATON market-entry tool.</td></tr>
+      </table>
+      <div class="callout">
+        <strong>Hard truth on novelty (verified against current literature):</strong> "Add a battery-aging layer,"
+        "build a digital twin," "do MPC instead of MILP," "compare NMC vs LFP," and "chance-constrained FCR bidding" are
+        <strong>all already published</strong>. A thesis that only does those is <em>good engineering, weak research</em>.
+        The novelty must live in a <strong>new decision function</strong>; the digital twin is the <em>validation
+        environment</em>, not the contribution.
+      </div>
+    </section>
+
+    <!-- 1 -->
+    <section id="platform">
+      <h2 class="sec">1 · The layered platform — your digital twin is the <em>lab</em>, not the <em>result</em></h2>
+      <p>Build this once. Every idea below is a <em>function</em> that plugs into it.</p>
+      <pre class="mermaid">
+flowchart TB
+    subgraph L1["L1 · Mission / Duty Layer"]
+        M1["Mass, payload, route topography, road type"]
+        M3["Arrival SoC, departure deadline, charger (CCS/MCS)"]
+        M4["Vehicle history: age, mileage, throughput, SoH"]
+    end
+    subgraph L2["L2 · Electro-Thermal-Aging Layer"]
+        A1["Pack model (NMC-811 / LFP)"]
+        A2["Semi-empirical aging: calendar f(SoC,T,t) + cycle f(DoD,C-rate,T)"]
+        A3["Thermal model (pack temp rise under C-rate)"]
+    end
+    subgraph L3["L3 · Market / Regulation Layer"]
+        R1["SDAC 15-min day-ahead prices"]
+        R2["Intraday + ancillary (FCR / aFRR / mFRR)"]
+        R3["Grid fees, §14a, EnWG-2026 single-fee, taxes"]
+        R4["Country profile: DE / NL / FR / CN"]
+    end
+    subgraph L4["L4 · Optimizer Layer (swappable)"]
+        O1["MILP (perfect-foresight upper bound)"]
+        O2["Rolling MPC (24h)"]
+        O3["Stochastic / chance-constrained"]
+        O4["Rule-based fallback (firmware-realistic)"]
+    end
+    subgraph L5["L5 · Uncertainty / Forecast Layer"]
+        U1["Price forecast error"]
+        U2["Arrival / departure jitter"]
+        U4["§14a curtailment events"]
+    end
+    subgraph L6["L6 · Validation Layer  -- your edge"]
+        V1["Real truck + charger V2G test"]
+        V2["Measured: RT efficiency map, taper, response delay, thermal"]
+    end
+    L1 --> L4
+    L2 --> L4
+    L3 --> L4
+    L5 --> L4
+    L4 --> OUT["Dispatch decision + per-asset value attribution (duals)"]
+    L6 -. corrects .-> L2
+    L6 -. corrects .-> L4
+    OUT --> DASH["Dashboard: euro/truck, SoH trajectory, revenue by country/market"]
+      </pre>
+    </section>
+
+    <!-- 2 -->
+    <section id="ideas">
+      <h2 class="sec">2 · The ideas (ranked by novelty × feasibility × TRATON value)</h2>
+
+      <div class="card idea" id="i1">
+        <h3><span class="stars">★</span> Idea 1 — Sim-to-Real "Degradation Twin Calibration" (credibility anchor)</h3>
+        <div class="meta"><span class="pill">Novelty: High</span><span class="pill">Feasibility: Med–High</span>
+          <span class="pill hi">Needs real truck</span><span class="pill">Role: validation anchor</span></div>
+        <p><strong>Gap:</strong> V2G economics hinge on degradation cost per kWh — yet that number is taken from
+          <strong>lab cells</strong> and assumed to transfer to a 400+ kWh truck pack. Pack thermal gradients, BMS
+          balancing, inverter losses and real C-rate tapers differ. No published <strong>measured-stress → degradation</strong>
+          calibration exists for a real <em>heavy-duty</em> pack under <em>commanded</em> bidirectional events.</p>
+        <p><strong>New function:</strong> run your few-day V2G test, extract measured stress signatures, compute the
+          <strong>residual</strong> between the in-house lab aging model and real pack behaviour, and emit a
+          <em>truck-specific corrected</em> degradation cost surface for the optimizer.</p>
+        <pre class="mermaid">
+flowchart LR
+    LAB["In-house lab aging model (cell-level)"] --> PRED["Predicted stress to fade"]
+    subgraph TEST["Few-day real truck + charger V2G test"]
+        T1["Commanded profiles (vary C-rate, DoD, SoC window)"]
+        T2["Measure: RT efficiency, taper, response delay, dT, dV/dQ"]
+    end
+    T1 --> T2 --> MEAS["Measured stress signatures"]
+    PRED --> RES{"Residual = measured - predicted"}
+    MEAS --> RES
+    RES --> CORR["Truck-specific corrected cost surface c(SoC,DoD,C,T)"]
+    CORR --> OPT["Feeds Optimizer Layer L4"]
+    RES --> INSIGHT["Insight: where lab models over/under-estimate pack life"]
+        </pre>
+        <p class="lead"><strong>Honest note:</strong> true capacity fade needs weeks/months — so measure stress
+          <em>proxies</em> (efficiency, taper, delay, thermal, impedance snapshot), not fade itself, and validate the
+          proxies match the model's inputs. Still novel.</p>
+      </div>
+
+      <div class="card idea head" id="i2">
+        <h3><span class="stars">★★</span> Idea 2 — Warranty-Budget-Coupled V2G Dispatch (the OEM-only idea)</h3>
+        <div class="meta"><span class="pill hi">Novelty: Very High</span><span class="pill">Feasibility: Medium</span>
+          <span class="pill crit">TRATON value: Critical</span><span class="pill">Role: HEADLINE</span></div>
+        <p><strong>Gap (verified):</strong> existing warranty+V2G work is <strong>owner-side</strong> ("performance
+          guarantees," "will my capacity drop"). The <strong>OEM-side</strong> question is open: <em>MAN writes the
+          warranty</em> (e.g. 80% SoH at min(N years, Y kWh throughput)). V2G <em>spends</em> that budget. How should the
+          optimizer treat <strong>remaining warranty throughput as a depletable, shadow-priced resource</strong> — and
+          which <strong>warranty product</strong> makes V2G net-positive for both MAN and the fleet? This couples
+          <strong>controller design to contract design</strong>.</p>
+        <p><strong>New function:</strong> add a warranty-state variable <code>W(t)</code>; each V2G kWh draws it down. The
+          dual on the <code>W</code>-constraint is the <strong>shadow price of warranty</strong> — the true marginal cost
+          of cycling. Then run <strong>contract co-design</strong> over warranty product variants.</p>
+        <pre class="mermaid">
+flowchart TB
+    WARR["Warranty: SoH>=80% at min(N years, Y kWh)"] --> BUDGET["Warranty budget W(t) = remaining throughput"]
+    BUDGET --> CONS["Constraint: sum of V2G throughput <= W(t)"]
+    PRICES["Market revenue (arb / FCR / V2B)"] --> OBJ["Objective: max revenue - degradation - warranty drawdown"]
+    CONS --> OBJ
+    OBJ --> SOLVE["Solve MILP / MPC"]
+    SOLVE --> DUAL["Dual on W = SHADOW PRICE OF WARRANTY (euro/kWh)"]
+    DUAL --> DECIDE{"Market revenue > warranty shadow price?"}
+    DECIDE -- yes --> DO["Dispatch V2G"]
+    DECIDE -- no --> HOLD["Preserve warranty / idle"]
+    SOLVE --> COD["Contract co-design: test warranty product variants"]
+    COD --> SURPLUS["Joint OEM + fleet surplus per product"]
+    SURPLUS --> REC["Recommended warranty product for V2G fleets"]
+        </pre>
+        <div class="callout good"><strong>Why this is the headline:</strong> it reframes V2G as a <em>contract-bounded</em>
+          control problem (publishable) and produces a direct <strong>MAN sales + product-policy artifact</strong>:
+          "here is the warranty we should offer V2G fleets, and why it makes money for everyone." Nobody outside an OEM
+          can credibly write this chapter.</div>
+      </div>
+
+      <div class="card idea" id="i3">
+        <h3><span class="stars">★★</span> Idea 3 — Manufacturing Firm Ancillary Capacity by Duty-Cycle Co-Scheduling</h3>
+        <div class="meta"><span class="pill">Novelty: High</span><span class="pill">Feasibility: Med–High</span>
+          <span class="pill crit">TRATON value: Critical</span><span class="pill">Role: core / stretch</span></div>
+        <p><strong>Gap (verified):</strong> FCR needs <strong>firm</strong> capacity over a product window, but trucks
+          leave the depot. Existing EV-FCR papers treat availability as <strong>exogenous</strong> and bid under it with
+          chance constraints (Nordic, light-duty). Nobody <strong>shapes the logistics</strong> to <em>create</em> firm
+          capacity — staggering departures / holding a rotating sub-fleet — turning availability from a
+          <strong>constraint into a decision variable</strong>, then VPP-aggregating across depots.</p>
+        <pre class="mermaid">
+flowchart TB
+    subgraph DEPOTS["Multi-depot fleet (VPP)"]
+        D1["Depot A"]
+        D2["Depot B"]
+        D3["Depot C"]
+    end
+    DEPOTS --> AVAIL["Availability profiles (stochastic presence)"]
+    LOG["Logistics: routes, deadlines, driver hours"] --> JOINT
+    AVAIL --> JOINT["JOINT optimizer: shape departures to guarantee a rotating always-plugged sub-fleet"]
+    JOINT --> FIRM["Firm capacity with P99 reliability"]
+    FIRM --> BID["FCR / aFRR capacity bid"]
+    BID --> REV["Ancillary revenue (the 55-65% slice)"]
+    JOINT --> FEAS{"Logistics still feasible?"}
+    FEAS -- no --> RELAX["Reduce committed MW"]
+    FEAS -- yes --> REV
+    REV --> COMP["Compare: arbitrage-only vs arbitrage + firm-FCR"]
+        </pre>
+      </div>
+
+      <div class="card idea" id="i4">
+        <h3><span class="stars">★</span> Idea 4 — Value-of-Fidelity / Minimum-Viable-Twin Study</h3>
+        <div class="meta"><span class="pill">Novelty: High</span><span class="pill">Feasibility: High</span>
+          <span class="pill">TRATON value: High (firmware spec)</span><span class="pill">Role: supporting</span></div>
+        <p><strong>Gap:</strong> everyone adds layers; nobody asks which layers actually change the decision. "How much
+          model complexity is needed before the <strong>dispatch decision and the € outcome stop improving</strong>?" is
+          elegant and under-studied. Ablate layers, measure <strong>decision regret</strong> and <strong>€ error</strong>.</p>
+        <pre class="mermaid">
+flowchart LR
+    FULL["Full-fidelity twin (all layers ON)"] --> BASE["Baseline euro + dispatch"]
+    FULL --> ABL["Ablate one layer at a time"]
+    ABL --> A1["- nonlinear aging"]
+    ABL --> A2["- 15-min (use hourly)"]
+    ABL --> A3["- stochastic (use deterministic)"]
+    ABL --> A4["- thermal"]
+    A1 --> REG["Measure decision regret + euro error"]
+    A2 --> REG
+    A3 --> REG
+    A4 --> REG
+    REG --> RANK["Rank layers by decision value"]
+    RANK --> SPEC["Output: minimum controller spec for MAN CMS firmware"]
+        </pre>
+      </div>
+
+      <div class="card idea" id="i5">
+        <h3><span class="stars">★★</span> Idea 5 — EU↔China "Policy Compiler" (required by your job, made novel)</h3>
+        <div class="meta"><span class="pill">Novelty: Med–High</span><span class="pill">Feasibility: High</span>
+          <span class="pill">TRATON value: High (market entry)</span><span class="pill">Role: breadth chapter</span></div>
+        <p><strong>Gap:</strong> country comparisons are descriptive. Make it a <strong>compiler</strong>: tariff +
+          regulation + battery mix → an <strong>optimizer configuration</strong> + a normalized
+          <strong>Charging-Cost-Structure Index</strong> ranking markets.</p>
+        <pre class="mermaid">
+flowchart LR
+    IN["Per market: TOU tariff, capacity charge, grid-fee rule, V2G/ancillary access, chemistry mix"] --> COMP["Policy Compiler (rule engine)"]
+    COMP --> CFG["Optimizer config: enable {TOU, peak-shave, V2G, FCR, PV} + params"]
+    CFG --> RUN["Run twin per market"]
+    RUN --> CCSI["Charging-Cost-Structure Index (normalized ranking)"]
+    CCSI --> DE["DE (post-EnWG-2026)"]
+    CCSI --> NL["NL (V2G-mature)"]
+    CCSI --> FR["FR (no double fee)"]
+    CCSI --> CN["CN (different market design)"]
+    DE --> TOOL["Reusable TRATON market-entry tool (India/Brazil/US later)"]
+    NL --> TOOL
+    FR --> TOOL
+    CN --> TOOL
+        </pre>
+      </div>
+
+      <div class="card idea" id="i6">
+        <h3><span class="stars">★</span> Idea 6 — Per-Truck Flexibility-Value Attribution ("shadow-price bill")</h3>
+        <div class="meta"><span class="pill">Novelty: Med–High</span><span class="pill">Feasibility: High</span>
+          <span class="pill">TRATON value: High (product feature)</span><span class="pill">Role: output layer</span></div>
+        <p><strong>Gap:</strong> fleet operators get one bill and cannot see <em>which truck</em> caused cost. MILP
+          <strong>dual variables</strong> give each truck/charger's marginal cost <em>for free</em> in every solve — no
+          tool surfaces them as operational intelligence. Use it as the interpretable output of Idea 2 (same maths).</p>
+        <pre class="mermaid">
+flowchart LR
+    SOLVE["Solved depot MILP"] --> DUALS["Extract dual variables"]
+    DUALS --> ATTR["Attribute euro to each truck / charger"]
+    ATTR --> MSG["'Truck T07 cost +23 euro: arrived low-SoC, forced peak charging'"]
+    MSG --> USE1["Driver incentives"]
+    MSG --> USE2["Route replanning"]
+    MSG --> USE3["Where to add chargers"]
+        </pre>
+      </div>
+
+      <div class="card idea" id="i7">
+        <h3><span class="stars">★</span> Idea 7 — Future-Scenario Stress Layer (2030 / 2040 / 2050)</h3>
+        <div class="meta"><span class="pill">Novelty: Medium</span><span class="pill">Feasibility: High</span>
+          <span class="pill">Role: discussion / future work</span></div>
+        <p><strong>Correct framing:</strong> don't predict "free electricity." Literature points to <strong>lower average
+          prices but more zero/negative-price hours and higher volatility</strong>. V2G value then shifts from price
+          minimization to <strong>volatility &amp; surplus-window timing</strong>. Keep as scenarios, not predictions.</p>
+        <pre class="mermaid">
+flowchart TB
+    NOW["2026 baseline: 15-min SDAC, EnWG single fee, §14a"] --> S30["2030-35: more negative-price hours"]
+    S30 --> S40["2040: high volatility, deep RES"]
+    S40 --> S50["2050: low avg price, frequent zero-price windows"]
+    S30 --> TEST["Run SAME optimizer on each"]
+    S40 --> TEST
+    S50 --> TEST
+    TEST --> Q{"Does V2G value survive? Does strategy shift arbitrage -> flexibility timing?"}
+    Q --> ROBUST["Robustness / future-proofing finding"]
+        </pre>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section id="matrix">
+      <h2 class="sec">3 · Novelty &amp; priority matrix</h2>
+      <table>
+        <tr><th>#</th><th>Idea</th><th>Novelty</th><th>Feasibility (7–8 mo)</th><th>TRATON value</th><th>Real truck?</th><th>Role</th></tr>
+        <tr><td>1</td><td>Sim-to-real degradation calibration</td><td>High</td><td>Med–High</td><td>High</td><td><strong>Yes</strong></td><td>Validation anchor</td></tr>
+        <tr><td>2</td><td>Warranty-budget-coupled dispatch</td><td><strong>Very High</strong></td><td>Medium</td><td><strong>Critical</strong></td><td>Helpful</td><td><strong>Headline</strong></td></tr>
+        <tr><td>3</td><td>Firm ancillary via duty-cycle co-sched</td><td>High</td><td>Med–High</td><td><strong>Critical</strong></td><td>No</td><td>Core / stretch</td></tr>
+        <tr><td>4</td><td>Value-of-fidelity / min-viable twin</td><td>High</td><td>High</td><td>High</td><td>No</td><td>Supporting</td></tr>
+        <tr><td>5</td><td>EU↔China policy compiler</td><td>Med–High</td><td>High</td><td>High</td><td>No</td><td>Breadth</td></tr>
+        <tr><td>6</td><td>Per-truck shadow-price attribution</td><td>Med–High</td><td>High</td><td>High</td><td>No</td><td>Output layer</td></tr>
+        <tr><td>7</td><td>Future-scenario stress</td><td>Medium</td><td>High</td><td>Medium</td><td>No</td><td>Discussion</td></tr>
+      </table>
+    </section>
+
+    <!-- 4 -->
+    <section id="fused">
+      <h2 class="sec">4 · ⭐ Recommended fused thesis</h2>
+      <blockquote><strong>"Warranty-Aware, Empirically-Calibrated V2G Dispatch for Heavy-Duty Truck Depots — with a
+        Cross-Market (EU/China) Decision Compiler"</strong></blockquote>
+      <p>Fuses <strong>Idea 2 (headline)</strong> + <strong>Idea 1 (real-truck anchor)</strong> +
+        <strong>Idea 6 (interpretable output)</strong> + <strong>Idea 5 (breadth, job requirement)</strong>, with
+        <strong>Idea 4</strong> as a supporting chapter and <strong>Idea 3 / 7</strong> as labelled stretch / future work.</p>
+      <p class="lead"><strong>Single research question:</strong> How should a heavy-duty truck depot dispatch V2G when the
+        battery warranty is a depletable, shadow-priced contractual resource — and what warranty product makes V2G
+        net-positive for both the OEM and the fleet — validated against measured behaviour of a real truck pack and
+        generalized across EU and Chinese market structures?</p>
+      <h3>Contribution stack</h3>
+      <ol>
+        <li><strong>Method:</strong> warranty-budget state + shadow-price-of-warranty in the optimizer (new).</li>
+        <li><strong>Empirics:</strong> real-truck stress calibration correcting the in-house aging model (new, your edge).</li>
+        <li><strong>Product/policy:</strong> warranty-product co-design → recommended V2G warranty for MAN (OEM-only).</li>
+        <li><strong>Generalization:</strong> EU/China policy compiler + per-truck value attribution (reusable tools).</li>
+      </ol>
+      <pre class="mermaid">
+flowchart TB
+    START["Month 0: scope + data access locked"] --> P1["Phase 1 (M1-M2): baseline depot MILP + 15-min SDAC + EnWG-2026"]
+    P1 --> P2["Phase 2 (M2-M3): real-truck V2G test + aging calibration (Idea 1)"]
+    P2 --> P3["Phase 3 (M3-M5): warranty budget + shadow price (Idea 2) + duals (Idea 6)"]
+    P3 --> P4["Phase 4 (M5-M6): EU/China compiler (Idea 5) + value-of-fidelity (Idea 4)"]
+    P4 --> P5["Phase 5 (M6-M8): warranty product co-design + scenarios + dashboard + write-up"]
+    P5 --> END["Thesis + TRATON artifact: recommended V2G warranty + min controller spec"]
+      </pre>
+      <h3>8-month timeline</h3>
+      <pre class="mermaid">
+gantt
+    dateFormat  YYYY-MM
+    axisFormat  %b
+    title 8-Month Plan
+    section Foundation
+    Lit review + scope lock        :2026-09, 1M
+    Platform + baseline MILP       :2026-09, 2M
+    section Real-truck (edge)
+    Test design + safety approval  :2026-10, 1M
+    Run V2G test + calibrate       :2026-11, 1M
+    section Headline method
+    Warranty shadow-price model    :2026-12, 2M
+    Per-truck attribution          :2027-01, 1M
+    section Generalize
+    EU/China compiler              :2027-02, 1M
+    Value-of-fidelity ablation     :2027-02, 1M
+    section Close
+    Warranty co-design + scenarios :2027-03, 1M
+    Dashboard + writing            :2027-03, 2M
+      </pre>
+    </section>
+
+    <!-- 5 -->
+    <section id="euchina">
+      <h2 class="sec">5 · EU ↔ China dimension (concrete)</h2>
+      <p>Compile each market into an optimizer config. Axes that actually change dispatch:</p>
+      <ul>
+        <li><strong>Grid-fee treatment of stored-then-returned energy</strong> — DE just fixed this (single fee from Jan
+          2026, ⚠ initially tied to own-PV users); FR already favorable; CN differs by province.</li>
+        <li><strong>Market time resolution</strong> — EU SDAC is 15-min (since Oct 2025); China spot pilots differ by province.</li>
+        <li><strong>Ancillary access for aggregated EV fleets</strong> — who prequalifies, minimum bid size, symmetric vs asymmetric.</li>
+        <li><strong>Capacity / demand charge structure</strong> — drives peak-shaving value (German <em>Leistungspreis</em> on peak 15-min).</li>
+        <li><strong>Battery chemistry mix</strong> — China skews <strong>LFP</strong> (V2G-tolerant); EU MAN packs skew
+          <strong>NMC</strong> (calendar-aging sensitive). The <em>same</em> optimizer behaving differently is a clean result.</li>
+      </ul>
+    </section>
+
+    <!-- 6 -->
+    <section id="test">
+      <h2 class="sec">6 · Real-truck test plan (days, not fade)</h2>
+      <p>You cannot measure capacity fade in a few days. Measure the <strong>inputs</strong> your model assumes, and correct them.</p>
+      <pre class="mermaid">
+flowchart LR
+    subgraph MEASURE["Measure in the test window"]
+        E1["Round-trip efficiency map eta(SoC, power)"]
+        E2["Charge/discharge power taper vs SoC"]
+        E3["V2G command -> delivery delay + ramp"]
+        E4["Pack dT vs C-rate (thermal)"]
+        E5["dV/dQ / impedance snapshot (SoH proxy)"]
+    end
+    E1 --> CAL["Correct optimizer params (replace eta=1.0 errors, real limits)"]
+    E2 --> CAL
+    E3 --> CAL
+    E4 --> CAL
+    E5 --> CAL
+    CAL --> CRED["Credible economics (not lab-cell extrapolation)"]
+      </pre>
+      <div class="callout good">This single step kills the most common reviewer criticism ("your efficiencies/limits are
+        assumed"). Cheapest, highest-credibility part of the whole thesis.</div>
+    </section>
+
+    <!-- 7 -->
+    <section id="questions">
+      <h2 class="sec">7 · Questions to lock the final scope</h2>
+      <ol>
+        <li><strong>Warranty access:</strong> can you get MAN's <em>actual</em> eTruck battery warranty terms (SoH
+          threshold, year/throughput limits)? Idea 2 needs this; if not, use a representative anonymized version.</li>
+        <li><strong>Bidirectional test freedom:</strong> free to command arbitrary profiles, or only a scripted pilot?
+          Decides how rich the calibration (Idea 1) can be.</li>
+        <li><strong>Telematics resolution:</strong> charger + truck logs at ≤1-min? Needed for taper/delay/thermal capture.</li>
+        <li><strong>Pack history:</strong> age, mileage, cumulative throughput, present SoH for the test truck?</li>
+        <li><strong>In-house aging model:</strong> can you see/modify its equations, or is it a black box? Decides whether
+          calibration is "correct the params" or "wrap a residual model around it."</li>
+        <li><strong>Deliverable type:</strong> publishable method paper, TRATON internal prototype/tool, or future product concept?</li>
+      </ol>
+    </section>
+
+    <!-- 8 -->
+    <section id="bottom">
+      <h2 class="sec">8 · Honest bottom line</h2>
+      <ul>
+        <li><strong>Don't</strong> build "a giant Simulink twin" as the contribution — it's an apparatus, and reviewers know it.</li>
+        <li><strong>Do</strong> make the headline a <em>new decision function</em> only you can write:
+          <strong>warranty as a shadow-priced budget from the OEM seat (Idea 2)</strong>, made credible by
+          <strong>real-truck calibration (Idea 1)</strong>, generalized by the <strong>EU/China compiler (Idea 5)</strong>,
+          and made tangible by <strong>per-truck shadow-price attribution (Idea 6)</strong>.</li>
+        <li><strong>Stretch / second paper:</strong> firm ancillary capacity via duty-cycle co-scheduling (Idea 3).</li>
+      </ul>
+    </section>
+
+    <section id="sources">
+      <h2 class="sec">Sources (state-of-the-art &amp; regulatory verification)</h2>
+      <ul class="src">
+        <li><a href="https://arxiv.org/html/2408.02139v1">Extra Throughput vs Days Lost in V2G (arXiv 2024)</a> — your N04</li>
+        <li><a href="https://www.mdpi.com/2071-1050/17/12/5626">Economic Viability of V2G Reassessed — degradation-cost LCA (MDPI 2025)</a></li>
+        <li><a href="https://energyinformatics.springeropen.com/articles/10.1186/s42162-023-00288-x">Assessing battery degradation in V2G optimization models (Energy Informatics)</a></li>
+        <li><a href="https://www.researchgate.net/publication/352845601">Empirical capacity measurements of EVs under V2G degradation</a></li>
+        <li><a href="https://arxiv.org/html/2404.12818">EV aggregator bidding in Nordic FCR-D: chance-constrained (arXiv 2024)</a></li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S0306261925017787">Multi-market V2G revenue incl. FCR (Applied Energy 2025)</a></li>
+        <li><a href="https://www.electrive.com/2025/11/14/germany-clears-the-way-for-bidirectional-charging/">German Parliament removes V2G barrier — EnWG, 13 Nov 2025 (electrive)</a></li>
+        <li><a href="https://www.heise.de/en/news/E-mobility-Bundestag-paves-the-way-for-bidirectional-charging-11079628.html">Bundestag paves way for bidirectional charging (heise)</a></li>
+        <li><a href="https://chargedevs.com/newswire/scania-demonstrates-vehicle-to-grid-through-megawatt-charging-system-for-heavy-electric-vehicles/">Scania demonstrates V2G through MCS (Charged EVs)</a></li>
+        <li><a href="https://chargedevs.com/newswire/chargebytes-ccl-mcs-brings-iso-15118-20-over-ethernet-to-megawatt-charging-for-heavy-duty-evs/">chargebyte CCL MCS — ISO 15118-20 over Ethernet (Charged EVs)</a></li>
+      </ul>
+      <footer>Prepared 19 June 2026 · Research-grade ideation for TRATON / MAN R&amp;D · Diagrams render via Mermaid.
+        This document is decision-support, not a commitment; verify regulatory details against primary sources before citing in the thesis.</footer>
+    </section>
+  </main>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose', flowchart: { useMaxWidth: true } });
+</script>
+</body>
+</html>
