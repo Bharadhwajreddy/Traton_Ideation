@@ -493,8 +493,183 @@ warranty terms and free bidirectional test access.**
 
 ---
 
+## 11. NEW IDEAS (your latest thinking) + the diesel-era lens
+
+### The diesel-era analogies (why they generate good research)
+
+Real impact in the combustion era came from turning *experience* into *parametric maps and records* that everyone
+downstream could use. Three of those map directly onto your battery problem:
+
+| Diesel/petrol era | Battery-era equivalent | What it unlocks |
+|---|---|---|
+| **Verbrauchskennfeld** (engine fuel/efficiency map from dyno tests) | **V2G-degradation map** of the pack (fade vs C-rate, SoC window, temp, #sessions) | Charger reads the map and throttles V2G as the pack ages |
+| **Scheckheft / service logbook** | **Battery passport** (lifecycle history per pack) | Any charger the truck visits knows the pack's history |
+| **Knock control** (retard ignition near the knock limit) | **Plating-limit control** (back off C-rate near the Li-plating limit, adaptively as the pack ages) | Protect the anode automatically without losing performance |
+
+### Idea 8 — Battery Passport as a *live control input* (closed-loop), not just compliance
+
+**Verified context:** EU Digital Battery Passport is mandatory from **Feb 2027** for batteries >2 kWh; DIN DKE SPEC
+99100 (Feb 2025) defines the data attributes; SoH must be reported (energy-based, "SOCE"). **But** the passport is
+updated only on *material change* (refurbishment, ownership transfer, major maintenance) — it is a **periodic
+compliance record, not a real-time control signal.**
+
+**The gap (genuinely open for HD trucks):** nobody has connected the passport as a **live input to the charger/depot
+optimizer** that, on plug-in, reads the pack's history and *decides* C-rate, SoC window, and V2G go/no-go — then
+**writes the session back** (closed loop). This is the industrial product MAN/TRATON could own.
+
+**Why it unifies the whole thesis:** the passport's SoH field *is* the warranty-budget state `W(t)` (Idea 2); the
+pack history *is* what the life-stage-adaptive rules need (amended Family 1); the written-back sessions *are* the data
+that calibrate the degradation map (Idea 1). The passport is the **data backbone** that ties Ideas 1, 2, 6 and the
+life-stage rules together.
+
+```mermaid
+flowchart TB
+    PP["Battery Passport (cloud)<br/>cycle history · calendar age · temp exposure · SoH/SOCE"] --> PLUG["Truck plugs in"]
+    PLUG --> READ["Optimizer READS passport"]
+    READ --> DEC["Decide: max C-rate · SoC window · V2G yes/no"]
+    DEC --> RUN["Run charge / V2G session"]
+    RUN --> LOG["Measure throughput, C-rate, temp, SoH proxy"]
+    LOG --> WRITE["WRITE session back to passport (closed loop)"]
+    WRITE --> PP
+    DEC -. uses .-> MAP["V2G degradation map (Idea 10)"]
+    DEC -. gated by .-> WARR["Warranty shadow price (Idea 2)"]
+```
+
+**Honest cautions:** the standard's SoH is coarse and updated infrequently → for live control you rely on the *BMS*
+SoH, with the passport as the cross-charger, cross-owner record. Data ownership and interoperability across charging
+networks ("everywhere the truck goes") is the vision; **depot-only closed loop is the realistic thesis scope**, with
+roaming as discussion/future work.
+
+### Idea 9 — Your controlled range/SoH degradation test (validated, then corrected)
+
+**Your instinct is right and the framing is excellent** (drive 60%→50%, run a V2G block, re-drive 60%→50%, compare
+the km). It is the battery version of a controlled dyno test. But as a *pure road-range* test in a short window it has
+three problems you must fix, or you will measure noise instead of degradation:
+
+1. **The signal is below the noise floor.** The best real study (220 V2G cycles over 3 years) saw **no statistically
+   significant** V2G fade — both test and control cars lost ~8%, dominated by *calendar* aging. A single 4-hour V2G
+   block changes capacity by *thousandths of a percent*. You cannot see that in road kilometres.
+2. **Road range is extremely noisy.** Payload, wind, traffic, temperature, regen, tyre pressure, driver, HVAC each move
+   range by several percent — swamping any real fade signal.
+3. **Reversible effects masquerade as degradation.** Right after a V2G block the pack is *warm and polarised*. An
+   immediate re-drive differs because of **temperature and relaxation**, not aging. Without a rest/thermal-equalisation
+   step you would measure reversible physics, not lifetime loss.
+
+**The corrected, rigorous version** (keep the story, instrument it properly): use the drive as the *communicable*
+output, but measure **direct electrical SoH metrics** that are orders of magnitude more sensitive than range, and
+control thermal state:
+
+| Step | Do | Measure (the sensitive bit) | Control |
+|---|---|---|---|
+| Reference test (pre) | Controlled partial-discharge in a fixed SoC window | **Capacity by coulomb-counting**, **DC internal resistance via current pulses (HPPC)**, **dV/dQ (incremental capacity)** | Same temperature, rested pack |
+| Optional drive | 60%→50% on a fixed route | Distance (the intuitive proxy) | Same route, payload, temp, driver |
+| V2G block | 4 h bidirectional at *known* C-rate / SoC window / temp | Throughput, peak C-rate, avg temp, SoC trajectory | Log BMS @ ≥1 Hz |
+| Rest | Thermal + voltage relaxation | — | Return to reference temp before re-test |
+| Reference test (post) | Repeat the controlled reference test | Same metrics → **Δresistance, Δcapacity** | Identical conditions |
+
+**What you actually get:** not "fade per block" (too small to see directly) but **the stress signatures** (efficiency,
+resistance, thermal response, C-rate) that *calibrate the parameters* of a semi-empirical model
+`Q_fade = a·√t·exp(−Ea/kT)·f(SoC) + b·N·g(DoD,C)`. The model then **extrapolates** to year 1/3/5/10 — including a
+"max permissible V2G sessions per day vs target lifetime" curve. This is exactly Idea 1, and you arrived at it
+independently. ✅
+
+### Idea 10 — The V2G-degradation map (the battery "Verbrauchskennfeld")
+
+**The product-shaped deliverable:** a parametric *surface* `degradation = F(C-rate, SoC window, temperature, #sessions)`
+for a real MAN HD pack (NMC, and LFP if available), fitted from Idea 9's tests. The charger reads this map (via the
+passport) and **automatically throttles V2G as the pack ages** — just as the diesel fuel map let any controller predict
+behaviour at any operating point.
+
+```mermaid
+flowchart LR
+    TEST["Controlled tests (Idea 9):<br/>vary C-rate, SoC window, temp"] --> FIT["Fit semi-empirical model parameters"]
+    FIT --> MAP["Degradation MAP F(C-rate, SoC, T, N)"]
+    MAP --> USE1["Charger sets safe C-rate / SoC window"]
+    MAP --> USE2["Optimizer degradation cost surface (Idea 1)"]
+    MAP --> USE3["Warranty drawdown rate (Idea 2)"]
+    MAP --> USE4["'Max V2G sessions/day vs lifetime' curve"]
+```
+
+### Idea 11 — Decision matrix for customers *and* governments
+
+**Your fresh idea:** hold the aging + optimization layers *fixed*, then sweep **truck type × mission × cell chemistry ×
+country**, and read off who wins where. Output two artifacts:
+
+- **Customer decision matrix:** "for mission X in country Y, chemistry Z + strategy W gives best TCO / lowest fade."
+- **Government/regulator view:** "market design A leaves €N/truck/year of flexibility value unrealised vs design B" —
+  an evidence base for amendments.
+
+**Critique:** strong as the *results engine* on top of a validated platform, but beware the **combinatorial explosion** —
+use a proper Design-of-Experiments (fractional factorial), not brute force. Fuses naturally with the policy compiler
+(Idea 5).
+
+```mermaid
+flowchart TB
+    FIX["Fixed layers: aging model + optimizer"] --> SWEEP["Sweep (DoE): truck type × mission × chemistry × country"]
+    SWEEP --> RUN["Run platform per combination"]
+    RUN --> OUT1["Customer matrix: best chemistry+strategy per mission/country"]
+    RUN --> OUT2["Government view: value left on the table per market design"]
+```
+
+## 12. ⭐⭐ THE MIXED THESIS (everything, unified)
+
+All of this converges on one coherent, genuinely novel, OEM-unique thesis:
+
+> **"The Battery-Passport-Informed Charging Controller: a closed-loop heavy-duty depot optimizer that reads live battery
+> history, applies a measured V2G-degradation map, prices warranty consumption, and writes each session back —
+> validated on a real MAN truck and generalised into a customer/government decision matrix across missions, chemistries
+> and countries."**
+
+The pieces and how they snap together:
+
+- **Data backbone:** Battery Passport (Idea 8) — the live history per pack.
+- **Physics:** V2G-degradation map (Idea 10), built from your real-truck test (Idea 9 = Idea 1).
+- **Economics:** warranty as a shadow-priced budget (Idea 2); SoH field = warranty state.
+- **Control:** passport-informed closed-loop optimizer with life-stage-adaptive rules (amended Family 1) on the
+  hierarchical MILP→MPC backbone (second-agent core).
+- **Output:** per-truck value attribution (Idea 6) + decision matrix (Idea 11) + EU/China compiler (Idea 5).
+
+```mermaid
+flowchart TB
+    subgraph DATA["DATA BACKBONE"]
+        PP["Battery Passport (live history + SoH)"]
+    end
+    subgraph PHYS["PHYSICS (your real-truck edge)"]
+        TEST["Controlled degradation test (Idea 9)"] --> MAP["V2G degradation map (Idea 10)"]
+    end
+    subgraph ECON["ECONOMICS"]
+        WARR["Warranty shadow price (Idea 2)"]
+    end
+    subgraph CTRL["CONTROL (closed loop)"]
+        OPT["Hierarchical MILP -> 15-min MPC<br/>+ life-stage-adaptive rules"]
+    end
+    subgraph OUT["OUTPUT / GENERALISATION"]
+        ATTR["Per-truck value attribution (Idea 6)"]
+        MATRIX["Customer + government decision matrix (Idea 11)"]
+        COMP["EU/China policy compiler (Idea 5)"]
+    end
+    PP --> OPT
+    MAP --> OPT
+    WARR --> OPT
+    OPT --> SESS["Charge / V2G session"]
+    SESS --> WB["Write back to passport"]
+    WB --> PP
+    OPT --> OUT
+```
+
+**Why this is defensible:** the digital twin is still just the lab; the **contribution is the closed-loop
+passport→map→warranty→control function**, which is new for heavy trucks, timely (passport mandatory 2027, EnWG 2026,
+MCS V2G live), and ends in a product MAN can actually ship.
+
+---
+
 ### Sources (state-of-the-art & regulatory verification)
 - [Extra Throughput vs Days Lost in V2G (arXiv 2024)](https://arxiv.org/html/2408.02139v1) — your N04
+- [DIN DKE SPEC 99100 — battery passport data attributes (VDE)](https://www.vde.com/en/press/press-releases/din-dke-spec-99100-battery-pass)
+- [New standard for EU digital battery passport (Charged EVs)](https://chargedevs.com/newswire/new-standard-helps-companies-comply-with-eu-digital-battery-passport-requirement/)
+- [Why we need standardized SoH measurement for EV packs (npj Clean Energy 2025)](https://www.nature.com/articles/s44406-025-00010-8)
+- [V2G impact on battery degradation + economic compensation (Applied Energy 2025)](https://www.sciencedirect.com/science/article/pii/S0306261924019299)
+- [Battery performance assessment of V2G-capable EVs — test methodology (EPRI)](https://www.epri.com/research/products/000000003002024770)
 - [Economic Viability of V2G Reassessed — degradation-cost LCA (MDPI Sustainability 2025)](https://www.mdpi.com/2071-1050/17/12/5626)
 - [Assessing battery degradation in V2G optimization models (Energy Informatics)](https://energyinformatics.springeropen.com/articles/10.1186/s42162-023-00288-x)
 - [Empirical capacity measurements of EVs under V2G degradation (ResearchGate)](https://www.researchgate.net/publication/352845601)

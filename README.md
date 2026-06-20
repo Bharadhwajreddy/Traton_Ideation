@@ -1,24 +1,23 @@
-# Traton_Ideation — V2G Thesis Idea Map (Heavy-Duty Truck Depots)
+# Traton_Ideation — V2G Thesis Ideas (Heavy-Duty Truck Depots)
 
-Research-grade ideation for an M.Sc. thesis at **TRATON / MAN R&D** ("UnPlugged Energisers", Efficient Transport)
+Plain-language ideation for an M.Sc. thesis at **TRATON / MAN R&D** ("UnPlugged Energisers")
 on **V2G / bidirectional charging for heavy-duty truck depots**.
 
-## Contents
+## Files
 
 | File | What it is |
 |---|---|
-| [`index.html`](index.html) | Polished, self-contained report with **all flow diagrams rendered live** (Mermaid via CDN). Open in any browser. |
-| [`THESIS_IDEAS_V2G_HDtrucks.md`](THESIS_IDEAS_V2G_HDtrucks.md) | Same content in Markdown (diagrams render on GitHub / VS Code / Obsidian). |
+| [`index.html`](index.html) | **Start here.** A clearly-explained report: every flow diagram has *In plain words*, *Why it matters*, and *Watch out* boxes so anyone can follow. Open in any browser (diagrams render live via Mermaid). |
+| [`THESIS_IDEAS_V2G_HDtrucks.md`](THESIS_IDEAS_V2G_HDtrucks.md) | The full reference with all reasoning, the literature critique, and the synthesis (renders on GitHub). |
 
-## TL;DR
+## The recommendation in one line
 
-Build novelty on the three things only this position can do:
-1. **Sit inside the OEM that writes the battery warranty** → warranty as a *shadow-priced, depletable resource* in dispatch (headline idea).
-2. **Test a real truck + charger + V2G** → calibrate the aging model against measured pack behaviour (credibility anchor).
-3. **Compare EU vs China** → a reusable *policy compiler*, not a descriptive table.
+> **The Battery-Passport-Informed Charging Controller** — a depot optimizer that reads the battery's live history,
+> looks up a *measured wear map*, *prices the warranty* each option would burn, picks the safest profitable plan, and
+> writes the session back — validated on a real MAN truck and generalised into a customer/government decision matrix.
 
-**Recommended fused thesis:** *Warranty-Aware, Empirically-Calibrated V2G Dispatch for Heavy-Duty Truck Depots — with a Cross-Market (EU/China) Decision Compiler.*
+This unifies your new ideas (battery passport + the degradation test) with the earlier ones (warranty shadow-pricing,
+age-adaptive control, grid services). The digital twin is the **lab**; the **closed-loop function is the contribution**.
 
-> The digital twin is the **lab**, not the contribution. The contribution is a **new decision function**.
-
-See `index.html` for the 7 ranked ideas, flow diagrams, novelty matrix, 8-month timeline, and open scope questions.
+See `index.html` for all ideas explained, the corrected real-truck test protocol, honest cautions, and the open
+questions that decide the final scope.
