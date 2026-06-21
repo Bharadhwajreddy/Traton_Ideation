@@ -7,17 +7,23 @@ on **V2G / bidirectional charging for heavy-duty truck depots**.
 
 | File | What it is |
 |---|---|
-| [`index.html`](index.html) | **Start here.** A clearly-explained report: every flow diagram has *In plain words*, *Why it matters*, and *Watch out* boxes so anyone can follow. Open in any browser (diagrams render live via Mermaid). |
-| [`THESIS_IDEAS_V2G_HDtrucks.md`](THESIS_IDEAS_V2G_HDtrucks.md) | The full reference with all reasoning, the literature critique, and the synthesis (renders on GitHub). |
+| [`index.html`](index.html) | **Start here.** Clearly-explained report: every diagram has *In plain words / Why it matters / Watch out / Fact / Diesel-era* boxes. Restored layered diagram, bigger ideas, FCR market facts, the test-bench answer, and the car-vs-truck literature. Open in any browser (diagrams render via Mermaid). |
+| [`THESIS_IDEAS_V2G_HDtrucks.md`](THESIS_IDEAS_V2G_HDtrucks.md) | Full reference with all reasoning, the literature critique, and the v3 update (§13). |
 
-## The recommendation in one line
+## The recommendation (grown to 9-month size)
 
-> **The Battery-Passport-Informed Charging Controller** — a depot optimizer that reads the battery's live history,
-> looks up a *measured wear map*, *prices the warranty* each option would burn, picks the safest profitable plan, and
-> writes the session back — validated on a real MAN truck and generalised into a customer/government decision matrix.
+> **The Battery-Passport-Informed Life-Budget Controller** — treat battery life as a finite budget and *allocate it
+> across stacked services* (arbitrage + peak shaving + FCR/aFRR + PV), priced by a **measured wear map**, then generalise
+> across DE/NL/CN into a **customer/government decision matrix**.
 
-This unifies your new ideas (battery passport + the degradation test) with the earlier ones (warranty shadow-pricing,
-age-adaptive control, grid services). The digital twin is the **lab**; the **closed-loop function is the contribution**.
+This grows the two pieces you liked but felt were too small — **C1 (grid services)** and **D1 (cross-country)** — into
+components of one spine, anchored by your real-truck/bench **wear map (A1–A3)** and your **decision matrix (D2)**.
 
-See `index.html` for all ideas explained, the corrected real-truck test protocol, honest cautions, and the open
-questions that decide the final scope.
+## What's inside index.html
+- The layered platform diagram (restored)
+- 3 bigger new ideas: life-budget portfolio · bankable firm capacity · V2G-vs-resale-value
+- A1–A3 (passport, test + **test-bench answer**, wear map)
+- C1 with the **FCR/aFRR facts** (1 MW floor, 4-h products, 25-min aFRR gate, aggregation math)
+- D1 + D2 (your decision matrix)
+- **Literature: cars vs trucks** (Dubarry, Uddin, EPRI, Shiledar drayage study)
+- The corrected bench test protocol, honest cautions, open questions, and a parked-ideas appendix

@@ -3,60 +3,58 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TRATON V2G Thesis — Ideas Explained Clearly</title>
+<title>TRATON V2G Thesis — Ideas, Facts & Literature</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#ffffff; --ink:#1f2733; --muted:#5b6675; --line:#e2e6ec;
-    --blue:#1f6feb; --green:#1a7f4b; --amber:#9a6700; --red:#b42318;
-    --blueb:#eaf2ff; --greenb:#e9f7ef; --amberb:#fff6e5; --redb:#fdecea; --grayb:#f0f2f5;
+    --blue:#1f6feb; --green:#1a7f4b; --amber:#9a6700; --red:#b42318; --purple:#6b3fa0;
+    --blueb:#eaf2ff; --greenb:#e9f7ef; --amberb:#fff6e5; --redb:#fdecea; --grayb:#f0f2f5; --purpleb:#f3eefc;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);
     font:16.5px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
   a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
-  .wrap{display:grid;grid-template-columns:270px 1fr;max-width:1320px;margin:0 auto}
+  .wrap{display:grid;grid-template-columns:275px 1fr;max-width:1340px;margin:0 auto}
   nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:26px 16px;
     border-right:1px solid var(--line);background:#fff}
-  nav .brand{font-weight:800;font-size:16px;line-height:1.25}
-  nav .brand span{color:var(--blue)}
+  nav .brand{font-weight:800;font-size:16px;line-height:1.25}nav .brand span{color:var(--blue)}
   nav .note{color:var(--muted);font-size:12px;margin-top:4px}
   nav h2{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
   nav a{display:block;color:var(--muted);padding:5px 9px;border-radius:7px;font-size:13.5px}
   nav a:hover{background:var(--grayb);color:var(--ink);text-decoration:none}
   main{padding:38px 52px 120px;min-width:0}
   header.hero{background:linear-gradient(135deg,#1f6feb,#0a3d8f);color:#fff;border-radius:18px;padding:34px 38px;margin-bottom:30px}
-  header.hero h1{margin:0 0 8px;font-size:30px;line-height:1.18}
-  header.hero p{margin:8px 0 0;color:#dce8ff;font-size:15.5px;max-width:75ch}
+  header.hero h1{margin:0 0 8px;font-size:29px;line-height:1.18}
+  header.hero p{margin:8px 0 0;color:#dce8ff;font-size:15.5px;max-width:78ch}
   section{margin:40px 0;scroll-margin-top:14px}
   h2.sec{font-size:24px;margin:0 0 6px;border-bottom:2px solid var(--line);padding-bottom:10px}
   h3{font-size:20px;margin:24px 0 6px}
-  h4{font-size:16px;margin:16px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-  p{margin:10px 0}
-  .lead{font-size:18px;color:var(--muted)}
+  h4{font-size:15px;margin:16px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  p{margin:10px 0}.lead{font-size:18px;color:var(--muted)}
   strong{color:#0b1320}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:22px 0;
-    box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
   .card.head{border:2px solid var(--blue)}
-  .oneliner{background:var(--blueb);border-left:4px solid var(--blue);padding:10px 16px;border-radius:0 8px 8px 0;
-    font-size:16px;margin:10px 0}
+  .card.big{border:2px solid var(--purple)}
+  .oneliner{background:var(--blueb);border-left:4px solid var(--blue);padding:10px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:10px 0}
+  .card.big .oneliner{background:var(--purpleb);border-left-color:var(--purple)}
   .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 2px}
   .tag{font-size:12px;padding:3px 10px;border-radius:999px;background:var(--grayb);border:1px solid var(--line);color:var(--muted)}
   .tag.new{background:var(--greenb);border-color:#bfe6cf;color:var(--green);font-weight:700}
   .tag.star{background:#fff4d6;border-color:#f3dca0;color:var(--amber);font-weight:700}
+  .tag.keep{background:var(--blueb);border-color:#bcd6ff;color:var(--blue);font-weight:700}
   .box{border-radius:10px;padding:13px 16px;margin:12px 0;font-size:15px}
   .box .lab{font-weight:800;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:3px}
-  .plain{background:var(--grayb);border:1px solid var(--line)}
-  .plain .lab{color:#334}
+  .plain{background:var(--grayb);border:1px solid var(--line)}.plain .lab{color:#334}
   .why{background:var(--greenb);border:1px solid #cdeedd}.why .lab{color:var(--green)}
   .watch{background:var(--amberb);border:1px solid #f0dca8}.watch .lab{color:var(--amber)}
-  .diesel{background:#f3eefc;border:1px solid #e0d3f5}.diesel .lab{color:#6b3fa0}
+  .diesel{background:var(--purpleb);border:1px solid #e0d3f5}.diesel .lab{color:var(--purple)}
   .crit{background:var(--redb);border:1px solid #f3c9c4}.crit .lab{color:var(--red)}
+  .fact{background:#eef6ff;border:1px solid #c7ddf5}.fact .lab{color:var(--blue)}
   .mermaid{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;text-align:center;overflow:auto}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
   th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
-  th{background:var(--grayb)}
-  tr:nth-child(even) td{background:#fafbfc}
+  th{background:var(--grayb)}tr:nth-child(even) td{background:#fafbfc}
   code{background:#eef1f5;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px}
   ol li,ul li{margin:6px 0}
   footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px;margin-top:46px}
@@ -66,554 +64,476 @@
 <body>
 <div class="wrap">
   <nav>
-    <div class="brand">TRATON · <span>V2G</span> Thesis Ideas</div>
-    <div class="note">Heavy-duty truck depots · explained clearly</div>
-    <h2>Start here</h2>
+    <div class="brand">TRATON · <span>V2G</span> Thesis</div>
+    <div class="note">v3 · ideas + facts + literature</div>
+    <h2>Orientation</h2>
     <a href="#read">How to read this</a>
-    <a href="#problem">The problem in plain words</a>
+    <a href="#problem">The problem</a>
     <a href="#diesel">The diesel-era lens</a>
+    <a href="#platform">The layered platform (restored)</a>
     <h2>The recommendation</h2>
-    <a href="#mixed">⭐ The unified thesis</a>
-    <h2>Foundation (your edge)</h2>
-    <a href="#passport">A1 · Battery passport (live)</a>
-    <a href="#test">A2 · The degradation test</a>
-    <a href="#map">A3 · The degradation map</a>
-    <h2>Decision functions</h2>
-    <a href="#warranty">B1 · Warranty shadow price</a>
-    <a href="#lifestage">B2 · Life-stage control</a>
-    <a href="#attribution">B3 · Per-truck value</a>
-    <h2>Markets &amp; scale</h2>
-    <a href="#fcr">C1 · Firm grid services</a>
-    <a href="#vpp">C2 · Multi-depot VPP</a>
-    <a href="#fidelity">C3 · How much model?</a>
-    <h2>Generalise &amp; output</h2>
-    <a href="#compiler">D1 · EU/China compiler</a>
-    <a href="#matrix">D2 · Decision matrix</a>
-    <a href="#future">D3 · Future scenarios</a>
-    <h2>Close</h2>
+    <a href="#thesis">⭐ The 9-month thesis</a>
+    <h2>Bigger new ideas</h2>
+    <a href="#big1">NEW 1 · Life-budget portfolio</a>
+    <a href="#big2">NEW 2 · Bankable firm capacity</a>
+    <a href="#big3">NEW 3 · V2G vs resale value</a>
+    <h2>Kept (you liked these)</h2>
+    <a href="#a1">A1 · Battery passport</a>
+    <a href="#a2">A2 · The test (+ test bench)</a>
+    <a href="#a3">A3 · The wear map</a>
+    <a href="#c1">C1 · Grid services + FACTS</a>
+    <a href="#d1">D1 · EU/China compiler</a>
+    <a href="#d2">D2 · Decision matrix (yours)</a>
+    <h2>Evidence</h2>
+    <a href="#literature">Literature: cars vs trucks</a>
     <a href="#protocol">The test protocol</a>
+    <h2>Close</h2>
     <a href="#cautions">Honest cautions</a>
     <a href="#questions">What I need from you</a>
+    <a href="#appendix">Other directions (parked)</a>
     <a href="#sources">Sources</a>
   </nav>
 
   <main>
     <header class="hero">
-      <h1>V2G for Heavy-Duty Truck Depots — every idea, explained clearly</h1>
-      <p>A plain-language map of the thesis space for TRATON / MAN R&amp;D ("UnPlugged Energisers"). Each idea has a
-        flow diagram, and under every diagram you will find <em>How to read it</em>, <em>Why it matters</em>, and
-        <em>Watch out</em> — so anyone, technical or not, can follow. Rebuilt 20 June 2026.</p>
+      <h1>V2G for Heavy-Duty Truck Depots — ideas, hard facts &amp; the literature</h1>
+      <p>Rebuilt around your feedback: the layered diagram is back, the ideas you didn't like are parked in an appendix,
+        and C1 + D1 are now grown into a full 9-month thesis instead of two small tasks. Plus: the test-bench answer,
+        the FCR market facts, and the car-vs-truck literature you asked for. Updated 20 June 2026.</p>
     </header>
 
-    <!-- HOW TO READ -->
     <section id="read">
-      <h2 class="sec">How to read this document</h2>
-      <p>This is a <strong>menu of research directions</strong>, not a finished plan. Read the
-        <a href="#problem">problem</a> and the <a href="#diesel">diesel-era lens</a> first, then jump to
-        <a href="#mixed">the unified thesis</a> (my recommendation). After that, each "building block" idea is
-        self-contained — read only the ones you like. Every coloured box means the same thing throughout:</p>
-      <div class="box plain"><span class="lab">In plain words</span> A jargon-free explanation of the diagram above it.</div>
-      <div class="box why"><span class="lab">Why it matters</span> What TRATON/MAN or science actually gains.</div>
-      <div class="box watch"><span class="lab">Watch out</span> The honest risk or the common mistake to avoid.</div>
-      <div class="box diesel"><span class="lab">Diesel-era analogy</span> The combustion-engine idea it mirrors — your "think like the diesel era" instinct.</div>
+      <h2 class="sec">How to read this</h2>
+      <p>Coloured boxes mean the same thing everywhere:</p>
+      <div class="box plain"><span class="lab">In plain words</span> Jargon-free explanation of the diagram.</div>
+      <div class="box why"><span class="lab">Why it matters</span> What MAN/science gains.</div>
+      <div class="box watch"><span class="lab">Watch out</span> The honest risk or common mistake.</div>
+      <div class="box fact"><span class="lab">Fact</span> A verified number or market rule, with a source at the end.</div>
+      <div class="box diesel"><span class="lab">Diesel-era analogy</span> The combustion-engine idea it mirrors.</div>
+      <p><strong>What I kept vs parked:</strong> you liked A1–A3, C1, D1, your decision matrix (D2), and the unified
+        recommendation. Those are all here, expanded. The ideas you didn't like (the abstract "warranty shadow price"
+        framing, generic chemistry rules, multi-depot VPP as its own topic, the model-ablation study, future scenarios)
+        are summarised in the <a href="#appendix">parked appendix</a> so nothing is lost.</p>
     </section>
 
-    <!-- PROBLEM -->
     <section id="problem">
       <h2 class="sec">The problem, in plain words</h2>
-      <p class="lead">An electric truck has a huge battery. Most of the day it sits in the depot doing nothing. V2G
-        ("vehicle-to-grid") means using that parked battery to <strong>store cheap energy and sell it back expensive</strong>,
-        or to <strong>support the power grid</strong> — earning money while the truck waits.</p>
-      <p>The catch: every time you charge and discharge, you <strong>wear the battery a little</strong>. So the real
-        question is not "can a truck do V2G" — it can. The question is:</p>
-      <div class="oneliner"><strong>How do we squeeze the most money out of the parked battery while protecting its life,
-        its warranty, and the truck's ability to do its actual job — across different countries, batteries and missions?</strong></div>
-      <p>A good thesis answers a <em>sharp slice</em> of that question with a <strong>new method</strong>, and proves it
-        with <strong>real data</strong>. The rest of this document is about finding that slice.</p>
+      <p class="lead">An electric truck has a huge battery that mostly sits idle in the depot. V2G means using it to
+        store cheap power and sell it back dear, or to support the grid — earning money while parked. The catch: every
+        charge/discharge wears the battery a little.</p>
+      <div class="oneliner"><strong>The battery has one finite life. How do we spend that life across the most valuable
+        money-making services, without breaking the warranty or the truck's day job — and how does the best answer change
+        by country, mission and battery chemistry?</strong></div>
     </section>
 
-    <!-- DIESEL LENS -->
     <section id="diesel">
-      <h2 class="sec">The diesel-era lens (your instinct — and it's a good one)</h2>
-      <p>The combustion era made its biggest leaps by turning <em>experience</em> into <strong>reusable maps and
-        records</strong> that everyone downstream could trust. Three of those map directly onto batteries — and they
-        quietly motivate the strongest ideas in this document:</p>
+      <h2 class="sec">The diesel-era lens (your instinct)</h2>
       <table>
-        <tr><th>Diesel / petrol era</th><th>Battery-era equivalent</th><th>What it unlocks</th></tr>
-        <tr><td><strong>Verbrauchskennfeld</strong> — the engine fuel/efficiency map built from dyno tests</td>
-          <td><strong>V2G-degradation map</strong> — how fast the pack wears vs. power, charge level, temperature</td>
-          <td>The charger can <em>predict</em> wear at any operating point and back off automatically</td></tr>
-        <tr><td><strong>Scheckheft</strong> — the stamped service logbook that travels with the car</td>
-          <td><strong>Battery passport</strong> — the lifecycle record that travels with the pack</td>
-          <td>Any charger the truck visits knows the battery's history</td></tr>
-        <tr><td><strong>Knock control</strong> — retard ignition just before the engine knocks</td>
-          <td><strong>Plating-limit control</strong> — back off charge rate just before lithium plating</td>
-          <td>Maximum performance without damaging the battery, adjusted as it ages</td></tr>
+        <tr><th>Diesel / petrol era</th><th>Battery-era equivalent</th><th>Unlocks</th></tr>
+        <tr><td><strong>Verbrauchskennfeld</strong> (engine fuel map from dyno tests)</td><td><strong>V2G wear map</strong> (how fast the pack ages vs power, charge level, temperature)</td><td>The charger predicts wear and backs off automatically</td></tr>
+        <tr><td><strong>Scheckheft</strong> (stamped service logbook)</td><td><strong>Battery passport</strong> (lifecycle record that travels with the pack)</td><td>Any charger knows the battery's history</td></tr>
+        <tr><td><strong>Engine hours / fuel budget</strong> on a contract job</td><td><strong>Battery life-budget</strong> (kWh of wear before warranty limit)</td><td>Spend a finite budget on the most profitable work</td></tr>
       </table>
-      <div class="box diesel"><span class="lab">Diesel-era analogy</span> Nobody could predict a diesel engine's fuel use
-        until someone ran structured dyno tests and <em>fit a surface to the data</em>. Your real-truck V2G test (idea A2)
-        does exactly that for battery wear — it builds the battery's "fuel map" (idea A3).</div>
     </section>
 
-    <!-- MIXED THESIS -->
-    <section id="mixed">
-      <h2 class="sec">⭐ My recommendation: one unified thesis that ties everything together</h2>
-      <p>Your latest ideas (battery passport + the degradation test) are not separate from the earlier ones — they are
-        the missing glue. Put together, they form a single, coherent, genuinely novel thesis that <em>only an OEM with a
-        real truck</em> can write:</p>
+    <!-- PLATFORM RESTORED -->
+    <section id="platform">
+      <h2 class="sec">The layered platform — your simulation "laboratory" (restored)</h2>
+      <p>This is the big layer-wise diagram you missed. Build it once; every idea is a block that plugs in. The
+        simulation is the <em>lab</em>, not the contribution — the contribution is the new decision function inside it.</p>
+      <pre class="mermaid">
+flowchart TB
+    subgraph L1["L1 - Mission / Duty"]
+        M["Vehicle type, mission, payload, route, arrival charge, departure deadline"]
+    end
+    subgraph L2["L2 - Battery & Aging"]
+        A["Cell chemistry (NMC / LFP), pack model, calendar + cycle aging, thermal"]
+    end
+    subgraph L3["L3 - Market & Regulation"]
+        R["15-min prices, FCR / aFRR, grid fees, 2026 German rules, country profile DE/NL/CN"]
+    end
+    subgraph L4["L4 - Optimizer (the brain)"]
+        O["Day-ahead plan to 15-min correction; spends the life-budget across services"]
+    end
+    subgraph L5["L5 - Validation - YOUR EDGE"]
+        V["Real truck + test bench: wear map, efficiency, resistance, thermal"]
+    end
+    L1 --> L4
+    L2 --> L4
+    L3 --> L4
+    V -. corrects .-> L2
+    V -. corrects .-> L4
+    L4 --> OUT["Outputs: revenue, health over time, per-truck value, cross-country decision matrix"]
+      </pre>
+      <div class="box plain"><span class="lab">In plain words</span> Top layers describe the truck, its battery, and the
+        market. The optimizer (L4) decides what to do. Your real-truck/bench tests (L5) feed back to make the battery and
+        optimizer layers <em>true</em> instead of assumed. The output is money, battery health over time, and the
+        decision matrix.</div>
+    </section>
+
+    <!-- THESIS -->
+    <section id="thesis">
+      <h2 class="sec">⭐ The recommended 9-month thesis (C1 + D1 + A1–3, grown to full size)</h2>
+      <p>You felt C1 and D1 were each too small. They are — <em>alone</em>. The fix: make them components of one bigger
+        spine, the <strong>life-budget portfolio optimizer</strong> (new idea 1 below). That single thesis naturally
+        contains grid services (C1), cross-country comparison (D1), your decision matrix (D2), and is anchored by your
+        real wear map (A1–A3).</p>
       <div class="card head">
-        <div class="oneliner"><strong>"The Battery-Passport-Informed Charging Controller"</strong> — a depot optimizer
-          that, the moment a truck plugs in, <em>reads the battery's life history</em>, looks up a <em>measured wear map</em>,
-          <em>prices the warranty it would consume</em>, decides the safest profitable charge/V2G plan, and <em>writes the
-          session back</em> to the passport — validated on a real MAN truck and generalised into a decision matrix across
-          countries, chemistries and missions.</div>
+        <div class="oneliner"><strong>"The Battery-Passport-Informed Life-Budget Controller for Heavy-Duty Depots"</strong>
+          — a depot optimizer that reads each truck's live battery history, uses a <em>measured</em> wear map to price
+          every service, then spends the battery's finite life-budget across <em>arbitrage + peak shaving + FCR/aFRR grid
+          services</em> to maximise lifetime value — validated on a real MAN truck/bench and turned into a cross-country
+          (DE/NL/CN) customer decision matrix.</div>
         <pre class="mermaid">
 flowchart TB
-    subgraph DATA["DATA BACKBONE"]
-        PP["Battery Passport (live history + state of health)"]
-    end
-    subgraph PHYS["PHYSICS - your real-truck edge"]
-        TEST["Controlled degradation test"] --> MAP["V2G wear map"]
-    end
-    ECON["ECONOMICS: warranty shadow price"]
-    subgraph CTRL["CONTROL - closed loop"]
-        OPT["Day-ahead plan to 15-min correction + age-adaptive rules"]
-    end
-    subgraph OUT["OUTPUT"]
-        ATTR["Per-truck value"]
-        MATRIX["Customer + government decision matrix"]
-        COMP["EU / China compiler"]
-    end
-    PP --> OPT
-    MAP --> OPT
-    ECON --> OPT
-    OPT --> SESS["Charge / V2G session"]
-    SESS --> WB["Write result back"]
+    PP["Battery passport + BMS: live history and state of health"] --> CTRL
+    MAP["Measured V2G wear map (real truck / bench test)"] --> CTRL
+    BUD["Finite life-budget (warranty limit)"] --> CTRL
+    CTRL["PORTFOLIO OPTIMIZER: spend the life-budget across services"]
+    CTRL --> S1["Energy arbitrage"]
+    CTRL --> S2["Peak shaving"]
+    CTRL --> S3["FCR / aFRR grid services"]
+    CTRL --> S4["PV self-consumption"]
+    S1 --> VAL["Lifetime value per truck"]
+    S2 --> VAL
+    S3 --> VAL
+    S4 --> VAL
+    VAL --> MATRIX["Cross-country decision matrix: which mission + chemistry + strategy wins where"]
+    CTRL --> WB["Write session back to passport"]
     WB --> PP
-    OPT --> OUT
         </pre>
-        <div class="box plain"><span class="lab">In plain words</span> The battery carries a "logbook" (passport). When
-          the truck plugs in, the controller reads the logbook, checks a "wear map" to see how risky each option is,
-          checks how much warranty each option would burn, then picks the best plan. After charging, it stamps the
-          logbook with what happened — a closed loop. Everything else in this document is one block of this picture.</div>
-        <div class="box why"><span class="lab">Why it matters</span> The digital twin / simulation is just the
-          <em>laboratory</em>. The <strong>contribution is this closed-loop function</strong>, which nobody has built for
-          heavy trucks. It is timely (passport mandatory 2027, German V2G rules fixed for 2026, megawatt V2G now
-          demonstrated), and it ends in a product MAN can actually sell.</div>
+        <div class="box why"><span class="lab">Why this is thesis-sized and novel</span> It is not "do FCR" (C1) or
+          "compare countries" (D1) — it is "<em>allocate a scarce, measured resource (battery life) across competing
+          revenue services, across markets</em>." That portfolio framing, fed by a <strong>real truck wear map</strong>,
+          has not been done for heavy trucks. It produces three deliverables MAN can use: the wear map, the controller,
+          and the decision matrix.</div>
       </div>
-      <h4>How the pieces snap together</h4>
-      <ul>
-        <li><strong>Passport (A1)</strong> = the data backbone. Its "state of health" number <em>is</em> the warranty budget.</li>
-        <li><strong>Real-truck test (A2) → wear map (A3)</strong> = the physics, and your unfair advantage.</li>
-        <li><strong>Warranty shadow price (B1)</strong> = the economics that decides go / no-go.</li>
-        <li><strong>Age-adaptive control (B2)</strong> on a day-ahead→intra-day optimizer = the control brain.</li>
-        <li><strong>Per-truck value (B3) + decision matrix (D2) + EU/China compiler (D1)</strong> = the outputs people use.</li>
-      </ul>
-      <p>If you want <strong>lower risk</strong>, lead with the optimizer and treat the passport+warranty loop as the
-        novel chapter. If you want <strong>maximum novelty</strong>, lead with the closed-loop function. Same building
-        blocks either way — see <a href="#questions">the questions</a> that decide which.</p>
+      <h4>Rough 9-month timeline</h4>
+      <pre class="mermaid">
+flowchart LR
+  P1["M1-2: platform + baseline optimizer + market/regulation layer"] --> P2["M2-4: real truck/bench test -> wear map (A1-3)"]
+  P2 --> P3["M4-6: life-budget portfolio optimizer with grid services (new 1 + C1)"]
+  P3 --> P4["M6-8: cross-country runs -> decision matrix (D1 + D2)"]
+  P4 --> P5["M8-9: write-up, dashboard, warranty/product recommendation"]
+      </pre>
     </section>
 
-    <!-- ============ FOUNDATION ============ -->
-    <section id="passport">
-      <h2 class="sec">Foundation — the three ideas built on <em>your</em> advantages</h2>
+    <!-- BIGGER NEW IDEAS -->
+    <section id="big1">
+      <h2 class="sec">Bigger new ideas (you asked for better ones)</h2>
 
-      <div class="card">
-        <h3>A1 · Battery passport as a <em>live</em> control input (not just paperwork)</h3>
-        <div class="tagrow"><span class="tag new">NEW — your idea</span><span class="tag">Novelty: High</span><span class="tag">TRATON value: High</span></div>
-        <div class="oneliner">Make the battery's lifecycle record something the charger <em>reads and writes in real
-          time to make decisions</em>, instead of a document filed away for compliance.</div>
+      <div class="card big">
+        <h3>NEW 1 · The life-budget portfolio optimizer <span class="tag star">the spine</span></h3>
+        <div class="oneliner">Treat battery life as a <em>budget</em> and the revenue services as <em>investments</em>
+          competing for it — then solve the best portfolio, like an investor splitting money across assets.</div>
+        <pre class="mermaid">
+flowchart LR
+    BUD["ONE finite life-budget (kWh of wear before warranty limit)"] --> ALLOC{"How to spend it?"}
+    WEAR["Wear map: life-cost of each service"] --> ALLOC
+    ALLOC --> A["Arbitrage: low wear, low pay"]
+    ALLOC --> F["FCR: standby, ? wear, high pay"]
+    ALLOC --> AF["aFRR: medium wear, medium pay"]
+    ALLOC --> PK["Peak shaving"]
+    A --> MAX["Maximise TOTAL lifetime value"]
+    F --> MAX
+    AF --> MAX
+    PK --> MAX
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> Most studies optimise one service, or treat wear
+          as a flat "tax per kWh." Reality: the battery can only be cycled so much before the warranty limit, and several
+          services compete for those cycles. This idea asks "given a fixed life budget, which mix of services earns the
+          most over the truck's life?" — a portfolio problem where <em>battery life is the scarce capital</em>.</div>
+        <div class="box why"><span class="lab">Why it's better &amp; bigger</span> It absorbs C1 (grid services become
+          one asset in the portfolio), D1/D2 (the best portfolio differs by country/mission → that <em>is</em> the
+          matrix), and A1–3 (the wear map prices each asset). One coherent, novel, 9-month contribution.</div>
+        <div class="box diesel"><span class="lab">Diesel-era analogy</span> A haulier with a fixed engine-overhaul
+          interval choosing which jobs are worth the engine hours. You're doing that for battery cycles.</div>
+      </div>
+
+      <div class="card big" id="big2">
+        <h3>NEW 2 · Bankable firm grid-service capacity from a real fleet <span class="tag">grows C1</span></h3>
+        <div class="oneliner">Not "can a truck do FCR?" but "how many MW can a depot <em>promise the grid for a whole
+          year</em>, given real wear, warranty, logistics and the market's 1-MW floor — and what does it do to truck cost
+          of ownership?"</div>
         <pre class="mermaid">
 flowchart TB
-    PP["Battery Passport (cloud): cycle history, age, temperature history, state of health"] --> PLUG["Truck plugs in"]
-    PLUG --> READ["Optimizer READS the passport"]
-    READ --> DEC["Decide: max charge rate, charge-level window, V2G yes/no"]
-    DEC --> RUN["Run the charge / V2G session"]
+    FLEET["Depot of N trucks (real logistics + arrivals)"] --> SHAPE["Shape departures: keep an always-present sub-fleet"]
+    SHAPE --> AGG["Aggregate available power"]
+    AGG --> FLOOR{"Reach the 1 MW market floor?"}
+    FLOOR -->|"CCS ~0.35 MW each: need 3+ trucks"| BID
+    FLOOR -->|"MCS ~0.75 MW each: need ~2 trucks"| BID
+    BID["Bid firm FCR (4h blocks, weekdays only) and aFRR energy (25-min gate)"]
+    BID --> CHK["Subtract wear + warranty cost (from wear map)"]
+    CHK --> YR["Year-round bankable MW + cost-of-ownership impact per country"]
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> A grid operator only pays you if you can
+          <em>guarantee</em> power. This idea works out how much a real depot can guarantee across a year — counting the
+          days trucks are away, the wear cost, and the rule that you can't bid below 1 MW.</div>
+        <div class="box why"><span class="lab">Why it matters</span> This turns the small "C1 feasibility" question into a
+          full business case with a number MAN can take to a customer: "your 12-truck depot can bank X MW and cut TCO by
+          Y €/truck/year in Germany, Z in the Netherlands."</div>
+        <div class="box fact"><span class="lab">Fact — the market rules that make this concrete</span> Germany FCR:
+          <strong>minimum bid 1 MW</strong> (1 MW steps), <strong>4-hour products</strong> (6/day), daily auction,
+          capacity-only payment, symmetric ±, <em>automatic</em> activation. aFRR: <strong>15-min</strong> delivery
+          periods, energy bids accepted until <strong>25 min before delivery</strong> (your "BSP bidding 25 min ahead" =
+          aFRR, not FCR). One truck at CCS ≈ 0.35 MW &lt; 1 MW floor → <strong>aggregation is mandatory</strong>.</div>
+      </div>
+
+      <div class="card big" id="big3">
+        <h3>NEW 3 · V2G vs. resale / second-life value — the hidden cost <span class="tag new">fresh angle</span></h3>
+        <div class="oneliner">Every V2G session lowers the battery's health, which lowers its resale / second-life value —
+          a cost almost nobody counts. Find the V2G intensity that maximises <em>first-life revenue + leftover value</em>.</div>
+        <pre class="mermaid">
+flowchart LR
+    V2G["More V2G now"] --> REV["More revenue today"]
+    V2G --> SOH["Lower state of health"]
+    SOH --> RES["Lower second-life / resale value (recorded in the passport)"]
+    REV --> NET{"Total value = revenue today + leftover value"}
+    RES --> NET
+    NET --> OPT["Find the V2G intensity that maximises the TOTAL"]
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> A worn battery is worth less when the truck is sold
+          or the pack goes to second life (e.g. stationary storage). So aggressive V2G isn't free even ignoring warranty —
+          it eats resale value. This idea balances "earn now" against "keep value for later."</div>
+        <div class="box why"><span class="lab">Why it's novel</span> The battery passport <em>exists precisely to record
+          health for second-life markets</em> — so connecting V2G intensity to passport-recorded residual value is a
+          natural, timely, and under-explored question for trucks. Strong standalone chapter or a twist on the spine.</div>
+      </div>
+    </section>
+
+    <!-- KEPT: FOUNDATION -->
+    <section id="a1">
+      <h2 class="sec">Kept &amp; expanded — the ideas you liked</h2>
+      <div class="card">
+        <h3>A1 · Battery passport as a live control input <span class="tag keep">you liked this</span></h3>
+        <div class="oneliner">Make the battery's lifecycle record something the charger reads and writes in real time,
+          not a document filed for compliance.</div>
+        <pre class="mermaid">
+flowchart TB
+    PP["Battery passport (cloud): cycle history, age, temperature, state of health"] --> PLUG["Truck plugs in"]
+    PLUG --> READ["Optimizer reads the passport"]
+    READ --> DEC["Decide max power, charge window, V2G yes/no"]
+    DEC --> RUN["Run the session"]
     RUN --> LOG["Measure throughput, rate, temperature, health"]
-    LOG --> WRITE["WRITE the session back to the passport"]
+    LOG --> WRITE["Write the session back"]
     WRITE --> PP
         </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Today the EU is forcing every big battery to carry
-          a digital "passport" of its history from 2027. But that passport is just a record that gets updated rarely. The
-          idea: plug it into the charger's brain so that an <em>older or hotter</em> battery automatically gets gentler
-          treatment, and every session updates the record. A closed loop.</div>
-        <div class="box diesel"><span class="lab">Diesel-era analogy</span> The stamped service logbook (Scheckheft) —
-          except here the mechanic is the charger, and it reads <em>and</em> stamps the book automatically, every time.</div>
-        <div class="box why"><span class="lab">Why it matters</span> This is the single idea that <strong>unifies the
-          whole thesis</strong>: the passport's health value is the warranty budget (B1), its history feeds the
-          age-adaptive rules (B2), and the written-back sessions are the data that build the wear map (A3).</div>
-        <div class="box watch"><span class="lab">Watch out</span> The official passport updates only on "material change"
-          (resale, repair) — it is <em>not</em> real-time. So for live control you lean on the truck's own BMS health
-          estimate, and use the passport as the <em>cross-charger, cross-owner</em> record. Realistic thesis scope =
-          one depot's closed loop; "every charger everywhere" is the future-work vision.</div>
+        <div class="box plain"><span class="lab">In plain words</span> The EU forces every big battery to carry a digital
+          "passport" of its history from 2027. Today it's just a record. The idea: feed it into the charger's brain so an
+          older/hotter battery automatically gets gentler treatment, and every session updates the record.</div>
+        <div class="box fact"><span class="lab">Fact</span> EU Digital Battery Passport is mandatory from <strong>Feb
+          2027</strong> for batteries &gt; 2 kWh; DIN DKE SPEC 99100 (Feb 2025) defines the data, including state of
+          health — but it updates only on "material change," <em>not</em> in real time. So you use the BMS for live
+          control and the passport as the cross-charger, cross-owner record.</div>
       </div>
 
-      <div class="card" id="test">
-        <h3>A2 · Your controlled degradation test (validated — and corrected to be rigorous)</h3>
-        <div class="tagrow"><span class="tag new">NEW — your idea</span><span class="tag">Your instinct is right</span><span class="tag">Needs the real truck</span></div>
-        <div class="oneliner">Drive a fixed bit of range, do a measured V2G session, drive the same bit again, and watch
-          how the battery's behaviour shifts — to learn how V2G wears the pack.</div>
-        <pre class="mermaid">
-flowchart TB
-    R1["Reference test BEFORE: controlled partial discharge in a fixed charge window"] --> M1["Measure capacity, internal resistance, voltage curve"]
-    M1 --> V2G["4-hour V2G block at a known rate, charge window and temperature"]
-    V2G --> REST["REST: let temperature and chemistry settle"]
-    REST --> R2["Reference test AFTER: repeat exactly"]
-    R2 --> M2["Measure again -> change in resistance and capacity"]
-    M2 --> FIT["Feed differences into a wear model and extrapolate to years"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Your original plan — drive 60%→50%, do V2G, drive
-          again, compare the kilometres — is the right <em>idea</em>. But kilometres are a blunt ruler. We swap the ruler
-          for sensitive electrical measurements (capacity, internal resistance, voltage shape) taken before and after,
-          with a rest in between, so we measure real wear and not noise.</div>
-        <div class="box diesel"><span class="lab">Diesel-era analogy</span> A structured dyno test: hold everything fixed,
-          change one knob, measure precisely. That discipline is what later let engineers build the fuel map.</div>
-        <div class="box crit"><span class="lab">Three corrections you must make (or you'll measure noise)</span>
-          <strong>1. The signal is tiny.</strong> The best real V2G study saw <em>no measurable</em> extra wear after 220
-          sessions over 3 years — both the V2G car and a parked control car lost ~8%, mostly from just sitting full
-          (calendar aging). One 4-hour block changes capacity by thousandths of a percent — invisible in road kilometres.
-          <strong>2. Road range is noisy.</strong> Wind, payload, traffic, temperature and the driver each move range by
-          several percent. <strong>3. Warm ≠ worn.</strong> Right after V2G the pack is hot and "polarised"; an immediate
-          re-drive differs for <em>temporary</em> reasons, not aging — so you must rest it first.</div>
-        <div class="box why"><span class="lab">What you actually get</span> Not "wear per block" (too small to see), but
-          the <strong>stress signatures</strong> — efficiency, resistance growth, heat, rate — that let you
-          <strong>calibrate a wear model</strong> and extrapolate to year 1 / 3 / 5 / 10, plus a "how many V2G sessions
-          per day before you shorten the truck's life" curve. That is the valuable result.</div>
-      </div>
-
-      <div class="card" id="map">
-        <h3>A3 · The V2G wear map — the battery's "fuel-consumption map"</h3>
-        <div class="tagrow"><span class="tag new">NEW — your idea</span><span class="tag star">Product-shaped deliverable</span></div>
-        <div class="oneliner">A single chart/surface that says: "at <em>this</em> power, <em>this</em> charge level and
-          <em>this</em> temperature, V2G costs you <em>this much</em> battery life."</div>
+      <div class="card" id="a2">
+        <h3>A2 · Your degradation test — and the test-bench question (good catch)</h3>
+        <div class="oneliner">Your "drive 60→50%, do V2G, drive again, compare" is the right idea. A test bench makes it
+          far better — but there's still one limit it can't remove, and one trick that fixes it.</div>
+        <h4>Can a test bench / dyno see the difference you couldn't see on the road?</h4>
         <pre class="mermaid">
 flowchart LR
-    TEST["Controlled tests (A2): vary power, charge window, temperature"] --> FIT["Fit a wear model"]
+    BENCH["Chassis dyno / battery test bench"] --> P1["Removes road noise: fixed load, repeatable, controlled temperature"]
+    BENCH --> P2["Sensitive metrics: capacity by counting, internal resistance by current pulses, voltage-vs-charge shape"]
+    BENCH --> P3["ACCELERATED aging: many cycles back-to-back, higher rate, warm -> force MEASURABLE wear in days/weeks"]
+    P1 --> FIT["Fit the wear model, then scale back to normal conditions"]
+    P2 --> FIT
+    P3 --> FIT
+        </pre>
+        <div class="box why"><span class="lab">Yes — three things the bench buys you</span>
+          <strong>1. It removes the road noise</strong> (wind, traffic, payload, driver), so the same charge window gives
+          a repeatable result — your instinct is correct. <strong>2. Time/energy becomes a clean measurement:</strong> at
+          a fixed load, the time from 60%→50% is directly proportional to usable energy, so a drop is meaningful once the
+          noise is gone. <strong>3. The big one — accelerated aging:</strong> on a bench you can run many cycles
+          back-to-back at higher rate and temperature to <em>force</em> measurable fade in your time window, then scale
+          the result back to normal use. This is how you actually get truck-pack degradation data in 9 months.</div>
+        <div class="box crit"><span class="lab">The one limit the bench can't remove</span> Under <em>normal</em>
+          conditions, a few V2G blocks still wear the pack by only thousandths of a percent — too small to see even on a
+          bench. The bench helps by (a) measuring <strong>internal resistance</strong>, which grows much earlier and is
+          far more sensitive than capacity, and (b) letting you <strong>accelerate</strong>. So: don't try to read fade
+          off normal-use kilometres; read resistance growth, and accelerate to get real fade points.</div>
+        <div class="box watch"><span class="lab">Still control for "warm ≠ worn"</span> Right after V2G the pack is hot
+          and polarised; let it rest to a fixed temperature before the "after" measurement, or you'll measure temporary
+          effects, not aging. (On a bench, temperature control makes this easy.)</div>
+      </div>
+
+      <div class="card" id="a3">
+        <h3>A3 · The V2G wear map — the battery's "fuel map"</h3>
+        <div class="oneliner">One surface: "at this power, this charge level, this temperature, V2G costs this much
+          battery life." The charger looks it up instead of guessing.</div>
+        <pre class="mermaid">
+flowchart LR
+    TEST["Bench + truck tests (A2): vary power, charge window, temperature"] --> FIT["Fit a wear model"]
     FIT --> MAP["WEAR MAP: wear = F(power, charge level, temperature, sessions)"]
-    MAP --> U1["Charger picks a safe power & charge window"]
-    MAP --> U2["Optimizer uses it as the 'cost of V2G'"]
-    MAP --> U3["Warranty: how fast each session burns the budget"]
-    MAP --> U4["'Max V2G sessions/day vs target lifetime' curve"]
+    MAP --> U1["Charger picks safe power and window"]
+    MAP --> U2["Optimizer: life-cost of each service (new idea 1)"]
+    MAP --> U3["'Max V2G sessions/day vs target lifetime' curve"]
         </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Once you've run the tests, you fit a smooth map.
-          After that, the charger never has to guess — it just looks up the map, exactly like an engine controller looks
-          up the fuel map.</div>
-        <div class="box why"><span class="lab">Why it matters</span> This is the thing product planning and warranty teams
-          can actually <em>hold</em>. It is the bridge between your physical test (A2) and every decision idea below.</div>
-        <div class="box watch"><span class="lab">Watch out</span> A few days of testing covers only a few operating
-          points. Be honest that the map is an <em>extrapolation</em> anchored by measurements, and state its confidence
-          range — don't oversell it as a fully validated lifetime model.</div>
+        <div class="box why"><span class="lab">Why it matters</span> This is the deliverable product planning can hold,
+          and the input every decision idea needs. It is your bridge from the physical test to the optimizer and the
+          decision matrix.</div>
       </div>
     </section>
 
-    <!-- ============ DECISION FUNCTIONS ============ -->
-    <section id="warranty">
-      <h2 class="sec">Decision functions — the "new method" candidates</h2>
-
-      <div class="card head">
-        <h3>B1 · Warranty as a shadow-priced budget (the OEM-only headline)</h3>
-        <div class="tagrow"><span class="tag star">Headline novelty</span><span class="tag">TRATON value: Critical</span><span class="tag">Needs warranty terms</span></div>
-        <div class="oneliner">Treat the warranty MAN gives (e.g. "80% health guaranteed for X years or Y energy") as a
-          <em>bank balance</em> that V2G spends — and compute the true price of spending it.</div>
-        <pre class="mermaid">
-flowchart TB
-    WARR["Warranty: health stays above 80% until X years or Y energy"] --> BUD["Remaining warranty budget"]
-    BUD --> RULE["Rule: total V2G energy must stay within the budget"]
-    PRICE["Possible V2G revenue today"] --> CHECK
-    RULE --> CHECK{"Is today's revenue worth the warranty it burns?"}
-    CHECK -->|yes| GO["Do V2G"]
-    CHECK -->|no| HOLD["Hold back, protect the battery"]
-    CHECK --> SP["By-product: the 'price of warranty' in cents per kWh"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Everyone else asks "will V2G void <em>my</em>
-          warranty?" from the owner's side. You sit at the company that <em>writes</em> the warranty. So you can ask the
-          better question: if we treat the warranty as a spendable budget, what is each V2G session really worth, and
-          what warranty <em>product</em> makes V2G a win for both MAN and the customer?</div>
-        <div class="box why"><span class="lab">Why it matters</span> It turns a vague worry into a number ("the price of
-          warranty"), and it produces a real MAN artifact: <em>"here is the V2G warranty we should sell, and why it makes
-          money for everyone."</em> Nobody outside an OEM can credibly write this.</div>
-        <div class="box watch"><span class="lab">Watch out</span> You need MAN's <em>actual</em> warranty terms (or a
-          representative version). Without them this stays theoretical. This is question #1 in
-          <a href="#questions">"what I need from you."</a></div>
-      </div>
-
-      <div class="card" id="lifestage">
-        <h3>B2 · Age-adaptive (life-stage) control — rules that change as the battery ages</h3>
-        <div class="tagrow"><span class="tag">Amended from another agent's idea</span><span class="tag">Novelty: the twist matters</span></div>
-        <div class="oneliner">Don't use one fixed rule per chemistry. Let the optimizer's <em>rules themselves</em> loosen
-          as the battery gets older and, surprisingly, tougher.</div>
-        <pre class="mermaid">
-flowchart TD
-A["Truck plugs in"] --> B["Read chemistry + health + age"]
-B --> C{"Life stage?"}
-C -->|"Fresh battery"| D["Tight charge window, gentle rate"]
-C -->|"Mid-life"| E["Gradually loosen window and rate"]
-C -->|"Aged / tough chemistry (LFP)"| F["Wide window, deeper V2G allowed"]
-D --> G["Use the wear map for cost"]
-E --> G
-F --> G
-G --> H["Warranty check, then dispatch"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> A common idea is "NMC battery = careful, LFP =
-          relaxed." That's just a fixed setting, and it's already well studied. The sharper idea: as a careful NMC battery
-          ages, it actually becomes <em>more</em> tolerant of deep cycling — so the rules should <em>change over the
-          battery's life</em>, not stay fixed.</div>
-        <div class="box why"><span class="lab">Why it matters</span> It lets old trucks earn more V2G money safely in
-          their late life, instead of being retired early — directly relevant to fleet economics.</div>
-        <div class="box watch"><span class="lab">Watch out</span> Plain "NMC vs LFP" comparison alone is <em>not</em> novel
-          — the literature is full of it. The age-evolving rule set is the part worth writing about.</div>
-      </div>
-
-      <div class="card" id="attribution">
-        <h3>B3 · Per-truck value attribution — a "shadow-price bill"</h3>
-        <div class="tagrow"><span class="tag">Novelty: Medium-High</span><span class="tag">Great product feature</span></div>
-        <div class="oneliner">Tell the fleet operator exactly which truck cost or earned what — information the optimizer
-          already produces for free.</div>
-        <pre class="mermaid">
-flowchart LR
-    SOLVE["Optimizer solves the depot plan"] --> DUAL["It also produces a 'marginal cost' per truck (for free)"]
-    DUAL --> MSG["'Truck 7 cost +23 euro: it arrived nearly empty and forced expensive peak charging'"]
-    MSG --> U1["Driver incentives"]
-    MSG --> U2["Smarter routing"]
-    MSG --> U3["Where to add chargers"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> When the optimizer solves the schedule, it quietly
-          computes how much each truck added to the bill. Normally that number is thrown away. Surface it, and the
-          operator suddenly sees <em>which</em> truck and <em>why</em>.</div>
-        <div class="box why"><span class="lab">Why it matters</span> Same mathematics as the warranty price (B1), so it is
-          almost free to add — and it is exactly the kind of feature that differentiates a charging product.</div>
-        <div class="box watch"><span class="lab">Watch out</span> Too thin to be a thesis on its own; use it as the
-          <em>output layer</em> of the unified thesis.</div>
-      </div>
+    <!-- C1 -->
+    <section id="c1">
+      <h2 class="sec">C1 · Grid services — with the facts you asked for</h2>
+      <p>You're right that "C1 as feasibility" is closer to a literature review than a thesis. So we keep it as the
+        <em>revenue engine</em> inside new idea 1 / new idea 2, and arm it with the real market rules:</p>
+      <table>
+        <tr><th>Question you asked</th><th>Answer (Germany / EU)</th></tr>
+        <tr><td>Minimum unit you can bid as an FCR provider?</td><td><strong>1 MW</strong>, in 1 MW steps (not 10 MW). 4-hour products, 6 per day, daily auction.</td></tr>
+        <tr><td>How is FCR paid / activated?</td><td>Capacity payment only (€/MW), symmetric ±, <em>automatic</em> response within seconds — there is no activation-price bid.</td></tr>
+        <tr><td>Your "BSP bidding activation price 25 min before"?</td><td>That's <strong>aFRR</strong> (and mFRR): 15-min delivery periods, energy bids accepted until <strong>25 min before</strong> delivery. aFRR pays capacity <em>and</em> activated energy.</td></tr>
+        <tr><td>Can we offer only on weekdays / chosen hours?</td><td>Yes — you bid per 4-hour block, so you can offer only the blocks/days your trucks are reliably present.</td></tr>
+        <tr><td>Is this possible for small amounts of energy?</td><td>Not below 1 MW. One CCS truck ≈ 0.35 MW; one MCS truck ≈ 0.75 MW → you must <strong>aggregate ≈3 (CCS) or ≈2 (MCS) trucks</strong> to clear the floor, more for a firm year-round product.</td></tr>
+      </table>
+      <div class="box why"><span class="lab">How this becomes a thesis, not a literature review</span> The research is
+        <em>not</em> "what are the rules" — it's: given these rules + real wear cost + real truck availability, <strong>how
+        much firm capacity can a depot bank across a year, and is it worth the battery life it costs?</strong> That is new
+        idea 2, and it is genuinely thesis-sized.</div>
     </section>
 
-    <!-- ============ MARKETS & SCALE ============ -->
-    <section id="fcr">
-      <h2 class="sec">Markets &amp; scale — bigger revenue, more trucks</h2>
-
+    <!-- D1 + D2 -->
+    <section id="d1">
+      <h2 class="sec">D1 + D2 · Cross-country compiler and your decision matrix</h2>
       <div class="card">
-        <h3>C1 · Manufacture firm grid-service capacity by shaping departures</h3>
-        <div class="tagrow"><span class="tag">Novelty: High</span><span class="tag">TRATON value: Critical (revenue)</span></div>
-        <div class="oneliner">The grid pays well for <em>guaranteed</em> standby power. Trucks leave at random — so
-          <em>schedule</em> them to always keep a guaranteed group plugged in.</div>
-        <pre class="mermaid">
-flowchart TD
-A["Routes, deadlines, driver hours"] --> B["Shape departures so a rotating group is ALWAYS plugged in"]
-B --> C["Guaranteed standby power (reliable 99% of the time)"]
-C --> D{"Charger type?"}
-D -->|"Standard (CCS)"| E["Up to ~350 kW per truck"]
-D -->|"Megawatt (MCS)"| F["Up to ~750 kW+ per truck"]
-E --> G["Sell grid-balancing service, gated by warranty price"]
-F --> G
-G --> H["Compare: arbitrage-only vs arbitrage + grid services"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Grid-balancing markets (like "FCR") pay a lot, but
-          they demand that you <em>promise</em> a fixed amount of power for hours. A single random truck can't promise
-          that. But a depot can rotate trucks so there's always a reliable group available — turning "we might be here"
-          into "we guarantee it."</div>
-        <div class="box why"><span class="lab">Why it matters</span> Grid-balancing services are the <em>majority</em> of
-          battery-storage revenue in Germany — far more than simple buy-low-sell-high. This is the literal product the
-          Energisers team would sell.</div>
-        <div class="box watch"><span class="lab">Watch out</span> Existing research treats truck availability as
-          <em>fixed</em> and just bids around it. The novelty here is making availability a <em>decision</em> by shaping
-          logistics — don't lose that distinction.</div>
-      </div>
-
-      <div class="card" id="vpp">
-        <h3>C2 · Multi-depot "virtual power plant"</h3>
-        <div class="tagrow"><span class="tag">Novelty: Medium</span><span class="tag">Risk: needs multi-site data</span></div>
-        <div class="oneliner">Combine several depots so their ups and downs average out — together they can promise grid
-          services that no single depot could.</div>
-        <pre class="mermaid">
-flowchart TD
-A["Depot 1"] --> D["Coordinator"]
-B["Depot 2"] --> D
-C["Depot n"] --> D
-D --> E["Combined, smoother availability"]
-E --> F["Decide market participation"]
-F --> G["Grid service / arbitrage / peak shaving"]
-G --> H["Share revenue and risk back to each depot"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> One depot is jumpy; five depots together are
-          steady (the law of large numbers). Steady means you can make firm promises to the grid.</div>
-        <div class="box watch"><span class="lab">Watch out</span> You need believable data from several sites. If you only
-          have one, <em>simulate</em> the others from one depot's statistics, and ask "how many depots do we need?" — a
-          legitimate and useful framing.</div>
-      </div>
-
-      <div class="card" id="fidelity">
-        <h3>C3 · How much model do you actually need? (value-of-fidelity)</h3>
-        <div class="tagrow"><span class="tag">Novelty: High</span><span class="tag">Output: firmware spec</span></div>
-        <div class="oneliner">Build the full detailed simulation, then switch parts off one by one to find which details
-          actually change the decision — and which are just decoration.</div>
-        <pre class="mermaid">
-flowchart LR
-FULL["Full detailed model"] --> BASE["Best plan and profit"]
-FULL --> ABL["Turn OFF one detail at a time"]
-ABL --> A1["minus fine time resolution"]
-ABL --> A2["minus detailed aging"]
-ABL --> A3["minus uncertainty handling"]
-A1 --> REG["How much worse is the decision?"]
-A2 --> REG
-A3 --> REG
-REG --> SPEC["The simplest model the real MAN controller needs"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Everyone keeps adding complexity. Almost nobody
-          asks "did that complexity change any decision?" This idea answers exactly that — and the answer is a recipe for
-          what the real on-truck controller must compute.</div>
-        <div class="box why"><span class="lab">Why it matters</span> It turns a simulation tool into a <em>finding</em>,
-          and the finding is directly usable by MAN's software team.</div>
-      </div>
-    </section>
-
-    <!-- ============ GENERALISE & OUTPUT ============ -->
-    <section id="compiler">
-      <h2 class="sec">Generalise &amp; output — turn results into tools</h2>
-
-      <div class="card">
-        <h3>D1 · EU ↔ China "policy compiler"</h3>
-        <div class="tagrow"><span class="tag">Required by your job</span><span class="tag">Reusable tool</span></div>
+        <h3>D1 · EU ↔ China "policy compiler" <span class="tag keep">you liked this</span></h3>
         <div class="oneliner">Feed in a country's tariffs and rules; get out the right optimizer settings and a single
           score ranking how good V2G is there.</div>
         <pre class="mermaid">
 flowchart LR
-IN["Per country: tariffs, grid-fee rules, V2G access, battery mix"] --> COMP["Compiler (rule engine)"]
-COMP --> CFG["Optimizer settings + which strategies to switch on"]
-CFG --> RUN["Run the simulation per country"]
-RUN --> IDX["Single ranking score per market"]
-IDX --> DE["Germany"]
-IDX --> NL["Netherlands"]
-IDX --> CN["China"]
+    IN["Per country: tariffs, grid-fee rules, FCR/aFRR access, battery mix"] --> COMP["Compiler (rule engine)"]
+    COMP --> CFG["Optimizer settings + which services to switch on"]
+    CFG --> RUN["Run the platform per country"]
+    RUN --> IDX["Single score per market: DE / NL / CN"]
         </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Instead of a hand-written table comparing two
-          countries, build a small program that <em>converts rules into settings automatically</em>. Then it works for any
-          future market too (India, Brazil, US).</div>
-        <div class="box watch"><span class="lab">Watch out</span> A purely descriptive "country A vs B" comparison is weak.
-          The automatic-conversion-plus-score is what makes it a contribution.</div>
+        <div class="box watch"><span class="lab">Watch out</span> On its own this is small (and risks being descriptive).
+          It earns its place as the <em>generalisation step</em> of the spine: run the life-budget optimizer per country.</div>
       </div>
 
-      <div class="card" id="matrix">
-        <h3>D2 · Decision matrix for customers <em>and</em> governments</h3>
-        <div class="tagrow"><span class="tag new">NEW — your idea</span><span class="tag">Strong results engine</span></div>
-        <div class="oneliner">Keep the battery and optimizer fixed; sweep truck type × mission × chemistry × country, and
-          read off who wins where — for buyers and for regulators.</div>
+      <div class="card" id="d2">
+        <h3>D2 · Decision matrix for customers &amp; governments <span class="tag new">your notebook idea</span></h3>
+        <div class="oneliner">Keep the aging model + optimizer fixed; sweep <em>vehicle mission × vehicle type × cell
+          chemistry × country</em>; read off who wins where — advice for customers, evidence for governments.</div>
         <pre class="mermaid">
 flowchart TB
-FIX["Fixed: aging model + optimizer"] --> SWEEP["Sweep combinations (structured, not brute force): truck × mission × chemistry × country"]
-SWEEP --> RUN["Run the platform for each"]
-RUN --> O1["Customer matrix: best chemistry + strategy per mission/country"]
-RUN --> O2["Government view: how much value each market design leaves unused"]
+    FIX["Fixed: same aging model + same optimizer"] --> SWEEP["Sweep (structured, not brute force): mission x vehicle type x chemistry x country"]
+    SWEEP --> RUN["Run the platform for each combination"]
+    RUN --> O1["Customer: which chemistry + truck + strategy is best for my mission & country"]
+    RUN --> O2["Government: how much V2G value each country's rules leave on the table"]
         </pre>
-        <div class="box plain"><span class="lab">In plain words</span> Once the platform is trustworthy, you run it across
-          many situations and tabulate the winners. A customer sees "for my routes in my country, buy this battery and use
-          this strategy." A regulator sees "our rules waste this much value compared to the neighbours."</div>
-        <div class="box why"><span class="lab">Why it matters</span> Two audiences, two concrete artifacts — sales support
-          and policy evidence. It is the natural capstone that <em>consumes</em> everything else.</div>
-        <div class="box watch"><span class="lab">Watch out</span> The combinations explode quickly. Use a structured
-          experiment design (a sensible subset), not every possible mix.</div>
+        <div class="box plain"><span class="lab">In plain words (this is exactly your handwritten note)</span> Hold the
+          "engine" (aging + optimizer) constant, change the inputs — vehicle mission, vehicle type, chemistry, country —
+          and tabulate the winner each time. A customer gets a buy/operate recommendation; a regulator sees how their
+          market compares.</div>
+        <div class="box why"><span class="lab">Why it's the perfect capstone</span> It <em>consumes</em> everything else:
+          it needs the wear map (A3), the optimizer (new 1), the grid-service rules (C1), and the country profiles (D1).
+          That's why it works as the thesis output, not a separate small task.</div>
+        <div class="box watch"><span class="lab">Watch out</span> The combinations explode. Use a structured experiment
+          design (a sensible subset of missions/chemistries/countries), not every possible mix.</div>
       </div>
+    </section>
 
-      <div class="card" id="future">
-        <h3>D3 · Future-energy scenarios (2030 / 2040 / 2050)</h3>
-        <div class="tagrow"><span class="tag">Discussion chapter</span></div>
-        <div class="oneliner">Run today's optimizer against plausible future electricity markets to see if V2G still pays
-          and how the best strategy shifts.</div>
-        <pre class="mermaid">
-flowchart TD
-NOW["Today: 15-min market, 2026 German rules"] --> S30["2030s: more zero/negative price hours"]
-S30 --> S40["2040s: very volatile, lots of renewables"]
-S40 --> S50["2050: low average price, frequent free-power windows"]
-S30 --> TEST["Run the SAME optimizer on each"]
-S40 --> TEST
-S50 --> TEST
-TEST --> Q["Does V2G still pay? Does the best strategy change?"]
-        </pre>
-        <div class="box plain"><span class="lab">In plain words</span> As wind and solar grow, power gets cheaper on
-          average but swings more wildly. The value of V2G shifts from "buy cheap, sell dear" toward "catch the wild
-          swings." This chapter stress-tests your method against that future.</div>
-        <div class="box watch"><span class="lab">Watch out</span> Frame these as <em>scenarios</em>, not predictions.
-          "Electricity will be free" is wrong; "more frequent near-zero-price windows" is the defensible version.</div>
-      </div>
+    <!-- LITERATURE -->
+    <section id="literature">
+      <h2 class="sec">The literature you asked for — cars vs. trucks</h2>
+      <p>This is the evidence base. Note the key story: for <strong>cars</strong> the findings <em>contradict</em> each
+        other depending on how smart the control is; for <strong>trucks</strong> there is very little, and it suggests
+        V2G can roughly <em>double</em> capacity fade if done carelessly — which is exactly the gap your wear map fills.</p>
+
+      <h4>Passenger cars (a lot of work, contradictory)</h4>
+      <table>
+        <tr><th>Study</th><th>What they found</th><th>Takeaway for you</th></tr>
+        <tr><td><strong>Dubarry et al. (2017)</strong>, commercial NMC cells under V2G</td><td>"Unintelligent" V2G <em>accelerates</em> degradation — extra throughput adds cycle aging.</td><td>The pessimistic baseline: dumb V2G hurts.</td></tr>
+        <tr><td><strong>Uddin et al. (2017)</strong>, EV + smart-grid, real Nissan Leaf cells</td><td>Smart, degradation-aware V2G can <em>extend</em> life — ~9% less capacity fade, ~12% less power fade.</td><td>The optimistic counter: smart control flips the sign. Your optimizer lives here.</td></tr>
+        <tr><td><strong>Loiselle-Lapointe et al. / EPRI (real BEV, 220 V2G cycles, 3 yrs, 18,000 km)</strong></td><td><em>No statistically significant</em> extra fade vs control car; both lost ~8%, dominated by calendar aging at high charge.</td><td>Why a few normal cycles are invisible — the noise-floor lesson for your test.</td></tr>
+        <tr><td><strong>"Extra Throughput vs Days Lost" (2024, your N04)</strong></td><td>Whether V2G helps or hurts depends on which aging mechanism dominates.</td><td>Mechanism-aware framing — supports the wear map.</td></tr>
+      </table>
+
+      <h4>Heavy-duty trucks (very little — your opportunity)</h4>
+      <table>
+        <tr><th>Study</th><th>What they found</th><th>Gap it leaves</th></tr>
+        <tr><td><strong>Shiledar et al. (2025), HD electric drayage trucks, Port of Savannah, NMC &amp; LFP</strong></td><td>Using 43% of battery energy/day for V2G added ~1.8%/yr fade → <strong>15% fade (drive-only) vs 33% fade (drive + V2G) over 10 years</strong>.</td><td>Simulation-based; not tied to a measured wear map on a specific MAN pack, nor to warranty/portfolio economics.</td></tr>
+        <tr><td><strong>ORNL — feasibility of HD battery-electric fleets in drayage</strong></td><td>HD trucks return to base nightly, idle a lot → well suited to depot charging and V2G.</td><td>Operational feasibility, not degradation-aware revenue optimisation.</td></tr>
+        <tr><td><strong>Geographical/seasonal energy efficiency of electric drayage trucks (2025)</strong></td><td>Consumption varies strongly by region/season.</td><td>Motivates the country/mission sweep (D2) but doesn't do the economics.</td></tr>
+      </table>
+      <div class="box why"><span class="lab">The gap in one sentence</span> Cars are studied to death (and disagree);
+        trucks have a couple of <em>simulation</em> studies showing V2G can double fade — but <strong>nobody has built a
+        measured wear map for a real heavy-duty pack and used it to allocate the battery's life-budget across services
+        and markets.</strong> That's your thesis.</div>
     </section>
 
     <!-- PROTOCOL -->
     <section id="protocol">
-      <h2 class="sec">The real-truck test protocol (the rigorous version of your experiment)</h2>
-      <p>This is the most <em>actionable</em> part — something you could hand to the MAN testing team. The principle:
-        keep your intuitive drive test as the story, but measure with sensitive electrical metrics and control the
-        temperature, so you capture real wear instead of noise.</p>
+      <h2 class="sec">The real-truck / bench test protocol</h2>
       <table>
-        <tr><th>Step</th><th>What you do</th><th>What you measure (the sensitive part)</th><th>What you hold constant</th></tr>
-        <tr><td>1 · Reference (before)</td><td>Controlled partial discharge in a fixed charge window</td>
-          <td>Capacity (by counting energy), internal resistance (short current pulses), voltage-vs-charge shape</td>
-          <td>Same temperature, battery fully rested</td></tr>
-        <tr><td>2 · Optional drive</td><td>Drive a fixed route 60% → 50%</td><td>Distance (your intuitive proxy)</td>
-          <td>Same route, payload, weather, driver</td></tr>
-        <tr><td>3 · V2G block</td><td>4-hour session at a chosen power, charge window, temperature</td>
-          <td>Energy throughput, peak rate, average temperature, charge-level path</td><td>Log battery data every second</td></tr>
-        <tr><td>4 · Rest</td><td>Let temperature and voltage settle</td><td>—</td><td>Return to the reference temperature</td></tr>
-        <tr><td>5 · Reference (after)</td><td>Repeat step 1 exactly</td><td>Same metrics → the <em>change</em> in resistance and capacity</td><td>Identical to step 1</td></tr>
-        <tr><td>6 · Repeat &amp; fit</td><td>Repeat at different powers / windows / temperatures</td>
-          <td>Fit the wear model; extrapolate to 1/3/5/10 years</td><td>One variable at a time</td></tr>
+        <tr><th>Step</th><th>Do</th><th>Measure (the sensitive part)</th><th>Hold constant</th></tr>
+        <tr><td>1 · Reference (before)</td><td>Controlled discharge in a fixed window (bigger window = bigger signal)</td><td>Capacity by counting energy; internal resistance by current pulses; voltage-vs-charge shape</td><td>Same temperature, rested pack</td></tr>
+        <tr><td>2 · Optional drive/dyno</td><td>Fixed load 60%→50%</td><td>Time &amp; distance (now clean on a bench)</td><td>Same load, temperature</td></tr>
+        <tr><td>3 · V2G block(s)</td><td>Sessions at chosen power / window / temperature; <em>accelerate</em> if you want measurable fade</td><td>Throughput, peak rate, temperature, charge path</td><td>Log data ≥1 Hz</td></tr>
+        <tr><td>4 · Rest</td><td>Let temperature &amp; voltage settle</td><td>—</td><td>Return to reference temperature</td></tr>
+        <tr><td>5 · Reference (after)</td><td>Repeat step 1 exactly</td><td>Change in resistance &amp; capacity</td><td>Identical to step 1</td></tr>
+        <tr><td>6 · Repeat &amp; fit</td><td>Vary one knob at a time</td><td>Fit wear model → extrapolate to 1/3/5/10 yrs</td><td>One variable at a time</td></tr>
       </table>
-      <div class="box why"><span class="lab">The payoff</span> A wear map (A3) and a "max V2G sessions per day vs. target
-        truck lifetime" curve — exactly what warranty and product planning need, and the credibility anchor for the whole
-        thesis.</div>
-      <div class="box watch"><span class="lab">Reality check</span> You will <em>not</em> see capacity fade accumulate in
-        a few days — it's too slow. You are measuring the <em>stress and resistance signatures</em> that feed the model.
-        Say this plainly in the thesis; it is a strength (honest method), not a weakness.</div>
+      <div class="box why"><span class="lab">Payoff</span> The wear map (A3) and a "max V2G sessions/day vs. truck
+        lifetime" curve — the credibility anchor for the whole thesis and a direct input to warranty policy.</div>
     </section>
 
-    <!-- CAUTIONS -->
     <section id="cautions">
-      <h2 class="sec">Honest cautions (so the thesis survives an examiner)</h2>
+      <h2 class="sec">Honest cautions</h2>
       <ul>
-        <li><strong>"A big simulation" is not a contribution.</strong> Heavy-truck digital twins already exist. The twin
-          is your lab; the <em>closed-loop passport→map→warranty→control function</em> is the contribution.</li>
-        <li><strong>Several popular angles are already published</strong> — NMC-vs-LFP comparison, MPC charging,
-          chance-constrained grid-service bidding for cars. Use them as backbone, not headline.</li>
-        <li><strong>You can't measure battery fade in days.</strong> Measure stress signatures and extrapolate; be explicit
-          about confidence.</li>
-        <li><strong>Don't predict "free electricity."</strong> The defensible future is "more frequent near-zero-price
-          windows and higher volatility."</li>
+        <li><strong>A big simulation isn't the contribution</strong> — the measured wear map + the life-budget portfolio function is.</li>
+        <li><strong>You can't read fade off normal-use kilometres</strong> — use internal resistance + accelerated aging on the bench.</li>
+        <li><strong>Grid services need ≥1 MW</strong> — a single truck can't bid; aggregation is part of the problem, not an afterthought.</li>
+        <li><strong>Truck V2G degradation evidence is thin and simulation-based</strong> — your measured map is genuinely new, so be rigorous and state confidence ranges.</li>
       </ul>
     </section>
 
-    <!-- QUESTIONS -->
     <section id="questions">
-      <h2 class="sec">What I need from you to lock the final scope</h2>
+      <h2 class="sec">What I need from you to lock the scope</h2>
       <ol>
-        <li><strong>Warranty terms:</strong> can you get MAN's <em>actual</em> eTruck battery warranty (health threshold,
-          year/energy limits)? The headline (B1) needs it — or a representative anonymised version.</li>
-        <li><strong>Test freedom:</strong> can you command arbitrary charge/discharge profiles, or only a fixed pilot
-          script? Decides how rich the test (A2) can be.</li>
-        <li><strong>Data resolution:</strong> charger + truck logs at 1-second / 1-minute? Needed for the stress signatures.</li>
-        <li><strong>Pack history &amp; passport:</strong> do you have age, mileage, throughput, current health for the
-          test truck — and any access to a passport data model?</li>
-        <li><strong>In-house aging model:</strong> can you see/edit its equations, or is it a black box? Decides whether
-          you tune it or wrap a correction around it.</li>
-        <li><strong>Deliverable emphasis:</strong> publishable method, internal MAN tool, or future product concept?</li>
+        <li><strong>Test bench access:</strong> can you use a battery test bench / chassis dyno, and can you run accelerated cycles (higher rate / temperature)? This decides whether you get <em>measured</em> fade or only stress signatures.</li>
+        <li><strong>Warranty terms:</strong> can you get MAN's real eTruck battery warranty limits (the "life-budget")? New idea 1 needs them, or a representative version.</li>
+        <li><strong>Data resolution:</strong> charger + BMS logs at ≥1 Hz (current, voltage, temperature, charge level)?</li>
+        <li><strong>Fleet/availability data:</strong> arrivals/departures for a real depot (for new idea 2's firm-capacity sizing)?</li>
+        <li><strong>Aging model:</strong> can you see/edit its equations, or is it a black box?</li>
+        <li><strong>Emphasis:</strong> publishable method, internal MAN tool, or product concept?</li>
       </ol>
-      <p>Answer these and I'll turn the unified thesis into a full formal proposal (objectives, method, data plan,
-        timeline) — and write the test protocol as a standalone document for the MAN team.</p>
+      <p>Answer these and I'll write the full formal proposal + a standalone bench test protocol for the MAN team.</p>
+    </section>
+
+    <section id="appendix">
+      <h2 class="sec">Other directions, parked (you didn't pick these)</h2>
+      <p>Kept here so nothing is lost — each could be a small sub-study, but none is the headline:</p>
+      <ul>
+        <li><strong>Abstract "warranty shadow price"</strong> — now folded into new idea 1 as the more intuitive "life-budget."</li>
+        <li><strong>Generic NMC-vs-LFP rules</strong> — well published; only the age-evolving version was interesting, and that lives inside the wear map.</li>
+        <li><strong>Multi-depot VPP as its own topic</strong> — only needed as the aggregation mechanism inside new idea 2.</li>
+        <li><strong>Model-fidelity ablation</strong> — a nice methods chapter, not a headline.</li>
+        <li><strong>Future-energy scenarios (2030–2050)</strong> — good discussion section, not a thesis core.</li>
+      </ul>
     </section>
 
     <section id="sources">
-      <h2 class="sec">Sources (state-of-the-art &amp; regulatory checks)</h2>
+      <h2 class="sec">Sources</h2>
       <ul>
-        <li><a href="https://www.vde.com/en/press/press-releases/din-dke-spec-99100-battery-pass">DIN DKE SPEC 99100 — EU battery passport data attributes (VDE)</a></li>
-        <li><a href="https://chargedevs.com/newswire/new-standard-helps-companies-comply-with-eu-digital-battery-passport-requirement/">EU digital battery passport, mandatory 2027 (Charged EVs)</a></li>
-        <li><a href="https://www.nature.com/articles/s44406-025-00010-8">Why we need standardized state-of-health measurement for EV packs (npj Clean Energy 2025)</a></li>
-        <li><a href="https://www.sciencedirect.com/science/article/pii/S0306261924019299">V2G impact on battery degradation + economic compensation (Applied Energy 2025)</a></li>
-        <li><a href="https://www.epri.com/research/products/000000003002024770">Battery performance assessment of V2G-capable EVs — 220-cycle real-world test (EPRI)</a></li>
+        <li><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process">regelleistung.net — FCR/aFRR tendering &amp; bidding (1 MW min, 4-h products, 25-min aFRR gate)</a></li>
+        <li><a href="https://www.next-kraftwerke.com/knowledge/frequency-containment-reserve-fcr">Next Kraftwerke — Frequency Containment Reserve explained</a></li>
+        <li><a href="https://papers.ssrn.com/sol3/Delivery.cfm/a1c26094-39d2-4793-a112-93ce0d4d7a19-MECA.pdf?abstractid=5217731">Shiledar et al. (2025) — Daily operational impacts on battery degradation in HD electric drayage trucks</a></li>
+        <li><a href="https://www.ornl.gov/publication/feasibility-operating-heavy-duty-battery-electric-truck-fleet-drayage-application">ORNL — Feasibility of operating HD battery-electric truck fleet in drayage</a></li>
+        <li><a href="https://arxiv.org/pdf/2504.02575">Geographical &amp; seasonal influences on energy efficiency of electric drayage trucks (2025)</a></li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S0360544217306825">Uddin et al. (2017) — extending Li-ion lifetime through optimal V2G</a></li>
+        <li><a href="https://www.mdpi.com/2313-0105/8/10/188">Comprehensive degradation study of commercial NMC cells under V2G (Batteries 2022)</a></li>
+        <li><a href="https://www.epri.com/research/products/000000003002024770">EPRI — battery performance assessment of V2G-capable EVs (220-cycle real test)</a></li>
         <li><a href="https://arxiv.org/html/2408.02139v1">Extra Throughput vs Days Lost in V2G (arXiv 2024) — your N04</a></li>
-        <li><a href="https://www.electrive.com/2025/11/14/germany-clears-the-way-for-bidirectional-charging/">Germany clears the way for bidirectional charging — EnWG, Nov 2025 (electrive)</a></li>
-        <li><a href="https://chargedevs.com/newswire/scania-demonstrates-vehicle-to-grid-through-megawatt-charging-system-for-heavy-electric-vehicles/">Scania demonstrates V2G over the Megawatt Charging System (Charged EVs)</a></li>
-        <li><a href="https://arxiv.org/html/2404.12818">EV aggregator bidding in Nordic grid-service markets — chance-constrained (arXiv 2024)</a></li>
+        <li><a href="https://www.vde.com/en/press/press-releases/din-dke-spec-99100-battery-pass">DIN DKE SPEC 99100 — EU battery passport data attributes</a></li>
+        <li><a href="https://www.electrive.com/2025/11/14/germany-clears-the-way-for-bidirectional-charging/">Germany clears the way for bidirectional charging — EnWG, Nov 2025</a></li>
+        <li><a href="https://chargedevs.com/newswire/scania-demonstrates-vehicle-to-grid-through-megawatt-charging-system-for-heavy-electric-vehicles/">Scania demonstrates V2G over the Megawatt Charging System</a></li>
       </ul>
-      <footer>Rebuilt 20 June 2026 for clarity. The Markdown file <code>THESIS_IDEAS_V2G_HDtrucks.md</code> holds the same
-        content plus the full reasoning. Decision-support, not a commitment — verify regulatory details against primary
-        sources before citing in the thesis.</footer>
+      <footer>v3 · rebuilt 20 June 2026. The Markdown file holds the full reasoning. Verify regulatory details against
+        primary sources (regelleistung.net, the EnWG text) before citing in the thesis.</footer>
     </section>
   </main>
 </div>

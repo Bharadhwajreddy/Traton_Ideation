@@ -663,8 +663,66 @@ MCS V2G live), and ends in a product MAN can actually ship.
 
 ---
 
+## 13. v3 UPDATE — bigger ideas, FCR facts, test-bench answer, car-vs-truck literature
+
+Feedback received: keep A1–A3, C1, D1 and the decision matrix (D2 = the handwritten note); C1/D1 are too small alone;
+restore the layered diagram; answer the test-bench question; supply the FCR facts and the literature. Done below.
+
+### 13.1 The fix for "C1/D1 are too small": grow them into one spine
+
+The recommended 9-month thesis becomes **"The Battery-Passport-Informed Life-Budget Controller for Heavy-Duty Depots."**
+It treats battery life as a finite budget and **allocates it across stacked services** (arbitrage + peak shaving +
+FCR/aFRR + PV), priced by the **measured wear map**, then generalises across DE/NL/CN into the decision matrix. C1
+becomes the revenue engine; D1/D2 become the generalisation/output; A1–A3 supply the wear map.
+
+### 13.2 Three bigger NEW ideas
+
+- **NEW 1 — Life-budget portfolio optimizer (the spine).** Battery life = scarce capital; services = competing
+  investments. Solve the best portfolio under a finite wear budget. Absorbs C1, D1, D2, A1–A3. Novel for HD trucks.
+- **NEW 2 — Bankable firm capacity from a real fleet (grows C1).** Not "can a truck do FCR" but "how many MW can a
+  depot promise for a year given wear, warranty, logistics and the 1 MW floor — and the TCO impact per country."
+- **NEW 3 — V2G vs resale/second-life value (fresh).** V2G lowers SoH → lowers passport-recorded residual value. Find
+  the V2G intensity that maximises *first-life revenue + leftover value*. The passport exists precisely for second-life
+  value, so this is timely and under-explored for trucks.
+
+### 13.3 The test-bench question (good catch)
+
+Yes, a chassis dyno / battery test bench helps a lot: (1) it **removes road noise** (wind, payload, traffic, driver) so
+the same charge window is repeatable, and **time/energy at fixed load becomes a clean proxy** for usable energy; (2) it
+lets you measure **internal resistance via current pulses**, which grows far earlier than capacity fade; (3) crucially it
+lets you run **accelerated aging** (many back-to-back cycles, higher rate/temperature) to *force measurable fade* in your
+window, then scale back to normal conditions. **The limit it can't remove:** under *normal* use a few V2G blocks still
+wear the pack by thousandths of a percent — invisible even on a bench. So read **resistance growth**, and **accelerate**;
+and always rest the pack to a fixed temperature before the "after" measurement (warm ≠ worn).
+
+### 13.4 FCR / balancing market facts (Germany, regelleistung.net)
+
+| Question | Answer |
+|---|---|
+| Min bid as FCR provider | **1 MW** (1 MW steps) — not 10 MW |
+| FCR product / auction | 4-hour products, 6/day, daily auction; capacity-only payment; symmetric ±; automatic activation |
+| "BSP bidding 25 min before" | That's **aFRR** (and mFRR): 15-min delivery periods, energy bids until **25 min before** delivery; pays capacity + activated energy |
+| Weekdays / chosen hours only? | Yes — bid per 4-hour block, only when trucks are reliably present |
+| Small amounts possible? | No, below 1 MW. One CCS truck ≈ 0.35 MW, one MCS truck ≈ 0.75 MW → **aggregate ≈3 (CCS) / ≈2 (MCS) trucks** to clear the floor |
+
+### 13.5 Literature — cars (contradictory) vs trucks (thin = your gap)
+
+**Cars:** Dubarry et al. (2017) — *unintelligent* V2G accelerates fade; Uddin et al. (2017) — *smart* V2G can **extend**
+life (~9% less capacity fade); EPRI/Loiselle-Lapointe 220-cycle real BEV — **no significant** V2G fade (calendar aging
+dominated, both cars ~8%). So for cars the sign depends on control intelligence and dominant mechanism.
+
+**Trucks (very little):** Shiledar et al. (2025), HD drayage (NMC & LFP) — daily 43% energy for V2G added ~1.8%/yr →
+**15% fade drive-only vs 33% fade drive+V2G over 10 years** (simulation). ORNL — drayage HD fleets suit depot
+charging/V2G. None tie a **measured wear map for a real HD pack** to **life-budget/portfolio economics** — that's the gap.
+
+---
+
 ### Sources (state-of-the-art & regulatory verification)
 - [Extra Throughput vs Days Lost in V2G (arXiv 2024)](https://arxiv.org/html/2408.02139v1) — your N04
+- [regelleistung.net — FCR/aFRR tendering & bidding](https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process)
+- [Shiledar et al. (2025) — HD electric drayage truck degradation](https://papers.ssrn.com/sol3/Delivery.cfm/a1c26094-39d2-4793-a112-93ce0d4d7a19-MECA.pdf?abstractid=5217731)
+- [Uddin et al. (2017) — extending Li-ion lifetime via optimal V2G](https://www.sciencedirect.com/science/article/pii/S0360544217306825)
+- [EPRI — V2G-capable EV battery performance (220-cycle test)](https://www.epri.com/research/products/000000003002024770)
 - [DIN DKE SPEC 99100 — battery passport data attributes (VDE)](https://www.vde.com/en/press/press-releases/din-dke-spec-99100-battery-pass)
 - [New standard for EU digital battery passport (Charged EVs)](https://chargedevs.com/newswire/new-standard-helps-companies-comply-with-eu-digital-battery-passport-requirement/)
 - [Why we need standardized SoH measurement for EV packs (npj Clean Energy 2025)](https://www.nature.com/articles/s44406-025-00010-8)
