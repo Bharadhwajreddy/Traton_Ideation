@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TRATON V2G — Fresh Lens: Broad & Novel Ideas + Tools to Build</title>
+<style>
+  :root{
+    --bg:#f5f8f7; --card:#ffffff; --ink:#1c2630; --muted:#566270; --line:#dde6e3;
+    --teal:#0d9488; --blue:#1f6feb; --green:#1a7f4b; --amber:#9a6700; --red:#b42318; --purple:#6b3fa0;
+    --tealb:#e6f6f4; --blueb:#eaf2ff; --greenb:#e9f7ef; --amberb:#fff6e5; --redb:#fdecea; --grayb:#eef2f1; --purpleb:#f3eefc;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16.5px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{display:grid;grid-template-columns:280px 1fr;max-width:1340px;margin:0 auto}
+  nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:26px 16px;border-right:1px solid var(--line);background:#fff}
+  nav .brand{font-weight:800;font-size:16px;line-height:1.25}nav .brand span{color:var(--teal)}
+  nav .note{color:var(--muted);font-size:12px;margin-top:4px}
+  nav h2{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+  nav a{display:block;color:var(--muted);padding:5px 9px;border-radius:7px;font-size:13.5px}
+  nav a:hover{background:var(--grayb);color:var(--ink);text-decoration:none}
+  main{padding:38px 52px 120px;min-width:0}
+  header.hero{background:linear-gradient(135deg,#0d9488,#0b4f6c);color:#fff;border-radius:18px;padding:34px 38px;margin-bottom:30px}
+  header.hero h1{margin:0 0 8px;font-size:29px;line-height:1.18}
+  header.hero p{margin:8px 0 0;color:#d6f1ec;font-size:15.5px;max-width:80ch}
+  section{margin:40px 0;scroll-margin-top:14px}
+  h2.sec{font-size:24px;margin:0 0 6px;border-bottom:2px solid var(--line);padding-bottom:10px}
+  h3{font-size:20px;margin:24px 0 6px}
+  h4{font-size:15px;margin:16px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  p{margin:10px 0}.lead{font-size:18px;color:var(--muted)}
+  strong{color:#0b1320}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:20px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card.tool{border-left:5px solid var(--teal)}
+  .card.sci{border-left:5px solid var(--purple)}
+  .card.moon{border-left:5px solid var(--amber)}
+  .oneliner{background:var(--tealb);border-left:4px solid var(--teal);padding:10px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:10px 0}
+  .card.sci .oneliner{background:var(--purpleb);border-left-color:var(--purple)}
+  .card.moon .oneliner{background:var(--amberb);border-left-color:var(--amber)}
+  .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 2px}
+  .tag{font-size:12px;padding:3px 10px;border-radius:999px;background:var(--grayb);border:1px solid var(--line);color:var(--muted)}
+  .tag.tool{background:var(--tealb);border-color:#bfe6df;color:var(--teal);font-weight:700}
+  .tag.hot{background:#fff4d6;border-color:#f3dca0;color:var(--amber);font-weight:700}
+  .tag.risk{background:var(--redb);border-color:#f3c9c4;color:var(--red);font-weight:700}
+  .box{border-radius:10px;padding:13px 16px;margin:12px 0;font-size:15px}
+  .box .lab{font-weight:800;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:3px}
+  .plain{background:var(--grayb);border:1px solid var(--line)}.plain .lab{color:#334}
+  .why{background:var(--greenb);border:1px solid #cdeedd}.why .lab{color:var(--green)}
+  .watch{background:var(--amberb);border:1px solid #f0dca8}.watch .lab{color:var(--amber)}
+  .exists{background:var(--redb);border:1px solid #f3c9c4}.exists .lab{color:var(--red)}
+  .mermaid{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;text-align:center;overflow:auto}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:var(--grayb)}tr:nth-child(even) td{background:#fafbfb}
+  code{background:#eef1f5;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px}
+  ol li,ul li{margin:6px 0}
+  footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px;margin-top:46px}
+  @media(max-width:980px){.wrap{grid-template-columns:1fr}nav{display:none}main{padding:24px 18px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand">TRATON · <span>Fresh Lens</span></div>
+    <div class="note">broad &amp; novel ideas + tools</div>
+    <h2>Start</h2>
+    <a href="#intro">Why this document</a>
+    <a href="#map">The big map</a>
+    <h2>Tools to build</h2>
+    <a href="#t1">T1 · 5-minute SoH fitness test</a>
+    <a href="#t2">T2 · V2G profitability sandbox</a>
+    <a href="#t3">T3 · Learned controller API</a>
+    <a href="#t4">T4 · Hardware-in-the-loop rig</a>
+    <a href="#t5">T5 · Open benchmark + dataset</a>
+    <h2>Novel science bets</h2>
+    <a href="#s1">S1 · Hybrid physics+AI twin</a>
+    <a href="#s2">S2 · Federated fleet learning</a>
+    <a href="#s3">S3 · RL degradation-aware control</a>
+    <a href="#s4">S4 · Carbon-aware V2G</a>
+    <a href="#s5">S5 · Incentive / mechanism design</a>
+    <a href="#s6">S6 · Flexibility forecasting</a>
+    <h2>Moonshots</h2>
+    <a href="#w1">W1 · Roaming / spatial V2G</a>
+    <a href="#w2">W2 · Swap + V2G + 2nd life</a>
+    <a href="#w3">W3 · Verifiable V2G credentials</a>
+    <a href="#w4">W4 · Thermal co-optimisation</a>
+    <h2>Decide</h2>
+    <a href="#filter">Which are actually theses?</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <h1>Fresh Lens — broad &amp; novel ideas, and tools you could build</h1>
+      <p>A deliberately wide sweep, written as if starting fresh: AI/ML angles, cross-domain bets, and especially
+        <strong>tools and software products</strong> — because a working tool is one of the strongest thesis deliverables
+        there is. This is the <em>exploration</em> file; the focused 9-month recommendation still lives in
+        <code>index.html</code>. Honest novelty flags throughout. 20 June 2026.</p>
+    </header>
+
+    <section id="intro">
+      <h2 class="sec">Why this document</h2>
+      <p class="lead">The earlier files converged on one strong, low-risk thesis. This one does the opposite: it opens
+        the aperture all the way, so you can see the <em>full</em> opportunity space and pick deliberately — including the
+        higher-risk, higher-reward, and more "product-like" directions.</p>
+      <p>Three buckets, by risk:</p>
+      <ul>
+        <li>🛠️ <strong>Tools to build</strong> — the deliverable <em>is</em> working software/hardware. Lower research
+          risk, very high industrial value, great for a thesis with a demo at the end.</li>
+        <li>🔬 <strong>Novel science bets</strong> — a new method or model. Higher novelty, more risk, more publishable.</li>
+        <li>🌙 <strong>Moonshots</strong> — broad, ambitious framings. Probably too big alone, but each contains a
+          thesis-sized slice.</li>
+      </ul>
+      <div class="box watch"><span class="lab">Honesty rule</span> For every idea I flag what <em>already exists</em>, so
+        you don't walk into a crowded field thinking it's empty. "Novel" here means novel <em>for heavy-duty trucks, from
+        an OEM seat, with real test access</em> — your unfair advantages.</div>
+    </section>
+
+    <section id="map">
+      <h2 class="sec">The big map</h2>
+      <pre class="mermaid">
+flowchart TB
+    CORE["Your assets: real truck/bench, OEM seat, EU+China, in-house aging model"]
+    CORE --> TOOLS["TOOLS to build"]
+    CORE --> SCI["NOVEL science bets"]
+    CORE --> MOON["MOONSHOTS"]
+    TOOLS --> T1["5-min SoH fitness test"]
+    TOOLS --> T2["V2G profitability sandbox"]
+    TOOLS --> T3["Learned controller API"]
+    TOOLS --> T4["Hardware-in-the-loop rig"]
+    TOOLS --> T5["Open benchmark + dataset"]
+    SCI --> S1["Hybrid physics+AI aging twin"]
+    SCI --> S2["Federated fleet learning"]
+    SCI --> S3["RL degradation-aware control"]
+    SCI --> S4["Carbon-aware V2G"]
+    SCI --> S5["Incentive / mechanism design"]
+    SCI --> S6["Flexibility forecasting"]
+    MOON --> W1["Roaming / spatial V2G"]
+    MOON --> W2["Swap + V2G + second life"]
+    MOON --> W3["Verifiable V2G credentials"]
+    MOON --> W4["Thermal co-optimisation"]
+      </pre>
+    </section>
+
+    <!-- ============ TOOLS ============ -->
+    <section id="t1">
+      <h2 class="sec">🛠️ Tools to build (the deliverable is the tool)</h2>
+
+      <div class="card tool">
+        <h3>T1 · The "5-minute battery fitness test" on the charger <span class="tag hot">strong + timely</span></h3>
+        <div class="oneliner">A quick diagnostic the charger runs at plug-in that estimates battery health (state of
+          health) in minutes from a short controlled pulse — no full discharge needed — and stamps it into the passport.</div>
+        <pre class="mermaid">
+flowchart LR
+    PLUG["Truck plugs in"] --> PULSE["Short controlled charge/discharge pulse + small partial sweep"]
+    PULSE --> FEAT["Extract features: resistance, voltage-vs-charge shape, relaxation"]
+    FEAT --> MODEL["Trained model estimates State of Health"]
+    MODEL --> OUT["Health number in minutes"]
+    OUT --> PP["Write to battery passport"]
+    OUT --> CTRL["Feed the charging optimizer"]
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> Measuring true battery health normally needs a slow
+          full charge/discharge. This tool estimates it from a quick electrical "poke" plus a model — like a doctor reading
+          your pulse instead of running you on a treadmill for an hour.</div>
+        <div class="box why"><span class="lab">Why it's valuable &amp; timely</span> There is currently <em>no agreed
+          standard</em> for measuring EV-pack health (flagged in a 2025 npj Clean Energy paper), yet the battery passport
+          <em>requires</em> a health value from 2027. A fast, on-charger estimator is exactly the missing piece — and a
+          clean product for MAN. Your real truck/bench is perfect for building and validating it.</div>
+        <div class="box exists"><span class="lab">What exists</span> Rapid-SoH estimation from pulses/impedance exists for
+          <em>cells and cars</em> (lots of ML papers). For <em>heavy-duty truck packs</em>, in-depot, tied to the passport
+          — much thinner. That truck-pack + passport framing is your novelty.</div>
+      </div>
+
+      <div class="card tool" id="t2">
+        <h3>T2 · "V2G Profitability Sandbox" — a configurator anyone can use</h3>
+        <div class="oneliner">A web tool: a fleet operator types in their depot (trucks, missions, chemistry, country) and
+          instantly sees revenue, battery wear and total cost of ownership for different strategies.</div>
+        <pre class="mermaid">
+flowchart LR
+    IN["Inputs: #trucks, missions, chemistry, country, charger type"] --> ENGINE["Engine: wear map + optimizer + market rules"]
+    ENGINE --> OUT1["Revenue by service"]
+    ENGINE --> OUT2["Battery wear / lifetime"]
+    ENGINE --> OUT3["Total cost of ownership"]
+    OUT1 --> UI["Interactive dashboard + downloadable report"]
+    OUT2 --> UI
+    OUT3 --> UI
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> Think "mortgage calculator," but for truck V2G. It
+          turns all the modelling into a few sliders and a clear chart, so a non-expert can explore "what if."</div>
+        <div class="box why"><span class="lab">Why it's a great thesis</span> The deliverable is a <em>working tool</em>
+          with a demo — examiners and managers both love that. It also forces you to make the science usable, and it
+          naturally showcases the wear map and the cross-country results.</div>
+        <div class="box watch"><span class="lab">Watch out</span> Make the <em>method</em> behind it the contribution
+          (e.g. the wear map or the optimizer), so it's a thesis and not "just a calculator." The tool is the wrapper.</div>
+      </div>
+
+      <div class="card tool" id="t3">
+        <h3>T3 · "Charging-brain-as-a-service" — a learned controller API</h3>
+        <div class="oneliner">Package the optimizer as a tiny service any charger can call: send the battery state +
+          passport, get back the best charge/V2G action in milliseconds — fast enough to run on real hardware.</div>
+        <pre class="mermaid">
+flowchart LR
+    TRAIN["Offline: train a fast policy to imitate the slow optimizer (+ wear map)"] --> POLICY["Compact learned policy"]
+    CHARGER["Charger / depot controller"] --> API["API call: state + passport + prices"]
+    API --> POLICY
+    POLICY --> ACT["Action: power, charge window, V2G yes/no (in ms)"]
+    ACT --> CHARGER
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> The full optimizer is powerful but slow. You train a
+          small, fast "imitator" that gives nearly the same answers instantly — small enough to live inside the charger's
+          software. The thesis question: how close can the fast version get to the slow optimal one?</div>
+        <div class="box why"><span class="lab">Why it matters</span> This is the bridge from "nice simulation" to
+          "runs in the real MAN charging management system." It directly answers a product question.</div>
+        <div class="box exists"><span class="lab">What exists</span> "Learning to optimize" / imitation of MILP/MPC exists
+          in power systems. Tied to a measured truck wear map + passport, for HD depots, it's fresh.</div>
+      </div>
+
+      <div class="card tool" id="t4">
+        <h3>T4 · A hardware-in-the-loop (HIL) test rig <span class="tag tool">uses your real truck</span></h3>
+        <div class="oneliner">Connect the real truck/charger to a <em>simulated</em> grid, market and depot — so the
+          physical hardware reacts to fake price spikes and grid events you design, safely and repeatably.</div>
+        <pre class="mermaid">
+flowchart LR
+    SIM["Simulated grid + market + other trucks"] --> CMD["Send commands / price signals"]
+    CMD --> REAL["REAL truck + charger"]
+    REAL --> MEAS["Measure real response: power, delay, efficiency, temperature"]
+    MEAS --> SIM
+    MEAS --> VALID["Validate the controller against reality"]
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> Instead of waiting for a real price spike, you
+          <em>invent</em> one in software and watch how the real truck actually responds. The hardware is real; the world
+          around it is simulated. This is how you test a controller before trusting it with money.</div>
+        <div class="box why"><span class="lab">Why it's strong for you</span> It turns your "a few days with a real truck"
+          into a reusable <em>platform</em>, and it makes every later result credible because the controller was tested on
+          real hardware, not just in a model.</div>
+      </div>
+
+      <div class="card tool" id="t5">
+        <h3>T5 · An open benchmark + dataset for HD-truck depot V2G</h3>
+        <div class="oneliner">Release a standard test problem (and data) so different methods can be compared fairly — a
+          "common yardstick" the field currently lacks for heavy trucks.</div>
+        <div class="box plain"><span class="lab">In plain words</span> Today everyone tests their charging optimizer on
+          their own private setup, so results can't be compared. A shared benchmark fixes that — and whoever creates it
+          gets cited a lot.</div>
+        <div class="box why"><span class="lab">Why it matters</span> High academic impact for relatively contained effort;
+          positions MAN/TRATON as the reference point. Pairs well with any of the method ideas.</div>
+        <div class="box watch"><span class="lab">Watch out</span> Data-sharing approval can be slow — check what MAN will
+          let you release (anonymised/synthetic may be the answer).</div>
+      </div>
+    </section>
+
+    <!-- ============ SCIENCE BETS ============ -->
+    <section id="s1">
+      <h2 class="sec">🔬 Novel science bets (a new method or model)</h2>
+
+      <div class="card sci">
+        <h3>S1 · Hybrid physics + AI aging twin</h3>
+        <div class="oneliner">Keep the trusted physics aging model, and add a small AI layer that learns the
+          <em>leftover error</em> from real data — best of both: physically sensible <em>and</em> accurate.</div>
+        <pre class="mermaid">
+flowchart LR
+    PHYS["Physics aging model"] --> SUM
+    DATA["Real truck/bench data"] --> ML["AI learns the residual error"]
+    ML --> SUM["Combined estimate"]
+    SUM --> OUT["Accurate, physically-consistent wear prediction"]
+        </pre>
+        <div class="box why"><span class="lab">Why</span> Pure physics is interpretable but imperfect; pure AI is accurate
+          but a black box and needs lots of data. The hybrid needs less data and stays trustworthy — ideal when you only
+          have one truck.</div>
+        <div class="box exists"><span class="lab">Exists</span> Physics-informed / residual ML for batteries is an active
+          area for cells. For a real HD truck pack, calibrated from your tests, it's fresh and very defensible.</div>
+      </div>
+
+      <div class="card sci" id="s2">
+        <h3>S2 · Federated learning across the fleet (privacy-preserving) <span class="tag hot">genuinely novel here</span></h3>
+        <div class="oneliner">Learn one shared battery-health/wear model from <em>many</em> MAN trucks worldwide —
+          <em>without</em> moving their raw data — by sharing only model updates.</div>
+        <pre class="mermaid">
+flowchart TB
+    D1["Truck/depot A learns locally"] --> AGG["Aggregate only the model updates (no raw data)"]
+    D2["Truck/depot B learns locally"] --> AGG
+    D3["Truck/depot C learns locally"] --> AGG
+    AGG --> GLOBAL["Improved global wear / health model"]
+    GLOBAL --> D1
+    GLOBAL --> D2
+    GLOBAL --> D3
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> Every MAN truck is a tiny experiment in battery
+          aging. Federated learning lets them all teach one shared model without any depot exposing its private data —
+          solving the data-ownership problem that usually blocks fleet-scale learning.</div>
+        <div class="box why"><span class="lab">Why it's exciting for an OEM</span> MAN has thousands of trucks but the data
+          is fragmented and sensitive. This is the realistic way to turn that fleet into one giant learning system —
+          a genuine strategic capability, not just a thesis.</div>
+        <div class="box exists"><span class="lab">Exists</span> Federated learning for battery SoH is just emerging (a few
+          2023–2025 papers). For heavy-duty fleets it is wide open — a strong, modern, publishable bet.</div>
+      </div>
+
+      <div class="card sci" id="s3">
+        <h3>S3 · Reinforcement-learning, degradation-aware dispatch</h3>
+        <div class="oneliner">Train an agent by trial-and-error (in simulation) to balance earning money now against
+          wearing the battery — then compare it head-to-head with the classic optimizer.</div>
+        <div class="box plain"><span class="lab">In plain words</span> Instead of solving an equation each time, an RL agent
+          <em>learns a habit</em> for good decisions. Useful when the future is uncertain and you must react fast.</div>
+        <div class="box watch"><span class="lab">Watch out</span> RL for EV charging is <strong>crowded</strong> and often
+          beaten by simpler MPC. Only do this if your twist is real — e.g. learning directly against the <em>measured</em>
+          wear map, or safety-guaranteed RL that never violates the warranty budget.</div>
+      </div>
+
+      <div class="card sci" id="s4">
+        <h3>S4 · Carbon-aware V2G — trucks as mobile decarbonisation <span class="tag hot">fresh framing</span></h3>
+        <div class="oneliner">Optimise not just euros but <em>grams of CO₂ avoided</em>: charge when the grid is clean,
+          discharge when it's dirty — and report the verified emissions saved.</div>
+        <pre class="mermaid">
+flowchart LR
+    SIG["Live grid CO2 intensity + price"] --> OPT["Multi-objective optimizer: euros AND carbon"]
+    OPT --> PLAN["Charge clean hours, discharge dirty hours"]
+    PLAN --> REP["Verified avoided-emissions report"]
+    REP --> ESG["Feeds customer ESG / CSRD reporting"]
+        </pre>
+        <div class="box plain"><span class="lab">In plain words</span> A parked truck battery can soak up surplus wind/solar
+          and give it back when the grid would otherwise burn gas. This idea measures and maximises that climate benefit —
+          and produces a number a customer can put in their sustainability report.</div>
+        <div class="box why"><span class="lab">Why it matters</span> Money isn't the only currency anymore — EU
+          sustainability reporting (CSRD) makes verified CO₂ savings valuable to fleets. A "V2G carbon" angle is timely and
+          relatively under-explored for trucks.</div>
+        <div class="box exists"><span class="lab">Exists</span> Carbon-aware charging exists for data centres and some EVs;
+          tying it to HD-truck V2G + degradation cost + verified reporting is the fresh combination.</div>
+      </div>
+
+      <div class="card sci" id="s5">
+        <h3>S5 · Incentive &amp; contract design — getting humans to cooperate</h3>
+        <div class="oneliner">Design the <em>pricing/incentives</em> so drivers and depots naturally do the grid-friendly
+          thing (arrive with the right charge, allow V2G) — a mechanism-design problem, not a physics one.</div>
+        <div class="box plain"><span class="lab">In plain words</span> The best schedule is useless if a driver plugs in
+          late or refuses V2G. This idea asks: what reward structure makes the <em>selfish</em> choice also the
+          <em>optimal</em> one? It's economics/game theory applied to a depot.</div>
+        <div class="box why"><span class="lab">Why it's different</span> Almost all V2G work assumes perfect compliance.
+          The human-incentive layer is real, under-studied, and exactly where flexibility is won or lost in practice.</div>
+      </div>
+
+      <div class="card sci" id="s6">
+        <h3>S6 · Flexibility forecasting as a product</h3>
+        <div class="oneliner">Predict, days ahead, how much grid flexibility a depot will have (from routes, telematics,
+          weather) — and sell that forecast to aggregators/markets.</div>
+        <div class="box plain"><span class="lab">In plain words</span> Markets pay for <em>reliable promises</em>. If you
+          can forecast "next Tuesday this depot can offer 2 MW from 22:00–02:00," that forecast itself is valuable. The
+          thesis: how accurately can fleet flexibility be predicted, and what is a good forecast worth?</div>
+        <div class="box why"><span class="lab">Why</span> Reframes the problem from control to <em>prediction</em> — a
+          cleaner, more self-contained thesis, and a product an aggregator would buy.</div>
+      </div>
+    </section>
+
+    <!-- ============ MOONSHOTS ============ -->
+    <section id="w1">
+      <h2 class="sec">🌙 Moonshots (think very broadly — each hides a thesis-sized slice)</h2>
+
+      <div class="card moon">
+        <h3>W1 · Roaming / spatial V2G — the truck earns wherever it goes</h3>
+        <div class="oneliner">The passport travels with the battery, so <em>any</em> charger on the route can make a safe,
+          history-aware V2G decision — turning a moving truck into a roaming grid asset across regions and price zones.</div>
+        <div class="box plain"><span class="lab">In plain words</span> Today V2G is a home-depot idea. If the battery's
+          history is portable (passport), a truck could sell energy in whichever region has the best prices that day —
+          "spatial arbitrage" on wheels.</div>
+        <div class="box watch"><span class="lab">Thesis-sized slice</span> "How much extra value comes from being able to do
+          V2G <em>away</em> from the home depot?" — a clean, bounded question inside the big vision.</div>
+      </div>
+
+      <div class="card moon" id="w2">
+        <h3>W2 · Battery-swap + V2G + second-life, as one economic system</h3>
+        <div class="oneliner">If packs can be swapped, the depot's batteries become a <em>shared pool</em> — some driving,
+          some doing V2G, some resting or heading to second life. Optimise the whole pool.</div>
+        <div class="box watch"><span class="lab">Thesis-sized slice</span> "When does decoupling the battery from the truck
+          (swap) beat fixed packs for combined driving + V2G value?" Big and forward-looking; pick one sub-question.</div>
+      </div>
+
+      <div class="card moon" id="w3">
+        <h3>W3 · Verifiable V2G credentials — a trust layer for settlement</h3>
+        <div class="oneliner">Tamper-proof, signed records of what each truck actually delivered to the grid and how much
+          life it cost — so payments, warranty claims and CO₂ credits can be trusted automatically.</div>
+        <div class="box watch"><span class="lab">Reality</span> More of an IT/standards contribution than control. A neat
+          niche if you like data integrity, but probably a side-feature, not the core.</div>
+      </div>
+
+      <div class="card moon" id="w4">
+        <h3>W4 · Thermal co-optimisation — schedule heat, charge and V2G together</h3>
+        <div class="oneliner">Battery pre-heating/cooling, cabin comfort, charging and V2G all share energy and affect
+          aging. Optimise them <em>jointly</em> instead of separately.</div>
+        <div class="box why"><span class="lab">Why it's interesting</span> Temperature is one of the biggest aging drivers,
+          and trucks in cold climates spend real energy on it. Coupling thermal management with the V2G plan is a genuine,
+          cross-domain optimisation few have done for HD trucks.</div>
+      </div>
+    </section>
+
+    <!-- FILTER -->
+    <section id="filter">
+      <h2 class="sec">Which of these are actually a thesis? (my honest filter)</h2>
+      <table>
+        <tr><th>Idea</th><th>Novelty</th><th>Feasible in 9 mo</th><th>Needs real truck/bench</th><th>My take</th></tr>
+        <tr><td>T1 · 5-min SoH fitness test</td><td>High</td><td>Yes</td><td>Yes (huge plus)</td><td><strong>Top pick</strong> — timely (passport), product-shaped, uses your edge</td></tr>
+        <tr><td>T2 · Profitability sandbox</td><td>Medium</td><td>Yes</td><td>No</td><td>Great <em>wrapper</em> for a method; demo-friendly</td></tr>
+        <tr><td>T3 · Learned controller API</td><td>Med-High</td><td>Yes</td><td>Helps</td><td>Strong if paired with the wear map</td></tr>
+        <tr><td>T4 · HIL rig</td><td>Medium</td><td>Maybe</td><td>Yes</td><td>Excellent <em>platform</em>; pair with a method</td></tr>
+        <tr><td>T5 · Open benchmark</td><td>Medium</td><td>Yes</td><td>No</td><td>High citation impact; data approval risk</td></tr>
+        <tr><td>S2 · Federated fleet learning</td><td><strong>Very High</strong></td><td>Tight</td><td>No (needs fleet data)</td><td><strong>Boldest bet</strong> — modern, strategic, publishable</td></tr>
+        <tr><td>S4 · Carbon-aware V2G</td><td>High</td><td>Yes</td><td>No</td><td>Fresh framing; timely with CSRD</td></tr>
+        <tr><td>S1 · Hybrid physics+AI twin</td><td>High</td><td>Yes</td><td>Yes</td><td>Very defensible; complements your test</td></tr>
+        <tr><td>S3 · RL control</td><td>Medium</td><td>Yes</td><td>No</td><td>Crowded — only with a real twist</td></tr>
+        <tr><td>S5/S6 · Incentives / forecasting</td><td>Med-High</td><td>Yes</td><td>No</td><td>Cleaner, self-contained alternatives</td></tr>
+        <tr><td>W1–W4 · Moonshots</td><td>High</td><td>Only a slice</td><td>Varies</td><td>Pick one bounded sub-question</td></tr>
+      </table>
+      <div class="box why"><span class="lab">If I had to add ONE of these to your v3 recommendation</span> the
+        <strong>T1 "5-minute SoH fitness test"</strong> — it's timely (the passport needs a health number and there's no
+        standard), it's product-shaped, it directly uses your real truck/bench, and it plugs straight into the
+        passport-informed controller from <code>index.html</code>. The <strong>boldest standalone alternative</strong> is
+        <strong>S2 federated fleet learning</strong> if you want a modern, high-novelty, AI-flavoured thesis.</div>
+      <p style="margin-top:14px"><strong>How this relates to the other file:</strong> <code>index.html</code> is the
+        focused, low-risk 9-month plan (the life-budget controller). This file is the wide exploration. A good move:
+        keep the v3 spine and bolt on <em>one</em> tool (T1) or <em>one</em> science bet (S1/S2/S4) as the novelty headline.</p>
+    </section>
+
+    <section id="sources">
+      <h2 class="sec">Sources &amp; pointers</h2>
+      <ul>
+        <li><a href="https://www.nature.com/articles/s44406-025-00010-8">Why we need a standardized state-of-health measurement for EV packs (npj Clean Energy 2025)</a> — motivates T1</li>
+        <li><a href="https://www.vde.com/en/press/press-releases/din-dke-spec-99100-battery-pass">DIN DKE SPEC 99100 — battery passport (needs a health value from 2027)</a></li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S0360544217306825">Uddin et al. (2017) — smart V2G can extend battery life</a></li>
+        <li><a href="https://www.mdpi.com/2313-0105/8/10/188">Degradation mechanisms of commercial NMC under V2G (Batteries 2022)</a></li>
+        <li><a href="https://papers.ssrn.com/sol3/Delivery.cfm/a1c26094-39d2-4793-a112-93ce0d4d7a19-MECA.pdf?abstractid=5217731">Shiledar et al. (2025) — HD electric drayage truck degradation</a></li>
+        <li><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process">regelleistung.net — German balancing-market rules</a></li>
+      </ul>
+      <footer>Exploration file (complements <code>index.html</code>). Novelty flags are my honest read of the field as of
+        June 2026 — verify against a fresh literature search before committing, especially for the fast-moving AI ideas
+        (federated learning, RL).</footer>
+    </section>
+  </main>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad:true, theme:'neutral', securityLevel:'loose', flowchart:{ useMaxWidth:true } });
+</script>
+</body>
+</html>

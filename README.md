@@ -8,6 +8,7 @@ on **V2G / bidirectional charging for heavy-duty truck depots**.
 | File | What it is |
 |---|---|
 | [`index.html`](index.html) | **Start here.** Clearly-explained report: every diagram has *In plain words / Why it matters / Watch out / Fact / Diesel-era* boxes. Restored layered diagram, bigger ideas, FCR market facts, the test-bench answer, and the car-vs-truck literature. Open in any browser (diagrams render via Mermaid). |
+| [`novel-ideas.html`](novel-ideas.html) | **Fresh Lens** — a deliberately broad, high-novelty sweep: tools to build (5-min SoH test, profitability sandbox, learned-controller API, HIL rig, open benchmark), novel science bets (hybrid physics+AI twin, federated fleet learning, carbon-aware V2G, RL, incentive design, flexibility forecasting), and moonshots — each with honest novelty flags. |
 | [`THESIS_IDEAS_V2G_HDtrucks.md`](THESIS_IDEAS_V2G_HDtrucks.md) | Full reference with all reasoning, the literature critique, and the v3 update (§13). |
 
 ## The recommendation (grown to 9-month size)
