@@ -3,7 +3,14 @@
 Plain-language ideation for an M.Sc. thesis at **TRATON / MAN R&D** ("UnPlugged Energisers")
 on **V2G / bidirectional charging for heavy-duty truck depots**.
 
-## Files
+## Repository map
+
+| Area | What it is |
+|---|---|
+| [`energy-markets/`](energy-markets/) | **Market reference.** A sourced, seven-part explanation of how the German electricity market actually works end to end — the D-2 → D+n flow, the BRP / BSP / aggregator role model, what a "we'll be your BRP" offer really contains, the balancing products, and the complete reBAP imbalance-price formula. Every claim traced to a primary source (BNetzA decisions, the Standard-Bilanzkreisvertrag, the TSOs' own model descriptions). Includes [`energy-markets/explainer.html`](energy-markets/explainer.html), a single-file visual walkthrough with an interactive reBAP module explorer. |
+| [`apps/depot-energy-trading-simulator/`](apps/depot-energy-trading-simulator/) | **Interactive simulator (Next.js).** Play the depot owner: 10 electric trucks, pick a BRP contract, buy day-ahead, adjust intraday, live through delivery, read the settlement invoice. The imbalance price is computed with the real three-module reBAP formula; every fee and assumption is a slider. |
+
+## Thesis ideation files
 
 | File | What it is |
 |---|---|
@@ -28,3 +35,10 @@ components of one spine, anchored by your real-truck/bench **wear map (A1–A3)*
 - D1 + D2 (your decision matrix)
 - **Literature: cars vs trucks** (Dubarry, Uddin, EPRI, Shiledar drayage study)
 - The corrected bench test protocol, honest cautions, open questions, and a parked-ideas appendix
+
+## Why the market reference is here
+
+Every grid-services idea in the thesis map (C1 in particular — FCR/aFRR participation, the 1 MW floor,
+4-hour products, the aggregation maths) depends on getting the German market mechanics right. The
+`energy-markets/` folder is that foundation, written so the numbers in a business case can be defended
+clause by clause rather than asserted. The simulator is the same material made runnable.

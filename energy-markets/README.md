@@ -25,8 +25,10 @@ balance group contract. See [`docs/07-sources.md`](docs/07-sources.md).
 | 06 | [Depot participation and economics](docs/06-depot-participation-and-economics.md) | Connects all of the above to the 10-truck case. **Also the full specification of the simulator**, including every default assumption. |
 | 07 | [Sources](docs/07-sources.md) | Links, decision numbers, and how to verify each class of claim. |
 
-**Visual version:** [`explainer.html`](explainer.html) — an animated, single-file walkthrough
-of the same material. Open it in a browser; no build step, no dependencies.
+**Visual version:** [`explainer.html`](explainer.html) — a single-file, animated walkthrough of the same
+material, with an **interactive reBAP explorer**: move the system imbalance and intraday index and watch
+which of the three modules binds the price. Open it in a browser; no build step, no dependencies,
+works offline, light and dark.
 
 **Interactive version:** [`../apps/depot-energy-trading-simulator`](../apps/depot-energy-trading-simulator)
 — play the depot owner, pick a BRP, trade day-ahead and intraday, and read your invoice.
