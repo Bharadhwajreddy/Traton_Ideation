@@ -79,6 +79,13 @@ export default function Page() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
+            <a
+              href="/explainer.html"
+              className="rounded-lg px-2.5 py-1 text-[12px] font-semibold no-underline"
+              style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-secondary)" }}
+            >
+              Read the market explainer ↗
+            </a>
             <Chip tone="info">{scenario.name}</Chip>
             <Chip>{brp.name}</Chip>
             <Chip tone={result.net >= 0 ? "good" : "bad"}>
@@ -231,7 +238,8 @@ export default function Page() {
           reBAP engine implements the German TSOs&apos; model description valid from 01.11.2023 (BNetzA
           BK6-21-192); the BRP duties and deadlines come from the Standard-Bilanzkreisvertrag approved by
           BNetzA BK6-18-061. Full sourcing and every modelling assumption:{" "}
-          <span className="mono">energy-markets/docs/</span> in this repository.
+          <span className="mono">energy-markets/docs/</span> in this repository, or the visual walkthrough at{" "}
+          <a href="/explainer.html">/explainer.html</a>.
         </p>
       </footer>
     </div>

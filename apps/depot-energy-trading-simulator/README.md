@@ -25,13 +25,20 @@ The point of the thing is to make three normally-invisible mechanisms concrete:
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build
-npm run typecheck  # tsc --noEmit
+npm run dev             # http://localhost:3000
+npm run build           # production build
+npm run typecheck       # tsc --noEmit
+npm run sync:explainer  # refresh public/explainer.html from energy-markets/
 ```
 
 Node 20+ . No database, no API keys, no server state — the whole simulation runs in the
 browser.
+
+The deployment also serves the visual market explainer at **`/explainer.html`**.
+`energy-markets/explainer.html` is the source of truth for that file; edit it there and run
+`npm run sync:explainer`. The copy is committed rather than generated at build time so the
+deployment never depends on files outside this app's root directory, which Vercel does not
+include by default in a monorepo.
 
 ---
 
