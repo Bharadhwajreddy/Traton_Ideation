@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/*
+ * Palette: the dataviz skill's reference instance, validated with
+ * scripts/validate_palette.js for slots 1-3 under --pairs all, in both modes.
+ *   light  worst CVD ΔE 9.2, worst normal-vision ΔE 24.0
+ *   dark   worst CVD ΔE 9.4, worst normal-vision ΔE 20.9
+ * Light-mode aqua sits below 3:1 on the light surface, so the relief rule
+ * applies: the reBAP series is always directly labelled and a table view exists.
+ */
+
+:root {
+  color-scheme: light;
+
+  --surface-0: #f6f5f2;
+  --surface-1: #fcfcfb;
+  --surface-2: #efeeea;
+  --border: #dedcd5;
+  --border-strong: #c7c4ba;
+
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #7b7972;
+
+  --series-1: #2a78d6; /* day-ahead */
+  --series-2: #eb6834; /* intraday */
+  --series-3: #1baf7a; /* reBAP */
+
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+
+  --grid: #e6e4dd;
+  --accent-soft: #e8f0fc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --surface-2: #242422;
+    --border: #33332f;
+    --border-strong: #4a4a45;
+
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #908e85;
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+
+    --grid: #2c2c29;
+    --accent-soft: #15243a;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --surface-0: #121211;
+  --surface-1: #1a1a19;
+  --surface-2: #242422;
+  --border: #33332f;
+  --border-strong: #4a4a45;
+
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #908e85;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+
+  --grid: #2c2c29;
+  --accent-soft: #15243a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.hairline {
+  border-color: var(--border);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: -5.5px;
+  border-radius: 50%;
+  background: var(--series-1);
+  border: 2px solid var(--surface-1);
+  box-shadow: 0 0 0 1px var(--border-strong);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--series-1);
+  border: 2px solid var(--surface-1);
+}
+
+input[type="number"],
+select {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+table.data th,
+table.data td {
+  padding: 5px 8px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+table.data th:first-child,
+table.data td:first-child {
+  text-align: left;
+}
+/* Cells that carry prose rather than a value must be allowed to wrap. */
+table.data td.wrap,
+table.data th.wrap {
+  white-space: normal;
+  min-width: 130px;
+}
+.scroll-x {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table.data th {
+  color: var(--text-secondary);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--surface-1);
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: var(--text-muted);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+.recharts-curve.recharts-tooltip-cursor {
+  stroke: var(--border-strong);
+}
