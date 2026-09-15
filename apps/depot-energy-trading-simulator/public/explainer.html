@@ -123,6 +123,22 @@ nav.toc a{flex:0 0 auto;padding:6px 11px;border-radius:8px;font-size:12.5px;font
 nav.toc a:hover{background:var(--panel-2);color:var(--ink)}
 footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 .two-col{columns:2;column-gap:26px}
+.bigidea{margin-top:24px;padding:20px 22px;border-radius:14px;background:var(--panel);
+  border:1px solid var(--line);border-left:5px solid var(--s1);font-size:clamp(15px,2vw,17px)}
+.analogy{margin-top:18px;padding:16px 18px;border-radius:12px;background:var(--panel-2);
+  border:1px dashed var(--line-2);font-size:14px;color:var(--ink-2)}
+.analogy strong{color:var(--ink)}
+.worked{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--acc,var(--s1));
+  border-radius:0 12px 12px 0;padding:16px 18px;min-width:0}
+.worked p{font-size:14px;color:var(--ink-2)}
+.worked-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px}
+.worked-amt{font:800 20px/1 ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.calc{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.85;
+  background:var(--panel-2);border-radius:9px;padding:11px 13px;margin:12px 0;color:var(--ink)}
+.calc strong{color:var(--s1)}
+.worked-note{border-top:1px solid var(--line);padding-top:10px;margin-top:12px;font-size:13px}
+.tl-card p.who{margin:.35em 0 0;font-size:13px;color:var(--ink-3)}
+.tl-card p.who strong{color:var(--ink-2)}
 @media(max-width:720px){.two-col{columns:1}.tl-row{grid-template-columns:1fr;gap:6px}}
 </style>
 </head>
@@ -135,9 +151,13 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <p class="lede rv">
       There is a market operator that clears day-ahead and intraday. There is a TSO that does
       balancing. There is a company offering to &ldquo;be your BRP&rdquo;. Those three sentences
-      are all true and none of them tells you how the pieces fit together. This page traces one
-      megawatt-hour from the forward market to the monthly invoice, names every counterparty,
-      and quotes the clause or the formula behind each claim.
+      are all true and none of them tells you how the pieces fit together.
+    </p>
+    <p class="lede rv">
+      This page starts from the one physical fact that forces all of it to exist, explains
+      <strong>what ancillary services actually are and how balancing sits inside them</strong>, then traces a single
+      megawatt-hour from the forward market to the monthly invoice — naming every counterparty and quoting the
+      clause or the formula behind each claim. No prior knowledge assumed.
     </p>
     <div class="rv" style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px">
       <span class="chip b">EB GL 2017/2195</span>
@@ -151,23 +171,318 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 
 <nav class="toc">
   <div class="wrap"><div class="scroll">
-    <a href="#vocab">1 · The vocabulary</a>
-    <a href="#money">2 · Three money flows</a>
-    <a href="#timeline">3 · The timeline</a>
-    <a href="#roles">4 · Who is who</a>
-    <a href="#brp">5 · What a BRP does</a>
-    <a href="#rebap">6 · The reBAP</a>
-    <a href="#oneprice">7 · One price vs two</a>
-    <a href="#depot">8 · Your depot</a>
+    <a href="#intro">1 · Start here</a>
+    <a href="#vocab">2 · The vocabulary</a>
+    <a href="#money">3 · The three payments</a>
+    <a href="#timeline">4 · The timeline</a>
+    <a href="#roles">5 · Who is who</a>
+    <a href="#brp">6 · What a BRP does</a>
+    <a href="#rebap">7 · The reBAP</a>
+    <a href="#oneprice">8 · One price vs two</a>
+    <a href="#depot">9 · Your depot</a>
   </div></div>
 </nav>
 
-<!-- ================= 1 ================= -->
+<!-- ================= 1 · INTRO ================= -->
+<section id="intro">
+  <div class="wrap">
+    <div class="secnum rv">Section 1 · start here</div>
+    <h2 class="rv">What the grid actually needs, and who sells it</h2>
+    <p class="sub rv">
+      Before any of the market machinery makes sense, it helps to know what problem it is all solving.
+      There is only one, and it is brutally simple.
+    </p>
+
+    <div class="bigidea rv">
+      <p style="margin:0">
+        <strong>At every instant, the amount of electricity going into the grid must equal the amount coming out.</strong>
+        Not on average over the day. Not roughly. At every instant.
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Electricity is not stored in the wires. If consumption exceeds generation, the shortfall is taken out of the
+        rotating mass of every generator on the system, they slow down, and the grid frequency falls below 50 Hz. If
+        generation exceeds consumption, frequency rises. Drift far enough — roughly ±0.2 Hz before things get serious,
+        ±2.5 Hz before equipment starts disconnecting itself — and the system begins to come apart.
+      </p>
+    </div>
+
+    <p class="rv" style="margin-top:22px">Two very different jobs follow from that one sentence, and almost all the confusion in this area comes from mixing them up.</p>
+
+    <div class="grid g2 rv" style="margin-top:14px">
+      <div class="panel" style="border-color:var(--s1)">
+        <span class="chip b">Job 1</span>
+        <h3 style="margin-top:10px">Get the plan roughly right, in advance</h3>
+        <p style="font-size:14px;color:var(--ink-2)">
+          Thousands of buyers and sellers agree in advance who will produce what and who will consume what, slot by
+          slot. By the time delivery arrives, the <em>plan</em> already balances on paper.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          This is the <strong>energy market</strong> — the day-ahead auction and the intraday market. It is a
+          normal commodity market: you buy a thing, you pay for the thing, in €/MWh.
+        </p>
+      </div>
+      <div class="panel" style="border-color:var(--s3)">
+        <span class="chip g">Job 2</span>
+        <h3 style="margin-top:10px">Fix whatever the plan got wrong, in real time</h3>
+        <p style="font-size:14px;color:var(--ink-2)">
+          No plan is ever right. Wind forecasts miss. A power station trips. A truck comes back from its shift 40
+          minutes late. Somebody has to hold equipment on standby, under contract, ready to move within seconds.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          This is <strong>where ancillary services live</strong>. And it is a different kind of purchase: you are
+          not buying energy, you are buying <em>capability</em>.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="rv" style="margin-top:38px">So what exactly is an &ldquo;ancillary service&rdquo;?</h3>
+    <p class="rv" style="max-width:72ch">
+      An ancillary service is <strong>anything the system operator needs in order to run the grid that is not the
+      selling of energy itself</strong>. The EU definition (Directive 2019/944, Art. 2(48)) is deliberately broad:
+      <em>&ldquo;a service necessary for the operation of a transmission or distribution system&rdquo;</em>.
+    </p>
+
+    <div class="analogy rv">
+      <span class="chip">an analogy</span>
+      <p style="margin:.7em 0 0">
+        An airline sells you a <strong>seat</strong>. That is its product, and it is what appears on your ticket.
+        But it cannot fly without air-traffic control, de-icing crews, a standby aircraft at the hub, ground power
+        units and a fire service on the runway. Nobody buys a ticket for de-icing. It still has to exist, someone
+        still has to be under contract to provide it, and someone still has to pay for it.
+      </p>
+      <p style="margin:.7em 0 0">
+        <strong>Energy is the seat. Ancillary services are everything else that makes the flight possible.</strong>
+      </p>
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">The five families of ancillary service</h3>
+    <p class="rv" style="max-width:72ch">
+      They are not variations on a theme. They solve genuinely different physical problems, and — this is the part
+      that matters — <strong>they are bought in genuinely different ways.</strong>
+    </p>
+
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+      <table>
+        <thead><tr><th>Family</th><th>Problem it solves</th><th>How it is bought in Germany</th><th>Is it a market?</th><th>Can a depot sell it?</th></tr></thead>
+        <tbody>
+          <tr style="background:color-mix(in srgb,var(--s3) 7%,transparent)">
+            <td><strong style="color:var(--s3)">1 · Frequency / active power</strong><br><span class="chip g">= BALANCING</span></td>
+            <td>Generation ≠ consumption, right now</td>
+            <td>Daily competitive auctions on <code>regelleistung.net</code>, plus a continuous energy market</td>
+            <td><strong style="color:var(--good)">Yes — a real one</strong></td>
+            <td><strong>Yes</strong>, via prequalification or an aggregator&rsquo;s pool</td>
+          </tr>
+          <tr>
+            <td><strong>2 · Voltage / reactive power</strong></td>
+            <td>Voltage drifting outside limits along the lines</td>
+            <td>Mostly a <strong>grid-code obligation</strong> on connected generators, plus some bilateral contracts</td>
+            <td>No — you comply, you don&rsquo;t bid</td>
+            <td>No, not meaningfully</td>
+          </tr>
+          <tr>
+            <td><strong>3 · Restoration / black start</strong></td>
+            <td>Restarting the grid after a total blackout</td>
+            <td><strong>Bilateral contracts</strong>, a handful of plants, multi-year</td>
+            <td>No — negotiated</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>4 · Inertia &amp; system strength</strong></td>
+            <td>Slowing the <em>rate</em> at which frequency moves</td>
+            <td><strong>Not procured at all</strong> in Germany. It is a by-product of spinning machines. (The Nordics buy FFR; Great Britain buys stability contracts.)</td>
+            <td>No market exists</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>5 · Congestion management</strong></td>
+            <td>A line is overloaded even though the system is balanced</td>
+            <td><strong>Redispatch 2.0</strong>, § 13a EnWG. You are <em>instructed</em> to change output and compensated at cost.</td>
+            <td><strong style="color:var(--crit)">Explicitly not a market</strong>, by law</td>
+            <td>It applies <em>to</em> you as a risk, not as a revenue</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="rv" style="margin-top:38px">Now the actual question: is the balancing market the same as the ancillary services market?</h3>
+    <p class="rv" style="max-width:72ch">
+      This question gets asked constantly and the honest answer has three parts. The short version is at the bottom
+      if you want to skip ahead.
+    </p>
+
+    <div class="grid rv" style="margin-top:16px;gap:14px">
+      <div class="panel" style="border-left:4px solid var(--s1)">
+        <h3>a · Balancing is <em>inside</em> ancillary services, not beside them</h3>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:8px">
+          They are not two categories to compare. Balancing is <strong>family 1 of the five above</strong>.
+          Every balancing product (FCR, aFRR, mFRR) is an ancillary service. Most ancillary services are not
+          balancing.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          So the relationship is <strong>containment</strong>, not rivalry — the same relationship as
+          &ldquo;cardiology&rdquo; to &ldquo;medicine&rdquo;. Asking how they differ is asking the wrong shape of
+          question.
+        </p>
+      </div>
+
+      <div class="panel" style="border-left:4px solid var(--s2)">
+        <h3>b · There is no such thing as &ldquo;the ancillary services market&rdquo;</h3>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:8px">
+          This is the part that actually resolves the confusion. <strong>&ldquo;Ancillary services&rdquo; is a
+          category, not a marketplace.</strong> Look down the fourth column of the table above: one family is
+          auctioned, one is a compliance obligation, one is negotiated bilaterally, one is not bought at all, and
+          one is a legal instruction you cannot refuse.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          There is no single venue, no single price, no single contract, and no single set of participants.
+          <strong>Balancing is the only family of the five that is organised as a competitive market in Germany.</strong>
+        </p>
+        <div class="analogy" style="margin-top:12px">
+          <span class="chip">put another way</span>
+          <p style="margin:.6em 0 0">
+            Asking &ldquo;how does the ancillary services market differ from the balancing market?&rdquo; is like
+            asking how <em>the transport market</em> differs from <em>the taxi market</em>. The taxi market is a
+            real, definable thing with prices and drivers you can hail. &ldquo;The transport market&rdquo; is an
+            umbrella containing taxis, buses, freight rail and bicycles — organised in completely different ways,
+            with different regulators and different money. You cannot buy a ticket for &ldquo;transport&rdquo;.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel" style="border-left:4px solid var(--s3)">
+        <h3>c · Two things make balancing unusual <em>within</em> the family</h3>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:8px">
+          This is the &ldquo;is there anything additional in balancing?&rdquo; part of your question. Yes — two things,
+          and neither has any equivalent in the other four families.
+        </p>
+        <ol style="font-size:14px;color:var(--ink-2);padding-left:20px">
+          <li style="margin-bottom:10px">
+            <strong>It is split into two separate markets for the same physical thing.</strong> You are paid once
+            in <strong>€/MW</strong> for <em>standing ready</em> (balancing capacity), and again in
+            <strong>€/MWh</strong> if you are <em>actually called</em> (balancing energy). Two auctions, two prices,
+            two merit orders, one asset. Nothing else in ancillary services works that way — a black-start contract
+            is a single retainer, and reactive power is simply a condition of being connected.
+          </li>
+          <li>
+            <strong>It has a financial twin that applies to everybody.</strong> Balancing is the only family that
+            produces an <strong>imbalance price</strong> — the reBAP — which is charged to or paid to
+            <em>every single market participant</em>, whether or not they have ever sold an ancillary service in
+            their life. Nobody is ever &ldquo;exposed to the black-start price&rdquo;. Everybody, always, is exposed
+            to the imbalance price.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:26px"><div class="scroll">
+      <svg viewBox="0 0 900 400" role="img" aria-label="Hierarchy: the grid's needs split into energy and ancillary services; ancillary services split into five families, of which only balancing is a competitive market, and balancing itself splits into capacity, energy and imbalance settlement">
+        <rect x="300" y="8" width="300" height="46" rx="10" fill="var(--panel)" stroke="var(--line-2)" stroke-width="1.5"/>
+        <text class="svgtxt" x="450" y="30" text-anchor="middle">WHAT THE GRID NEEDS</text>
+        <text class="svgtxt sm" x="450" y="46" text-anchor="middle">generation = consumption, at every instant</text>
+
+        <path d="M400 56 L 250 86" stroke="var(--line-2)" stroke-width="1.5"/>
+        <path d="M520 56 L 660 86" stroke="var(--line-2)" stroke-width="1.5"/>
+
+        <rect x="80" y="88" width="340" height="52" rx="10" fill="var(--panel)" stroke="var(--s1)" stroke-width="2"/>
+        <text class="svgtxt" x="250" y="110" text-anchor="middle" fill="var(--s1)">ENERGY — the plan, bought in advance</text>
+        <text class="svgtxt sm" x="250" y="128" text-anchor="middle">day-ahead auction + intraday · €/MWh · run by exchanges</text>
+
+        <rect x="490" y="88" width="340" height="52" rx="10" fill="var(--panel)" stroke="var(--s3)" stroke-width="2"/>
+        <text class="svgtxt" x="660" y="110" text-anchor="middle" fill="var(--s3)">ANCILLARY SERVICES — the capability</text>
+        <text class="svgtxt sm" x="660" y="128" text-anchor="middle">a CATEGORY, not a marketplace · run by the TSO</text>
+
+        <path d="M660 142 L 660 156" stroke="var(--line-2)" stroke-width="1.5"/>
+        <path d="M152 156 L 1168 156" stroke="none"/>
+        <path d="M150 170 L 810 170" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <path d="M660 156 L 660 170" stroke="var(--line-2)" stroke-width="1.5"/>
+
+        <g>
+          <path d="M150 170 L 150 186" stroke="var(--line-2)" stroke-width="1.2"/>
+          <rect x="60" y="186" width="180" height="62" rx="8" fill="color-mix(in srgb,var(--s3) 14%,transparent)" stroke="var(--s3)" stroke-width="2"/>
+          <text class="svgtxt" x="150" y="208" text-anchor="middle" fill="var(--s3)">1 · BALANCING</text>
+          <text class="svgtxt sm" x="150" y="226" text-anchor="middle">frequency / active power</text>
+          <text class="svgtxt sm" x="150" y="242" text-anchor="middle" font-weight="700">a competitive market ✓</text>
+
+          <path d="M320 170 L 320 186" stroke="var(--line-2)" stroke-width="1.2"/>
+          <rect x="256" y="186" width="130" height="62" rx="8" fill="var(--panel)" stroke="var(--line-2)"/>
+          <text class="svgtxt" x="321" y="208" text-anchor="middle">2 · Voltage</text>
+          <text class="svgtxt sm" x="321" y="228" text-anchor="middle">grid-code</text>
+          <text class="svgtxt sm" x="321" y="242" text-anchor="middle">obligation</text>
+
+          <path d="M470 170 L 470 186" stroke="var(--line-2)" stroke-width="1.2"/>
+          <rect x="402" y="186" width="136" height="62" rx="8" fill="var(--panel)" stroke="var(--line-2)"/>
+          <text class="svgtxt" x="470" y="208" text-anchor="middle">3 · Black start</text>
+          <text class="svgtxt sm" x="470" y="228" text-anchor="middle">bilateral</text>
+          <text class="svgtxt sm" x="470" y="242" text-anchor="middle">contracts</text>
+
+          <path d="M620 170 L 620 186" stroke="var(--line-2)" stroke-width="1.2"/>
+          <rect x="554" y="186" width="132" height="62" rx="8" fill="var(--panel)" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+          <text class="svgtxt" x="620" y="208" text-anchor="middle">4 · Inertia</text>
+          <text class="svgtxt sm" x="620" y="228" text-anchor="middle">not procured</text>
+          <text class="svgtxt sm" x="620" y="242" text-anchor="middle">in Germany</text>
+
+          <path d="M780 170 L 780 186" stroke="var(--line-2)" stroke-width="1.2"/>
+          <rect x="702" y="186" width="156" height="62" rx="8" fill="color-mix(in srgb,var(--serious) 12%,transparent)" stroke="var(--serious)"/>
+          <text class="svgtxt" x="780" y="208" text-anchor="middle" fill="var(--serious)">5 · Congestion</text>
+          <text class="svgtxt sm" x="780" y="228" text-anchor="middle">Redispatch 2.0 —</text>
+          <text class="svgtxt sm" x="780" y="242" text-anchor="middle">mandatory instruction</text>
+        </g>
+
+        <path d="M150 250 L 150 272" stroke="var(--s3)" stroke-width="1.5"/>
+        <path d="M150 272 L 730 272" stroke="var(--s3)" stroke-width="1.5"/>
+        <path d="M150 272 L 150 292" stroke="var(--s3)" stroke-width="1.5"/>
+        <path d="M440 272 L 440 292" stroke="var(--s3)" stroke-width="1.5"/>
+        <path d="M730 272 L 730 292" stroke="var(--s3)" stroke-width="1.5"/>
+
+        <rect x="46" y="292" width="208" height="70" rx="9" fill="var(--panel)" stroke="var(--s3)"/>
+        <text class="svgtxt" x="150" y="314" text-anchor="middle">Balancing CAPACITY</text>
+        <text class="svgtxt sm" x="150" y="332" text-anchor="middle">€/MW · paid to stand ready</text>
+        <text class="svgtxt sm" x="150" y="350" text-anchor="middle">auctioned the day before</text>
+
+        <rect x="336" y="292" width="208" height="70" rx="9" fill="var(--panel)" stroke="var(--s3)"/>
+        <text class="svgtxt" x="440" y="314" text-anchor="middle">Balancing ENERGY</text>
+        <text class="svgtxt sm" x="440" y="332" text-anchor="middle">€/MWh · paid when called</text>
+        <text class="svgtxt sm" x="440" y="350" text-anchor="middle">marginal price, in real time</text>
+
+        <rect x="626" y="292" width="208" height="70" rx="9" fill="var(--panel)" stroke="var(--s1)" stroke-width="2"/>
+        <text class="svgtxt" x="730" y="314" text-anchor="middle" fill="var(--s1)">IMBALANCE settlement</text>
+        <text class="svgtxt sm" x="730" y="332" text-anchor="middle">€/MWh of deviation · reBAP</text>
+        <text class="svgtxt sm" x="730" y="350" text-anchor="middle" font-weight="700">applies to EVERYONE</text>
+
+        <text class="svgtxt sm" x="450" y="386" text-anchor="middle">Only the left branch is a market you can win. The right box is one you are in whether you like it or not.</text>
+      </svg>
+    </div></div>
+
+    <h3 class="rv" style="margin-top:34px">What this means if someone offers you &ldquo;ancillary services revenue&rdquo;</h3>
+    <div class="note warn rv" style="margin-top:12px">
+      In Germany, for a truck depot, <strong>the only genuinely sellable ancillary services are the three balancing
+      products</strong> — FCR, aFRR and mFRR. Voltage support and black start are not open to you. Inertia is not
+      bought. Redispatch is something that happens <em>to</em> you. So when a vendor says &ldquo;ancillary services
+      revenue&rdquo;, the correct follow-up question is: <strong>which product, which direction, and which of the
+      three payments are you quoting?</strong> If they cannot answer that in one sentence, the number is not real.
+    </div>
+
+    <div class="panel rv" style="margin-top:26px;border-color:var(--s1)">
+      <h3>The three sentences worth memorising</h3>
+      <ol style="font-size:15px;color:var(--ink-2);padding-left:22px;margin-top:10px;line-height:1.75">
+        <li><strong>Ancillary services</strong> = everything the TSO needs that is not the selling of energy.
+          It is a <em>category</em>, not a marketplace.</li>
+        <li><strong>Balancing</strong> = the frequency slice of that category. It is the one slice that really is
+          a competitive market — in fact <em>two</em> markets (capacity and energy), plus a settlement process
+          (imbalance) that catches everyone.</li>
+        <li><strong>Most of the rest of the category is not a market at all</strong> — it is obligation,
+          bilateral contract, or a legal instruction you cannot refuse.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2 ================= -->
 <section id="vocab">
   <div class="wrap">
-    <div class="secnum rv">Section 1</div>
+    <div class="secnum rv">Section 2</div>
     <h2 class="rv">Four words that get used loosely and mean precise things</h2>
-    <p class="sub rv">Most of the confusion in this area is vocabulary, not economics. Get these four right and the rest follows.</p>
+    <p class="sub rv">Section 1 explained the shape of it. This is the compact glossary — the four terms that get swapped for each other in every conversation, and how to tell them apart on the spot.</p>
 
     <div class="grid g2 rv" style="margin-top:24px">
       <div class="panel">
@@ -192,83 +507,266 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </div>
     </div>
 
-    <div class="rv" style="margin-top:22px">
-      <div class="scroll"><svg viewBox="0 0 900 300" role="img" aria-label="Ancillary services split into frequency (balancing), voltage, restoration, inertia and congestion management">
-        <rect x="8" y="8" width="884" height="284" rx="12" fill="none" stroke="var(--line-2)" stroke-dasharray="4 4"/>
-        <text class="svgtxt lb" x="24" y="32" fill="var(--ink-3)">ANCILLARY SERVICES · SYSTEMDIENSTLEISTUNGEN</text>
-
-        <rect x="24" y="52" width="250" height="220" rx="10" fill="color-mix(in srgb,var(--s3) 12%,transparent)" stroke="var(--s3)" stroke-width="1.5"/>
-        <text class="svgtxt" x="40" y="76" fill="var(--s3)">Frequency / active power</text>
-        <text class="svgtxt lb" x="40" y="96" fill="var(--s3)">= BALANCING</text>
-        <g>
-          <rect x="40" y="112" width="218" height="30" rx="7" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="52" y="131">FCR</text><text class="svgtxt sm" x="110" y="131">containment · 30 s</text>
-          <rect x="40" y="148" width="218" height="30" rx="7" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="52" y="167">aFRR</text><text class="svgtxt sm" x="110" y="167">automatic · 5 min</text>
-          <rect x="40" y="184" width="218" height="30" rx="7" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="52" y="203">mFRR</text><text class="svgtxt sm" x="110" y="203">manual · 12.5 min</text>
-          <rect x="40" y="220" width="218" height="30" rx="7" fill="none" stroke="var(--line-2)" stroke-dasharray="3 3"/>
-          <text class="svgtxt sm" x="52" y="239">RR — not used in Germany</text>
-        </g>
-
-        <g>
-          <rect x="300" y="52" width="270" height="52" rx="9" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="316" y="75">Voltage control / reactive power</text>
-          <text class="svgtxt sm" x="316" y="92">regulated obligation + bilateral · not a market</text>
-
-          <rect x="300" y="112" width="270" height="52" rx="9" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="316" y="135">System restoration / black start</text>
-          <text class="svgtxt sm" x="316" y="152">bilateral contracts</text>
-
-          <rect x="300" y="172" width="270" height="52" rx="9" fill="var(--panel)" stroke="var(--line)"/>
-          <text class="svgtxt" x="316" y="195">Inertia / fast frequency response</text>
-          <text class="svgtxt sm" x="316" y="212">no dedicated German market</text>
-        </g>
-
-        <rect x="596" y="52" width="280" height="172" rx="9" fill="color-mix(in srgb,var(--serious) 10%,transparent)" stroke="var(--serious)"/>
-        <text class="svgtxt" x="612" y="75" fill="var(--serious)">Congestion management</text>
-        <text class="svgtxt lb" x="612" y="95" fill="var(--serious)">REDISPATCH 2.0 · § 13a EnWG</text>
-        <text class="svgtxt sm" x="612" y="120">Mandatory and cost-based.</text>
-        <text class="svgtxt sm" x="612" y="138">Plants are directed, not asked to bid.</text>
-        <text class="svgtxt sm" x="612" y="156">Compensated at cost, not market value.</text>
-        <text class="svgtxt sm" x="612" y="182">For a depot this is a RISK,</text>
-        <text class="svgtxt sm" x="612" y="200">not a revenue.</text>
-
-        <text class="svgtxt sm" x="300" y="252">Every BSP is an ancillary-service provider.</text>
-        <text class="svgtxt" x="300" y="272">Most ancillary-service providers are not BSPs.</text>
-      </svg></div>
+    <div class="rv panel" style="margin-top:24px">
+      <h3>How to tell which one somebody means</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-top:8px">
+        In a real conversation these four words get swapped for each other constantly. Three questions settle it
+        every time:
+      </p>
+      <div class="scroll" style="margin-top:10px"><table>
+        <thead><tr><th>Ask</th><th>If the answer is…</th><th>…then they mean</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>&ldquo;Which product?&rdquo;</strong></td>
+            <td>FCR, aFRR or mFRR</td>
+            <td><strong style="color:var(--s3)">balancing</strong> — a real market you can bid into</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>reactive power, black start, inertia, redispatch</td>
+            <td>an <strong>ancillary service that is not balancing</strong> — and almost certainly not a market</td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Am I paid per MW or per MWh?&rdquo;</strong></td>
+            <td>per MW, for being available</td>
+            <td><strong style="color:var(--s2)">balancing capacity</strong> · § 3 below</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>per MWh, only when called</td>
+            <td><strong style="color:var(--s2)">balancing energy</strong> · § 3 below</td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Do I have to be prequalified?&rdquo;</strong></td>
+            <td>yes, with a service run and an IT link to the TSO</td>
+            <td>you are being asked to become a <strong>BSP</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>no — it just appears on my monthly bill</td>
+            <td><strong style="color:var(--s1)">imbalance settlement</strong>, which reaches you through your BRP</td>
+          </tr>
+        </tbody>
+      </table></div>
+      <div class="note" style="margin-top:14px">
+        <strong>The compact version.</strong> Balancing is not an alternative to ancillary services — it is a slice
+        of them. FCR/aFRR/mFRR are not alternatives to balancing — they are the products it is delivered through.
+        And imbalance settlement is not a balancing product at all: it is the financial consequence of everyone
+        else&rsquo;s balancing, charged to you.
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 2 ================= -->
+<!-- ================= 3 ================= -->
 <section id="money">
   <div class="wrap">
-    <div class="secnum rv">Section 2</div>
-    <h2 class="rv">One megawatt-hour, three payments, two counterparties</h2>
-    <p class="sub rv">This is the single most useful idea on the page. Confusing these three is the number-one source of muddle in every conversation about flexibility revenue.</p>
+    <div class="secnum rv">Section 3</div>
+    <h2 class="rv">The three payments — and why there have to be three</h2>
+    <p class="sub rv">
+      The same megawatt-hour can be paid for three times, under three contracts, with two different counterparties.
+      That sounds like a swindle until you see what each payment is actually for. Then it becomes obvious.
+    </p>
 
-    <div class="rv" style="margin-top:24px"><div class="scroll">
-      <svg viewBox="0 0 900 340" role="img" aria-label="Three separate money flows: balancing capacity and balancing energy to the BSP, imbalance energy between TSO and BRP">
+    <div class="analogy rv" style="margin-top:22px">
+      <span class="chip">the intuition, in one picture</span>
+      <p style="margin:.7em 0 0">
+        Think of a town that contracts a private <strong>fire brigade</strong>.
+      </p>
+      <ul style="margin:.6em 0 0;padding-left:20px">
+        <li><strong>The retainer.</strong> The town pays a fixed monthly fee just to have the crew sitting in the
+          station, trained, with the engine fuelled. They are paid this <em>whether or not there is a fire</em>.
+          That is <strong>balancing capacity</strong>.</li>
+        <li><strong>The callout.</strong> When there is actually a fire, the brigade is paid again — per hour on
+          site, for the water and the crew. Only if they are called. That is <strong>balancing energy</strong>.</li>
+        <li><strong>The insurance excess.</strong> Completely separately, if <em>your</em> building was the one that
+          caught fire because you left a heater on, you pay toward the damage — regardless of whether you have any
+          relationship with the fire brigade at all. That is <strong>imbalance settlement</strong>.</li>
+      </ul>
+      <p style="margin:.7em 0 0">
+        The first two go to the people with the equipment. The third is charged to whoever caused the problem. They
+        are unrelated contracts that happen to concern the same event.
+      </p>
+    </div>
+
+    <h3 class="rv" style="margin-top:36px">The same thing, in market terms</h3>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+      <table>
+        <thead><tr><th>#</th><th>What it pays for</th><th>German term</th><th>Unit</th><th>Paid to</th><th>Decided when</th><th>Does energy move?</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--s2)">1</strong></td>
+            <td><strong>Being ready.</strong> Holding your asset available to move on command for a 4-hour block.</td>
+            <td>Regelleistung<br><span class="chip">balancing capacity</span></td>
+            <td class="mono">€/MW</td>
+            <td><strong style="color:var(--s2)">the BSP</strong></td>
+            <td>D-1 auction</td>
+            <td><strong>No.</strong> You are selling an option.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--s2)">2</strong></td>
+            <td><strong>Actually moving.</strong> The TSO exercises the option and your asset changes output.</td>
+            <td>Regelarbeit<br><span class="chip">balancing energy</span></td>
+            <td class="mono">€/MWh</td>
+            <td><strong style="color:var(--s2)">the BSP</strong></td>
+            <td>real time, at the marginal price</td>
+            <td><strong>Yes.</strong> Real electrons.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--s1)">3</strong></td>
+            <td><strong>The gap between promise and reality.</strong> Your balance group said it would draw X and drew Y.</td>
+            <td>Ausgleichsenergie<br><span class="chip">imbalance energy</span></td>
+            <td class="mono">€/MWh</td>
+            <td><strong style="color:var(--s1)">the BRP</strong> — in either direction</td>
+            <td>ex post, invoiced monthly</td>
+            <td><strong>No.</strong> Pure financial transfer.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g3 rv" style="margin-top:18px">
+      <div class="panel"><span class="chip o">1 + 2 go to the BSP</span>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:10px">The <strong>technical</strong> role. Owns or controls
+        equipment that can change setpoint on command. Must pass prequalification with the TSO. These two payments are
+        <strong>rewards for being useful</strong> — you bid, you win, you deliver.</p></div>
+      <div class="panel"><span class="chip b">3 goes to or from the BRP</span>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:10px">The <strong>financial</strong> role. Owns nothing.
+        This is <strong>not a reward and not a penalty — it is a price.</strong> It reprices your deviation at what
+        energy was actually worth at that moment, in whichever direction the deviation pointed.</p></div>
+      <div class="panel"><span class="chip r">Why it matters</span>
+        <p style="font-size:14px;color:var(--ink-2);margin-top:10px">A pitch quoting &ldquo;€/MW of aFRR&rdquo; and a
+        business case quoting &ldquo;imbalance savings&rdquo; are describing <strong>different contracts with
+        different counterparties</strong>. Adding them together without checking is how flexibility business cases
+        get built twice on the same megawatt.</p></div>
+    </div>
+
+    <h3 class="rv" style="margin-top:40px">A worked example: one Tuesday at Depot GmbH</h3>
+    <p class="rv" style="max-width:72ch">
+      Ten electric trucks, a 1.6 MW grid connection. The depot sits inside a service BRP&rsquo;s balance group and
+      has joined an aggregator&rsquo;s prequalified aFRR pool. Here is every euro that moves, and who it moves between.
+      Watch how the three payments never touch each other.
+    </p>
+
+    <div class="grid rv" style="margin-top:16px;gap:14px">
+      <div class="worked" style="--acc:var(--s2)">
+        <div class="worked-h"><span class="chip o">Payment 1 · capacity</span><span class="worked-amt" style="color:var(--good)">+ €48.00</span></div>
+        <p>
+          At <strong>09:00 on Monday</strong> the aggregator bids <strong>1 MW of negative aFRR</strong> — a promise
+          that the depot can <em>charge harder than planned</em> on command — for the 00:00–04:00 block on Tuesday.
+          The bid clears. The depot has now sold an option.
+        </p>
+        <p class="calc">1 MW × 4 hours × 12 €/MW·h = <strong>€48.00</strong></p>
+        <p class="worked-note">
+          Paid by the <strong>TSO</strong> to the <strong>BSP</strong> (the aggregator), who passes on its share.
+          Paid <em>whether or not the depot is ever called</em>. If Tuesday night is uneventful, this €48 is the
+          entire revenue — and the depot did nothing but keep chargers free.
+        </p>
+      </div>
+
+      <div class="worked" style="--acc:var(--s2)">
+        <div class="worked-h"><span class="chip o">Payment 2 · energy</span><span class="worked-amt" style="color:var(--good)">+ €5.10 net</span></div>
+        <p>
+          At <strong>01:15 Tuesday</strong> the grid is over-supplied — too much wind. PICASSO calls the pool for
+          negative aFRR. The depot&rsquo;s chargers ramp up for half an hour, absorbing <strong>0.3 MWh</strong> more
+          than planned.
+        </p>
+        <p class="calc">
+          0.3 MWh absorbed at the negative-direction marginal price of 45 €/MWh → the depot <strong>pays €13.50</strong>
+          for that energy.<br>
+          But it would otherwise have bought those 0.3 MWh on the intraday market at 62 €/MWh = €18.60.<br>
+          Net benefit = 18.60 − 13.50 = <strong>€5.10</strong>
+        </p>
+        <p class="worked-note">
+          This is the bit people get backwards. In the <em>negative</em> direction you are being paid to
+          <strong>consume</strong>, so the cash flow looks like buying energy cheaply rather than like receiving a
+          cheque. The energy is also <strong>neutralised in the balance group</strong>, so it does <em>not</em> show
+          up as an imbalance — you were told to do it.
+        </p>
+      </div>
+
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">Payment 3 · imbalance</span><span class="worked-amt" style="color:var(--crit)">− €8.80</span></div>
+        <p>
+          Entirely separately: at <strong>16:45</strong> a truck comes back from its shift 40 minutes late with a
+          lower state of charge than forecast. To make its 06:00 departure the next morning it has to start charging
+          immediately. The depot draws <strong>0.08 MWh more</strong> in that quarter hour than its schedule said.
+        </p>
+        <p class="calc">
+          The balance group is <strong>short</strong> by 0.08 MWh · the reBAP that quarter hour is
+          <strong>110 €/MWh</strong> · positive price + short group → <strong>you pay</strong><br>
+          0.08 MWh × 110 €/MWh = <strong>€8.80</strong>
+        </p>
+        <p class="worked-note">
+          Nobody called you. Nobody bought anything from you. The TSO simply observed that your group promised one
+          thing and did another, and priced the difference at what energy was worth at that instant. This payment
+          would have happened <strong>even if the depot had never heard of the balancing market</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="note rv" style="margin-top:18px">
+      <strong>Three lines, three contracts, one Tuesday.</strong> Payments 1 and 2 arrive through the aggregator
+      acting as BSP. Payment 3 arrives as a line on the BRP&rsquo;s monthly invoice. They are settled by different
+      processes, on different timescales, under different agreements — and a depot can be exposed to payment 3
+      while having no relationship at all with payments 1 and 2.
+    </div>
+
+    <h3 class="rv" style="margin-top:40px">Payment 3 is the one that behaves strangely</h3>
+    <p class="rv" style="max-width:72ch">
+      Payments 1 and 2 are intuitive: do a thing, get paid. Payment 3 is the one that catches people out, because
+      <strong>it can go either way</strong>. Whether you pay or get paid depends on <em>two</em> signs — the sign of
+      the price, and the sign of your own deviation.
+    </p>
+
+    <div class="grid g2 rv" style="margin-top:14px">
+      <div class="panel" style="padding:0">
+        <table>
+          <thead><tr><th>reBAP</th><th>Your balance group</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>positive</td><td><strong>short</strong> — drew more than promised</td><td><strong style="color:var(--crit)">you pay</strong></td></tr>
+            <tr><td>positive</td><td><strong>long</strong> — drew less than promised</td><td><strong style="color:var(--good)">you are paid</strong></td></tr>
+            <tr><td>negative</td><td><strong>short</strong></td><td><strong style="color:var(--good)">you are paid</strong></td></tr>
+            <tr><td>negative</td><td><strong>long</strong></td><td><strong style="color:var(--crit)">you pay</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>Why the sign flip is the whole point</h3>
+        <p style="font-size:14px;color:var(--ink-2)">
+          A <strong>positive</strong> reBAP means the system was short and energy was scarce at that instant. If you
+          took extra, you made it worse — you pay. If you took less than promised, you helped — you are paid.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          A <strong>negative</strong> reBAP means the system was <em>over</em>-supplied and the TSO was paying people
+          to consume. Now the logic inverts: taking extra <em>helped</em>, so you are paid; taking less made it
+          worse, so you pay.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          The price is not measuring how badly you forecast. <strong>It is measuring what your error did to the
+          system.</strong> Get that one idea and section 8 — the one-price versus two-price argument — writes itself.
+        </p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:26px"><div class="scroll">
+      <svg viewBox="0 0 900 340" role="img" aria-label="Three separate money flows: balancing capacity and balancing energy from the TSO to the BSP, imbalance energy between the TSO and the BRP in either direction">
         <rect x="360" y="20" width="180" height="56" rx="10" fill="var(--panel)" stroke="var(--s3)" stroke-width="2"/>
         <text class="svgtxt" x="450" y="44" text-anchor="middle" fill="var(--s3)">TSO</text>
         <text class="svgtxt sm" x="450" y="62" text-anchor="middle">Übertragungsnetzbetreiber</text>
 
-        <!-- BSP -->
         <rect x="40" y="220" width="230" height="86" rx="10" fill="var(--panel)" stroke="var(--s2)" stroke-width="2"/>
         <text class="svgtxt" x="155" y="248" text-anchor="middle" fill="var(--s2)">BSP</text>
         <text class="svgtxt sm" x="155" y="266" text-anchor="middle">Regelreserveanbieter</text>
         <text class="svgtxt sm" x="155" y="284" text-anchor="middle">technical role · owns the assets</text>
         <text class="svgtxt sm" x="155" y="300" text-anchor="middle">must be prequalified</text>
 
-        <!-- BRP -->
         <rect x="630" y="220" width="230" height="86" rx="10" fill="var(--panel)" stroke="var(--s1)" stroke-width="2"/>
         <text class="svgtxt" x="745" y="248" text-anchor="middle" fill="var(--s1)">BRP</text>
         <text class="svgtxt sm" x="745" y="266" text-anchor="middle">Bilanzkreisverantwortlicher</text>
         <text class="svgtxt sm" x="745" y="284" text-anchor="middle">financial role · owns nothing</text>
         <text class="svgtxt sm" x="745" y="300" text-anchor="middle">no prequalification, but collateral</text>
 
-        <!-- flows -->
         <path d="M400 80 C 330 130, 230 160, 170 216" fill="none" stroke="var(--s2)" stroke-width="2" class="flowline" marker-end="url(#a2)"/>
         <path d="M430 80 C 380 140, 260 180, 205 216" fill="none" stroke="var(--s2)" stroke-width="2" class="flowline" marker-end="url(#a2)"/>
         <path d="M510 80 C 590 140, 680 175, 730 216" fill="none" stroke="var(--s1)" stroke-width="2" class="flowline" marker-end="url(#a1)"/>
@@ -286,63 +784,137 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         <rect x="96" y="108" width="212" height="46" rx="8" fill="var(--panel)" stroke="var(--s2)" stroke-width="1.5"/>
         <rect x="96" y="108" width="6" height="46" rx="3" fill="var(--s2)"/>
         <text class="svgtxt lb" x="114" y="126" fill="var(--s2)">1 · BALANCING CAPACITY</text>
-        <text class="svgtxt sm" x="114" y="144">€/MW · D-1 auction · no energy moves</text>
+        <text class="svgtxt sm" x="114" y="144">€/MW · &ldquo;be ready&rdquo; · no energy moves</text>
 
         <rect x="150" y="164" width="212" height="46" rx="8" fill="var(--panel)" stroke="var(--s2)" stroke-width="1.5"/>
         <rect x="150" y="164" width="6" height="46" rx="3" fill="var(--s2)"/>
         <text class="svgtxt lb" x="168" y="182" fill="var(--s2)">2 · BALANCING ENERGY</text>
-        <text class="svgtxt sm" x="168" y="200">€/MWh activated · marginal price</text>
+        <text class="svgtxt sm" x="168" y="200">€/MWh · &ldquo;now move&rdquo; · marginal price</text>
 
         <rect x="560" y="126" width="230" height="64" rx="8" fill="var(--panel)" stroke="var(--s1)" stroke-width="1.5"/>
         <rect x="560" y="126" width="6" height="64" rx="3" fill="var(--s1)"/>
         <text class="svgtxt lb" x="578" y="144" fill="var(--s1)">3 · IMBALANCE ENERGY</text>
-        <text class="svgtxt sm" x="578" y="162">€/MWh of deviation · reBAP</text>
-        <text class="svgtxt sm" x="578" y="180">EITHER DIRECTION · no energy moves</text>
+        <text class="svgtxt sm" x="578" y="162">€/MWh of deviation · the reBAP</text>
+        <text class="svgtxt sm" x="578" y="180">FLOWS EITHER WAY · no energy moves</text>
 
-        <text class="svgtxt sm" x="450" y="330" text-anchor="middle">The same company is very often both roles. They are still different contracts.</text>
+        <text class="svgtxt sm" x="450" y="330" text-anchor="middle">The same company is very often both roles. They are still two different contracts, settled separately.</text>
       </svg>
     </div></div>
-
-    <div class="grid g3 rv" style="margin-top:20px">
-      <div class="panel"><span class="chip o">Payment 1 + 2</span>
-        <p style="font-size:14px;color:var(--ink-2);margin-top:10px"><strong>Rewards for being useful.</strong> You bid, you win, you deliver on command. Capacity pays you to stand ready; energy pays you when the TSO actually calls.</p></div>
-      <div class="panel"><span class="chip b">Payment 3</span>
-        <p style="font-size:14px;color:var(--ink-2);margin-top:10px"><strong>Not a reward and not a penalty — a price.</strong> It reprices the gap between what your balance group promised and what it did, in whichever direction that gap points.</p></div>
-      <div class="panel"><span class="chip r">The trap</span>
-        <p style="font-size:14px;color:var(--ink-2);margin-top:10px">A flexibility pitch that quotes &ldquo;€/MW of aFRR&rdquo; and a business case that quotes &ldquo;imbalance savings&rdquo; are talking about <strong>different contracts with different counterparties</strong>. Ask which one.</p></div>
-    </div>
   </div>
 </section>
 
-<!-- ================= 3 ================= -->
+<!-- ================= 4 ================= -->
 <section id="timeline">
   <div class="wrap">
-    <div class="secnum rv">Section 3</div>
-    <h2 class="rv">The timeline: where the exchange stops and the TSO starts</h2>
+    <div class="secnum rv">Section 4</div>
+    <h2 class="rv">The timeline: what happens when, and who is in charge at each moment</h2>
     <p class="sub rv">
-      The common mental model — &ldquo;markets until H-1, then the TSO takes over&rdquo; — is almost right
-      and misleading in three specific ways. Markets and balancing <strong>overlap in time</strong>.
-      The TSO bought its reserves the previous morning. And it never assumes your obligation: it fixes
-      the system, then bills you for your share of the error.
+      One delivery day, from a week out to the invoice. The thing to hold onto is that
+      <strong>the markets and the balancing do not happen one after the other — they overlap.</strong>
     </p>
 
-    <div class="tl" style="margin-top:26px">
+    <div class="analogy rv" style="margin-top:22px">
+      <span class="chip">the whole timeline as one analogy</span>
+      <p style="margin:.7em 0 0">You book a restaurant table.</p>
+      <ul style="margin:.6em 0 0;padding-left:20px">
+        <li><strong>Day-ahead auction</strong> — you reserve a table for four at 8 pm, at tonight&rsquo;s advertised price.</li>
+        <li><strong>Nomination</strong> — you confirm the booking with the restaurant. Now they have staffed and
+          bought food for four covers. This is the step that makes it <em>real</em>.</li>
+        <li><strong>Intraday</strong> — at 6 pm you call: make it five. They can still adjust, but the kitchen has
+          already shopped, so the fifth cover costs a bit more than the first four did.</li>
+        <li><strong>Delivery</strong> — you turn up with six people.</li>
+        <li><strong>Imbalance settlement</strong> — the restaurant charges you for the two extra covers at whatever
+          the walk-in rate was <em>that night</em>. And here is the twist: if they were over-booked and turning
+          people away, the extra covers were a problem and you pay a premium. If the place was half empty, your two
+          extras <em>helped</em> — and in the electricity version of this story you would actually be paid for them.</li>
+      </ul>
+      <p style="margin:.8em 0 0">
+        The restaurant never takes over your booking. It fixes the evening, then bills you for the difference between
+        what you promised and what you did. That is exactly the relationship between you and the TSO.
+      </p>
+    </div>
+
+    <div class="rv" style="margin-top:30px"><div class="scroll">
+      <svg viewBox="0 0 960 268" role="img" aria-label="Clock strip showing the day before delivery and the delivery day, with the time each market opens and closes">
+        <text class="svgtxt lb" x="20" y="20" fill="var(--ink-3)">DAY BEFORE DELIVERY (D-1)</text>
+        <text class="svgtxt lb" x="556" y="20" fill="var(--ink-3)">DELIVERY DAY (D)</text>
+
+        <line x1="20" y1="42" x2="940" y2="42" stroke="var(--line-2)" stroke-width="2"/>
+        <line x1="540" y1="30" x2="540" y2="252" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text class="svgtxt sm" x="490" y="34">midnight</text>
+
+        <g>
+          <circle cx="60" cy="42" r="5" fill="var(--s3)"/><text class="svgtxt sm" x="46" y="62">08:00</text>
+          <circle cx="120" cy="42" r="5" fill="var(--s3)"/><text class="svgtxt sm" x="106" y="62">09:00</text>
+          <circle cx="180" cy="42" r="5" fill="var(--s3)"/><text class="svgtxt sm" x="166" y="62">10:00</text>
+          <text class="svgtxt sm" x="30" y="82" fill="var(--s3)">TSO buys balancing CAPACITY</text>
+          <text class="svgtxt sm" x="30" y="97" fill="var(--ink-3)">FCR · aFRR · mFRR — prequalified BSPs only</text>
+        </g>
+
+        <g>
+          <circle cx="280" cy="42" r="6" fill="var(--s1)"/><text class="svgtxt" x="264" y="62" fill="var(--s1)">12:00</text>
+          <text class="svgtxt sm" x="222" y="124" fill="var(--s1)">DAY-AHEAD AUCTION closes</text>
+          <text class="svgtxt sm" x="222" y="139" fill="var(--ink-3)">the main energy market · 96 quarter hours</text>
+          <line x1="280" y1="50" x2="280" y2="114" stroke="var(--s1)" stroke-width="1" stroke-dasharray="3 3"/>
+        </g>
+
+        <g>
+          <circle cx="390" cy="42" r="6" fill="var(--s2)"/><text class="svgtxt" x="374" y="62" fill="var(--s2)">14:30</text>
+          <text class="svgtxt sm" x="222" y="168" fill="var(--s2)">SCHEDULE NOMINATION deadline</text>
+          <text class="svgtxt sm" x="222" y="183" fill="var(--ink-3)">your BRP tells the TSO your plan — and it must balance</text>
+          <line x1="390" y1="50" x2="390" y2="158" stroke="var(--s2)" stroke-width="1" stroke-dasharray="3 3"/>
+        </g>
+
+        <g>
+          <circle cx="460" cy="42" r="5" fill="var(--s1)"/><text class="svgtxt sm" x="446" y="62">15:00</text>
+          <rect x="460" y="202" width="470" height="18" rx="9" fill="color-mix(in srgb,var(--s1) 22%,transparent)" stroke="var(--s1)"/>
+          <text class="svgtxt sm" x="472" y="215" fill="var(--s1)">INTRADAY — continuous, until 5 min before each quarter hour</text>
+          <line x1="460" y1="50" x2="460" y2="196" stroke="var(--s1)" stroke-width="1" stroke-dasharray="3 3"/>
+        </g>
+
+        <g>
+          <rect x="556" y="72" width="374" height="18" rx="9" fill="color-mix(in srgb,var(--s3) 22%,transparent)" stroke="var(--s3)"/>
+          <text class="svgtxt sm" x="568" y="85" fill="var(--s3)">TSO ACTIVATES reserves — all day, every second</text>
+          <rect x="556" y="98" width="374" height="18" rx="9" fill="color-mix(in srgb,var(--s3) 14%,transparent)" stroke="var(--s3)" stroke-dasharray="3 3"/>
+          <text class="svgtxt sm" x="568" y="111" fill="var(--s3)">balancing ENERGY — gate closes 25 min before each QH</text>
+        </g>
+
+        <path d="M620 248 L 928 248" stroke="var(--s2)" stroke-width="1.5" marker-end="url(#tArrow)"/>
+        <defs><marker id="tArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--s2)"/></marker></defs>
+        <text class="svgtxt sm" x="620" y="242" fill="var(--s2)">metering → imbalance settlement → monthly invoice</text>
+      </svg>
+    </div></div>
+
+    <p class="rv" style="max-width:74ch;margin-top:20px">
+      Look at the two green bars on the right. The TSO is <strong>activating reserves all day long</strong> — and at
+      the same time, the blue bar shows you are <strong>still trading</strong>. They run in parallel. There is no
+      moment where one hands over to the other.
+    </p>
+
+    <h3 class="rv" style="margin-top:36px">Step by step</h3>
+    <p class="sub rv">Each card says the same three things: who runs it, what you have to do, and what happens if you do nothing.</p>
+
+    <div class="tl" style="margin-top:22px">
 
       <div class="tl-row rv">
         <div class="tl-when">years → days<br>before</div>
         <div class="tl-card actor-you">
           <h3>Forward / OTC market <span class="chip">EEX · brokers</span></h3>
-          <p>Purely financial hedging. <strong>Does not create a schedule.</strong> A forward position has to be turned into a day-ahead nomination eventually, or it settles financially against the index.</p>
+          <p class="who"><strong>Who runs it:</strong> nobody in particular — bilateral deals and an exchange for futures.</p>
+          <p class="who"><strong>What you do:</strong> lock in a price for a chunk of your future consumption, if you want price certainty.</p>
+          <p class="who"><strong>If you do nothing:</strong> nothing breaks. You are simply unhedged and will pay whatever the spot market does.</p>
+          <p>A forward contract is purely financial and <strong>does not create a schedule</strong>. It has to be turned into a day-ahead position eventually, or it just settles against the index.</p>
         </div>
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-when">D-1 · 08:00<br>09:00 · 10:00</div>
+        <div class="tl-when">D-1<br>08:00 · 09:00 · 10:00</div>
         <div class="tl-card actor-tso">
           <h3>Balancing <em>capacity</em> auctions <span class="chip g">TSO</span></h3>
-          <p>A completely separate market on <code>regelleistung.net</code>, open only to prequalified BSPs.
-          FCR closes <strong>08:00</strong>, aFRR <strong>09:00</strong>, mFRR <strong>10:00</strong>.
-          Six 4-hour blocks. Minimum bid 1 MW. FCR is symmetric and pay-as-cleared; aFRR and mFRR are directional and pay-as-bid.</p>
+          <p class="who"><strong>Who runs it:</strong> the four German TSOs jointly, on <code>regelleistung.net</code>.</p>
+          <p class="who"><strong>What you do:</strong> nothing, unless you are a prequalified BSP or in an aggregator&rsquo;s pool. Then you bid €/MW for 4-hour blocks.</p>
+          <p class="who"><strong>If you do nothing:</strong> you simply are not in this market. It carries on without you.</p>
+          <p>FCR closes at <strong>08:00</strong>, aFRR at <strong>09:00</strong>, mFRR at <strong>10:00</strong>. Six 4-hour blocks per day. Minimum bid <strong>1 MW</strong>. FCR is symmetric and pay-as-cleared; aFRR and mFRR are bid separately per direction and pay-as-bid. <strong>This is the TSO shopping for tomorrow&rsquo;s safety net, a day before anyone has even bought their energy.</strong></p>
         </div>
       </div>
 
@@ -350,9 +922,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         <div class="tl-when">D-1 · 12:00</div>
         <div class="tl-card actor-nemo">
           <h3>Day-ahead auction <span class="chip b">EPEX SPOT · Nord Pool</span></h3>
-          <p>One blind auction under SDAC, results around 12:45. Since <strong>1 October 2025: 96 quarter-hour
-          products</strong>. Uniform clearing price per MTU, EUPHEMIA, −500 to +4 000 €/MWh.
-          This is where 80–90 % of volume is priced and it is the reference for everything else.</p>
+          <p class="who"><strong>Who runs it:</strong> the power exchanges (NEMOs), coupled across Europe.</p>
+          <p class="who"><strong>What you do:</strong> submit how much you want to buy in each quarter hour and up to what price. Then wait.</p>
+          <p class="who"><strong>If you do nothing:</strong> you buy nothing here, and everything you consume tomorrow lands in imbalance at an unknown price. Nobody sensible does this.</p>
+          <p>One <strong>blind auction</strong> — you cannot see other bids, everyone submits, the algorithm clears once. Results around 12:45. Since <strong>1 October 2025 there are 96 quarter-hour products</strong> instead of 24 hourly ones. One uniform clearing price per slot, from −500 to +4 000 €/MWh. <strong>80–90 % of all volume is priced here, which is why it is the reference for everything else.</strong></p>
         </div>
       </div>
 
@@ -360,73 +933,98 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         <div class="tl-when">D-1 · 14:30</div>
         <div class="tl-card actor-you">
           <h3>Schedule nomination <span class="chip o">your BRP → TSO</span></h3>
-          <p>The step everyone skips. Under <strong>Anlage 3 Ziffer 1.3</strong> of the Standard-Bilanzkreisvertrag
-          the BRP must transmit quarter-hourly schedules by <strong>14:30 on D-1</strong>, and the balance group must be
-          nominated <strong>balanced</strong>. This is the moment a trade becomes a physical promise.
-          Your BRP will impose its own earlier cut-off on you.</p>
+          <p class="who"><strong>Who runs it:</strong> your BRP files it; the TSO receives and validates it.</p>
+          <p class="who"><strong>What you do:</strong> tell your BRP your plan before <em>their</em> cut-off, which is usually earlier than 14:30 — often 13:00.</p>
+          <p class="who"><strong>If you do nothing:</strong> your BRP nominates from its own forecast of you, and every difference between that guess and reality becomes your imbalance.</p>
+          <p><strong>This is the step most explanations skip, and it is the one that makes everything else real.</strong> Under <strong>Anlage 3 Ziffer 1.3</strong> of the Standard-Bilanzkreisvertrag the BRP must transmit quarter-hourly schedules by <strong>14:30 on D-1</strong>, and the balance group must be nominated <strong>balanced</strong> — every MWh in must match an MWh out. Until this moment you have a trade. After it, you have a promise to the system operator.</p>
         </div>
       </div>
 
       <div class="tl-row rv">
         <div class="tl-when">D-1 15:00<br>→ QH − 5 min</div>
         <div class="tl-card actor-nemo">
-          <h3>Intraday <span class="chip b">SIDC / XBID · IDA1–3 auctions</span></h3>
-          <p>Continuous trading opens <strong>15:00 D-1</strong>. Cross-border closes 60 minutes before delivery;
-          <strong>inside the German bidding zone you can trade until 5 minutes before</strong>. Price range
-          −9 999 to +9 999 €/MWh — a number that reappears literally inside the imbalance price formula.
-          Intraday schedule changes need at least one quarter hour of lead time.</p>
+          <h3>Intraday <span class="chip b">SIDC / XBID · plus IDA1–3 auctions</span></h3>
+          <p class="who"><strong>Who runs it:</strong> the same exchanges, but continuously rather than as one auction.</p>
+          <p class="who"><strong>What you do:</strong> when your forecast changes, buy or sell the difference. You pay a bid–ask spread each time.</p>
+          <p class="who"><strong>If you do nothing:</strong> you carry the gap into delivery and settle it at the imbalance price — which you will not know until afterwards.</p>
+          <p>Continuous trading opens at <strong>15:00 on D-1</strong>. Cross-border trading closes 60 minutes before delivery, but <strong>inside the German bidding zone you can trade until 5 minutes before the quarter hour starts</strong>. Price range −9 999 to +9 999 €/MWh — a number that reappears literally inside the imbalance price formula in section 7. Your corresponding schedule change to the TSO needs at least one quarter hour of lead time.</p>
         </div>
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-when">D · QH − 25 min</div>
+        <div class="tl-when">D<br>QH − 25 min</div>
         <div class="tl-card actor-tso">
           <h3>Balancing <em>energy</em> market (RAM) <span class="chip g">TSO</span></h3>
-          <p>15-minute products, positive and negative. <strong>Gate closure 25 minutes</strong> before the delivery
-          quarter hour. Paid at the cross-border marginal price from <strong>PICASSO</strong> (aFRR) and
-          <strong>MARI</strong> (mFRR). Bid cap 15 000 €/MWh. Winning capacity <em>obliges</em> you to bid energy.
-          Since the abolition of <em>Freisetzung</em> on 8 December 2022, opportunity cost is sunk and the
-          rational strategy is to bid at marginal cost.</p>
+          <p class="who"><strong>Who runs it:</strong> the TSOs, feeding the European platforms PICASSO and MARI.</p>
+          <p class="who"><strong>What you do:</strong> if you won capacity yesterday, you are <em>obliged</em> to submit an energy bid of the same volume here. Others may bid voluntarily.</p>
+          <p class="who"><strong>If you do nothing:</strong> nothing, unless you won capacity — in which case you must arrange a substitute BSP to bid for you.</p>
+          <p>15-minute products, positive and negative. <strong>Gate closure is 25 minutes before the delivery quarter hour.</strong> Everyone activated is paid the same <strong>cross-border marginal price</strong> set by the platform, capped at 15 000 €/MWh. Since unsold bids stopped being released back to bidders on 8 December 2022, opportunity cost is a sunk cost — so the rational strategy is to bid your actual marginal cost.</p>
         </div>
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-when">D · real time</div>
+        <div class="tl-when">D · real time<br>every second</div>
         <div class="tl-card actor-tso">
           <h3>Activation <span class="chip g">automatic and continuous</span></h3>
-          <p><strong>FCR</strong> acts in ≤30 s, autonomously, proportional to frequency deviation, across the whole
-          synchronous area — no merit order and <strong>no energy payment at all</strong>.
-          <strong>aFRR</strong> in ≤5 min via PICASSO, which re-optimises <strong>every 4 seconds</strong> — up to 225
-          cycles per quarter hour. <strong>mFRR</strong> in ≤12.5 min via MARI. <strong>IGCC</strong> nets opposite
-          demands across TSOs before anything is activated.</p>
+          <p class="who"><strong>Who runs it:</strong> physics, then the TSOs&rsquo; control systems, then the European platforms — in that order.</p>
+          <p class="who"><strong>What you do:</strong> if you are in a pool, your asset responds to a setpoint. Otherwise, nothing at all.</p>
+          <p class="who"><strong>If you do nothing:</strong> this happens anyway. It is the grid keeping itself alive.</p>
+          <p><strong>FCR</strong> responds within <strong>30 seconds</strong>, autonomously, proportional to how far frequency has drifted — no merit order, no instruction, and <strong>no energy payment at all</strong>. <strong>aFRR</strong> follows within <strong>5 minutes</strong> via PICASSO, which re-optimises <strong>every 4 seconds</strong> — up to 225 separate clearings inside a single quarter hour. <strong>mFRR</strong> within <strong>12.5 minutes</strong> via MARI. Before any of that, <strong>IGCC</strong> quietly cancels opposite demands between neighbouring TSOs, which costs nothing because no energy has to move.</p>
         </div>
       </div>
 
       <div class="tl-row rv">
         <div class="tl-when">D + weeks</div>
         <div class="tl-card actor-you">
-          <h3>Imbalance settlement <span class="chip o">TSO ↔ BRP ↔ you</span></h3>
-          <p>Per quarter hour, per balance group: all withdrawals (including schedule-based) versus all injections
-          (including schedule-based). Multiply by the <strong>reBAP</strong>, net over the billing month, one invoice
-          (<strong>Ziffer 11</strong>). Due at the earliest <strong>two weeks</strong> after receipt.
-          Objections about data supplied by the grid operator or metering operator <strong>cannot</strong> be raised
-          against the TSO.</p>
+          <h3>Imbalance settlement <span class="chip o">TSO → BRP → you</span></h3>
+          <p class="who"><strong>Who runs it:</strong> the TSO, using metered values from your grid operator and metering operator.</p>
+          <p class="who"><strong>What you do:</strong> check the numbers. You cannot dispute the metering through the TSO, only through the party that produced it.</p>
+          <p class="who"><strong>If you do nothing:</strong> you pay or are paid whatever the calculation says.</p>
+          <p>For each quarter hour: everything the balance group withdrew (including by schedule) versus everything it injected (including by schedule). Multiply the difference by the <strong>reBAP</strong>, net it over the month, issue one invoice (<strong>Ziffer 11</strong>). Due at the earliest <strong>two weeks</strong> after receipt. <strong>No energy moves at this stage — it is pure arithmetic about something that already happened.</strong></p>
         </div>
       </div>
     </div>
 
-    <div class="grid g3 rv" style="margin-top:26px">
-      <div class="note"><strong>Not true:</strong> &ldquo;you can&rsquo;t trade after H-1.&rdquo; Inside Germany you can trade until the quarter hour minus 5 minutes.</div>
-      <div class="note"><strong>Not true:</strong> &ldquo;the TSO starts balancing at H-1.&rdquo; Capacity was bought the previous morning and FCR is acting every second of the day.</div>
-      <div class="note"><strong>Not true:</strong> &ldquo;the TSO takes over your position.&rdquo; It is the balancer of last resort, never the counterparty of last resort. Your BRP is your counterparty.</div>
+    <h3 class="rv" style="margin-top:36px">Three things people say that are not quite right</h3>
+    <div class="grid g3 rv" style="margin-top:14px">
+      <div class="note warn">
+        <strong>&ldquo;You can&rsquo;t trade after H-1.&rdquo;</strong><br>
+        Inside Germany you can trade until the quarter hour minus <strong>5 minutes</strong>. Liquidity thins and the
+        spread widens, but the market is open.
+      </div>
+      <div class="note warn">
+        <strong>&ldquo;The TSO starts balancing at H-1.&rdquo;</strong><br>
+        It bought the capacity at 08:00–10:00 the previous morning, and FCR has been acting every second since
+        midnight. Balancing never starts, because it never stops.
+      </div>
+      <div class="note warn">
+        <strong>&ldquo;The TSO takes over your position.&rdquo;</strong><br>
+        It never assumes your obligation. It is the <strong>balancer of last resort, not the counterparty of last
+        resort.</strong> It fixes the system, then bills your BRP for your share of the error.
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:24px;border-color:var(--s1)">
+      <h3>Why the TSO&rsquo;s job is smaller than it sounds</h3>
+      <p style="font-size:14px;color:var(--ink-2)">
+        At any moment, hundreds of balance groups are out of position — some short, some long. Before the TSO does
+        anything, <strong>those errors cancel against each other</strong>. A supplier whose customers used less than
+        forecast offsets a wind farm that produced less than forecast.
+      </p>
+      <p style="font-size:14px;color:var(--ink-2)">
+        The TSO only ever has to cover the <strong>net residual</strong>. This is why the total volume settled as
+        imbalance energy is routinely <em>far larger</em> than the balancing energy actually activated — and why
+        &ldquo;how much balancing energy did Germany use&rdquo; and &ldquo;how much imbalance was there&rdquo; are
+        two very different questions with two very different answers.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ================= 4 ================= -->
+<!-- ================= 5 ================= -->
 <section id="roles">
   <div class="wrap">
-    <div class="secnum rv">Section 4</div>
+    <div class="secnum rv">Section 5</div>
     <h2 class="rv">Who is who</h2>
     <p class="sub rv">Two of these are settlement roles with their own contract. One of them — the one everybody talks about — is not a role at all.</p>
 
@@ -461,10 +1059,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
   </div>
 </section>
 
-<!-- ================= 5 ================= -->
+<!-- ================= 6 ================= -->
 <section id="brp">
   <div class="wrap">
-    <div class="secnum rv">Section 5</div>
+    <div class="secnum rv">Section 6</div>
     <h2 class="rv">&ldquo;We&rsquo;ll be your BRP&rdquo; — what is actually being sold</h2>
     <p class="sub rv">And the question everybody asks: <em>do they just forward me the invoice, or do they ever pay?</em></p>
 
@@ -541,10 +1139,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
   </div>
 </section>
 
-<!-- ================= 6 ================= -->
+<!-- ================= 7 ================= -->
 <section id="rebap">
   <div class="wrap">
-    <div class="secnum rv">Section 6</div>
+    <div class="secnum rv">Section 7</div>
     <h2 class="rv">The reBAP: three modules and a max/min rule</h2>
     <p class="sub rv">
       One price per quarter hour for the whole German control block, applying to <strong>all</strong> balance
@@ -646,10 +1244,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
   </div>
 </section>
 
-<!-- ================= 7 ================= -->
+<!-- ================= 8 ================= -->
 <section id="oneprice">
   <div class="wrap">
-    <div class="secnum rv">Section 7</div>
+    <div class="secnum rv">Section 8</div>
     <h2 class="rv">One price or two: the argument, settled</h2>
     <p class="sub rv">Germany and the Nordics both use single pricing. About five EU TSOs still use dual. Here is why, with the honest objection and what the systems actually do about it.</p>
 
@@ -725,10 +1323,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
   </div>
 </section>
 
-<!-- ================= 8 ================= -->
+<!-- ================= 9 ================= -->
 <section id="depot">
   <div class="wrap">
-    <div class="secnum rv">Section 8</div>
+    <div class="secnum rv">Section 9</div>
     <h2 class="rv">Where a ten-truck depot actually sits</h2>
 
     <div class="rv" style="margin-top:22px"><div class="scroll">

@@ -37,39 +37,101 @@ plus the financial consequence of that failure.
 
 ## 1.2 Is balancing the same as ancillary services?
 
-**No. Balancing is a subset of ancillary services.**
+Short answer: **no — balancing is one family inside ancillary services, and it is the only
+family that is organised as a competitive market in Germany.** The long answer has three
+parts, because the question is usually asked in a shape that has no clean answer.
 
-```
-ANCILLARY SERVICES (Systemdienstleistungen)
-│   Everything the TSO procures or mandates to keep the system running.
-│   Legal basis: Directive (EU) 2019/944 Art. 2(48), Art. 31/40; §§ 12, 13 EnWG.
-│
-├── FREQUENCY / ACTIVE POWER  ──►  this is BALANCING (Regelleistung / Systemausgleich)
-│     Legal basis: Regulation (EU) 2017/2195 "EB GL", Regulation (EU) 2017/1485 "SO GL"
-│     ├── FCR   — Frequency Containment Reserve  (Primärregelleistung)
-│     ├── aFRR  — automatic Frequency Restoration Reserve (Sekundärregelleistung)
-│     ├── mFRR  — manual Frequency Restoration Reserve (Minutenreserve)
-│     └── RR    — Replacement Reserve — NOT used in Germany
-│
-├── VOLTAGE CONTROL / REACTIVE POWER (Blindleistung)
-│     Mostly a regulated obligation on connected generators + bilateral contracts.
-│     NOT a merit-order market.
-│
-├── SYSTEM RESTORATION / BLACK START (Schwarzstartfähigkeit)
-│     Bilateral contracts.
-│
-├── INERTIA & fast frequency response
-│     Germany: no dedicated market. (Sweden/Nordics: FFR is a procured product.)
-│
-└── CONGESTION MANAGEMENT (Engpassmanagement)
-      Germany: REDISPATCH 2.0, § 13a EnWG. MANDATORY and COST-BASED.
-      Plants are *directed*, not asked to bid. They are compensated at cost.
-      This is a big deal: a large slice of German "ancillary services" is
-      a regulated obligation, not a market you can win.
-```
+### 1.2.1 First, the physical problem all of this exists to solve
 
-Take-away: **every BSP is an ancillary-service provider, but most ancillary-service
-providers are not BSPs.** When someone says "we do ancillary services", ask which one.
+At every instant, electricity going into the grid must equal electricity coming out. Not on
+average over the day — at every instant. Electricity is not stored in the wires, so if
+consumption exceeds generation the shortfall comes out of the rotating mass of every
+generator on the system, they slow down, and frequency falls below 50 Hz. Roughly ±0.2 Hz
+is where it gets serious; ±2.5 Hz is where equipment starts disconnecting itself.
+
+Two different jobs follow from that, and mixing them up is the source of most confusion:
+
+| | Job 1 — get the plan roughly right in advance | Job 2 — fix what the plan got wrong, in real time |
+|---|---|---|
+| What it is | The **energy market**: day-ahead auction + intraday | Where **ancillary services** live |
+| What you buy | Energy. A commodity, in €/MWh. | **Capability.** Standby, response, controllability. |
+| Who runs it | Power exchanges (NEMOs) | The TSO |
+
+### 1.2.2 What "ancillary service" actually means
+
+**Anything the system operator needs in order to run the grid that is not the selling of
+energy itself.** Directive (EU) 2019/944 Art. 2(48) defines it broadly as *"a service
+necessary for the operation of a transmission or distribution system"*.
+
+An airline sells seats. It also needs air-traffic control, de-icing, a standby aircraft,
+ground power and a runway fire service. Nobody buys a ticket for de-icing, it still has to
+exist, and someone still has to be under contract to provide it. **Energy is the seat.
+Ancillary services are everything else that makes the flight possible.**
+
+### 1.2.3 The five families, and how each is actually bought
+
+This table is the answer to the question. Note the fourth column.
+
+| # | Family | Problem it solves | How it is procured in Germany | Is it a market? | Can a depot sell it? |
+|---|---|---|---|---|---|
+| 1 | **Frequency / active power** — **this is BALANCING** | Generation ≠ consumption, right now | Daily competitive auctions on `regelleistung.net`, plus a continuous energy market | **Yes — a real one** | **Yes**, via prequalification or an aggregator pool |
+| 2 | Voltage / reactive power | Voltage drifting outside limits | Mostly a **grid-code obligation** on connected generators, plus bilateral contracts | No — you comply, you don't bid | No |
+| 3 | Restoration / black start | Restarting after a blackout | **Bilateral contracts**, a handful of plants, multi-year | No — negotiated | No |
+| 4 | Inertia & system strength | Slowing the *rate* frequency moves | **Not procured at all.** A by-product of spinning machines. (Nordics buy FFR; GB buys stability contracts.) | No market exists | No |
+| 5 | Congestion management | A line is overloaded even though the system is balanced | **Redispatch 2.0**, § 13a EnWG. Plants are *instructed* and compensated at cost. | **Explicitly not a market**, by law | It applies *to* you as a risk |
+
+### 1.2.4 The three-part answer
+
+**(a) Balancing is inside ancillary services, not beside them.** They are not two categories
+to compare. Balancing is family 1 of the five. Every balancing product (FCR, aFRR, mFRR) is
+an ancillary service; most ancillary services are not balancing. The relationship is
+**containment** — the same relationship as "cardiology" to "medicine".
+
+**(b) There is no such thing as "the ancillary services market".** This is the part that
+resolves the confusion. *Ancillary services* is a **category, not a marketplace.** Look down
+the fourth column: one family is auctioned, one is a compliance obligation, one is negotiated
+bilaterally, one is not bought at all, and one is a legal instruction you cannot refuse.
+There is no single venue, no single price, no single contract and no single set of
+participants.
+
+> Asking "how does the ancillary services market differ from the balancing market?" is like
+> asking how *the transport market* differs from *the taxi market*. The taxi market is a real,
+> definable thing with prices and drivers you can hail. "The transport market" is an umbrella
+> containing taxis, buses, freight rail and bicycles, organised in completely different ways
+> with different regulators and different money. You cannot buy a ticket for "transport".
+
+**(c) Two things make balancing unusual *within* the family.** Neither has any equivalent in
+the other four:
+
+1. **It is split into two separate markets for the same physical thing.** You are paid once
+   in **€/MW** for *standing ready* (balancing capacity) and again in **€/MWh** if you are
+   *actually called* (balancing energy). Two auctions, two prices, two merit orders, one
+   asset. A black-start contract is a single retainer; reactive power is simply a condition
+   of being connected.
+2. **It has a financial twin that applies to everybody.** Balancing is the only family that
+   produces an **imbalance price** (the reBAP), charged to or paid to *every* market
+   participant, whether or not they have ever sold an ancillary service. Nobody is ever
+   "exposed to the black-start price". Everybody, always, is exposed to the imbalance price.
+
+### 1.2.5 The practical consequence for a depot
+
+**In Germany the only genuinely sellable ancillary services for a truck depot are the three
+balancing products** — FCR, aFRR, mFRR. Voltage support and black start are not open to you,
+inertia is not procured, and redispatch is something that happens *to* you.
+
+So when a vendor says "ancillary services revenue", the correct follow-up is: **which
+product, which direction, and which of the three payments are you quoting?** If they cannot
+answer that in one sentence, the number is not real.
+
+### 1.2.6 The three sentences to remember
+
+1. **Ancillary services** = everything the TSO needs that is not the selling of energy. A
+   *category*, not a marketplace.
+2. **Balancing** = the frequency slice of that category. The one slice that really is a
+   competitive market — in fact *two* markets (capacity and energy), plus a settlement
+   process (imbalance) that catches everyone.
+3. **Most of the rest of the category is not a market at all** — it is obligation, bilateral
+   contract, or a legal instruction you cannot refuse.
 
 ---
 
