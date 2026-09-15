@@ -17,7 +17,7 @@ balance group contract. See [`docs/07-sources.md`](docs/07-sources.md).
 
 | # | File | What it answers |
 |---|---|---|
-| 01 | [The flow — who does what, when](docs/01-the-flow-who-does-what-when.md) | The full D-2 → D+n timeline. Is balancing the same as ancillary services? Where does the TSO "take over"? (Spoiler: it doesn't.) |
+| 01 | [The flow — who does what, when](docs/01-the-flow-who-does-what-when.md) | **Is balancing the same as ancillary services?** (§ 1.2 — the five families, how each is actually procured, and why there is no single "ancillary services market".) Then the full D-2 → D+n timeline, and where the TSO "takes over". Spoiler: it doesn't. |
 | 02 | [Market roles](docs/02-market-roles.md) | BRP, BSP, supplier, aggregator, NEMO, TSO, DSO, MSB. **What a "we'll be your BRP" offer actually contains, and whether they ever pay you.** |
 | 03 | [Being a BRP in Germany](docs/03-brp-rules-germany.md) | Every duty, deadline, collateral formula and termination rule, with contract clause numbers. |
 | 04 | [Balancing products](docs/04-balancing-products-germany.md) | FCR / aFRR / mFRR in detail: auctions, gate closures, remuneration, prequalification, dimensioning, and what 10 trucks can realistically offer. |
@@ -26,7 +26,9 @@ balance group contract. See [`docs/07-sources.md`](docs/07-sources.md).
 | 07 | [Sources](docs/07-sources.md) | Links, decision numbers, and how to verify each class of claim. |
 
 **Visual version:** [`explainer.html`](explainer.html) — a single-file, animated walkthrough of the same
-material, with an **interactive reBAP explorer**: move the system imbalance and intraday index and watch
+material for someone starting from zero. It opens by settling the question this whole folder exists to answer —
+*is the balancing market the same as the ancillary services market?* — then works through the three payments and
+the delivery-day timeline with worked examples, and finishes with an **interactive reBAP explorer**: move the system imbalance and intraday index and watch
 which of the three modules binds the price. Open it in a browser; no build step, no dependencies,
 works offline, light and dark.
 
