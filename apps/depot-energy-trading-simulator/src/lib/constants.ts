@@ -114,7 +114,7 @@ export const BRP_OFFERS: BrpOffer[] = [
   {
     id: "flexpool",
     name: "FlexPool Partner",
-    tagline: "Your deviation is netted against the pool first. Balancing access included.",
+    tagline: "Your deviation is netted against the pool first, and you get intraday access.",
     model: "pooled",
     monthlyFeeEur: 600,
     energyFeeEurPerMwh: 2.8,
