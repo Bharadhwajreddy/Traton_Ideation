@@ -1209,10 +1209,31 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </div>
     </div>
 
+    <div class="analogy rv" style="margin-top:30px">
+      <span class="chip">first, one word of jargon</span>
+      <p style="margin:.7em 0 0">
+        <strong>&ldquo;The tail&rdquo; means the rare, extreme, expensive day.</strong> It comes from the shape of a
+        probability chart: most outcomes bunch up in the middle, and the thin stretched-out ends — the
+        <em>tails</em> — are the rare ones. In this context the tail is the quarter hour where the imbalance price
+        goes berserk.
+      </p>
+      <p style="margin:.7em 0 0">
+        Most days your deviation costs you a few euros. But in a genuine scarcity quarter hour the price can reach
+        <strong>19 998 €/MWh</strong> — so being short by a quarter of a megawatt-hour for fifteen minutes costs
+        <strong>about €5 000</strong>. That single quarter hour is the tail.
+      </p>
+      <p style="margin:.7em 0 0">
+        So <strong>&ldquo;who carries the tail?&rdquo; simply means: on that one terrible day, whose money is it?</strong>
+        It is the same question as car insurance. Nothing happens in most months; the tail is the crash. You can
+        choose to carry it yourself and pay nothing in the meantime, or pay a premium every month so that somebody
+        else carries it.
+      </p>
+    </div>
+
     <h3 class="rv" style="margin-top:30px">The three commercial models you meet most often</h3>
     <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>Model</th><th>What the BRP does with your imbalance</th><th>What you pay</th><th>Who carries the tail</th></tr></thead>
+        <thead><tr><th>Model</th><th>What the BRP does with your imbalance</th><th>What you pay</th><th>Who pays on the bad day<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(who carries the tail)</span></th></tr></thead>
         <tbody>
           <tr>
             <td><strong>A · Pass-through</strong><br><span class="chip">Durchleitung</span></td>
@@ -1236,6 +1257,42 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </table>
     </div>
 
+    <h3 class="rv" style="margin-top:30px">The same depot, the same two months, under all three</h3>
+    <p class="rv" style="max-width:72ch">
+      Take the ten-truck depot: about <strong>180 MWh a month</strong>. In a normal month it drifts off its schedule
+      here and there and the imbalance costs a few hundred euros. In the bad month, everything is the same
+      <em>except</em> that one evening the German system runs genuinely short and the price spikes — and the depot
+      happens to be short by 0.25 MWh in that one quarter hour.
+    </p>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+      <table>
+        <thead><tr><th></th><th>A · Pass-through</th><th>B · Pooled</th><th>C · Full-service</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Fees for the month<br><span style="color:var(--ink-3)">fixed + per MWh (+ premium for C)</span></td>
+            <td class="tnum">€520</td><td class="tnum">€1 104</td><td class="tnum">€2 640</td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--good) 7%,transparent)">
+            <td colspan="4" style="font-weight:700">NORMAL MONTH — imbalance costs about €400 at the raw price</td>
+          </tr>
+          <tr><td>Imbalance charged to you</td><td class="tnum">€400</td><td class="tnum">€220 <span style="color:var(--ink-3)">(netted)</span></td><td class="tnum">€0 <span style="color:var(--ink-3)">(absorbed)</span></td></tr>
+          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--good)">€920</strong></td><td class="tnum"><strong>€1 324</strong></td><td class="tnum"><strong>€2 640</strong></td></tr>
+          <tr style="background:color-mix(in srgb,var(--crit) 7%,transparent)">
+            <td colspan="4" style="font-weight:700">BAD MONTH — one scarcity quarter hour: 0.25 MWh short × 19 998 €/MWh ≈ €5 000</td>
+          </tr>
+          <tr><td>Imbalance charged to you</td><td class="tnum">€5 400</td><td class="tnum">€2 970</td><td class="tnum">€0</td></tr>
+          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--crit)">€5 920</strong></td><td class="tnum"><strong>€4 074</strong></td><td class="tnum"><strong style="color:var(--good)">€2 640</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn rv" style="margin-top:14px">
+      <strong>Read the two &ldquo;Total&rdquo; rows against each other — that is the entire decision.</strong>
+      Pass-through is the cheapest option eleven months of the year and the ruinous one in the twelfth.
+      Full-service costs nearly three times as much every single month and does not move at all when the bad month
+      arrives. Pooled sits between them. <strong>Nobody is being generous or greedy; they are selling you different
+      amounts of certainty.</strong>
+    </div>
+
     <div class="note rv" style="margin-top:18px">
       <strong>So: yes, a BRP can absolutely end up paying you.</strong> In model C it pays by construction.
       In model B it pays whenever your deviation is offset by another customer&rsquo;s. Only in model A does it
@@ -1254,16 +1311,44 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </p>
     </div>
 
-    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+    <p class="rv" style="max-width:72ch;margin-top:14px">
+      Think of each row below as a <strong>slider</strong>. Every contract sets all six of them somewhere, and it is
+      the <em>combination</em> that makes one offer different from another — not a label on the front page.
+    </p>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>Dial</th><th>One end</th><th>The other end</th><th>Why you care</th></tr></thead>
+        <thead><tr><th>What the contract has to decide</th><th>It can be set anywhere between these two extremes</th><th>Why it matters to you</th></tr></thead>
         <tbody>
-          <tr><td><strong>Price exposure</strong></td><td>fixed €/MWh for the year</td><td>full spot pass-through</td><td>decides whether smart charging earns anything at all</td></tr>
-          <tr><td><strong>Who forecasts you</strong></td><td>they do, from history</td><td>you send a plan daily</td><td>whoever forecasts also owns the error in practice</td></tr>
-          <tr><td><strong>Imbalance allocation</strong></td><td>fully absorbed by them</td><td>1:1 pass-through to you</td><td>the fat-tail risk</td></tr>
-          <tr><td><strong>Netting</strong></td><td>netted against their portfolio first</td><td>your meter settled alone</td><td>diversification is worth real money</td></tr>
-          <tr><td><strong>Symmetry</strong></td><td>charges and credits both at 100 %</td><td>full charge, haircut on credits</td><td><strong>the clause nobody reads</strong></td></tr>
-          <tr><td><strong>Market access</strong></td><td>day-ahead only</td><td>+ intraday + your own sub-balance group</td><td>decides whether you can fix a bad forecast</td></tr>
+          <tr>
+            <td><strong>How is my energy priced?</strong></td>
+            <td>From <em>&ldquo;one fixed €/MWh for the whole year&rdquo;</em> … to <em>&ldquo;whatever the market did in that quarter hour, passed straight through&rdquo;</em>.</td>
+            <td>On a fixed price, charging at 03:00 costs exactly the same as charging at 18:00 — so <strong>smart charging earns you nothing at all</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Who predicts what I will consume?</strong></td>
+            <td>From <em>&ldquo;they guess it from last year&rsquo;s meter data&rdquo;</em> … to <em>&ldquo;you send them a plan every afternoon&rdquo;</em>.</td>
+            <td>Whoever makes the forecast ends up owning the error. If they forecast you badly, you want that to be their problem, not yours.</td>
+          </tr>
+          <tr>
+            <td><strong>Who pays for my deviation?</strong></td>
+            <td>From <em>&ldquo;they absorb it entirely&rdquo;</em> … to <em>&ldquo;every euro lands on your invoice&rdquo;</em>.</td>
+            <td>This is the tail question above — the difference between €920 and €5 920 in the bad month.</td>
+          </tr>
+          <tr>
+            <td><strong>Is my deviation netted against other customers?</strong></td>
+            <td>From <em>&ldquo;pooled with their whole customer book first&rdquo;</em> … to <em>&ldquo;your meter is settled entirely on its own&rdquo;</em>.</td>
+            <td>If you are short 1 MWh and another customer is long 1 MWh, pooling cancels both. That cancellation is worth real money and somebody is keeping it.</td>
+          </tr>
+          <tr>
+            <td><strong>Do I get paid as readily as I get charged?</strong></td>
+            <td>From <em>&ldquo;charges and credits both at 100 %&rdquo;</em> … to <em>&ldquo;charged in full, but only 60 % of what you are owed comes back&rdquo;</em>.</td>
+            <td><strong>The clause nobody reads.</strong> A one-sided pass-through is a hidden margin, and it is invisible unless you go looking for it.</td>
+          </tr>
+          <tr>
+            <td><strong>Which markets may I reach?</strong></td>
+            <td>From <em>&ldquo;day-ahead only, once a day&rdquo;</em> … to <em>&ldquo;day-ahead plus intraday plus your own ring-fenced sub-account&rdquo;</em>.</td>
+            <td>Decides whether you can still fix things when a truck comes back late — or whether you just have to watch it become an imbalance.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1446,35 +1531,143 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 <section id="rebap">
   <div class="wrap">
     <div class="secnum rv">Section 9</div>
-    <h2 class="rv">The reBAP: three modules and a max/min rule</h2>
+    <h2 class="rv">The reBAP — the price of getting it wrong</h2>
     <p class="sub rv">
-      One price per quarter hour for the whole German control block, applying to <strong>all</strong> balance
-      groups regardless of direction. Move the sliders and watch which module binds.
+      <strong>reBAP</strong> stands for <strong><em>regelzonenübergreifender einheitlicher
+      Bilanzausgleichsenergiepreis</em></strong> — literally &ldquo;the single balancing-energy price that applies
+      across all control zones&rdquo;. One number, per quarter hour, for the whole of Germany.
+    </p>
+
+    <h3 class="rv" style="margin-top:30px">What is actually being priced here</h3>
+    <p class="rv" style="max-width:74ch">
+      Rewind fifteen minutes. In that quarter hour, hundreds of balance groups across Germany were slightly wrong:
+      some drew more electricity than they had promised, some drew less. Added together, Germany as a whole ended up
+      either <strong>short</strong> (consumed more than it generated) or <strong>long</strong> (generated more than it
+      consumed).
+    </p>
+    <p class="rv" style="max-width:74ch">
+      The grid cannot tolerate that, so the TSO fixed it in real time — it telephoned, or rather signalled, the power
+      stations and batteries that were on standby and told them to produce more, or to produce less. <strong>That
+      costs money, and somebody has to pay for it.</strong> The reBAP is how that cost is turned into a price and
+      charged to the people who caused it.
+    </p>
+
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+      <table>
+        <thead><tr><th>Who</th><th>What they did in that quarter hour</th><th>What happens to them</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--s3)">The TSO</strong></td>
+            <td>Noticed the imbalance and fixed it by instructing standby plant</td>
+            <td>Pays for the fix now, sets the reBAP afterwards, and recovers the money</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--s2)">The power stations and batteries that were called</strong><br><span style="color:var(--ink-3)">the BSPs — gas plants, hydro, big batteries, industrial loads</span></td>
+            <td>Changed their output on command</td>
+            <td><strong>Get paid</strong> the balancing-energy price for the energy they actually moved</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--s1)">Every balance group in Germany</strong><br><span style="color:var(--ink-3)">the BRPs — including the one your depot sits in</span></td>
+            <td>Was off its promise, by a little or a lot, in one direction or the other</td>
+            <td><strong>Pays or is paid the reBAP</strong> on its own deviation — see the four directions in section 3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bigidea rv" style="margin-top:20px">
+      <p style="margin:0"><strong>In one sentence: the reBAP is &ldquo;what did it cost to clean up this quarter
+      hour?&rdquo; — with two guard rails bolted on so that nobody can profit from causing the mess.</strong></p>
+    </div>
+
+    <h3 class="rv" style="margin-top:32px">The three modules, in plain words</h3>
+    <p class="rv" style="max-width:74ch">
+      German regulation calculates three candidate prices for every quarter hour, then picks one. Each candidate
+      answers a different question.
+    </p>
+
+    <div class="grid rv" style="margin-top:14px;gap:12px">
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">Module 1 · &ldquo;what did it actually cost?&rdquo;</span></div>
+        <p>The real, measured price the TSO paid the plants it called. If it needed more power, this is what the last
+        and most expensive megawatt-hour of it cost. <strong>This is the honest answer, and most of the time it is the
+        one that wins.</strong></p>
+      </div>
+      <div class="worked" style="--acc:var(--s2)">
+        <div class="worked-h"><span class="chip o">Module 2 · &ldquo;don&rsquo;t let anyone game it&rdquo;</span></div>
+        <p>Sometimes fixing the imbalance was cheap — so if the price were left at Module 1, deliberately going short
+        would be <em>cheaper than buying your energy properly on the market</em>. Everyone would do it, and the system
+        would fall apart.</p>
+        <p>So Module 2 takes the market price at that moment and adds a margin on top. It is a
+        <strong>floor when the system is short and a ceiling when it is long</strong>, and its only job is to make
+        sure that <strong>being imbalanced is never the cheap option.</strong></p>
+      </div>
+      <div class="worked" style="--acc:var(--crit)">
+        <div class="worked-h"><span class="chip r">Module 3 · &ldquo;we are running out&rdquo;</span></div>
+        <p>Does nothing at all until the imbalance is so big that Germany has used up <strong>80 % of everything it
+        holds in reserve</strong>. Past that point the price climbs steeply — not because the last megawatt-hour cost
+        that much, but as a deliberate alarm signal. It is meant to be rare, and on most days it never fires.</p>
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:16px;border-color:var(--s3)">
+      <h3>Then the rule that picks one of the three</h3>
+      <p style="font-size:14.5px;color:var(--ink-2);margin-top:8px">
+        If Germany was <strong>short</strong> → take the <strong>highest</strong> of the three, so being short is
+        always painful.<br>
+        If Germany was <strong>long</strong> → take the <strong>lowest</strong> of the three, so being long is never
+        rewarding.
+      </p>
+      <p style="font-size:14.5px;color:var(--ink-2)">
+        That is the whole calculation. Everything below is just this, with the real numbers in it.
+      </p>
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">Try it yourself</h3>
+    <p class="rv" style="max-width:74ch">
+      Move the sliders to describe a quarter hour, and watch the three candidate prices change and one of them win.
+      Each slider is a real input to the real German formula.
     </p>
 
     <div class="grid g2 rv" style="margin-top:24px">
       <div class="panel">
         <h3>System state</h3>
         <div class="ctrl">
-          <label>System imbalance <code>Balance_GCC</code> <b><span id="vBal">+400</span> MW</b></label>
+          <label>How wrong was Germany? <b><span id="vBal">+400</span> MW</b></label>
           <input id="sBal" type="range" min="-3500" max="3500" step="25" value="400" />
-          <span style="font-size:11.5px;color:var(--ink-3)">Positive = the German control block is <strong>short</strong>.</span>
+          <span style="font-size:11.5px;color:var(--ink-3)">
+            Push right and the country consumed <strong>more</strong> than it generated (<strong>short</strong>);
+            push left and it generated more than it used (<strong>long</strong>). The formula calls this
+            <code>Balance_GCC</code>.
+          </span>
         </div>
         <div class="ctrl">
-          <label>Intraday price index <code>ID AEP</code> <b><span id="vId">90</span> €/MWh</b></label>
+          <label>What was electricity selling for at the time? <b><span id="vId">90</span> €/MWh</b></label>
           <input id="sId" type="range" min="-120" max="400" step="5" value="90" />
+          <span style="font-size:11.5px;color:var(--ink-3)">
+            The intraday market price for that quarter hour — what you could have bought your energy for instead of
+            being imbalanced. <strong>Module 2 is built from this.</strong>
+          </span>
         </div>
         <div class="ctrl">
-          <label>Activated FRR price (Module 1 input) <b><span id="vM1">128</span> €/MWh</b></label>
-          <input id="sM1" type="range" min="-250" max="900" step="5" value="128" />
+          <label>What did the TSO pay to fix it? <b><span id="vM1">130</span> €/MWh</b></label>
+          <input id="sM1" type="range" min="-250" max="900" step="5" value="130" />
+          <span style="font-size:11.5px;color:var(--ink-3)">
+            The price of the last, most expensive power station it had to call.
+            <strong>This is Module 1.</strong> Note it can be negative — when the country is long, generators
+            sometimes pay to be allowed to keep running.
+          </span>
         </div>
         <label style="display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13px;color:var(--ink-2)">
           <input id="cThin" type="checkbox" style="margin-top:3px" />
-          <span>Intraday index below <strong>500 MW</strong> of traded volume — Module 2 does not couple at all</span>
+          <span>Hardly anyone was trading that quarter hour (under <strong>500 MW</strong> changed hands), so there is
+          no reliable market price to compare against — <strong>Module 2 switches off entirely</strong></span>
         </label>
         <label style="display:flex;gap:9px;align-items:flex-start;margin-top:8px;font-size:13px;color:var(--ink-2)">
           <input id="cKap" type="checkbox" style="margin-top:3px" />
-          <span>Capacity reserve activated (<strong>KapResV § 26</strong>)</span>
+          <span>Germany had to switch on its emergency reserve — mothballed plants kept outside the market for
+          exactly this (<strong>KapResV § 26</strong>). Tick this <em>and</em> push the top slider past about
+          2 600 MW to see what happens.</span>
         </label>
         <p style="font-size:11.5px;color:var(--ink-3);margin-top:12px">
           Dimensioning used here: aFRR 1 922 / 1 842 MW, mFRR 681 / 372 MW, AbLa 750 MW, capacity reserve 1 056 MW.
@@ -1485,25 +1678,34 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         <div class="mods">
           <div class="mod" id="m1">
             <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-              <h3>Module 1 · base</h3><span class="v" id="o1">—</span>
+              <h3>Module 1 · what it cost</h3><span class="v" id="o1">—</span>
             </div>
-            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0">Volume-weighted <strong>PICASSO</strong> (aFRR, re-optimised every 4 s) and <strong>MARI</strong> (mFRR) marginal prices for the activated direction. If nothing was activated: the <strong>Value of Avoided Activation</strong>.</p>
+            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0"><strong>The measured price of the energy the
+            TSO actually bought to fix the quarter hour.</strong> Technically: the volume-weighted marginal prices from
+            the European platforms <strong>PICASSO</strong> (automatic reserve, recalculated every 4 seconds) and
+            <strong>MARI</strong> (manual reserve). If nothing at all was activated, a stand-in price is used.</p>
           </div>
           <div class="mod" id="m2">
             <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-              <h3>Module 2 · incentivising</h3><span class="v" id="o2">—</span>
+              <h3>Module 2 · the anti-gaming floor</h3><span class="v" id="o2">—</span>
             </div>
-            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0">
-              <code>ID AEP ± ΔP</code> where
-              <code>ΔP = max(10·s , |ID|·0.25·s)</code>, <code>s = min(125, |Balance|·0.25)/125</code>.
+            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0"><strong>The market price, pushed away by a
+            margin so that being imbalanced is never cheaper than buying properly.</strong> The margin grows with how
+            wrong the country was: near zero for a tiny imbalance, at least 10 €/MWh (or 25 %) once it passes 500 MW.</p>
+            <p style="font-size:12px;color:var(--ink-3);margin:.4em 0 0">
+              <code>market price ± ΔP</code>, where
+              <code>ΔP = max(10·s, |market price|·0.25·s)</code> and
+              <code>s = min(125, |Balance|·0.25) / 125</code>.
               <span id="o2d"></span>
             </p>
           </div>
           <div class="mod" id="m3">
             <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-              <h3>Module 3 · scarcity</h3><span class="v" id="o3">—</span>
+              <h3>Module 3 · the scarcity alarm</h3><span class="v" id="o3">—</span>
             </div>
-            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0">A parabola anchored on Module 2, from the <strong>80 % dead band</strong> up to twice the intraday bid cap where every reserve is exhausted. <span id="o3d"></span></p>
+            <p style="font-size:13px;color:var(--ink-2);margin:.4em 0 0"><strong>Silent until Germany has burned
+            through 80 % of its reserves, then climbs steeply.</strong> It is a curve, not a step, so the closer the
+            country gets to running out, the faster the price rises. <span id="o3d"></span></p>
           </div>
         </div>
 
@@ -1513,6 +1715,17 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <span class="v" id="oR" style="color:var(--s3);font-size:25px">—</span>
           </div>
           <p id="oRule" style="font-size:13px;color:var(--ink-2);margin:.5em 0 0"></p>
+          <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:11px">
+            <div style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">
+              So what does that mean for your depot?
+            </div>
+            <p id="oYouShort" style="font-size:13.5px;margin:.5em 0 0"></p>
+            <p id="oYouLong" style="font-size:13.5px;margin:.35em 0 0"></p>
+            <p style="font-size:11.5px;color:var(--ink-3);margin:.6em 0 0">
+              1 MWh is roughly one truck taking a big charge for an hour, or the whole depot being 15 minutes out of
+              step at 4 MW.
+            </p>
+          </div>
           <div id="oAsym" style="display:none;margin-top:10px" class="note warn">
             <strong>Asymmetric quarter hour.</strong> With the capacity reserve activated and the system short beyond all
             available positive FRR, <strong>§ 32 KapResV</strong> makes short balance groups pay at least
@@ -1790,6 +2003,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     o1:document.getElementById('o1'), o2:document.getElementById('o2'), o3:document.getElementById('o3'),
     o2d:document.getElementById('o2d'), o3d:document.getElementById('o3d'),
     oR:document.getElementById('oR'), oRule:document.getElementById('oRule'), oAsym:document.getElementById('oAsym'),
+    oYouShort:document.getElementById('oYouShort'), oYouLong:document.getElementById('oYouLong'),
     c1:document.getElementById('m1'), c2:document.getElementById('m2'), c3:document.getElementById('m3')
   };
   var fmt = function(v){ return (Math.round(v*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €/MWh'; };
@@ -1854,12 +2068,27 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       rule = 'The system is <strong>' + Math.abs(bal).toLocaleString('en-GB') + ' MW long</strong>, so the reBAP is the <strong>minimum</strong> of the defined modules.';
     }
 
+    // Normally one price serves both directions. The single exception is a capacity-reserve
+    // quarter hour, where a short balance group pays a punitive price and a long one does not.
+    var priceLong = price;
     var asym = kap && bal > (DIM.aP + DIM.mP) && price < 2*BP_CAP;
-    if(asym){ price = 2*BP_CAP; bind = null; }
+    var priceShort = asym ? 2*BP_CAP : price;
+    if(asym){ bind = null; }
     els.oAsym.style.display = asym ? 'block' : 'none';
 
-    els.oR.textContent = fmt(price);
+    els.oR.textContent = fmt(priceShort);
     els.oRule.innerHTML = rule + (asym ? ' Then <strong>§ 32 KapResV</strong> overrides it for short balance groups.' : '');
+
+    // Turn the price into the thing the reader actually cares about: who pays whom, and how much.
+    var money = function(v){ return '€' + Math.abs(Math.round(v*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+    var line = function(el, label, cash){
+      var pays = cash < 0;
+      el.innerHTML = '<strong>' + label + '</strong> → '
+        + '<strong style="color:' + (pays ? 'var(--crit)' : 'var(--good)') + '">'
+        + (pays ? 'you pay ' : 'you are paid ') + money(cash) + '</strong>';
+    };
+    line(els.oYouShort, 'Short by 1 MWh (you drew more than you promised)', -priceShort);
+    line(els.oYouLong,  'Long by 1 MWh (you drew less than you promised)',  priceLong);
 
     [['m1',els.c1],['m2',els.c2],['m3',els.c3]].forEach(function(p){
       p[1].classList.toggle('bind', bind === p[0]);
