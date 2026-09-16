@@ -15,36 +15,32 @@ export function blockOfQh(qh: number): number {
 }
 
 /**
- * Ten trucks in two shift groups.
- *   - Six on an early shift: out 06:00 → 16:00.
- *   - Four on a late shift:  out 14:00 → 23:00.
- * The late group is the interesting one: it is plugged in through the midday
- * solar trough, which is where most of the arbitrage value lives.
+ * The fleet is deliberately TEN IDENTICAL TRUCKS — the same truck, ten times over.
+ * Same battery, same charger, same shift, same starting charge. Nothing in the result
+ * can then be blamed on one truck being different from another, which makes the
+ * simulator far easier to reason about.
  */
-export const DEFAULT_TRUCKS: TruckSpec[] = [
-  ...Array.from({ length: 6 }, (_, i) => ({
+export const TRUCK_TEMPLATE = {
+  capacityKwh: 540,
+  maxChargeKw: 350,
+  maxDischargeKw: 200,
+  departQh: 24, // 06:00
+  returnQh: 68, // 17:00
+  shiftConsumptionKwh: 380,
+  startSoc: 0.45,
+};
+
+export const FLEET_SIZE = 10;
+
+export function buildFleet(size = FLEET_SIZE, template = TRUCK_TEMPLATE): TruckSpec[] {
+  return Array.from({ length: size }, (_, i) => ({
     id: i,
     name: `Truck ${i + 1}`,
-    capacityKwh: 540,
-    maxChargeKw: 350,
-    maxDischargeKw: 200,
-    departQh: 24, // 06:00
-    returnQh: 64, // 16:00
-    shiftConsumptionKwh: 380,
-    startSoc: 0.42 + i * 0.03,
-  })),
-  ...Array.from({ length: 4 }, (_, i) => ({
-    id: 6 + i,
-    name: `Truck ${7 + i}`,
-    capacityKwh: 540,
-    maxChargeKw: 350,
-    maxDischargeKw: 200,
-    departQh: 56, // 14:00
-    returnQh: 92, // 23:00
-    shiftConsumptionKwh: 340,
-    startSoc: 0.5 + i * 0.04,
-  })),
-];
+    ...template,
+  }));
+}
+
+export const DEFAULT_TRUCKS: TruckSpec[] = buildFleet();
 
 export const DEFAULT_DEPOT: DepotConfig = {
   trucks: DEFAULT_TRUCKS,

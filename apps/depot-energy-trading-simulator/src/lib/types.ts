@@ -273,6 +273,13 @@ export interface PnlLine {
 
 export interface SimulationResult {
   perQh: QuarterHourResult[];
+  /** Per-truck state through the day, for the depot animation. [truck][qh] */
+  fleet: {
+    name: string;
+    soc: number[];
+    powerKw: number[];
+    pluggedIn: boolean[];
+  }[];
   pnl: PnlLine[];
   net: number;
   totals: {

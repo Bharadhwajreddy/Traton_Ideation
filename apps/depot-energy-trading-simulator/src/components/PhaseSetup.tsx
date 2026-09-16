@@ -48,6 +48,53 @@ export function PhaseSetup({
         </Briefing>
       </div>
       <Card
+        title="Who is who in this simulation"
+        subtitle="Four parties, four colours. They keep the same colours everywhere in the app."
+        className="lg:col-span-12"
+      >
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              c: "var(--series-2)",
+              who: "YOU — the depot owner",
+              does: "Decide when the trucks charge. Your only real job, and your only real decision.",
+              never: "You never talk to the exchange or the grid operator yourself.",
+            },
+            {
+              c: "var(--series-1)",
+              who: "YOUR BRP",
+              does: "Places your order on the exchange, promises your schedule to the grid operator by 14:30, and re-bills you afterwards.",
+              never: "They do not decide when you charge. You do.",
+            },
+            {
+              c: "var(--series-3)",
+              who: "THE TSO",
+              does: "Runs the grid. Fixes whatever the whole country got wrong, then prices your share of the error.",
+              never: "You have no contract with them. Everything reaches you through your BRP.",
+            },
+            {
+              c: "var(--serious)",
+              who: "GRID OPERATOR + THE STATE",
+              does: "Own the cables and levy the taxes. Together they are usually the biggest line on the bill.",
+              never: "Nothing here is negotiable — except your peak.",
+            },
+          ].map((r) => (
+            <div key={r.who} className="rounded-xl p-3.5" style={{ background: "var(--surface-2)", borderLeft: `4px solid ${r.c}` }}>
+              <div className="text-[12.5px] font-bold" style={{ color: r.c }}>
+                {r.who}
+              </div>
+              <p className="mt-1.5 text-[12.5px]" style={{ color: "var(--text-secondary)" }}>
+                {r.does}
+              </p>
+              <p className="mt-1.5 text-[11.5px]" style={{ color: "var(--text-muted)" }}>
+                {r.never}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card
         title="1 · Pick the day"
         subtitle="Four synthetic German delivery days. Each isolates one lesson."
         className="lg:col-span-12"
@@ -109,7 +156,7 @@ export function PhaseSetup({
         </div>
       </Card>
 
-      <Card title="3 · The depot" subtitle="Ten electric trucks, one grid connection." className="lg:col-span-7">
+      <Card title="3 · The depot" subtitle="Ten IDENTICAL trucks — the same truck, ten times over — behind one grid connection. Change a number and all ten change together." className="lg:col-span-7">
         <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
           <NumberField
             label="Grid connection"
@@ -229,7 +276,7 @@ export function PhaseSetup({
         <div className="grid gap-3">
           <NumberField
             label="Grid fees, levies, tax"
-            hint="Network Arbeitspreis + KWKG, Offshore and § 19 levies (2.946 ct/kWh in 2026) + Stromsteuer (2.050 ct/kWh) + Konzessionsabgabe. Often bigger than the wholesale price itself."
+            hint="Split between your GRID OPERATOR (the per-kWh network charge) and THE STATE (levies 2.946 ct/kWh + electricity tax 2.050 ct/kWh in 2026). Often bigger than the wholesale price itself."
             value={fees.gridAndLeviesEurPerMwh}
             step={5}
             suffix="€/MWh"
@@ -237,7 +284,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Peak power charge (Leistungspreis)"
-            hint="Billed on your single highest 15-minute peak of the YEAR. One bad quarter hour sets it for twelve months. Pro-rated to one day here."
+            hint="Paid to your GRID OPERATOR, on your single highest 15-minute peak of the YEAR. One bad quarter hour sets it for twelve months. Pro-rated to one day here."
             value={fees.peakPowerEurPerKwYear}
             step={10}
             suffix="€/kW·a"
@@ -245,7 +292,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Exchange fee (day-ahead)"
-            hint="What the power exchange charges per MWh you trade in the auction."
+            hint="Paid to the POWER EXCHANGE, through your BRP. What the marketplace charges for running the auction, per MWh you trade."
             value={fees.exchangeFeeDayAheadEurPerMwh}
             step={0.01}
             suffix="€/MWh"
@@ -253,7 +300,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Exchange fee (intraday)"
-            hint="Higher than day-ahead, because continuous trading costs more to run."
+            hint="Also to the POWER EXCHANGE. Higher than day-ahead, because running a live order book all day costs more than one auction."
             value={fees.exchangeFeeIntradayEurPerMwh}
             step={0.01}
             suffix="€/MWh"
@@ -261,7 +308,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Clearing fee"
-            hint="What the clearing house charges to guarantee both sides of every trade."
+            hint="Paid to the CLEARING HOUSE. It stands between buyer and seller so neither has to trust the other — if your counterparty goes bust, the clearing house still delivers."
             value={fees.clearingFeeEurPerMwh}
             step={0.005}
             suffix="€/MWh"

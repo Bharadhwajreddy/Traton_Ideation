@@ -6,6 +6,7 @@ import { describePaymentDirection } from "@/lib/rebap";
 import { eur, num, qhToTime } from "@/lib/format";
 import type { BrpOffer, DepotConfig, SimulationResult } from "@/lib/types";
 import { ImbalanceChart, Legend, PowerChart, PriceChart, SocChart } from "./charts";
+import { DepotAnimation } from "./DepotAnimation";
 import { Briefing, Card, Chip, Note, Slider, Stat, Toggle } from "./ui";
 
 export function PhaseDelivery({
@@ -69,6 +70,8 @@ export function PhaseDelivery({
           </p>
         </Briefing>
       </div>
+      <DepotAnimation result={result} depot={depot} />
+
       <Card
         title="Delivery — the day actually happens"
         subtitle="Operations always win. A truck that must charge to make its departure will charge, whatever your schedule said. That override is where imbalance comes from."

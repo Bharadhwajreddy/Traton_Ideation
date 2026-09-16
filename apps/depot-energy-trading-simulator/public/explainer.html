@@ -183,6 +183,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <a href="#rebap">9 · The reBAP</a>
     <a href="#oneprice">10 · One price vs two</a>
     <a href="#depot">11 · Your depot</a>
+    <a href="#becoming">12 · Becoming a BRP</a>
   </div></div>
 </nav>
 
@@ -1353,6 +1354,53 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </table>
     </div>
 
+    <div class="analogy rv" style="margin-top:18px">
+      <span class="chip">the fifth row, spelled out</span>
+      <p style="margin:.7em 0 0">
+        <strong>&ldquo;Do I get paid as readily as I get charged?&rdquo;</strong> Remember from section 3 that the
+        imbalance price runs <em>both ways</em>: when your deviation happens to help the system, the TSO pays your
+        BRP. The question is whether your BRP then passes that money on to you as willingly as it passes on the bills.
+      </p>
+      <p style="margin:.7em 0 0">Two quarter hours, same size of error, opposite direction:</p>
+      <div class="scroll" style="margin-top:10px"><table>
+        <thead><tr><th>Quarter hour</th><th>What happened</th><th>TSO ↔ your BRP</th><th>A symmetric contract gives you</th><th>A 60 % contract gives you</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>17:15</td>
+            <td>You drew <strong>1 MWh more</strong> than promised, and the system was short. You made it worse.</td>
+            <td class="tnum">BRP pays the TSO €200</td>
+            <td class="tnum"><strong style="color:var(--crit)">−€200</strong></td>
+            <td class="tnum"><strong style="color:var(--crit)">−€200</strong> <span style="color:var(--ink-3)">(charged in full)</span></td>
+          </tr>
+          <tr>
+            <td>19:45</td>
+            <td>You drew <strong>1 MWh less</strong> than promised, and the system was short. You <em>helped</em>.</td>
+            <td class="tnum">TSO pays the BRP €200</td>
+            <td class="tnum"><strong style="color:var(--good)">+€200</strong></td>
+            <td class="tnum"><strong style="color:var(--serious)">+€120</strong> <span style="color:var(--ink-3)">(they keep €80)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Net over the two</strong></td>
+            <td>Your errors cancelled out exactly</td>
+            <td class="tnum">the BRP is square: €0</td>
+            <td class="tnum"><strong>€0</strong> — fair</td>
+            <td class="tnum"><strong style="color:var(--crit)">−€80</strong> — you lost money on a wash</td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p style="margin:.8em 0 0">
+        <strong>The BRP is square either way</strong> — it received €200 and paid €200. The €80 is pure margin,
+        collected out of a month in which you did nothing wrong on balance. And because it is buried in a settlement
+        annexe rather than quoted as a fee, it never appears in the price comparison you were shown.
+      </p>
+      <p style="margin:.7em 0 0">
+        Notice what this really is: <strong>charging you the market price when you hurt the system, but paying you
+        less than the market price when you help it.</strong> That is a two-price scheme — the very thing German
+        regulation deliberately abolished (section 10) — reintroduced privately by contract. Perfectly legal.
+        Extremely common. Ask for the number.
+      </p>
+    </div>
+
     <h3 class="rv" style="margin-top:28px">What you will actually be offered in Germany</h3>
     <p class="rv" style="max-width:72ch">
       Most of these are <em>supply</em> products with balance-group service bundled in — being &ldquo;in
@@ -1675,7 +1723,13 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </div>
 
       <div>
-        <div class="mods">
+        <label style="display:flex;gap:9px;align-items:flex-start;margin-bottom:12px;font-size:13px;color:var(--ink-2)">
+          <input id="cDetail" type="checkbox" style="margin-top:3px" />
+          <span>Show me the three candidate prices as well<br>
+            <span style="font-size:11.5px;color:var(--ink-3)">Leave this off if you only want the answer. The
+            modules are the machinery behind it.</span></span>
+        </label>
+        <div class="mods" id="mods" hidden>
           <div class="mod" id="m1">
             <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
               <h3>Module 1 · what it cost</h3><span class="v" id="o1">—</span>
@@ -1715,6 +1769,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <span class="v" id="oR" style="color:var(--s3);font-size:25px">—</span>
           </div>
           <p id="oRule" style="font-size:13px;color:var(--ink-2);margin:.5em 0 0"></p>
+          <p id="oWhy" style="font-size:13px;color:var(--ink-2);margin:.4em 0 0"></p>
           <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:11px">
             <div style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">
               So what does that mean for your depot?
@@ -1905,15 +1960,73 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       total — which is why optimising only the energy price optimises the smaller half of the problem.
     </div>
 
+    <h3 class="rv" style="margin-top:32px">Two German rules about network charges — and which one is yours</h3>
+    <p class="rv" style="max-width:74ch">
+      This trips up almost every EV-charging business case, so it is worth five slow paragraphs.
+    </p>
+
+    <div class="grid g2 rv" style="margin-top:14px">
+      <div class="panel" style="border-color:var(--crit)">
+        <h3 style="color:var(--crit)">§ 14a EnWG — <em>not</em> yours</h3>
+        <p style="font-size:14px;color:var(--ink-2)">
+          This is the rule everyone quotes. It says: if you install a big controllable device — a home wallbox, a
+          heat pump, a battery — the grid operator may briefly throttle it at moments of local stress, and in exchange
+          you get a discount on your network charges.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">It applies only if <strong>all three</strong> are true:</p>
+        <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
+          <li>the device draws more than <strong>4.2 kW</strong>, and</li>
+          <li>it is connected in <strong>low voltage</strong> — the 400 V wiring a house or small shop is on, and</li>
+          <li>it was commissioned from <strong>1 January 2024</strong> onwards.</li>
+        </ul>
+        <p style="font-size:14px;color:var(--ink-2)">
+          A depot pulling <strong>1.6 MW</strong> is not on low voltage. It sits on a
+          <strong>medium-voltage</strong> connection with its own transformer and a meter that records your load
+          every 15 minutes (<em>RLM</em>). <strong>So § 14a simply does not reach you.</strong> If a vendor's business
+          case leans on it, that number is not real.
+        </p>
+      </div>
+
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">§ 19(2) StromNEV — this one <em>is</em> yours</h3>
+        <p style="font-size:14px;color:var(--ink-2)">
+          The logic here is different, and rather elegant. Network charges exist to pay for a grid that has to be
+          built big enough for <strong>the worst moment of the year</strong> — the evening in February when everyone
+          draws at once.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          Every network operator publishes the hours in which that worst moment historically falls. They are called
+          <strong><em>Hochlastzeitfenster</em></strong> — &ldquo;high-load time windows&rdquo;. Typically a few hours
+          on winter weekday evenings; the exact windows are your operator&rsquo;s, and published.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)">
+          The deal: <strong>if your own yearly peak reliably lands outside those windows, you are not one of the
+          reasons the grid had to be built that big</strong> — so you can be charged individually instead of on the
+          standard tariff. The reduction can be large; the rule allows an individual charge down to as little as
+          <strong>20 % of the standard rate</strong>.
+        </p>
+        <p style="font-size:14px;color:var(--ink-2)"><strong>Two conditions, and both are hard:</strong></p>
+        <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
+          <li>The arrangement must be <strong>notified to the regulator by 30 September</strong> of the year it is to
+            apply to. Miss the date and you wait a year.</li>
+          <li>You must <em>actually</em> stay out of the windows — which means your charging controller has to treat
+            them as a <strong>hard no</strong> every single day, not a preference it drops when a truck is late.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note rv" style="margin-top:14px">
+      <strong>Why this matters more than anything else on this page.</strong> A depot is the near-perfect candidate:
+      its trucks sit still overnight, and overnight is exactly when the high-load windows are not. Moving your peak
+      out of those windows is <strong>a software decision, not an investment</strong> — and it can beat every
+      energy-trading strategy in this document put together.
+    </div>
+
     <div class="note warn rv" style="margin-top:14px">
-      <strong>A correction worth having.</strong> <strong>§ 14a EnWG</strong> is quoted constantly in EV-charging
-      business cases, but it applies only to devices above 4.2 kW connected in <strong>low voltage</strong> and
-      commissioned from 1 January 2024 — a depot on a medium-voltage connection with RLM metering is outside its
-      scope entirely. Your real lever is <strong>§ 19(2) sentence 1 StromNEV</strong>: if your annual peak reliably
-      falls <em>outside</em> the network operator&rsquo;s published high-load windows
-      (<em>Hochlastzeitfenster</em>), you can negotiate an individual network charge — down to as little as
-      <strong>20 % of the standard rate</strong>. It must be notified to the regulator by <strong>30 September</strong>,
-      and it only works if the charging controller treats those windows as a hard constraint every single day.
+      <strong>Note for accuracy.</strong> An earlier version of this page named § 14a EnWG as the depot&rsquo;s
+      grid-charge lever. That was wrong, for the reason above, and it is corrected here. The other branch of
+      § 19(2) — <em>intensive Netznutzung</em>, which needs at least <strong>7 000 full-load hours and 10 GWh a
+      year</strong> — is far beyond a truck depot and can be ignored.
     </div>
 
 
@@ -1968,6 +2081,159 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
   </div>
 </section>
 
+<!-- ================= 12 ================= -->
+<section id="becoming">
+  <div class="wrap">
+    <div class="secnum rv">Section 12</div>
+    <h2 class="rv">Becoming a BRP yourself: the rules, and who is allowed</h2>
+    <p class="sub rv">
+      Everything above assumed you rent the role. This section is the other answer: what the law actually requires
+      if you want to hold it yourself, and who is eligible.
+    </p>
+
+    <div class="bigidea rv">
+      <p style="margin:0">
+        <strong>There is no licence. Being a BRP is a contract, not a permission.</strong>
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Germany does not issue &ldquo;BRP authorisations&rdquo;. You become a
+        <em>Bilanzkreisverantwortlicher</em> by signing a <strong>Bilanzkreisvertrag</strong> (balance group
+        contract) with a transmission system operator — and under <strong>§ 26 StromNZV</strong> the TSO and the
+        applicant are <em>obliged</em> to conclude that contract, on the standard terms the regulator has approved.
+        The TSO cannot pick and choose.
+      </p>
+    </div>
+
+    <h3 class="rv" style="margin-top:32px">Who is eligible</h3>
+    <p class="rv" style="max-width:74ch">
+      Anyone who can meet the contract&rsquo;s conditions. A BRP is a purely financial role — it owns no power
+      stations and no cables — so there is no technical qualification and no energy-sector licence involved. In
+      practice the balance groups in Germany are held by suppliers, traders, generators, direct marketers, large
+      industrial consumers, and financial institutions. <strong>A depot operator is not excluded by anything
+      except economics.</strong>
+    </p>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+      <table>
+        <thead><tr><th>Is this required?</th><th></th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr><td>A licence or regulatory authorisation</td><td><strong style="color:var(--good)">No</strong></td><td>none exists for this role</td></tr>
+          <tr><td>Owning generation, storage or a grid</td><td><strong style="color:var(--good)">No</strong></td><td>the BRP is a financial counterparty only</td></tr>
+          <tr><td>Being a German company</td><td><strong style="color:var(--good)">No</strong></td><td>the contract itself contemplates a BRP seated outside Germany (Ziffer 11.5, on VAT)</td></tr>
+          <tr><td>A signed <strong>Bilanzkreisvertrag</strong> with each TSO whose control area you operate in</td><td><strong style="color:var(--crit)">Yes</strong></td><td>§ 26 StromNZV; the standard contract approved by BNetzA</td></tr>
+          <tr><td>An <strong>EIC code</strong> for each balance group</td><td><strong style="color:var(--crit)">Yes</strong></td><td>requested from the <strong>BDEW</strong>, which issues them in Germany</td></tr>
+          <tr><td><strong>Collateral</strong>, if the TSO asks for it with written reasons</td><td><strong style="color:var(--crit)">Usually</strong></td><td>Ziffer 14 of the contract</td></tr>
+          <tr><td>Reachable named contacts and EDI@Energy messaging</td><td><strong style="color:var(--crit)">Yes</strong></td><td>Anlage 2 and Anlage 3 of the contract</td></tr>
+          <tr><td>Keeping the balance group flat every quarter hour</td><td><strong style="color:var(--crit)">Yes</strong></td><td>Ziffer 5 — <em>Bilanzkreistreue</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="rv" style="margin-top:32px">The actual steps</h3>
+    <p class="rv" style="max-width:74ch">
+      These are the steps the German TSOs publish. Details differ slightly between the four, so check the page of the
+      TSO whose control area you sit in — the example below follows Amprion&rsquo;s published process.
+    </p>
+
+    <div class="grid rv" style="margin-top:14px;gap:10px">
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">1 · Decide which control areas you need</span></div>
+        <p>A balance group exists <strong>inside one control area</strong>. Germany has four TSOs — 50Hertz,
+        Amprion, TenneT DE and TransnetBW — so a nationwide BRP needs at least one balance group, and one contract,
+        <strong>in each</strong>. A single depot only needs the one its meter sits in.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">2 · Get an EIC code</span></div>
+        <p>The <strong>Energy Identification Code</strong> is the unique 16-character identifier every balance group
+        trades under. In Germany it is requested from and issued by the <strong>BDEW</strong>. Nothing can be
+        registered without it.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">3 · Register with the TSO as market role &ldquo;BKV&rdquo;</span></div>
+        <p>Each TSO runs a portal for market participants — Amprion&rsquo;s is the <em>Netzwirtschaftsportal</em>.
+        You register there under the market role <strong>BKV</strong>.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">4 · Request a contract offer, in writing</span></div>
+        <p>A formal letter asking for a balance group contract offer, stating your <strong>EIC</strong>, the
+        <strong>purpose</strong> of the balance group (trading, end-customer supply, renewables and so on), the
+        <strong>date</strong> you want it to start, and any allocation of imbalance to a settlement balance group.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">5 · File the mandatory annexes</span></div>
+        <p><strong>Anlage 2 — contact data of the BKV</strong> is required before the contract can be created.
+        <strong>Anlage 1.1 — declaration values</strong> tells the TSO how much energy and power you expect to move,
+        and it is what the collateral calculation is based on. <strong>Anlage 6</strong> names the traders and
+        suppliers assigned to your group.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">6 · Post collateral if the TSO asks</span></div>
+        <p>The TSO may require security <em>in justified cases</em>, with written reasons, due within
+        <strong>10 working days</strong>. You choose the form: a self-debtor guarantee, a bank guarantee from an EU
+        credit institution, or a pledged account. The TSOs publish a bank-guarantee template.</p>
+      </div>
+      <div class="worked" style="--acc:var(--s1)">
+        <div class="worked-h"><span class="chip b">7 · Connect your schedule management and go live</span></div>
+        <p>Set up <strong>EDI@Energy</strong> messaging, test schedule submission with the TSO, and from the agreed
+        date you are nominating by <strong>14:30 every day</strong> and settling monthly.</p>
+      </div>
+    </div>
+
+    <div class="note warn rv" style="margin-top:16px">
+      <strong>Check the version of the contract before you rely on a clause number.</strong> The
+      <em>Ziffer</em> and <em>Anlage</em> numbers used throughout this page come from the standard contract approved
+      by BNetzA decision <strong>BK6-18-061</strong>. The TSOs have since published a revised standard contract
+      (Amprion lists one <strong>valid from 1 October 2024</strong>), and the numbering or wording of individual
+      clauses may have moved. The substance described here is stable; the citations are a starting point, not a
+      final reference.
+    </div>
+
+    <div class="note legal rv" style="margin-top:14px">
+      <strong>And the honest recommendation, unchanged.</strong> For ten trucks — roughly 6 MWh a day — none of this
+      is worth doing. The collateral formula, a schedule desk reachable every working day and the duty of care in
+      <em>Ziffer 5.2</em> do not scale down to a single depot. <strong>Rent the role</strong> (section 7), ideally
+      with your own <em>Unterbilanzkreis</em> so your performance is at least measurable. The reason to understand
+      the requirements is to know what you are paying someone else to carry.
+    </div>
+
+    <h3 class="rv" style="margin-top:32px">Sources for this section</h3>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+      <table>
+        <thead><tr><th>What it covers</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>The obligation to conclude a balance group contract, and balance groups themselves</td>
+            <td><strong>StromNZV § 4 and § 26</strong> — <a href="https://www.gesetze-im-internet.de/stromnzv/StromNZV.pdf" target="_blank" rel="noreferrer">gesetze-im-internet.de</a></td>
+          </tr>
+          <tr>
+            <td>The standard contract, and every <em>Ziffer</em> / <em>Anlage</em> quoted on this page</td>
+            <td><strong>Standard-Bilanzkreisvertrag Strom</strong>, approved by BNetzA decision <strong>BK6-18-061</strong> — <a href="https://www.bundesnetzagentur.de/DE/Beschlusskammern/BK06/BK6_83_Zug_Mess/838_bilanzkreisvertrag/BK6-18-061_Standardbilanzkreisvertrag_01_08_2020.pdf?__blob=publicationFile&amp;v=5" target="_blank" rel="noreferrer">bundesnetzagentur.de (PDF)</a></td>
+          </tr>
+          <tr>
+            <td>The practical registration steps, forms and the current contract version</td>
+            <td><strong>Amprion — Bilanzkreisvertrag</strong> — <a href="https://www.amprion.net/Strommarkt/Bilanzkreise/Bilanzkreisvertrag/" target="_blank" rel="noreferrer">amprion.net</a> · and the equivalent pages of 50Hertz, TenneT DE and TransnetBW</td>
+          </tr>
+          <tr>
+            <td>Imbalance settlement, and the reBAP published per quarter hour</td>
+            <td><strong>netztransparenz.de</strong> — <a href="https://www.netztransparenz.de/de-de/Regelenergie/Ausgleichsenergiepreis/reBAP" target="_blank" rel="noreferrer">reBAP data and model description</a></td>
+          </tr>
+          <tr>
+            <td>The European rules the German ones implement</td>
+            <td><strong>Regulation (EU) 2017/2195</strong> (Electricity Balancing Guideline), Art. 17–18 on BRP duties and Art. 44–55 on imbalance settlement</td>
+          </tr>
+          <tr>
+            <td>Balancing products, prequalification and market results</td>
+            <td><strong>regelleistung.net</strong> — <a href="https://www.regelleistung.net/en-us/" target="_blank" rel="noreferrer">the German TSOs' joint tendering platform</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rv" style="font-size:12.5px;color:var(--ink-3);margin-top:12px">
+      Everything on this page is traceable to one of the above. Where a claim is date-sensitive — contract versions,
+      levy rates, the status of EU network codes — check the source before you cite it, because these move.
+    </p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <p><strong>Sources.</strong> Standard-Bilanzkreisvertrag Strom (BNetzA BK6-18-061, in force 01.08.2020) ·
@@ -2004,6 +2270,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     o2d:document.getElementById('o2d'), o3d:document.getElementById('o3d'),
     oR:document.getElementById('oR'), oRule:document.getElementById('oRule'), oAsym:document.getElementById('oAsym'),
     oYouShort:document.getElementById('oYouShort'), oYouLong:document.getElementById('oYouLong'),
+    oWhy:document.getElementById('oWhy'), mods:document.getElementById('mods'), detail:document.getElementById('cDetail'),
     c1:document.getElementById('m1'), c2:document.getElementById('m2'), c3:document.getElementById('m3')
   };
   var fmt = function(v){ return (Math.round(v*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €/MWh'; };
@@ -2090,12 +2357,23 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     line(els.oYouShort, 'Short by 1 MWh (you drew more than you promised)', -priceShort);
     line(els.oYouLong,  'Long by 1 MWh (you drew less than you promised)',  priceLong);
 
+    // Say in one plain sentence where the number came from, so the modules stay optional.
+    var WHY = {
+      m1: '<strong>Module 1</strong> — this is simply what the TSO paid to fix the quarter hour.',
+      m2: '<strong>Module 2</strong> — fixing it was cheap, so the price was pushed away from the market price to stop anyone gaming it.',
+      m3: '<strong>Module 3</strong> — Germany had burned through most of its reserves, so the scarcity alarm took over.'
+    };
+    els.oWhy.innerHTML = asym
+      ? 'Set by the <strong>emergency reserve rule</strong> (§ 32 KapResV), which applies only to short balance groups.'
+      : (bind ? 'Set by ' + WHY[bind] : 'No module applies in this quarter hour.');
+
     [['m1',els.c1],['m2',els.c2],['m3',els.c3]].forEach(function(p){
       p[1].classList.toggle('bind', bind === p[0]);
     });
   }
   ['sBal','sId','sM1'].forEach(function(id){ document.getElementById(id).addEventListener('input', compute); });
   ['cThin','cKap'].forEach(function(id){ document.getElementById(id).addEventListener('change', compute); });
+  els.detail.addEventListener('change', function(){ els.mods.hidden = !els.detail.checked; });
   compute();
 })();
 </script>

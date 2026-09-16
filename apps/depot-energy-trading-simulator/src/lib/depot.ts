@@ -223,6 +223,10 @@ export interface DeliveryResult {
   actualMw: number[];
   /** Per-truck SoC at the end of each quarter hour, fraction. [truck][qh] */
   socSeries: number[][];
+  /** Per-truck grid-side power, kW. Negative = discharging. [truck][qh] */
+  powerSeries: number[][];
+  /** Whether each truck was plugged in, per quarter hour. [truck][qh] */
+  pluggedSeries: boolean[][];
   /** Number of trucks plugged in, per quarter hour. */
   pluggedIn: number[];
   /** Fleet mean SoC across ALL trucks (including those on the road), per quarter hour. */
@@ -254,6 +258,8 @@ export function runDelivery(
   const n = trucks.length;
   const soc = trucks.map((t) => t.startSoc);
   const socSeries: number[][] = trucks.map(() => new Array(QH_PER_DAY).fill(0));
+  const powerSeries: number[][] = trucks.map(() => new Array(QH_PER_DAY).fill(0));
+  const pluggedSeries: boolean[][] = trucks.map(() => new Array(QH_PER_DAY).fill(false));
   const actualMw = new Array(QH_PER_DAY).fill(0);
   const pluggedIn = new Array(QH_PER_DAY).fill(0);
   const meanSoc = new Array(QH_PER_DAY).fill(0);
@@ -399,6 +405,8 @@ export function runDelivery(
           dischargedKwh += gridKwh;
         }
         depotKw += kw;
+        powerSeries[i][qh] = kw;
+        pluggedSeries[i][qh] = true;
         pluggedIn[qh]++;
       } else {
         // On the road: drain at a constant rate over the shift.
@@ -415,6 +423,8 @@ export function runDelivery(
   return {
     actualMw,
     socSeries,
+    powerSeries,
+    pluggedSeries,
     pluggedIn,
     meanSoc,
     failures,

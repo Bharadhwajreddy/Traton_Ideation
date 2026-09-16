@@ -314,6 +314,12 @@ export function simulate(input: SimulationInput): SimulationResult {
 
   return {
     perQh,
+    fleet: deliveryFleet.map((t, i) => ({
+      name: t.name,
+      soc: actual.socSeries[i],
+      powerKw: actual.powerSeries[i],
+      pluggedIn: actual.pluggedSeries[i],
+    })),
     pnl,
     net,
     totals: {

@@ -6,6 +6,7 @@ import { eur, eurSigned, num } from "@/lib/format";
 import { simulate, type SimulationInput } from "@/lib/simulate";
 import type { BrpOffer, PnlLine, SimulationResult } from "@/lib/types";
 import { PnlBars } from "./charts";
+import { CashFlow } from "./CashFlow";
 import { Briefing, Card, Chip, Note, Stat } from "./ui";
 
 const GROUP_LABEL: Record<PnlLine["group"], string> = {
@@ -88,6 +89,8 @@ export function PhaseSettlement({
           />
         </div>
       </Card>
+
+      <CashFlow result={result} brp={brp} fees={input.fees} />
 
       <Card title="Where the money went" className="lg:col-span-7">
         <PnlBars lines={result.pnl.map((l) => ({ label: l.label, value: l.value, detail: l.detail }))} />
