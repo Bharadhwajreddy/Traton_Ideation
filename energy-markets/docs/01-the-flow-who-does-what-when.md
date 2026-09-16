@@ -60,15 +60,21 @@ Two different jobs follow from that, and mixing them up is the source of most co
 ### 1.2.2 What "ancillary service" actually means
 
 **Anything the system operator needs in order to run the grid that is not the selling of
-energy itself.** Directive (EU) 2019/944 Art. 2(48) defines it broadly as *"a service
-necessary for the operation of a transmission or distribution system"*.
+energy itself.** Directive (EU) 2019/944 Art. 2(48), in full: *"a service necessary for the
+operation of a transmission or distribution system, including balancing and non-frequency
+ancillary services, **but not including congestion management**"*.
+
+Note the carve-out. Congestion management is deliberately **outside** the legal definition of
+an ancillary service. It is still a TSO system-operation task, and it still reaches a depot as
+a risk, so it is listed below as number 5 — but it is listed as an exception, not as a sixth
+flavour of the same thing.
 
 An airline sells seats. It also needs air-traffic control, de-icing, a standby aircraft,
 ground power and a runway fire service. Nobody buys a ticket for de-icing, it still has to
 exist, and someone still has to be under contract to provide it. **Energy is the seat.
 Ancillary services are everything else that makes the flight possible.**
 
-### 1.2.3 The five families, and how each is actually bought
+### 1.2.3 The five things a TSO has to organise, and how each is actually bought
 
 This table is the answer to the question. Note the fourth column.
 
@@ -78,7 +84,7 @@ This table is the answer to the question. Note the fourth column.
 | 2 | Voltage / reactive power | Voltage drifting outside limits | Mostly a **grid-code obligation** on connected generators, plus bilateral contracts | No — you comply, you don't bid | No |
 | 3 | Restoration / black start | Restarting after a blackout | **Bilateral contracts**, a handful of plants, multi-year | No — negotiated | No |
 | 4 | Inertia & system strength | Slowing the *rate* frequency moves | **Not procured at all.** A by-product of spinning machines. (Nordics buy FFR; GB buys stability contracts.) | No market exists | No |
-| 5 | Congestion management | A line is overloaded even though the system is balanced | **Redispatch 2.0**, § 13a EnWG. Plants are *instructed* and compensated at cost. | **Explicitly not a market**, by law | It applies *to* you as a risk |
+| 5 | Congestion management *(not legally an ancillary service — see the carve-out above)* | A line is overloaded even though the system is balanced | **Redispatch 2.0**, § 13a EnWG. Plants are *instructed* and compensated at cost. | **Explicitly not a market**, by law | It applies *to* you as a risk |
 
 ### 1.2.4 The three-part answer
 
@@ -185,8 +191,9 @@ This is the step most explanations skip, and it is where the **BRP** becomes ess
   must appear as an export from someone else's group, and total injections = total
   withdrawals, per quarter hour.
 - The TSO may **reject** schedules that exceed twice the declared maximum values
-  (Anlage 1.1) over several hours and cause significant imbalance — after giving the BRP
-  one hour to correct.
+  (Anlage 1.1) over several hours and cause significant imbalance. The contract does not
+  grant a fixed correction window here — there is no "e-mail warning plus one hour" rule;
+  the TSO must state its reasons, and correcting the schedule is the BRP's problem.
 
 > This is the moment where a day-ahead *trade* becomes a *physical promise*. An exchange
 > trade is automatically nominated through the exchange's own balance group
@@ -199,7 +206,9 @@ This is the step most explanations skip, and it is where the **BRP** becomes ess
 - **Continuous intraday (XBID/SIDC)**: opens D-1 **15:00** for 15-min products, runs
   continuously.
 - Gate closures for continuous trading:
-  - **Cross-border**: 60 min before delivery (being harmonised to 30 min).
+  - **Cross-border**: **30 min** before delivery. The harmonisation from 60 min to 30 min
+    began on **14 January 2026**; the German–Austrian border was among the first to move.
+    Borders not yet migrated still sit at 60 min, so check the specific border.
   - **Within the German bidding zone**: **5 minutes** before delivery.
 - Products: 15 min, 30 min, 60 min, blocks.
 - Price range: **−9 999 to +9 999 €/MWh**. This cap matters — it appears literally in the
@@ -249,7 +258,9 @@ in Germany", Table 2.)*
   cycles per quarter hour).
 - **mFRR** activates manually/semi-automatically in **≤12.5 min** via **MARI**.
 - **IGCC** (imbalance netting) cancels opposite aFRR demands across TSOs *before* any
-  energy is activated. Free by construction.
+  energy is activated, which **avoids the activation cost** for the netted volume. (It is
+  not literally free — the platform and the transmission capacity it uses have costs; it is
+  the balancing-energy activation that is avoided.)
 - The marginal bid activated for a German imbalance may physically sit in another country.
   The platforms are **TSO-to-TSO**; a BSP only ever talks to its own connecting TSO.
 

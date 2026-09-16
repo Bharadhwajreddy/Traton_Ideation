@@ -9,7 +9,7 @@ Retrieved September 2026. Where a document is versioned, the version actually re
 
 | # | Document | Why it matters | Link |
 |---|---|---|---|
-| A1 | **Standard-Bilanzkreisvertrag Strom**, approved by BNetzA **BK6-18-061** of 12.04.2019, in force 01.08.2020 | The contract a BRP actually signs. Source of every *Ziffer* and *Anlage* quoted in doc 03. | [bundesnetzagentur.de (PDF)](https://www.bundesnetzagentur.de/DE/Beschlusskammern/BK06/BK6_83_Zug_Mess/838_bilanzkreisvertrag/BK6-18-061_Standardbilanzkreisvertrag_01_08_2020.pdf?__blob=publicationFile&v=5) |
+| A1 | **Standard-Bilanzkreisvertrag Strom**, approved by BNetzA **BK6-18-061** of 12.04.2019, in force 01.08.2020 — **superseded by BK6-23-102** (23.11.2023, amended 18.01.2024, applicable **01.10.2024**) | The contract a BRP actually signs. Source of every *Ziffer* and *Anlage* quoted in doc 03; clause numbers must be re-checked against BK6-23-102. | [bundesnetzagentur.de (PDF)](https://www.bundesnetzagentur.de/DE/Beschlusskammern/BK06/BK6_83_Zug_Mess/838_bilanzkreisvertrag/BK6-18-061_Standardbilanzkreisvertrag_01_08_2020.pdf?__blob=publicationFile&v=5) |
 | A2 | **Calculation of the uniform imbalance price (reBAP) across Germany's 4 LFC areas — Model description**, valid from **01.11.2023** (English, non-binding translation) | The complete reBAP specification. Source of every formula in doc 05. | [netztransparenz.de (PDF)](https://www.netztransparenz.de/xspproxy/api/staticfiles/ntp-relaunch/dokumente/regelenergie/ausgleichsenergiepreis/model_description_of_the_rebap_calculation_since_01.11.2023.pdf) |
 | A2-de | Same document, German original | | [netztransparenz.de (PDF)](https://www.netztransparenz.de/xspproxy/api/staticfiles/ntp-relaunch/dokumente/regelenergie/ausgleichsenergiepreis/modellbeschreibung_der_rebap-berechnung_ab__01.11.2023.pdf) |
 | A3 | **Description of concepts for balancing and the balancing markets in Germany** (German TSOs, Public, Jan 2025) | The product table, prequalification components, dimensioning, *Freisetzung* abolition rationale. Source for doc 04. | [regelleistung.net (PDF)](https://www.regelleistung.net/xspproxy/api/StaticFiles/Regelleistung/04_Marktinformationen/Modalit%C3%A4ten/Berichte%20EB%20GL_EN/Description%20of%20concepts%20for%20balancing%20and%20the%20balancing%20markets%20in%20Germany.pdf) |
@@ -23,7 +23,8 @@ Retrieved September 2026. Where a document is versioned, the version actually re
 
 | Decision | Date | Subject |
 |---|---|---|
-| **BK6-18-061** | 12.04.2019 | Standard balance group contract |
+| **BK6-18-061** | 12.04.2019 | Standard balance group contract (in force 01.08.2020) |
+| **BK6-23-102** | 23.11.2023, amended 18.01.2024 | **Current** standard balance group contract, applicable 01.10.2024 |
 | **BK6-07-002 (MaBiS)** | — | Market rules for balance group settlement; invoicing deadlines |
 | **BK6-12-024** | 25.10.2012 | Original single-price imbalance model |
 | **BK6-19-217** | 11.12.2019 | Imbalance price development |

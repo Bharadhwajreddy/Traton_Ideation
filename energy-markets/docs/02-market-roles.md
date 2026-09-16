@@ -48,8 +48,8 @@ booked.
 | EU directive | **Directive (EU) 2019/944**, Art. 5, 17 |
 | German statute | **EnWG** §§ 20, 22, 23b |
 | German ordinance | **StromNZV** §§ 4, 5, 8, 26 |
-| Regulator decision | **BNetzA BK6-18-061** (12.04.2019), approving the standard balance group contract |
-| Contract | **Standard-Bilanzkreisvertrag Strom**, in force since 01.08.2020 |
+| Regulator decision | **BNetzA BK6-18-061** (12.04.2019), approving the standard balance group contract; **superseded by BK6-23-102** (23.11.2023, amended 18.01.2024) |
+| Contract | **Standard-Bilanzkreisvertrag Strom** — BK6-18-061 version in force 01.08.2020; **current version applicable from 01.10.2024** |
 | Process rules | **MaBiS** (BK6-07-002), **GPKE**, **WiM** |
 
 ### Duties, verbatim from the contract

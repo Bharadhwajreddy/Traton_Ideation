@@ -94,7 +94,7 @@ AEP1_GCC,dir,qh   =    ⎨ VWAP_aFRR,GCC,dir,qh                    if aFRR VWAP 
 ```
                 ⎧ AEP1_GCC,pos,qh   if Balance_GCC > 0
 AEP_Module1 =   ⎨ AEP1_GCC,neg,qh   if Balance_GCC < 0
-                ⎩ 0                 if Balance_GCC = 0
+                ⎩ undefined         if Balance_GCC = 0
 ```
 
 Rounded commercially to 2 decimal places, €/MWh.
@@ -163,6 +163,20 @@ distance. Between 0 and 500 MW it **increases linearly**.
 ```
 
 *(125 MWh over a quarter hour = 500 MW.)*
+
+> **Two reading notes on this formula.**
+>
+> 1. **`AEP_Module1` is *undefined*, not zero, when `Balance_GCC = 0`.** Some renderings of
+>    the model write a `0` in that branch. It is not a price of zero euros — the module has
+>    no defined value, which is exactly why § 5.1 says module 2 alone sets the price in that
+>    settlement period. The reference implementation in
+>    `apps/depot-energy-trading-simulator/src/lib/rebap.ts` returns `null` here, not `0`.
+> 2. **The ΔP formula is dimensionally sloppy in the source.** `Balance_GCC` is stated in
+>    **MW** everywhere else in the model description, but inside `min(125 MWh, |Balance_GCC|)`
+>    it is compared against an energy in **MWh**. The intended reading is the energy one:
+>    convert the balance to MWh first (MW × 0.25 h), then clamp at 125 MWh. That is what the
+>    implementation does, and it is what makes the stated "at 500 MW the full distance
+>    applies" come out right.
 
 ### Step 3 — Module 2
 

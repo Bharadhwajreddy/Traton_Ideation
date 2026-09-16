@@ -97,7 +97,7 @@ by the TSOs in consultation with BNetzA, but **currently none are set**. [Concep
 
 | Platform | Product | What it does |
 |---|---|---|
-| **IGCC** | aFRR **netting** | Cancels opposite aFRR demands across TSOs *before* activation. Costless by construction. |
+| **IGCC** | aFRR **netting** | Cancels opposite aFRR demands across TSOs *before* activation, **avoiding the activation cost** for the netted volume. |
 | **PICASSO** | aFRR **energy** | Common merit order, re-optimised **every 4 seconds** → up to **225 optimisation cycles per quarter hour**. Produces a **cross-border marginal price (CBMP)** per cycle per direction. |
 | **MARI** | mFRR **energy** | Common merit order for scheduled and direct activation, quarter-hourly. |
 | **TERRE** | RR | Germany does not participate (no RR product). |

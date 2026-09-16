@@ -242,8 +242,15 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <h3 class="rv" style="margin-top:38px">So what exactly is an &ldquo;ancillary service&rdquo;?</h3>
     <p class="rv" style="max-width:72ch">
       An ancillary service is <strong>anything the system operator needs in order to run the grid that is not the
-      selling of energy itself</strong>. The EU definition (Directive 2019/944, Art. 2(48)) is deliberately broad:
-      <em>&ldquo;a service necessary for the operation of a transmission or distribution system&rdquo;</em>.
+      selling of energy itself</strong>. The EU definition (Directive 2019/944, Art. 2(48)) reads, in full:
+      <em>&ldquo;a service necessary for the operation of a transmission or distribution system, including balancing
+      and non-frequency ancillary services, but not including congestion management&rdquo;</em>.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      Read the last five words twice. <strong>Congestion management is deliberately carved out of the legal
+      definition.</strong> It is still something the TSO has to organise, and it still reaches you as a risk &mdash;
+      so it is in the table below as number 5 &mdash; but it is not, in law, an ancillary service. Everything else
+      in that table is.
     </p>
 
     <div class="analogy rv">
@@ -259,7 +266,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       </p>
     </div>
 
-    <h3 class="rv" style="margin-top:34px">The five families of ancillary service</h3>
+    <h3 class="rv" style="margin-top:34px">The five things a TSO has to organise</h3>
     <p class="rv" style="max-width:72ch">
       They are not variations on a theme. They solve genuinely different physical problems, and — this is the part
       that matters — <strong>they are bought in genuinely different ways.</strong>
@@ -298,7 +305,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <td>No</td>
           </tr>
           <tr>
-            <td><strong>5 · Congestion management</strong></td>
+            <td><strong>5 &middot; Congestion management</strong><br><span class="chip">not legally an ancillary service</span></td>
             <td>A line is overloaded even though the system is balanced</td>
             <td><strong>Redispatch 2.0</strong>, § 13a EnWG. You are <em>instructed</em> to change output and compensated at cost.</td>
             <td><strong style="color:var(--crit)">Explicitly not a market</strong>, by law</td>
@@ -491,7 +498,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <div class="grid g2 rv" style="margin-top:24px">
       <div class="panel">
         <h3>Ancillary services</h3>
-        <p style="color:var(--ink-2);font-size:14px">Everything a TSO buys or mandates to run the system: frequency, voltage, restoration, inertia, congestion.</p>
+        <p style="color:var(--ink-2);font-size:14px">Everything a TSO buys or mandates to run the system: frequency, voltage, restoration, inertia. Congestion management is expressly excluded from the definition.</p>
         <span class="chip">Directive 2019/944 Art. 2(48), 31, 40 · §§ 12, 13 EnWG</span>
       </div>
       <div class="panel" style="border-color:var(--s3)">
@@ -929,7 +936,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           <p class="who"><strong>Who runs it:</strong> the power exchanges (NEMOs), coupled across Europe.</p>
           <p class="who"><strong>What you do:</strong> submit how much you want to buy in each quarter hour and up to what price. Then wait.</p>
           <p class="who"><strong>If you do nothing:</strong> you buy nothing here, and everything you consume tomorrow lands in imbalance at an unknown price. Nobody sensible does this.</p>
-          <p>One <strong>blind auction</strong> — you cannot see other bids, everyone submits, the algorithm clears once. Results around 12:45. Since <strong>1 October 2025 there are 96 quarter-hour products</strong> instead of 24 hourly ones. One uniform clearing price per slot, from −500 to +4 000 €/MWh. <strong>80–90 % of all volume is priced here, which is why it is the reference for everything else.</strong></p>
+          <p>One <strong>blind auction</strong> — you cannot see other bids, everyone submits, the algorithm clears once. Results early in the afternoon. Since <strong>1 October 2025 there are 96 quarter-hour products</strong> instead of 24 hourly ones. One uniform clearing price per slot, from <strong>−600 to +4 000 €/MWh</strong> (the floor was lowered from −500 on 28 May 2026). <strong>This is the reference price for everything downstream</strong>, which is why it matters out of all proportion to the volume that clears here.</p>
         </div>
       </div>
 
@@ -951,7 +958,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           <p class="who"><strong>Who runs it:</strong> the same exchanges, but continuously rather than as one auction.</p>
           <p class="who"><strong>What you do:</strong> when your forecast changes, buy or sell the difference. You pay a bid–ask spread each time.</p>
           <p class="who"><strong>If you do nothing:</strong> you carry the gap into delivery and settle it at the imbalance price — which you will not know until afterwards.</p>
-          <p>Continuous trading opens at <strong>15:00 on D-1</strong>. Cross-border trading closes 60 minutes before delivery, but <strong>inside the German bidding zone you can trade until 5 minutes before the quarter hour starts</strong>. Price range −9 999 to +9 999 €/MWh — a number that reappears literally inside the imbalance price formula in section 9. Your corresponding schedule change to the TSO needs at least one quarter hour of lead time.</p>
+          <p>Continuous trading opens at <strong>15:00 on D-1</strong>. Cross-border trading closes 60 minutes before delivery on most borders — though the move to <strong>30 minutes</strong> began on 14 January 2026 and is arriving border by border, the German–Austrian border among the first. <strong>Inside the German bidding zone you can trade until 5 minutes before the quarter hour starts.</strong> Price range −9 999 to +9 999 €/MWh — a number that reappears literally inside the imbalance price formula in section 9. Your corresponding schedule change to the TSO needs at least one quarter hour of lead time.</p>
         </div>
       </div>
 
@@ -973,7 +980,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           <p class="who"><strong>Who runs it:</strong> physics, then the TSOs&rsquo; control systems, then the European platforms — in that order.</p>
           <p class="who"><strong>What you do:</strong> if you are in a pool, your asset responds to a setpoint. Otherwise, nothing at all.</p>
           <p class="who"><strong>If you do nothing:</strong> this happens anyway. It is the grid keeping itself alive.</p>
-          <p><strong>FCR</strong> responds within <strong>30 seconds</strong>, autonomously, proportional to how far frequency has drifted — no merit order, no instruction, and <strong>no energy payment at all</strong>. <strong>aFRR</strong> follows within <strong>5 minutes</strong> via PICASSO, which re-optimises <strong>every 4 seconds</strong> — up to 225 separate clearings inside a single quarter hour. <strong>mFRR</strong> within <strong>12.5 minutes</strong> via MARI. Before any of that, <strong>IGCC</strong> quietly cancels opposite demands between neighbouring TSOs, which costs nothing because no energy has to move.</p>
+          <p><strong>FCR</strong> responds within <strong>30 seconds</strong>, autonomously, proportional to how far frequency has drifted — no merit order, no instruction, and <strong>no energy payment at all</strong>. <strong>aFRR</strong> follows within <strong>5 minutes</strong> via PICASSO, which re-optimises <strong>every 4 seconds</strong> — up to 225 separate clearings inside a single quarter hour. <strong>mFRR</strong> within <strong>12.5 minutes</strong> via MARI. Before any of that, <strong>IGCC</strong> quietly cancels opposite demands between neighbouring TSOs, which avoids the activation cost entirely because no energy has to move.</p>
         </div>
       </div>
 
@@ -1057,7 +1064,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       <div class="panel">
         <h3>Independent aggregation <span class="chip o">the EU target model</span></h3>
         <p style="font-size:14px;color:var(--ink-2)">Article 17 of Directive (EU) 2019/944 requires Member States to enable a BSP acting over resources belonging to <em>another</em> BRP, with automatic imbalance adjustment and a compensation payment between the parties.</p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>Not implemented in German balancing.</strong> The TSOs expect the EU <strong>Network Code on Demand Response</strong> to force it — ACER submitted it on 7 March 2025; not adopted as of early 2026. The Nordics are building it through eSett. <em>This is a live regulatory question.</em></p>
+        <p style="font-size:14px;color:var(--ink-2)"><strong>Not implemented in German balancing.</strong> The TSOs expect the EU <strong>Network Code on Demand Response</strong> to force it — ACER submitted it on 7 March 2025 and the Commission consultation closed in September 2025, but it had still not been adopted when this page was last checked in September 2026. The Nordics are building it through eSett. <em>This is a live regulatory question.</em></p>
       </div>
     </div>
   </div>
@@ -1150,7 +1157,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <div class="note rv" style="margin-top:14px">
       <strong>Status.</strong> Not implemented in German balancing. The TSOs expect the EU
       <strong>Network Code on Demand Response</strong> to force it — ACER submitted it to the Commission on
-      7 March 2025, and it had not been adopted as of early 2026. The Nordics are building it through eSett.
+      7 March 2025, and it had still not been adopted when this page was last checked in September 2026. The Nordics are building it through eSett.
       Re-check before citing; this is a genuinely open question.
     </div>
 
@@ -1205,7 +1212,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           <tr><td>Schedule desk</td><td style="text-align:right">24/7, EDI@Energy, named reachable contacts</td></tr>
           <tr><td>Forecasting, Ziffer 5.2</td><td style="text-align:right">&ldquo;due care&rdquo; is a contractual duty, not a preference</td></tr>
           <tr><td>Data validation, § 26 StromNZV</td><td style="text-align:right">check and object without delay</td></tr>
-          <tr><td>Termination</td><td style="text-align:right">10 working days&rsquo; notice to month end</td></tr>
+          <tr><td>Termination</td><td style="text-align:right"><strong>three months&rsquo;</strong> notice to the end of a calendar month</td></tr>
         </table>
       </div>
     </div>
@@ -1260,7 +1267,8 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 
     <h3 class="rv" style="margin-top:30px">The same depot, the same two months, under all three</h3>
     <p class="rv" style="max-width:72ch">
-      Take the ten-truck depot: about <strong>180 MWh a month</strong>. In a normal month it drifts off its schedule
+      Take the ten-truck depot: ten trucks &times; 380&nbsp;kWh a shift, plus charging losses, is roughly
+      <strong>4 MWh a day &mdash; about 125 MWh a month</strong>. In a normal month it drifts off its schedule
       here and there and the imbalance costs a few hundred euros. In the bad month, everything is the same
       <em>except</em> that one evening the German system runs genuinely short and the price spikes — and the depot
       happens to be short by 0.25 MWh in that one quarter hour.
@@ -1270,27 +1278,27 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         <thead><tr><th></th><th>A · Pass-through</th><th>B · Pooled</th><th>C · Full-service</th></tr></thead>
         <tbody>
           <tr>
-            <td>Fees for the month<br><span style="color:var(--ink-3)">fixed + per MWh (+ premium for C)</span></td>
-            <td class="tnum">€520</td><td class="tnum">€1 104</td><td class="tnum">€2 640</td>
+            <td>Fees for the month<br><span style="color:var(--ink-3)">€250/month fixed, plus<br>A €1.50/MWh · B €5.60/MWh · C €8.00/MWh</span></td>
+            <td class="tnum">€438</td><td class="tnum">€950</td><td class="tnum">€1 250</td>
           </tr>
           <tr style="background:color-mix(in srgb,var(--good) 7%,transparent)">
             <td colspan="4" style="font-weight:700">NORMAL MONTH — imbalance costs about €400 at the raw price</td>
           </tr>
           <tr><td>Imbalance charged to you</td><td class="tnum">€400</td><td class="tnum">€220 <span style="color:var(--ink-3)">(netted)</span></td><td class="tnum">€0 <span style="color:var(--ink-3)">(absorbed)</span></td></tr>
-          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--good)">€920</strong></td><td class="tnum"><strong>€1 324</strong></td><td class="tnum"><strong>€2 640</strong></td></tr>
+          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--good)">€838</strong></td><td class="tnum"><strong>€1 170</strong></td><td class="tnum"><strong>€1 250</strong></td></tr>
           <tr style="background:color-mix(in srgb,var(--crit) 7%,transparent)">
             <td colspan="4" style="font-weight:700">BAD MONTH — one scarcity quarter hour: 0.25 MWh short × 19 998 €/MWh ≈ €5 000</td>
           </tr>
           <tr><td>Imbalance charged to you</td><td class="tnum">€5 400</td><td class="tnum">€2 970</td><td class="tnum">€0</td></tr>
-          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--crit)">€5 920</strong></td><td class="tnum"><strong>€4 074</strong></td><td class="tnum"><strong style="color:var(--good)">€2 640</strong></td></tr>
+          <tr><td><strong>Total</strong></td><td class="tnum"><strong style="color:var(--crit)">€5 838</strong></td><td class="tnum"><strong>€3 920</strong></td><td class="tnum"><strong style="color:var(--good)">€1 250</strong></td></tr>
         </tbody>
       </table>
     </div>
     <div class="note warn rv" style="margin-top:14px">
       <strong>Read the two &ldquo;Total&rdquo; rows against each other — that is the entire decision.</strong>
       Pass-through is the cheapest option eleven months of the year and the ruinous one in the twelfth.
-      Full-service costs nearly three times as much every single month and does not move at all when the bad month
-      arrives. Pooled sits between them. <strong>Nobody is being generous or greedy; they are selling you different
+      Full-service costs about &euro;400 a month more than pass-through in a quiet month &mdash; and does not move
+      at all when the bad month arrives, which is the whole point. Pooled sits between them. <strong>Nobody is being generous or greedy; they are selling you different
       amounts of certainty.</strong>
     </div>
 
@@ -1508,7 +1516,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       <div class="panel">
         <h3>It is blind</h3>
         <p style="font-size:14px;color:var(--ink-2)">You submit by <strong>12:00</strong>, the algorithm clears all
-        coupled European zones at once, results appear around <strong>12:45</strong>. No haggling, no second round.</p>
+        coupled European zones at once, and results appear <strong>early in the afternoon</strong>. No haggling, no second round.</p>
       </div>
       <div class="panel">
         <h3>96 separate clearings</h3>
@@ -1777,8 +1785,8 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <p id="oYouShort" style="font-size:13.5px;margin:.5em 0 0"></p>
             <p id="oYouLong" style="font-size:13.5px;margin:.35em 0 0"></p>
             <p style="font-size:11.5px;color:var(--ink-3);margin:.6em 0 0">
-              1 MWh is roughly one truck taking a big charge for an hour, or the whole depot being 15 minutes out of
-              step at 4 MW.
+              For scale: 1 MWh is about three trucks charging flat out for an hour, or the whole depot being a
+              quarter of an hour out of step at its full 1.6 MW connection — roughly three times over.
             </p>
           </div>
           <div id="oAsym" style="display:none;margin-top:10px" class="note warn">
@@ -1973,7 +1981,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           heat pump, a battery — the grid operator may briefly throttle it at moments of local stress, and in exchange
           you get a discount on your network charges.
         </p>
-        <p style="font-size:14px;color:var(--ink-2)">It applies only if <strong>all three</strong> are true:</p>
+        <p style="font-size:14px;color:var(--ink-2)">The statute itself says none of this in numbers. The
+          thresholds come from the Bundesnetzagentur decision that implements it,
+          <strong>BK6-22-300 of 27 November 2023</strong>. Under that decision it applies only if
+          <strong>all three</strong> are true:</p>
         <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
           <li>the device draws more than <strong>4.2 kW</strong>, and</li>
           <li>it is connected in <strong>low voltage</strong> — the 400 V wiring a house or small shop is on, and</li>
@@ -2007,8 +2018,11 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
         </p>
         <p style="font-size:14px;color:var(--ink-2)"><strong>Two conditions, and both are hard:</strong></p>
         <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
-          <li>The arrangement must be <strong>notified to the regulator by 30 September</strong> of the year it is to
-            apply to. Miss the date and you wait a year.</li>
+          <li>It is an <strong>agreement with your network operator</strong>, not a permit you apply for. There is
+            no ex-ante application deadline. What the 30 September date really is: under BNetzA decision
+            <strong>BK4-13-739</strong> the network operator must <strong>notify the regulator of the individual
+            charges it has agreed</strong> — a reporting duty that runs during the year the charge applies, not a
+            gate you have to pass before it.</li>
           <li>You must <em>actually</em> stay out of the windows — which means your charging controller has to treat
             them as a <strong>hard no</strong> every single day, not a preference it drops when a truck is late.</li>
         </ul>
@@ -2025,8 +2039,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <div class="note warn rv" style="margin-top:14px">
       <strong>Note for accuracy.</strong> An earlier version of this page named § 14a EnWG as the depot&rsquo;s
       grid-charge lever. That was wrong, for the reason above, and it is corrected here. The other branch of
-      § 19(2) — <em>intensive Netznutzung</em>, which needs at least <strong>7 000 full-load hours and 10 GWh a
-      year</strong> — is far beyond a truck depot and can be ignored.
+      § 19(2) — sentence 2, <em>intensive Netznutzung</em> — is far beyond a truck depot and can be ignored. It
+      needs annual consumption <strong>exceeding 10 GWh</strong> <em>and</em> a tiered number of full-load hours:
+      <strong>7 000 h &rarr; 20 %</strong>, <strong>7 500 h &rarr; 15 %</strong>, <strong>8 000 h &rarr; 10 %</strong>
+      of the published charge. Ten trucks reach neither number.
     </div>
 
 
@@ -2070,7 +2086,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 
     <div class="panel rv" style="margin-top:22px;border-color:var(--s1)">
       <h3>Can you be your own BRP?</h3>
-      <p style="font-size:14px;color:var(--ink-2)">There is no licence and no prequalification — it is a contract, not a permit. But for ten trucks (order of magnitude <strong>6 MWh/day</strong>) it is economically absurd: the collateral formula, a 24/7 schedule desk and EDI@Energy capability do not scale down. The realistic structures are:</p>
+      <p style="font-size:14px;color:var(--ink-2)">There is no licence and no prequalification — it is a contract, not a permit. But for ten trucks (order of magnitude <strong>4 MWh/day</strong>) it is economically absurd: the collateral formula, a 24/7 schedule desk and EDI@Energy capability do not scale down. The realistic structures are:</p>
       <ol style="font-size:14px;color:var(--ink-2);padding-left:20px">
         <li><strong>Supplier with a dynamic tariff.</strong> Zero effort, zero exposure, almost none of the value.</li>
         <li><strong>Service BRP + your own Unterbilanzkreis.</strong> You keep the trading decisions and the upside; they keep the TSO relationship and the collateral. <em>This is the structure the simulator models.</em></li>
@@ -2168,8 +2184,11 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
       <div class="worked" style="--acc:var(--s1)">
         <div class="worked-h"><span class="chip b">6 · Post collateral if the TSO asks</span></div>
         <p>The TSO may require security <em>in justified cases</em>, with written reasons, due within
-        <strong>10 working days</strong>. You choose the form: a self-debtor guarantee, a bank guarantee from an EU
-        credit institution, or a pledged account. The TSOs publish a bank-guarantee template.</p>
+        <strong>10 working days</strong>. You choose the form, and there are exactly three: a self-debtor
+        <strong>bank guarantee</strong> from a credit institution established in the EU, a self-debtor guarantee
+        from an <strong>insurance company</strong>, or a self-debtor <strong>company guarantee</strong> capped at
+        10&nbsp;% of the guarantor&rsquo;s liable equity. A pledged bank account is <em>not</em> on the list. The
+        TSOs publish a guarantee template.</p>
       </div>
       <div class="worked" style="--acc:var(--s1)">
         <div class="worked-h"><span class="chip b">7 · Connect your schedule management and go live</span></div>
@@ -2181,14 +2200,16 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <div class="note warn rv" style="margin-top:16px">
       <strong>Check the version of the contract before you rely on a clause number.</strong> The
       <em>Ziffer</em> and <em>Anlage</em> numbers used throughout this page come from the standard contract approved
-      by BNetzA decision <strong>BK6-18-061</strong>. The TSOs have since published a revised standard contract
-      (Amprion lists one <strong>valid from 1 October 2024</strong>), and the numbering or wording of individual
-      clauses may have moved. The substance described here is stable; the citations are a starting point, not a
-      final reference.
+      by BNetzA decision <strong>BK6-18-061</strong> (12.04.2019, in force 01.08.2020). That decision has since been
+      superseded by <strong>BK6-23-102</strong> of 23 November 2023, amended 18 January 2024, <strong>applicable from
+      1 October 2024</strong> — this is the version a new BRP signs today. Some numbering moved: the precedence of
+      exchange nominations is now <em>Ziffer 12 lit. a</em>, and the termination rules sit in <em>Ziffern 18 and
+      20</em>. The substance described here is stable; treat every clause number below as a starting point to be
+      checked against BK6-23-102, not as a final reference.
     </div>
 
     <div class="note legal rv" style="margin-top:14px">
-      <strong>And the honest recommendation, unchanged.</strong> For ten trucks — roughly 6 MWh a day — none of this
+      <strong>And the honest recommendation, unchanged.</strong> For ten trucks — roughly 4 MWh a day — none of this
       is worth doing. The collateral formula, a schedule desk reachable every working day and the duty of care in
       <em>Ziffer 5.2</em> do not scale down to a single depot. <strong>Rent the role</strong> (section 7), ideally
       with your own <em>Unterbilanzkreis</em> so your performance is at least measurable. The reason to understand
@@ -2236,7 +2257,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 
 <footer>
   <div class="wrap">
-    <p><strong>Sources.</strong> Standard-Bilanzkreisvertrag Strom (BNetzA BK6-18-061, in force 01.08.2020) ·
+    <p><strong>Sources.</strong> Standard-Bilanzkreisvertrag Strom (BNetzA BK6-18-061, in force 01.08.2020; superseded by BK6-23-102, applicable 01.10.2024) ·
       German TSOs, <em>Calculation of the uniform imbalance price (reBAP) across Germany&rsquo;s 4 LFC areas — Model description</em>, valid from 01.11.2023 (BK6-21-192) ·
       German TSOs, <em>Description of concepts for balancing and the balancing markets in Germany</em> (January 2025) ·
       Regulation (EU) 2017/2195 (EB GL) · Regulation (EU) 2017/1485 (SO GL) · Directive (EU) 2019/944 ·

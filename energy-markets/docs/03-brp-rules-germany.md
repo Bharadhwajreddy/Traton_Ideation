@@ -1,9 +1,15 @@
 # 03 — Becoming and being a BRP in Germany: the actual rules
 
 Source of every quoted clause: **Standard-Bilanzkreisvertrag Strom**, approved by
-Bundesnetzagentur decision **BK6-18-061 of 12.04.2019**, in force since **01.08.2020**,
+Bundesnetzagentur decision **BK6-18-061 of 12.04.2019**, in force **01.08.2020**,
 published by the BNetzA and by the TSOs on `netztransparenz.de`. Clause numbers below are
 the contract's own *Ziffern*; annexes are *Anlagen*.
+
+> **Version warning.** BK6-18-061 has been **superseded by BK6-23-102** of 23.11.2023
+> (amended 18.01.2024), **applicable from 01.10.2024**. That is the version a new BRP signs
+> today. The substance below is unchanged, but some numbering moved — notably the precedence
+> of exchange nominations (now *Ziffer 12 lit. a*) and the termination rules (*Ziffern 18 and
+> 20*). Verify any clause number against BK6-23-102 before relying on it.
 
 ---
 
@@ -20,7 +26,7 @@ StromNZV (Stromnetzzugangsverordnung)   — § 4 balance groups, § 5 schedules,
                                           § 8 balancing energy, § 26 balance group contract
 KapResV                                 — capacity reserve, §§ 26 & 32 (imbalance price effect)
         │
-BNetzA BK6-18-061                       — approves the standard contract
+BNetzA BK6-18-061 → BK6-23-102          — approves the standard contract (current: BK6-23-102, from 01.10.2024)
 BNetzA BK6-07-002 (MaBiS)               — settlement process & deadlines
 BNetzA BK6-12-024, BK6-19-217,
        BK6-19-552, BK6-20-345,
@@ -90,12 +96,13 @@ This is the real financial barrier to entry.
 
 - **14.3** — the TSO **may** raise and **must** lower the collateral if (a) the reBAP moves
   materially or (b) you change your declaration values.
-- **14.4 — permitted forms**, at your choice:
-  - a **self-debtor guarantee** under German law from a company of sufficient
-    creditworthiness, waiving the defences of voidability, set-off and prior recourse,
-    **capped at 10 % of the guarantor's liable equity**;
-  - a **self-debtor bank guarantee** from an EU credit institution, same waivers;
-  - **pledge of an account**.
+- **14.4 — permitted forms**, at your choice (three, and there is **no account pledge**
+  among them):
+  - a **self-debtor bank guarantee** from a credit institution established in the EU,
+    waiving the defences of voidability, set-off and prior recourse;
+  - a **self-debtor guarantee from an insurance company**, same waivers;
+  - a **self-debtor company guarantee** from a company of sufficient creditworthiness,
+    same waivers, **capped at 10 % of the guarantor's liable equity**.
   If you can show none of these is possible, the TSO must accept a **transfer bearing
   interest at the base rate**. Pure cash collateral is not to be accepted.
 - **14.5** — on your request, the TSO must re-examine the justification after **1 year**,
@@ -120,7 +127,7 @@ creditworthiness such as **the current annual report**.
 | **Day-ahead nomination** of all schedules to the TSO | **14:30 on D-1** (Anlage 3, Ziff. 1.3) |
 | Updating day-ahead schedules | allowed until **14:30 on D-1** |
 | **Availability** of your named contacts around day-ahead nomination times | at least until all your schedules are confirmed (Ziffer 6.2) |
-| Next-day schedule **changes** submitted 14:30–18:00 | merely **received and acknowledged**; processed only from **18:00** when the intraday phase for D opens |
+| Next-day schedule **changes** submitted 14:30–16:00 | merely **received and acknowledged**; processed only from **16:00**, when the intraday phase for D opens |
 | **Intraday nomination changes** (inside DE, and between German control areas) | at least **one quarter hour** lead time, to any quarter hour of the day (Anlage 3, Ziff. 1.4) |
 | **Retroactive schedule changes** (intra-control-area only) | until **16:00 on the calendar day after delivery**; if that is not a working day, by 16:00 of the next working day, at the latest 16:00 of the **third** calendar day after delivery (Anlage 3, Ziff. 1.5) |
 | **Urgent Call** — TSO demand for the final retroactive nomination, to dispel suspicion of abusive nomination | by **10:00 the following calendar day**, request must be concretely reasoned and sent by e-mail |
@@ -139,8 +146,8 @@ creditworthiness such as **the current annual report**.
 
 **TSO rejection rights:**
 - Day-ahead: schedules exceeding **twice** the declared Anlage 1.1 maxima over several
-  hours *and* causing significant imbalance may be rejected — after an e-mail warning and
-  a **1-hour** window to correct.
+  hours *and* causing significant imbalance may be rejected. There is **no fixed
+  "e-mail warning plus one hour to correct"** in the contract — do not plan around one.
 - Intraday: cross-control-area schedule changes may be rejected if they would create a
   **congestion**; the rejection must be reasoned in text form afterwards.
 
@@ -257,7 +264,7 @@ The construct a depot or a fleet operator most likely ends up using.
 | 6 | Data validation and objection handling per § 26 StromNZV | ⚠ |
 | 7 | Exchange membership or broker access for DA/ID | separate, on top |
 
-For **10 trucks** — order of magnitude **6 MWh/day** — being your own BRP is economically
+For **10 trucks** — order of magnitude **4 MWh/day** — being your own BRP is economically
 absurd. The realistic structures are:
 
 1. **Supplier with a flexibility tariff.** Zero effort, zero market exposure, you capture
