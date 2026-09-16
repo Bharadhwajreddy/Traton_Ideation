@@ -26,6 +26,8 @@ Retrieved September 2026. Where a document is versioned, the version actually re
 | **BK6-18-061** | 12.04.2019 | Standard balance group contract (in force 01.08.2020) |
 | **BK6-23-102** | 23.11.2023, amended 18.01.2024 | **Current** standard balance group contract, applicable 01.10.2024 |
 | **BK6-07-002 (MaBiS)** | — | Market rules for balance group settlement; invoicing deadlines |
+| **BK6-22-300** | 27.11.2023 | Controllable consumption devices under § 14a EnWG — source of the 4.2 kW / low-voltage / from-01.01.2024 criteria |
+| **BK4-13-739** | — | Reporting procedure for individual network charges under § 19(2) StromNEV (the 30 September notification) |
 | **BK6-12-024** | 25.10.2012 | Original single-price imbalance model |
 | **BK6-19-217** | 11.12.2019 | Imbalance price development |
 | **BK6-19-552** | 11.05.2020 | Imbalance price development |
