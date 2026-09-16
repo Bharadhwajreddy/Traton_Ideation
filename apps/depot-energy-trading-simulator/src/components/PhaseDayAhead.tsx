@@ -1,14 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import { BLOCK_LABELS } from "@/lib/constants";
 import type { PlanMode } from "@/lib/depot";
 import { eur, num, qhToTime } from "@/lib/format";
-import { availableCapacityByBlock } from "@/lib/simulate";
-import type { BalancingConfig, BalancingOffer, BrpOffer, DepotConfig, Scenario, SimulationResult } from "@/lib/types";
+import type { BrpOffer, DepotConfig, Scenario, SimulationResult } from "@/lib/types";
 import { HOURS_PER_QH } from "@/lib/types";
 import { Legend, PowerChart, PriceChart } from "./charts";
-import { Card, Chip, Note, NumberField, SegmentedControl, Slider, Stat } from "./ui";
+import { Briefing, Card, Chip, Note, SegmentedControl, Slider, Stat } from "./ui";
 
 const MODES: { value: PlanMode; label: string; hint: string }[] = [
   { value: "cheapest", label: "Cheapest hours", hint: "Fill the cheapest quarter hours in each truck's plugged-in window." },
@@ -26,10 +24,6 @@ export function PhaseDayAhead({
   onPlanMode,
   priceThreshold,
   onPriceThreshold,
-  balancing,
-  balancingOffer,
-  onBalancingOffer,
-  onBalancing,
 }: {
   scenario: Scenario;
   result: SimulationResult;
@@ -39,10 +33,6 @@ export function PhaseDayAhead({
   onPlanMode: (m: PlanMode) => void;
   priceThreshold: number;
   onPriceThreshold: (v: number) => void;
-  balancing: BalancingConfig;
-  balancingOffer: BalancingOffer;
-  onBalancingOffer: (o: BalancingOffer) => void;
-  onBalancing: (b: BalancingConfig) => void;
 }) {
   const priceData = useMemo(
     () =>
@@ -65,12 +55,6 @@ export function PhaseDayAhead({
     gridCap: depot.gridConnectionKw / 1000,
   }));
 
-  const available = useMemo(
-    () => availableCapacityByBlock(scenario, depot, daMw),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [scenario, depot, planMode, priceThreshold],
-  );
-
   const daLine = result.pnl.find((l) => l.key === "dayAhead")!;
   const vwap = result.totals.dayAheadMwh > 0 ? -daLine.value / result.totals.dayAheadMwh : 0;
   const flatBenchmark =
@@ -79,6 +63,29 @@ export function PhaseDayAhead({
 
   return (
     <div className="grid gap-4 lg:grid-cols-12">
+      <div className="lg:col-span-12">
+        <Briefing title="What is happening on this screen?" href="/explainer.html#buying">
+          <p>
+            It is the morning before delivery. You have to decide <strong>when your trucks will charge tomorrow</strong>,
+            buy that energy, and have your BRP promise it to the grid operator.
+          </p>
+          <p className="mt-2">
+            You do not know tomorrow&apos;s prices when you bid — nobody does. The day-ahead market is a{" "}
+            <strong>blind auction</strong>: everyone submits how much they want at what maximum price, the exchange
+            crosses all the curves at 12:00, and one clearing price comes out for each quarter hour. Everyone who
+            clears pays that same price, whatever they bid.
+          </p>
+          <p className="mt-2">
+            The simulator simplifies this: it lets you optimise against the day&apos;s <em>actual</em> prices, as
+            though your forecast were perfect. Real life is the same decision with a worse crystal ball, so treat the
+            saving shown here as an upper bound.
+          </p>
+          <p className="mt-2">
+            Whatever you choose, your <strong>BRP</strong> places the order for you and then files the matching
+            schedule with the TSO by <strong>14:30</strong>. That filing is what turns a trade into a promise.
+          </p>
+        </Briefing>
+      </div>
       <Card
         title="Day-ahead auction — gate closure 12:00 on D-1"
         subtitle="One blind auction, 96 quarter-hour products since 1 October 2025, uniform clearing price. Everything you buy here becomes a schedule you must nominate to the TSO by 14:30."
@@ -152,168 +159,6 @@ export function PhaseDayAhead({
       >
         <PowerChart data={powerData} gridCapMw={depot.gridConnectionKw / 1000} />
         <Legend items={[{ color: "var(--series-1)", label: "Nominated depot power (MW)" }]} />
-      </Card>
-
-      <Card
-        title="Optional — offer balancing capacity"
-        subtitle="Six 4-hour blocks, auctioned D-1 at 09:00 for aFRR. Minimum bid 1 MW. Only available if your BRP gives you pool access."
-        className="lg:col-span-12"
-      >
-        {!brp.balancingAccess ? (
-          <Note kind="warn" title={`${brp.name} offers no balancing market access`}>
-            To bid into aFRR you must be a prequalified BSP or sit inside someone else&apos;s prequalified pool.
-            Switch to FlexPool Partner or GreenTrade Full-Service in Setup to unlock this.
-          </Note>
-        ) : (
-          <>
-            <div className="overflow-x-auto">
-              <table className="data">
-                <thead>
-                  <tr>
-                    <th>4-hour block</th>
-                    {BLOCK_LABELS.map((b) => (
-                      <th key={b}>{b}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style={{ color: "var(--text-secondary)" }}>
-                      Negative aFRR offered (MW)
-                      <span className="ml-1 text-[10.5px]" style={{ color: "var(--text-muted)" }}>
-                        charge harder on command
-                      </span>
-                    </td>
-                    {balancingOffer.aFrrNeg.map((v, i) => (
-                      <td key={i}>
-                        <input
-                          type="number"
-                          className="w-[74px] text-right"
-                          min={0}
-                          step={0.1}
-                          value={v}
-                          onChange={(e) => {
-                            const next = [...balancingOffer.aFrrNeg];
-                            next[i] = Math.max(0, Number(e.target.value));
-                            onBalancingOffer({ ...balancingOffer, aFrrNeg: next });
-                          }}
-                        />
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td style={{ color: "var(--text-muted)" }}>Fleet can actually hold (MW)</td>
-                    {available.negMw.map((v, i) => (
-                      <td
-                        key={i}
-                        className="tnum"
-                        style={{ color: balancingOffer.aFrrNeg[i] > v ? "var(--critical)" : "var(--good)" }}
-                      >
-                        {num(v, 2)}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td style={{ color: "var(--text-secondary)" }}>
-                      Positive aFRR offered (MW)
-                      <span className="ml-1 text-[10.5px]" style={{ color: "var(--text-muted)" }}>
-                        back off or discharge
-                      </span>
-                    </td>
-                    {balancingOffer.aFrrPos.map((v, i) => (
-                      <td key={i}>
-                        <input
-                          type="number"
-                          className="w-[74px] text-right"
-                          min={0}
-                          step={0.1}
-                          value={v}
-                          onChange={(e) => {
-                            const next = [...balancingOffer.aFrrPos];
-                            next[i] = Math.max(0, Number(e.target.value));
-                            onBalancingOffer({ ...balancingOffer, aFrrPos: next });
-                          }}
-                        />
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td style={{ color: "var(--text-muted)" }}>Fleet can actually hold (MW)</td>
-                    {available.posMw.map((v, i) => (
-                      <td
-                        key={i}
-                        className="tnum"
-                        style={{ color: balancingOffer.aFrrPos[i] > v ? "var(--critical)" : "var(--good)" }}
-                      >
-                        {num(v, 2)}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td style={{ color: "var(--text-muted)" }}>Activated share this day</td>
-                    {scenario.activationShare.negAfrr.map((v, i) => (
-                      <td key={i} className="tnum" style={{ color: "var(--text-muted)" }}>
-                        aFRR− {Math.round(v * 100)} % · aFRR+ {Math.round(scenario.activationShare.posAfrr[i] * 100)} %
-                      </td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <NumberField
-                label="aFRR− capacity price"
-                value={balancing.aFrrCapacityNegEurPerMwH}
-                step={1}
-                suffix="€/MW·h"
-                onChange={(v) => onBalancing({ ...balancing, aFrrCapacityNegEurPerMwH: v })}
-              />
-              <NumberField
-                label="aFRR+ capacity price"
-                value={balancing.aFrrCapacityPosEurPerMwH}
-                step={1}
-                suffix="€/MW·h"
-                onChange={(v) => onBalancing({ ...balancing, aFrrCapacityPosEurPerMwH: v })}
-              />
-              <Slider
-                label="Aggregator revenue share"
-                value={Math.round(balancing.aggregatorSharePct * 100)}
-                min={0}
-                max={60}
-                step={5}
-                format={(v) => `${v} %`}
-                onChange={(v) => onBalancing({ ...balancing, aggregatorSharePct: v / 100 })}
-              />
-              <div className="grid grid-cols-2 gap-3">
-                <Stat
-                  label="Capacity revenue"
-                  value={eur(result.totals.balancingCapacityRevenue)}
-                  tone={result.totals.balancingCapacityRevenue > 0 ? "good" : "neutral"}
-                />
-                <Stat
-                  label="Activation"
-                  value={eur(result.totals.balancingActivationRevenue)}
-                  tone={result.totals.balancingActivationRevenue >= 0 ? "good" : "bad"}
-                />
-              </div>
-            </div>
-
-            <div className="mt-4 grid gap-3 lg:grid-cols-2">
-              <Note kind="legal" title="The minimum bid is 1 MW of RELIABLE capacity">
-                What counts is what a TSO service run demonstrates you can hold for the whole 4-hour block —
-                not nameplate charger power. A depot whose trucks are all out from 06:00 to 16:00 has
-                essentially zero prequalified capacity in those blocks. The red figures above are offers your
-                fleet cannot actually honour.
-              </Note>
-              <Note kind="info" title="Prequalify for the NEGATIVE direction first">
-                Negative balancing energy means &ldquo;charge harder than planned&rdquo; — it needs only headroom.
-                Positive means backing off or discharging, which costs degradation and risks a departure SoC.
-                For a charging depot, downward flexibility is close to free and upward flexibility is expensive.
-              </Note>
-            </div>
-          </>
-        )}
       </Card>
 
       <Card title="Schedule detail" subtitle="The table view. Also the accessible fallback for the charts above." className="lg:col-span-12">

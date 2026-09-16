@@ -4,7 +4,7 @@ import { BRP_OFFERS } from "@/lib/constants";
 import { SCENARIOS } from "@/lib/scenarios";
 import { num, qhToTime } from "@/lib/format";
 import type { BrpOffer, DepotConfig, FeeConfig } from "@/lib/types";
-import { Card, Chip, Note, NumberField, Slider, Toggle } from "./ui";
+import { Briefing, Card, Chip, Note, NumberField, Slider, Toggle } from "./ui";
 
 export function PhaseSetup({
   scenarioId,
@@ -27,6 +27,26 @@ export function PhaseSetup({
 }) {
   return (
     <div className="grid gap-4 lg:grid-cols-12">
+      <div className="lg:col-span-12">
+        <Briefing title="New here? Read this first." href="/explainer.html#intro">
+          <p>
+            You are about to run <strong>one day</strong> in the life of a depot with ten electric trucks, and see
+            exactly where the money goes.
+          </p>
+          <p className="mt-2">
+            Three things to know before you start. <strong>One:</strong> every kilowatt-hour in Germany has to sit
+            inside somebody&apos;s <em>balance group</em> — an account for electricity that must balance to zero every
+            15 minutes. You will not run your own; you rent the role from a <strong>BRP</strong>, and step 2 is where
+            you pick which one. <strong>Two:</strong> the energy price is the smaller half of your bill — network
+            charges, levies and tax usually add up to more, which is what step 4 is about. <strong>Three:</strong> the
+            depot always serves its trucks first. When operations and your trading plan disagree, operations win, and
+            the gap between what you promised and what you did is what gets priced at the end.
+          </p>
+          <p className="mt-2">
+            Balancing-market participation (FCR / aFRR / mFRR) is deliberately <strong>out of scope</strong> here.
+          </p>
+        </Briefing>
+      </div>
       <Card
         title="1 · Pick the day"
         subtitle="Four synthetic German delivery days. Each isolates one lesson."
@@ -209,13 +229,15 @@ export function PhaseSetup({
         <div className="grid gap-3">
           <NumberField
             label="Grid fees, levies, tax"
+            hint="Network Arbeitspreis + KWKG, Offshore and § 19 levies (2.946 ct/kWh in 2026) + Stromsteuer (2.050 ct/kWh) + Konzessionsabgabe. Often bigger than the wholesale price itself."
             value={fees.gridAndLeviesEurPerMwh}
             step={5}
             suffix="€/MWh"
             onChange={(v) => onFees({ ...fees, gridAndLeviesEurPerMwh: v })}
           />
           <NumberField
-            label="Peak power charge"
+            label="Peak power charge (Leistungspreis)"
+            hint="Billed on your single highest 15-minute peak of the YEAR. One bad quarter hour sets it for twelve months. Pro-rated to one day here."
             value={fees.peakPowerEurPerKwYear}
             step={10}
             suffix="€/kW·a"
@@ -223,6 +245,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Exchange fee (day-ahead)"
+            hint="What the power exchange charges per MWh you trade in the auction."
             value={fees.exchangeFeeDayAheadEurPerMwh}
             step={0.01}
             suffix="€/MWh"
@@ -230,6 +253,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Exchange fee (intraday)"
+            hint="Higher than day-ahead, because continuous trading costs more to run."
             value={fees.exchangeFeeIntradayEurPerMwh}
             step={0.01}
             suffix="€/MWh"
@@ -237,6 +261,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Clearing fee"
+            hint="What the clearing house charges to guarantee both sides of every trade."
             value={fees.clearingFeeEurPerMwh}
             step={0.005}
             suffix="€/MWh"
@@ -244,6 +269,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Intraday half-spread"
+            hint="NOT a fee. The gap between the best buy and best sell price in the order book — you buy above the mid and sell below it. A round trip costs you twice this."
             value={fees.intradayHalfSpreadEurPerMwh}
             step={0.25}
             suffix="€/MWh"
@@ -251,6 +277,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Spread widening near gate closure"
+            hint="Liquidity thins as delivery approaches, so the spread widens exactly when you most need to trade."
             value={fees.lateSpreadMultiplier}
             step={0.1}
             suffix="×"
@@ -258,6 +285,7 @@ export function PhaseSetup({
           />
           <NumberField
             label="Cost of a missed departure"
+            hint="A truck that leaves below its required SoC: a swapped vehicle, a late delivery, a broken promise. Deliberately large — it should dominate everything else."
             value={fees.operationalFailurePenaltyEur}
             step={100}
             suffix="€"
@@ -266,8 +294,9 @@ export function PhaseSetup({
         </div>
         <div className="mt-4">
           <Note kind="warn" title="Ordering matters">
-            For most depots the value ranking is: avoid peak grid charges &gt; day-ahead arbitrage &gt;
-            intraday re-optimisation &gt; balancing markets. The first needs no market role at all.
+            For most depots the value ranking is: <strong>peak power charge &gt; day-ahead arbitrage &gt; intraday
+            re-optimisation &gt; imbalance discipline.</strong> The first needs no market role, no counterparty and
+            no prequalification — just a controller that refuses to let the depot peak when it should not.
           </Note>
         </div>
       </Card>
@@ -335,7 +364,6 @@ function BrpCard({ offer, active, onSelect }: { offer: BrpOffer; active: boolean
           />
           <Kv k="Premium" v={offer.insurancePremiumEurPerMwh ? `${offer.insurancePremiumEurPerMwh} €/MWh` : "—"} />
           <Kv k="Intraday access" v={offer.intradayAccess ? "yes" : "no"} warn={!offer.intradayAccess} />
-          <Kv k="Balancing access" v={offer.balancingAccess ? "yes" : "no"} warn={!offer.balancingAccess} />
           <Kv k="Their nomination cut-off" v={offer.nominationCutoff} />
           <Kv k="Collateral" v={`€${offer.collateralEur.toLocaleString("en-GB")}`} />
         </tbody>

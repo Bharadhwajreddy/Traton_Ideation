@@ -6,7 +6,7 @@ import { eur, eurSigned, num } from "@/lib/format";
 import { simulate, type SimulationInput } from "@/lib/simulate";
 import type { BrpOffer, PnlLine, SimulationResult } from "@/lib/types";
 import { PnlBars } from "./charts";
-import { Card, Chip, Note, Stat } from "./ui";
+import { Briefing, Card, Chip, Note, Stat } from "./ui";
 
 const GROUP_LABEL: Record<PnlLine["group"], string> = {
   energy: "Energy and imbalance",
@@ -44,6 +44,22 @@ export function PhaseSettlement({
 
   return (
     <div className="grid gap-4 lg:grid-cols-12">
+      <div className="lg:col-span-12">
+        <Briefing title="What is happening on this screen?" href="/explainer.html#depot">
+          <p>The bill. Two things are worth more attention than the headline number.</p>
+          <p className="mt-2">
+            <strong>Compare the subtotals, not the lines.</strong> On a typical run the network charges and levies
+            exceed the entire energy bill, and the imbalance line — the thing everyone worries about — is among the
+            smallest numbers on the page. That proportion is the lesson.
+          </p>
+          <p className="mt-2">
+            <strong>Then read the three-contract table.</strong> Same day, same fleet, same trading, priced under all
+            three BRP archetypes. Which one wins depends entirely on how volatile the imbalance price was
+            <em> that day</em> — change the scenario and the winner changes. There is no best contract, only a best
+            contract for a given appetite for risk.
+          </p>
+        </Briefing>
+      </div>
       <Card
         title="The day's settlement"
         subtitle="Everything that moves money, on one page. Negative is a cost; positive is a receipt."

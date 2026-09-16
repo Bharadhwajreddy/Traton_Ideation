@@ -123,6 +123,7 @@ export function NumberField({
   min,
   max,
   suffix,
+  hint,
 }: {
   label: string;
   value: number;
@@ -131,13 +132,21 @@ export function NumberField({
   min?: number;
   max?: number;
   suffix?: string;
+  hint?: string;
 }) {
   return (
-    <label className="flex items-center justify-between gap-3">
-      <span className="text-[12.5px]" style={{ color: "var(--text-secondary)" }}>
-        {label}
+    <label className="flex items-start justify-between gap-3">
+      <span className="min-w-0">
+        <span className="block text-[12.5px]" style={{ color: "var(--text-secondary)" }}>
+          {label}
+        </span>
+        {hint && (
+          <span className="block text-[11px] leading-snug" style={{ color: "var(--text-muted)" }}>
+            {hint}
+          </span>
+        )}
       </span>
-      <span className="flex items-center gap-1.5">
+      <span className="flex shrink-0 items-center gap-1.5">
         <input
           type="number"
           className="w-[92px] text-right"
@@ -274,6 +283,45 @@ export function SegmentedControl<T extends string>({
         );
       })}
     </div>
+  );
+}
+
+/**
+ * A collapsible plain-language briefing for each phase, with a deep link into the
+ * explainer. The simulator is useless to someone who does not yet know what a
+ * balance group is, so every phase says what it is doing and where to read more.
+ */
+export function Briefing({
+  title,
+  href,
+  children,
+}: {
+  title: string;
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <details
+      className="card min-w-0 px-4 py-3"
+      open
+      style={{ borderLeft: "4px solid var(--series-1)" }}
+    >
+      <summary className="cursor-pointer list-none text-[13.5px] font-semibold" style={{ color: "var(--series-1)" }}>
+        {title}
+      </summary>
+      <div className="mt-2 max-w-[78ch] text-[13px]" style={{ color: "var(--text-secondary)" }}>
+        {children}
+      </div>
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-2 inline-block text-[12.5px] font-semibold"
+        style={{ color: "var(--series-1)" }}
+      >
+        Read the full explanation ↗
+      </a>
+    </details>
   );
 }
 

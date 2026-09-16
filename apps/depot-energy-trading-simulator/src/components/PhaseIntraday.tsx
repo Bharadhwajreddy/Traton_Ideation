@@ -5,7 +5,7 @@ import { INTRADAY_REVEAL_QH } from "@/lib/simulate";
 import type { BrpOffer, FeeConfig, Scenario, SimulationResult } from "@/lib/types";
 import { HOURS_PER_QH } from "@/lib/types";
 import { Legend, PowerChart } from "./charts";
-import { Card, Chip, Note, Slider, Stat } from "./ui";
+import { Briefing, Card, Chip, Note, Slider, Stat } from "./ui";
 
 export function PhaseIntraday({
   scenario,
@@ -41,6 +41,25 @@ export function PhaseIntraday({
 
   return (
     <div className="grid gap-4 lg:grid-cols-12">
+      <div className="lg:col-span-12">
+        <Briefing title="What is happening on this screen?" href="/explainer.html#buying">
+          <p>
+            Yesterday you promised the grid operator a charging schedule. Today reality is drifting away from it.
+          </p>
+          <p className="mt-2">
+            The <strong>intraday market</strong> is where you fix that. It is not another auction — it is a live order
+            book, like a share market, open until <strong>5 minutes before</strong> each quarter hour inside Germany.
+            Because it is an order book there is a <strong>bid–ask spread</strong>: you buy a little above the mid
+            price and sell a little below it, so changing your mind is never free.
+          </p>
+          <p className="mt-2">
+            <strong>The one decision here:</strong> close the gap now at a known cost, or carry it into delivery and
+            settle it at the imbalance price — which you will not know until weeks later. That is the entire trade-off,
+            and there is no universally right answer. Slide it to 0 % and to 100 % on a calm day and then on the
+            scarcity day, and watch the settlement screen.
+          </p>
+        </Briefing>
+      </div>
       <Card
         title={`11:00 on delivery day — the forecast just changed`}
         subtitle="Continuous intraday runs until 5 minutes before delivery inside the German bidding zone. You can still fix your position — for a price."

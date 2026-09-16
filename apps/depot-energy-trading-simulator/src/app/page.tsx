@@ -35,8 +35,11 @@ export default function Page() {
   const [brpId, setBrpId] = useState("flexpool");
   const [depot, setDepot] = useState<DepotConfig>(DEFAULT_DEPOT);
   const [fees, setFees] = useState<FeeConfig>(DEFAULT_FEES);
-  const [balancing, setBalancing] = useState<BalancingConfig>(DEFAULT_BALANCING);
-  const [balancingOffer, setBalancingOffer] = useState<BalancingOffer>(EMPTY_BALANCING_OFFER);
+  // Balancing-market participation (FCR / aFRR / mFRR) is out of scope for this project,
+  // so no offer is ever made. The engine keeps the calculation — restoring the UI in
+  // PhaseDayAhead is all that is needed to re-enable it.
+  const balancing = DEFAULT_BALANCING;
+  const balancingOffer = EMPTY_BALANCING_OFFER;
   const [planMode, setPlanMode] = useState<PlanMode>("cheapest");
   const [priceThreshold, setPriceThreshold] = useState(60);
   const [intradayCloseFraction, setIntradayCloseFraction] = useState(0.8);
@@ -74,8 +77,8 @@ export default function Page() {
               Depot Energy Trading Simulator
             </h1>
             <p className="mt-1 text-[13px]" style={{ color: "var(--text-secondary)" }}>
-              Ten electric trucks in the German electricity market. Day-ahead, intraday, balancing and
-              imbalance settlement — implemented from the TSOs&apos; own model descriptions.
+              Ten electric trucks in the German electricity market. Day-ahead, intraday and imbalance
+              settlement — implemented from the TSOs&apos; own model descriptions.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -164,10 +167,6 @@ export default function Page() {
             onPlanMode={setPlanMode}
             priceThreshold={priceThreshold}
             onPriceThreshold={setPriceThreshold}
-            balancing={balancing}
-            balancingOffer={balancingOffer}
-            onBalancingOffer={setBalancingOffer}
-            onBalancing={setBalancing}
           />
         )}
         {phase === "intraday" && (

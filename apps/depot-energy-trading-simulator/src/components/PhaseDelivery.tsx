@@ -6,7 +6,7 @@ import { describePaymentDirection } from "@/lib/rebap";
 import { eur, num, qhToTime } from "@/lib/format";
 import type { BrpOffer, DepotConfig, SimulationResult } from "@/lib/types";
 import { ImbalanceChart, Legend, PowerChart, PriceChart, SocChart } from "./charts";
-import { Card, Chip, Note, Slider, Stat, Toggle } from "./ui";
+import { Briefing, Card, Chip, Note, Slider, Stat, Toggle } from "./ui";
 
 export function PhaseDelivery({
   result,
@@ -50,6 +50,25 @@ export function PhaseDelivery({
 
   return (
     <div className="grid gap-4 lg:grid-cols-12">
+      <div className="lg:col-span-12">
+        <Briefing title="What is happening on this screen?" href="/explainer.html#rebap">
+          <p>
+            The day runs for real. The depot dispatches its chargers to keep every truck&apos;s promise — and
+            <strong> when the trading plan and the trucks disagree, the trucks win.</strong>
+          </p>
+          <p className="mt-2">
+            Wherever the metered line leaves the nominated area, your balance group is out of position. Every one of
+            those quarter hours gets repriced at the <strong>reBAP</strong>, the German imbalance price. The
+            surprising part is that it can go <em>either way</em>: if your deviation happened to help the system, you
+            are paid for it. The price is not measuring how badly you forecast — it is measuring what your error did
+            to the grid.
+          </p>
+          <p className="mt-2">
+            The inspector at the bottom shows how that price is built: three modules, and whichever is highest (when
+            the system is short) or lowest (when it is long) sets the price.
+          </p>
+        </Briefing>
+      </div>
       <Card
         title="Delivery — the day actually happens"
         subtitle="Operations always win. A truck that must charge to make its departure will charge, whatever your schedule said. That override is where imbalance comes from."

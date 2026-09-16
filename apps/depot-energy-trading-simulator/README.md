@@ -4,6 +4,11 @@ Run a depot of ten electric trucks through the German electricity market for one
 delivery day: buy day-ahead, adjust intraday, live through delivery, and read the
 settlement invoice.
 
+> **Scope.** Balancing-market participation (FCR / aFRR / mFRR) is deliberately **out of scope**
+> and disabled in the UI. The engine retains the calculation — see `DEFAULT_BALANCING` in
+> `src/lib/constants.ts` — so it can be restored by re-adding the offer card to
+> `src/components/PhaseDayAhead.tsx`.
+
 The point of the thing is to make three normally-invisible mechanisms concrete:
 
 1. **Where the imbalance actually comes from.** Not from bad trading — from operations
@@ -47,7 +52,7 @@ include by default in a monorepo.
 | Phase | What happens | What you decide |
 |---|---|---|
 | **Setup** | Pick the day, the BRP contract, the fleet and the cost assumptions | everything downstream |
-| **Day-ahead** | 12:00 D-1 auction, then nomination to the TSO by 14:30 | your charging strategy, and optionally a balancing capacity offer |
+| **Day-ahead** | 12:00 D-1 auction, then nomination to the TSO by 14:30 | your charging strategy |
 | **Intraday** | 11:00 on D: the forecast changes | how much of the gap you close, and at what spread |
 | **Delivery** | Real time. Operations override the plan | V2G, and whether to deviate deliberately |
 | **Settlement** | Ex post, per quarter hour, invoiced monthly | nothing — you read the bill |
@@ -139,11 +144,13 @@ Stated so nobody over-claims from the output:
 
 - **Redispatch 2.0** (§ 13a EnWG) exposure is not modelled. For a depot it is a risk, not
   a revenue — compensated at cost.
-- **§ 14a EnWG** reduced grid charges appear only as one configurable €/MWh figure, not as
-  the actual module choice.
+- **§ 19(2) StromNEV** individual network charges appear only as one configurable peak-power
+  figure; the app does not check your load against a DSO's high-load windows. (§ 14a EnWG is
+  not modelled because it does not apply to a medium-voltage RLM depot.)
 - **VAT and electricity tax** are folded into that same figure.
-- **Prequalification availability** is warned about, not enforced — the app flags a
-  balancing offer the fleet cannot hold, but does not run a TSO service run.
+- **Balancing markets** are out of scope entirely (see Scope above).
+- **Price-forecast error.** The planner optimises against the day's *actual* cleared prices —
+  perfect foresight. The arbitrage saving shown is an upper bound, not an estimate.
 - **Degradation** is a flat €/kWh on throughput. No calendar ageing, no C-rate or thermal
   dependence.
 - **One day at a time.** No seasonal or multi-day effects.

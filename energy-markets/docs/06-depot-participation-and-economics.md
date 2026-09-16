@@ -42,23 +42,69 @@ ring-fenced and you keep the trading upside.
 
 ---
 
-## 6.2 The four value stacks, ranked by accessibility
+## 6.2 The value stack, ranked by accessibility
 
 | # | Value stack | Effort | Typical value | Needs |
 |---|---|---|---|---|
-| 1 | **Avoid peak grid charges** (§ 14a EnWG / Leistungspreis) | low | often the **largest single item** | load management only |
-| 2 | **Day-ahead price arbitrage** (smart charging) | low | 10–30 % of energy cost | dynamic tariff or a service BRP |
-| 3 | **Intraday re-optimisation** | medium | a few €/MWh | service BRP + trading desk or algo |
-| 4 | **Balancing markets** (aFRR/mFRR capacity + energy) | high | €/MW·h availability, lumpy | prequalification or an aggregator pool |
+| 1 | **Peak power charge** (Leistungspreis) — and § 19(2) StromNEV if you qualify | low | often the **largest single item** | load management only |
+| 2 | **Day-ahead price arbitrage** (smart charging) | low | 10–30 % of the energy component | a spot-linked tariff or a service BRP |
+| 3 | **Intraday re-optimisation** | medium | a few €/MWh | service BRP + a desk or an algorithm |
+| 4 | **Imbalance discipline** — nominating what you will actually do | medium | small but relentless | a decent forecast of your own operation |
+| 5 | ~~Balancing markets (FCR / aFRR / mFRR)~~ — **out of scope for this project** | high | lumpy | prequalification or an aggregator pool, plus four written consents |
 
-Note the ordering. **Grid-charge optimisation usually beats every energy-market strategy**
-for a depot, and it needs no market role at all. Anyone pitching V2G revenue that ignores
-§ 14a EnWG and the Leistungspreis is selling you the fourth-best thing first.
+Note the ordering. **Peak-charge optimisation usually beats every energy-market strategy** for a depot,
+and it needs no market role, no counterparty and no prequalification. The simulator models stacks 2, 3
+and 4 explicitly and carries 1 as a configurable peak-power charge so the comparison is honest.
 
-The simulator models stacks 2, 3 and 4 explicitly and carries 1 as a configurable
-grid-charge block so the comparison is honest.
+### 6.2.1 Two corrections worth having
 
----
+**§ 14a EnWG does not apply to a depot of this size.** The reduced grid charges for *steuerbare
+Verbrauchseinrichtungen* cover devices above 4.2 kW connected in **low voltage** and commissioned from
+1 January 2024. A ~1.6 MW depot on a medium-voltage connection with RLM metering is **outside its scope
+entirely.** (An earlier version of this document listed § 14a as the depot's grid-charge lever. It is not.)
+
+**The real lever is § 19(2) StromNEV.** German law allows an *individual network charge* in two cases:
+
+| | Condition | Fits a depot? |
+|---|---|---|
+| **§ 19(2) sentence 1** — *atypische Netznutzung* | Your annual peak reliably falls **outside** the network operator's published high-load windows (*Hochlastzeitfenster*) | **Yes** — this is exactly what a controllable depot can guarantee |
+| **§ 19(2) sentence 2** — *intensive Netznutzung* | At least **7 000 Benutzungsstunden** and **10 GWh** a year | **No** — a depot is nowhere near 7 000 h |
+
+Where atypical use is recognised, the Leistungspreis is billed on the peak *within* the high-load
+windows rather than the absolute annual peak, and the charge can fall to as little as **20 % of the
+standard rate**. Two hard conditions: the agreement must be notified to the Bundesnetzagentur or the
+relevant state regulator **by 30 September** of the year it is to apply, and the depot must genuinely
+stay out of the windows — a hard constraint in the charging controller, every day, not a preference.
+
+### 6.2.2 Why the tariff structure punishes a depot
+
+German network charges for RLM-metered commercial customers split at **2 500 Benutzungsstunden** per year:
+
+```
+Benutzungsstunden = annual kWh ÷ annual peak kW
+```
+
+Above 2 500 h you get a low per-kWh charge and a high per-kW charge; below it, an expensive per-kWh
+tariff. A depot running roughly 1 000 MWh/year against a 1.6 MW peak sits at about **625 hours** — deep
+in the expensive band, *and* paying a Leistungspreis on a peak it touches for only a few quarter hours a
+year. Flattening the profile raises Benutzungsstunden and lowers the peak at the same time.
+
+### 6.2.3 The 2026 cost stack, per MWh
+
+| Component | 2026 value | Varies? |
+|---|---|---|
+| KWKG-Umlage | 0.446 ct/kWh = **4.46 €/MWh** | set annually |
+| Offshore-Netzumlage | 0.941 ct/kWh = **9.41 €/MWh** | set annually |
+| § 19 StromNEV-Umlage | 1.559 ct/kWh = **15.59 €/MWh** | set annually |
+| **Levies total** | 2.946 ct/kWh = **29.46 €/MWh** | |
+| Stromsteuer | 2.050 ct/kWh = **20.50 €/MWh** | |
+| Netzentgelt — Arbeitspreis | varies by DSO and voltage level | **yes** |
+| Netzentgelt — Leistungspreis | order of 100–180 €/kW·a, on the annual peak | **yes** |
+| Konzessionsabgabe | ≈ 0.11 ct/kWh for commercial special-contract customers | by municipality |
+
+**Levies plus tax alone come to ≈ 50 €/MWh before any network charge or any electricity.** The
+simulator's default of 95 €/MWh for "grid fees, levies and tax" is that ≈50 plus a representative
+network Arbeitspreis and Konzessionsabgabe.
 
 ## 6.3 The asymmetry that defines depot flexibility
 
@@ -206,16 +252,10 @@ offers. The simulator shows you exactly what it costs you.
 | Grid fees + levies + taxes | 95 €/MWh | Netzentgelt, KWKG, § 19 StromNV, Offshore, Konzessionsabgabe, Stromsteuer |
 | Leistungspreis (peak power) | 120 €/kW·a → shown as €/kW on the day's peak | the item that usually dominates |
 
-Balancing revenue side:
-
-| Item | Default |
-|---|---|
-| aFRR capacity price (negative direction) | 12 €/MW·h |
-| aFRR capacity price (positive direction) | 18 €/MW·h |
-| mFRR capacity price (negative) | 3 €/MW·h |
-| mFRR capacity price (positive) | 6 €/MW·h |
-| Aggregator revenue share | 25 % |
-| Activation energy | at the scenario's platform marginal price |
+**Balancing-market participation is disabled.** FCR / aFRR / mFRR are out of scope for this project, so
+no capacity is ever offered and the balancing lines never appear in the P&L. The calculation remains in
+`simulate.ts` (see `DEFAULT_BALANCING` in `constants.ts`) and can be re-enabled by restoring the offer
+UI in `PhaseDayAhead.tsx`.
 
 ### 6.4.8 Settlement identity
 
@@ -246,14 +286,17 @@ Stated explicitly so you do not over-claim from it:
 
 - **Redispatch 2.0.** A depot ≥ 100 kW is in scope for § 13a EnWG; being directed down is
   a *risk*, compensated at cost. Not modelled.
-- **§ 14a EnWG reduced grid charges** for controllable consumption devices. Modelled only
-  as a flat configurable grid-fee number, not as the actual module choice.
+- **§ 19(2) StromNEV individual network charges.** Modelled only as a flat configurable
+  peak-power charge — the simulator does not check your load against a DSO's high-load
+  windows. (§ 14a EnWG is not modelled because it does not apply here — see 6.2.1.)
 - **VAT and electricity-tax mechanics.** Folded into one levy figure.
-- **Real prequalification availability.** Balancing capacity offered is taken as offered;
-  the simulator warns if your offered MW exceeds what the fleet can actually hold for the
-  whole 4-hour block, but does not run a TSO service run.
+- **Balancing markets entirely.** FCR / aFRR / mFRR participation is out of scope for this
+  project and disabled in the UI (see 6.4.7).
 - **Multi-day and seasonal effects.** One day at a time.
 - **Battery thermal behaviour, C-rate-dependent efficiency, calendar ageing.**
   Degradation is a flat €/kWh on throughput.
 - **Historical price data.** Scenarios are synthetic (see 6.4.4).
+- **Price-forecast error.** The planner optimises against the day's *actual* cleared prices,
+  i.e. perfect foresight. Real bidding is the same decision with an imperfect forecast, so the
+  simulator's arbitrage saving is an **upper bound**, not an estimate.
 - **Sweden / Nordic rules.** Germany only, by design.

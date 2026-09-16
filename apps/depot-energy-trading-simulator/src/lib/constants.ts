@@ -68,6 +68,11 @@ export const DEFAULT_FEES: FeeConfig = {
   operationalFailurePenaltyEur: 1500,
 };
 
+/**
+ * Balancing-market parameters. Participation in FCR / aFRR / mFRR is OUT OF SCOPE for
+ * this project, so no capacity is ever offered and these values do not affect any result.
+ * They are kept so the feature can be restored by re-adding the offer UI to PhaseDayAhead.
+ */
 export const DEFAULT_BALANCING: BalancingConfig = {
   aFrrCapacityNegEurPerMwH: 12,
   aFrrCapacityPosEurPerMwH: 18,
@@ -76,6 +81,7 @@ export const DEFAULT_BALANCING: BalancingConfig = {
   aggregatorSharePct: 0.25,
 };
 
+/** The offer the simulator always uses: nothing. See DEFAULT_BALANCING. */
 export const EMPTY_BALANCING_OFFER: BalancingOffer = {
   aFrrNeg: [0, 0, 0, 0, 0, 0],
   aFrrPos: [0, 0, 0, 0, 0, 0],
