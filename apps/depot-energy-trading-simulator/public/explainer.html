@@ -37,11 +37,11 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3,h4{line-height:1.25;margin:0}
+h1,h2,h3{line-height:1.2;margin:0}
 h1{font-size:clamp(28px,5.2vw,46px);font-weight:800;letter-spacing:-.02em}
 h2{font-size:clamp(21px,3.4vw,30px);font-weight:750;letter-spacing:-.015em}
 h3{font-size:17px;font-weight:650}
-h4{font-size:15px;font-weight:650;color:var(--ink)}
+h4{font-size:15px;font-weight:650;line-height:1.25;margin:0}
 p{margin:.7em 0}
 code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
 a{color:var(--s1)}
@@ -135,8 +135,7 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 .worked-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px}
 .worked-amt{font:800 20px/1 ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
 .calc{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.85;
-  background:var(--panel-2);border-radius:9px;padding:11px 13px;margin:12px 0;color:var(--ink);
-  white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto;max-width:100%}
+  background:var(--panel-2);border-radius:9px;padding:11px 13px;margin:12px 0;color:var(--ink)}
 .calc strong{color:var(--s1)}
 .worked-note{border-top:1px solid var(--line);padding-top:10px;margin-top:12px;font-size:13px}
 .tl-card p.who{margin:.35em 0 0;font-size:13px;color:var(--ink-3)}
@@ -157,10 +156,9 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     </p>
     <p class="lede rv">
       This page starts from the one physical fact that forces all of it to exist, explains
-      <strong>what ancillary services are, what a balance group is, what happens inside an auction you cannot see,
-      and what every line on your electricity bill actually pays for</strong> — then traces a single megawatt-hour
-      from the forward market to the monthly invoice. Every counterparty named, every claim tied to a clause or a
-      formula. <strong>No prior knowledge assumed.</strong>
+      <strong>what ancillary services actually are and how balancing sits inside them</strong>, then traces a single
+      megawatt-hour from the forward market to the monthly invoice — naming every counterparty and quoting the
+      clause or the formula behind each claim. No prior knowledge assumed.
     </p>
     <div class="rv" style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px">
       <span class="chip b">EB GL 2017/2195</span>
@@ -185,11 +183,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <a href="#rebap">9 · The reBAP</a>
     <a href="#oneprice">10 · One price vs two</a>
     <a href="#depot">11 · Your depot</a>
-    <a href="#simulator">12 · Reading the simulator</a>
   </div></div>
 </nav>
 
-<!-- ================= 1 ================= -->
+<!-- ================= 1 · INTRO ================= -->
 <section id="intro">
   <div class="wrap">
     <div class="secnum rv">Section 1 · start here</div>
@@ -535,12 +532,12 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           <tr>
             <td><strong>&ldquo;Am I paid per MW or per MWh?&rdquo;</strong></td>
             <td>per MW, for being available</td>
-            <td><strong style="color:var(--s2)">balancing capacity</strong> · section 3</td>
+            <td><strong style="color:var(--s2)">balancing capacity</strong> · § 3 below</td>
           </tr>
           <tr>
             <td></td>
             <td>per MWh, only when called</td>
-            <td><strong style="color:var(--s2)">balancing energy</strong> · section 3</td>
+            <td><strong style="color:var(--s2)">balancing energy</strong> · § 3 below</td>
           </tr>
           <tr>
             <td><strong>&ldquo;Do I have to be prequalified?&rdquo;</strong></td>
@@ -677,9 +674,12 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
           negative aFRR. The depot&rsquo;s chargers ramp up for half an hour, absorbing <strong>0.3 MWh</strong> more
           than planned.
         </p>
-        <p class="calc">0.3 MWh absorbed at the negative-direction price of 45 €/MWh → depot <strong>pays €13.50</strong>
-otherwise bought on intraday at 62 €/MWh → would have cost €18.60
-net benefit = 18.60 − 13.50 = <strong>€5.10</strong></p>
+        <p class="calc">
+          0.3 MWh absorbed at the negative-direction marginal price of 45 €/MWh → the depot <strong>pays €13.50</strong>
+          for that energy.<br>
+          But it would otherwise have bought those 0.3 MWh on the intraday market at 62 €/MWh = €18.60.<br>
+          Net benefit = 18.60 − 13.50 = <strong>€5.10</strong>
+        </p>
         <p class="worked-note">
           This is the bit people get backwards. In the <em>negative</em> direction you are being paid to
           <strong>consume</strong>, so the cash flow looks like buying energy cheaply rather than like receiving a
@@ -695,10 +695,11 @@ net benefit = 18.60 − 13.50 = <strong>€5.10</strong></p>
           lower state of charge than forecast. To make its 06:00 departure the next morning it has to start charging
           immediately. The depot draws <strong>0.08 MWh more</strong> in that quarter hour than its schedule said.
         </p>
-        <p class="calc">balance group is <strong>short</strong> by 0.08 MWh
-reBAP that quarter hour = <strong>110 €/MWh</strong>
-positive price + short group → <strong>you pay</strong>
-0.08 MWh × 110 €/MWh = <strong>€8.80</strong></p>
+        <p class="calc">
+          The balance group is <strong>short</strong> by 0.08 MWh · the reBAP that quarter hour is
+          <strong>110 €/MWh</strong> · positive price + short group → <strong>you pay</strong><br>
+          0.08 MWh × 110 €/MWh = <strong>€8.80</strong>
+        </p>
         <p class="worked-note">
           Nobody called you. Nobody bought anything from you. The TSO simply observed that your group promised one
           thing and did another, and priced the difference at what energy was worth at that instant. This payment
@@ -1046,22 +1047,17 @@ positive price + short group → <strong>you pay</strong>
       </table>
     </div>
 
-    <div class="rv panel" style="margin-top:22px;border-color:var(--s2)">
-      <h3>The one that is not a role at all</h3>
-      <p style="font-size:14px;color:var(--ink-2);margin-top:8px">
-        <strong>&ldquo;Aggregator&rdquo; appears in no settlement equation.</strong> There is no aggregator line on
-        any invoice and no aggregator contract with the TSO. An aggregator is a <em>business model</em>: it signs up
-        many small sites, pools their flexibility, and sells the combination — and to do that it becomes a
-        <strong>BSP</strong>.
-      </p>
-      <p style="font-size:14px;color:var(--ink-2)">
-        Which raises the question of whose permission it needs to touch equipment that somebody else is already
-        selling electricity to. That question has a precise answer in Germany, and it is important enough to have
-        its own section.
-      </p>
-      <p style="margin-top:12px">
-        <a href="#aggregation" style="font-weight:650">→ Section 6 · Aggregation, explained properly</a>
-      </p>
+    <div class="grid g2 rv" style="margin-top:22px">
+      <div class="panel">
+        <h3>Contractual aggregation <span class="chip g">Germany today</span></h3>
+        <p style="font-size:14px;color:var(--ink-2)">Prequalification requires a written <strong>certificate of knowledge and consent</strong> from the connecting grid operator, the supplier, the BRP <em>and</em> the operator wherever those roles are not the same legal person.</p>
+        <p style="font-size:14px;color:var(--ink-2)">Consequence: <strong>an aggregator in Germany cannot activate your depot over the head of your supplier and your BRP.</strong> Expect to move your supply contract, or to get your supplier to sign.</p>
+      </div>
+      <div class="panel">
+        <h3>Independent aggregation <span class="chip o">the EU target model</span></h3>
+        <p style="font-size:14px;color:var(--ink-2)">Article 17 of Directive (EU) 2019/944 requires Member States to enable a BSP acting over resources belonging to <em>another</em> BRP, with automatic imbalance adjustment and a compensation payment between the parties.</p>
+        <p style="font-size:14px;color:var(--ink-2)"><strong>Not implemented in German balancing.</strong> The TSOs expect the EU <strong>Network Code on Demand Response</strong> to force it — ACER submitted it on 7 March 2025; not adopted as of early 2026. The Nordics are building it through eSett. <em>This is a live regulatory question.</em></p>
+      </div>
     </div>
   </div>
 </section>
@@ -1070,178 +1066,98 @@ positive price + short group → <strong>you pay</strong>
 <section id="aggregation">
   <div class="wrap">
     <div class="secnum rv">Section 6</div>
-    <h2 class="rv">Aggregation, explained properly</h2>
+    <h2 class="rv">What &ldquo;contractual aggregation&rdquo; means</h2>
     <p class="sub rv">
-      &ldquo;Contractual aggregation&rdquo; is a phrase that appears in every European flexibility document and is
-      almost never explained. It is actually a simple idea about <strong>whose permission you need</strong>.
+      The phrase appears in every European flexibility document and is almost never explained. It is a simple idea
+      about <strong>whose permission you need</strong>.
     </p>
 
-    <h3 class="rv" style="margin-top:30px">First: what is an aggregator trying to do?</h3>
-    <p class="rv" style="max-width:72ch">
-      Your depot on its own is too small and too unreliable to sell flexibility to a TSO. Ten trucks might be able
-      to shift 1.4 MW — but only when they happen to be plugged in, which is not all day. An <strong>aggregator</strong>
-      signs up dozens or hundreds of such sites, pools them, and sells the <em>combined</em> flexibility as one
-      product. Individually you are noise; together you are a power plant.
-    </p>
-    <p class="rv" style="max-width:72ch">
-      To do that, the aggregator needs to be able to <strong>change what your chargers do</strong> — remotely, within
-      seconds, without asking you each time. And that is where the problem starts.
+    <p class="rv" style="max-width:72ch;margin-top:20px">
+      Your depot alone is too small to sell flexibility to a TSO. An <strong>aggregator</strong> signs up many sites,
+      pools them and sells the combination — and to do that it needs to change what your chargers do, remotely,
+      without asking you each time. That is where the problem starts.
     </p>
 
     <div class="bigidea rv">
-      <p style="margin:0">
-        <strong>The problem: your electricity is already somebody else&rsquo;s business.</strong>
-      </p>
+      <p style="margin:0"><strong>Your electricity is already somebody else&rsquo;s business.</strong></p>
       <p style="margin:.7em 0 0;font-size:14px">
-        You buy power from a supplier. That supplier sits in a BRP&rsquo;s balance group, and that BRP has already
-        promised the TSO exactly how much your meter will draw in every quarter hour of tomorrow. If a
-        <em>third party</em> suddenly makes your trucks charge harder at 01:15, three things happen that have nothing
-        to do with you:
+        You buy from a supplier, who sits in a BRP&rsquo;s balance group, and that BRP has already promised the TSO
+        exactly what your meter will draw tomorrow. If a third party makes your trucks charge harder at 01:15, your
+        supplier has to buy energy it never planned to sell you, and your BRP&rsquo;s balance group goes short and
+        pays the imbalance price. Neither agreed to it; neither is paid for it.
       </p>
-      <ol style="margin:.7em 0 0;font-size:14px;padding-left:20px">
-        <li>Your meter records energy your supplier never planned to sell you — <strong>and has to go and buy</strong>.</li>
-        <li>Your BRP&rsquo;s balance group is now short, so <strong>it pays the imbalance price</strong> on the difference.</li>
-        <li>Neither of them agreed to any of it, and neither of them is paid for it.</li>
-      </ol>
     </div>
 
     <div class="analogy rv">
       <span class="chip">the analogy</span>
       <p style="margin:.7em 0 0">
-        You drive a company car with a <strong>fuel card paid by your employer</strong>. A delivery firm offers you
-        money to run extra errands in the evening. Great for you — but the fuel comes off your employer&rsquo;s card,
-        and your employer neither agreed to it nor gets paid for it.
+        You drive a company car with a <strong>fuel card your employer pays for</strong>. A delivery firm offers you
+        money to run evening errands — but the fuel comes off your employer&rsquo;s card.
       </p>
       <ul style="margin:.7em 0 0;padding-left:20px">
         <li><strong>Contractual aggregation</strong> — the delivery firm must get your employer&rsquo;s written
-          agreement first, and the two of them settle the fuel between themselves. If your employer says no, the deal
-          is dead.</li>
-        <li><strong>Independent aggregation</strong> — the law says the delivery firm may hire you regardless, and a
-          central clearing process automatically bills the delivery firm for the fuel and credits your employer.
-          Your employer cannot block it.</li>
+          agreement first. If your employer says no, the deal is dead.</li>
+        <li><strong>Independent aggregation</strong> — the law lets the firm hire you anyway, and a central process
+          automatically bills it for the fuel and credits your employer.</li>
       </ul>
-      <p style="margin:.7em 0 0">
-        Same activity, same money, completely different balance of power. <strong>That is the entire distinction.</strong>
-      </p>
+      <p style="margin:.7em 0 0"><strong>That is the whole distinction.</strong></p>
     </div>
 
-    <h3 class="rv" style="margin-top:36px">Contractual aggregation — how Germany works today</h3>
+    <h3 class="rv" style="margin-top:32px">Germany does the first one</h3>
     <p class="rv" style="max-width:72ch">
-      Germany requires everyone affected to agree <em>in advance and in writing</em>. This is not a vague norm — it is
-      a hard requirement of the prequalification process. Before a unit can be admitted to the balancing market, the
-      applicant must file a
-      <strong>certificate of knowledge and consent</strong> (<em>Kenntnis- und Einverständniserklärung</em>) from
-      every market role involved that is not the same legal person:
+      It is not a vague norm but a hard prequalification requirement: before a unit can enter the balancing market,
+      the applicant must file a <strong>certificate of knowledge and consent</strong>
+      (<em>Kenntnis- und Einverständniserklärung</em>) from every market role involved that is not the same legal
+      person.
     </p>
-
-    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>Whose signature</th><th>Why they get a veto</th><th>What they typically want</th></tr></thead>
+        <thead><tr><th>Whose signature</th><th>Why they get a veto</th></tr></thead>
         <tbody>
-          <tr><td><strong>The connecting grid operator</strong> (DSO or TSO)</td><td>The flexibility changes flows on their network, which they have to be able to operate safely</td><td>Technical data; assurance it will not create a local constraint</td></tr>
-          <tr><td><strong>Your supplier</strong></td><td>Their sales volume to you changes without their agreement</td><td>A commercial deal — or, very often, to <em>be</em> the aggregator themselves</td></tr>
-          <tr><td><strong>The BRP of your balance group</strong></td><td>Their nominated schedule becomes wrong, exposing them to the imbalance price</td><td>A guarantee that delivered volumes are neutralised in their position</td></tr>
-          <tr><td><strong>The operator of the asset</strong> (you)</td><td>It is your equipment and your operations at risk</td><td>Revenue share, and a hard floor on when your trucks may be touched</td></tr>
+          <tr><td><strong>The connecting grid operator</strong></td><td>The flexibility changes flows on their network</td></tr>
+          <tr><td><strong>Your supplier</strong></td><td>Their sales volume to you changes without their agreement</td></tr>
+          <tr><td><strong>Your BRP</strong></td><td>Their nominated schedule becomes wrong, exposing them to the imbalance price</td></tr>
+          <tr><td><strong>The operator of the asset</strong> (you)</td><td>It is your equipment and your operations at risk</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="note warn rv" style="margin-top:16px">
-      <strong>The practical consequence is the important bit.</strong> Your existing supplier can simply refuse to
-      sign — and refusing costs them nothing. This is exactly why most German flexibility offers arrive as a
-      <em>bundle</em>: the aggregator is also the supplier and the BRP, so all three signatures are the same
-      company&rsquo;s. If you want an aggregator that is <em>not</em> your supplier, the first question to ask is
-      not &ldquo;what is the revenue share?&rdquo; but <strong>&ldquo;has my supplier agreed to sign?&rdquo;</strong>
+      <strong>The practical consequence.</strong> Your supplier can simply refuse to sign, and refusing costs them
+      nothing. That is why most German flexibility offers arrive as a <em>bundle</em>: the aggregator is also the
+      supplier and the BRP, so all the signatures are their own. If you look at an aggregator that is <em>not</em>
+      your supplier, the first question is not &ldquo;what is the revenue share?&rdquo; but
+      <strong>&ldquo;has my supplier agreed to sign?&rdquo;</strong>
     </div>
 
-    <h3 class="rv" style="margin-top:36px">What actually happens to the energy — a worked example</h3>
-    <p class="rv" style="max-width:72ch">
-      Say your aggregator is called for <strong>0.3 MWh of negative aFRR</strong> at 01:15 — meaning your chargers
-      absorb 0.3 MWh more than anyone had planned. Follow it through the books.
-    </p>
-
-    <div class="grid rv" style="margin-top:14px;gap:14px">
-      <div class="worked" style="--acc:var(--crit)">
-        <div class="worked-h"><span class="chip r">If nobody had agreed anything</span></div>
-        <p>Your meter reads 0.3 MWh higher. Your BRP&rsquo;s balance group is short by 0.3 MWh. The reBAP that quarter
-        hour is 110 €/MWh, so the BRP <strong>pays €33</strong> it never budgeted for. Meanwhile the aggregator
-        collects the balancing-energy payment. <strong>Somebody else&rsquo;s cost, the aggregator&rsquo;s revenue.</strong>
-        Unworkable — which is precisely why the rules do not allow it.</p>
-      </div>
-      <div class="worked" style="--acc:var(--s3)">
-        <div class="worked-h"><span class="chip g">What actually happens</span></div>
-        <p>Because the BRP consented at prequalification, the TSO knows this 0.3 MWh was <strong>its own
-        instruction</strong>. The volume is <strong>neutralised in the balance group</strong>: for settlement
-        purposes the schedule is treated as if it had always included those 0.3 MWh.</p>
-        <p class="calc">balance group position = metered − delivered balancing energy
-0.3 MWh drawn − 0.3 MWh instructed = <strong>0 MWh imbalance</strong></p>
-        <p class="worked-note">The BRP pays nothing. The aggregator is paid the balancing-energy price. The energy
-        itself is settled between the aggregator and the TSO at the platform marginal price, not at your
-        supplier&rsquo;s tariff. Everyone ends up where they agreed to be.</p>
-      </div>
+    <div class="note legal rv" style="margin-top:14px">
+      <strong>Why the signature matters mechanically.</strong> Because the BRP consented, the TSO knows an activated
+      volume was its own instruction, and <strong>neutralises it in the balance group</strong> — the schedule is
+      settled as if it had always included that energy, so the BRP pays nothing and the aggregator is paid.
+      No signature, no neutralisation, and the whole thing collapses into someone else&rsquo;s imbalance bill.
     </div>
 
-    <div class="note legal rv" style="margin-top:16px">
-      <strong>This is why the consent matters mechanically, not just legally.</strong> The neutralisation only works
-      because the TSO can link your metering point to a prequalified unit inside a pool whose BRP has signed. No
-      signature, no link; no link, no neutralisation; no neutralisation, and the whole thing collapses into someone
-      else&rsquo;s imbalance bill.
-    </div>
-
-    <h3 class="rv" style="margin-top:36px">Independent aggregation — the model Europe is moving toward</h3>
+    <h3 class="rv" style="margin-top:32px">Independent aggregation — where Europe is heading</h3>
     <p class="rv" style="max-width:72ch">
       <strong>Article 17 of Directive (EU) 2019/944</strong> requires Member States to let an aggregator act
-      <em>without</em> the supplier&rsquo;s or BRP&rsquo;s agreement. The point is competition: if your supplier can
-      veto every rival aggregator, there is no flexibility market, only flexibility bundled into supply contracts.
+      <em>without</em> the supplier&rsquo;s or BRP&rsquo;s agreement — otherwise your supplier can veto every rival
+      and there is no flexibility market, only flexibility bundled into supply contracts. Two mechanisms replace the
+      signature: an <strong>automatic imbalance adjustment</strong> that removes the delivered volume from the host
+      BRP&rsquo;s position, and a <strong>centrally calculated compensation payment</strong> between aggregator and
+      supplier.
     </p>
-    <p class="rv" style="max-width:72ch">To make that work without robbing the supplier, two mechanisms replace the signature:</p>
-
-    <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel">
-        <h3>1 · Automatic imbalance adjustment</h3>
-        <p style="font-size:14px;color:var(--ink-2)">The delivered flexibility volume is removed from the host
-        BRP&rsquo;s position automatically, by the settlement system, without either party having to do anything.
-        Same effect as the neutralisation above — but granted by regulation rather than by contract.</p>
-      </div>
-      <div class="panel">
-        <h3>2 · Compensation between aggregator and supplier</h3>
-        <p style="font-size:14px;color:var(--ink-2)">The supplier bought energy it then did not sell (or had to
-        supply energy it had not bought). A centrally calculated payment moves between the aggregator and the
-        supplier/BRP to settle that, on a published formula rather than a negotiated one.</p>
-      </div>
+    <div class="note rv" style="margin-top:14px">
+      <strong>Status.</strong> Not implemented in German balancing. The TSOs expect the EU
+      <strong>Network Code on Demand Response</strong> to force it — ACER submitted it to the Commission on
+      7 March 2025, and it had not been adopted as of early 2026. The Nordics are building it through eSett.
+      Re-check before citing; this is a genuinely open question.
     </div>
 
-    <div class="scroll rv panel" style="margin-top:18px;padding:0">
-      <table>
-        <thead><tr><th></th><th>Contractual aggregation</th><th>Independent aggregation</th></tr></thead>
-        <tbody>
-          <tr><td>Who must agree</td><td>grid operator, supplier, BRP, operator — <strong>all in writing</strong></td><td>nobody; the regulation grants access</td></tr>
-          <tr><td>Can your supplier block it?</td><td><strong style="color:var(--crit)">Yes</strong></td><td><strong style="color:var(--good)">No</strong></td></tr>
-          <tr><td>How the energy is squared</td><td>neutralisation, agreed in the prequalification file</td><td>automatic imbalance adjustment</td></tr>
-          <tr><td>How the supplier is compensated</td><td>whatever they negotiated</td><td>a centrally calculated payment on a published formula</td></tr>
-          <tr><td>Typical market outcome</td><td>flexibility bundled with supply; vertically integrated players dominate</td><td>a separate, contestable flexibility market</td></tr>
-          <tr><td><strong>Germany (balancing)</strong></td><td><strong>this is the current model</strong></td><td>not implemented</td></tr>
-          <tr><td><strong>Nordics</strong></td><td>current model</td><td>being built by <strong>eSett</strong> — a delivered-reserves message, imbalance adjustment on <em>delivered</em> rather than requested volumes, and central calculation and invoicing of the compensation</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note rv" style="margin-top:16px">
-      <strong>Where this stands.</strong> The German TSOs expect the EU <strong>Network Code on Demand Response
-      (NC DR)</strong> to force independent aggregation. ACER submitted it to the Commission on
-      <strong>7 March 2025</strong>; the consultation ran to September 2025 and responses were published in January
-      2026. <strong>It had not been adopted as a Commission Regulation as of early 2026</strong> — and the usual
-      implementation window runs about two years after adoption. If you are writing about this, check the current
-      status before you cite it; it is one of the genuinely open questions in European market design.
-    </div>
-
-    <div class="panel rv" style="margin-top:22px;border-color:var(--s2)">
-      <h3>The one-line version</h3>
-      <p style="font-size:15px;color:var(--ink-2);margin-top:8px">
-        <strong>Contractual aggregation = you need everyone&rsquo;s permission first.
+    <div class="panel rv" style="margin-top:20px;border-color:var(--s2)">
+      <p style="font-size:15px;color:var(--ink-2);margin:0">
+        <strong>The one-line version. Contractual aggregation = you need everyone&rsquo;s permission first.
         Independent aggregation = the law gives you access and pays them off automatically.</strong>
-        Germany is the first; Europe is legislating toward the second; and until that lands, your supplier holds a
-        veto over who is allowed to monetise your chargers.
+        Germany is the first; until the second lands, your supplier holds a veto over who may monetise your chargers.
       </p>
     </div>
   </div>
@@ -1251,207 +1167,137 @@ positive price + short group → <strong>you pay</strong>
 <section id="brp">
   <div class="wrap">
     <div class="secnum rv">Section 7</div>
-    <h2 class="rv">The BRP and the balance group, from the beginning</h2>
-    <p class="sub rv">
-      This is the concept everything else hangs off, and it is almost never explained from scratch. So: from scratch.
-    </p>
-
-    <h3 class="rv" style="margin-top:30px">What is a balance group?</h3>
-
-    <div class="analogy rv">
-      <span class="chip">the analogy</span>
+    <h2 class="rv">&ldquo;We&rsquo;ll be your BRP&rdquo; — what is actually being sold</h2>
+    <p class="sub rv">And the question everybody asks: <em>do they just forward me the invoice, or do they ever pay?</em></p>
+    <div class="analogy rv" style="margin-top:20px">
+      <span class="chip">first, the basic</span>
       <p style="margin:.7em 0 0">
-        A <strong>Bilanzkreis</strong> (balance group) is a <strong>bank account for electricity</strong>.
+        A <strong>Bilanzkreis</strong> (balance group) is a <strong>bank account for electricity</strong>. Everything
+        fed in is a deposit; everything consumed or sold on is a withdrawal. The rule is that
+        <strong>the account must balance to exactly zero in every 15-minute period</strong> — not on average, every
+        period. The <strong>BRP</strong> is the account holder, and if the account does not balance, the TSO squares
+        it and charges a price set after the fact: the reBAP.
       </p>
       <p style="margin:.7em 0 0">
-        Everything that flows in is a deposit: power stations feeding in, energy bought from other accounts.
-        Everything that flows out is a withdrawal: customers consuming, energy sold to other accounts. And the rule
-        is simply that <strong>the account must balance to exactly zero in every 15-minute period</strong> — not at
-        the end of the day, not on average. Every period, on its own.
-      </p>
-      <p style="margin:.7em 0 0">
-        The <strong>BRP</strong> (<em>Bilanzkreisverantwortlicher</em>) is the account holder. If the account does not
-        balance, the bank — the TSO — squares it for them, at a price the TSO sets after the fact. That price is the
-        reBAP, and that is the whole of section 9.
+        Under <strong>§ 4 StromNZV</strong> every meter in Germany must sit in some balance group at all times — your
+        depot is in one right now, almost certainly your supplier&rsquo;s. There is no unassigned electricity. What
+        you are buying below is somebody else&rsquo;s account, and somebody else&rsquo;s obligation to keep it flat.
       </p>
     </div>
 
-    <p class="rv" style="max-width:72ch;margin-top:18px">
-      Two facts make this unavoidable rather than optional:
-    </p>
-    <div class="grid g2 rv" style="margin-top:12px">
+
+    <div class="grid g2 rv" style="margin-top:22px">
       <div class="panel">
-        <h3>Nothing is unassigned</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Under <strong>§ 4 StromNZV</strong>, every injection point and
-        every withdrawal point in Germany must belong to a balance group <em>at all times</em>. Your depot&rsquo;s
-        meter is in somebody&rsquo;s Bilanzkreis right now, whether you know it or not — almost certainly your
-        supplier&rsquo;s. There is no such thing as unassigned electricity.</p>
+        <h3>The bundle</h3>
+        <ol style="font-size:14px;color:var(--ink-2);padding-left:20px;margin:10px 0 0">
+          <li><strong>Access.</strong> Their Bilanzkreis, their EIC, their contract with the TSO — so you need none of those, and no collateral with the TSO.</li>
+          <li><strong>Nomination.</strong> Your schedule by 14:30 D-1 and your intraday changes, in the correct EDI@Energy format, to the right TSO.</li>
+          <li><strong>Market access.</strong> Often exchange membership too, for day-ahead and intraday execution.</li>
+          <li><strong>Risk absorption.</strong> How much — entirely contractual. See the table.</li>
+          <li><strong>Settlement handling.</strong> They receive the TSO&rsquo;s monthly invoice for the whole balance group and re-allocate it.</li>
+        </ol>
       </div>
       <div class="panel">
-        <h3>It is a promise, not a forecast</h3>
-        <p style="font-size:14px;color:var(--ink-2)">By 14:30 the day before, the BRP has told the TSO exactly what
-        the account will do in each of tomorrow&rsquo;s 96 quarter hours. The TSO then sizes its reserves on the
-        assumption that everybody keeps their promise. That is why breaking it has a price.</p>
+        <h3>Requirements you are buying your way out of</h3>
+        <table style="margin-top:8px">
+          <tr><td>Collateral, Ziffer 14.2</td><td class="tnum" style="text-align:right">1 week of consumption + 48 h of exports × 12-month mean reBAP</td></tr>
+          <tr><td>Schedule desk</td><td style="text-align:right">24/7, EDI@Energy, named reachable contacts</td></tr>
+          <tr><td>Forecasting, Ziffer 5.2</td><td style="text-align:right">&ldquo;due care&rdquo; is a contractual duty, not a preference</td></tr>
+          <tr><td>Data validation, § 26 StromNZV</td><td style="text-align:right">check and object without delay</td></tr>
+          <tr><td>Termination</td><td style="text-align:right">10 working days&rsquo; notice to month end</td></tr>
+        </table>
       </div>
     </div>
 
-    <h3 class="rv" style="margin-top:36px">So what does a BRP actually <em>do</em>, day to day?</h3>
+    <h3 class="rv" style="margin-top:30px">The three commercial models you meet most often</h3>
     <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>When</th><th>What the BRP does</th><th>What it needs to do it</th></tr></thead>
+        <thead><tr><th>Model</th><th>What the BRP does with your imbalance</th><th>What you pay</th><th>Who carries the tail</th></tr></thead>
         <tbody>
-          <tr><td>every morning</td><td><strong>Forecasts</strong> every customer in the balance group, quarter hour by quarter hour, for tomorrow</td><td>load models, weather, your operating plan</td></tr>
-          <tr><td>before 12:00 D-1</td><td><strong>Buys or sells</strong> the resulting position on the day-ahead auction</td><td>exchange membership or a broker</td></tr>
-          <tr><td>by 14:30 D-1</td><td><strong>Nominates</strong> the schedule to the TSO — quarter-hourly, balanced, in the right EDI format</td><td>a Bilanzkreisvertrag, an EIC code, EDI@Energy systems</td></tr>
-          <tr><td>all day D</td><td><strong>Re-trades</strong> on intraday whenever the forecast moves, and re-nominates</td><td>a desk or an algorithm, watching continuously</td></tr>
-          <tr><td>after the month</td><td><strong>Receives</strong> the TSO&rsquo;s imbalance invoice for the whole group and <strong>re-allocates</strong> it to customers</td><td>settlement systems, and the contract with you</td></tr>
-          <tr><td>continuously</td><td><strong>Checks</strong> metering data from grid and metering operators and objects to errors</td><td>§ 26 StromNZV obliges this, promptly and electronically</td></tr>
+          <tr>
+            <td><strong>A · Pass-through</strong><br><span class="chip">Durchleitung</span></td>
+            <td>Allocates your metered deviation × reBAP directly to you, 1:1</td>
+            <td>Your own imbalance cost + a service fee (€/month + €/MWh)</td>
+            <td><strong style="color:var(--crit)">You.</strong> Fully exposed, including −9 999 and +15 000 €/MWh spikes</td>
+          </tr>
+          <tr>
+            <td><strong>B · Pooled / netted</strong></td>
+            <td>Nets your deviation against other customers in the same Bilanzkreis first, passes on your share of the residual</td>
+            <td>A higher €/MWh fee in exchange</td>
+            <td><strong>Shared.</strong> Diversification is the product</td>
+          </tr>
+          <tr>
+            <td><strong>C · Full-service</strong><br><span class="chip">&ldquo;imbalance insurance&rdquo;</span></td>
+            <td>Absorbs it entirely, at an agreed premium or inside a tolerance band</td>
+            <td>A predictable premium (often 2–8 €/MWh) + penalties outside the band</td>
+            <td><strong style="color:var(--good)">The BRP</strong> — priced accordingly</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="note legal rv" style="margin-top:16px">
-      <strong>And it carries a legal duty you inherit commercially.</strong> <em>Ziffer 5.2</em> of the
-      Standard-Bilanzkreisvertrag obliges the BRP to keep deviations <em>as small as reasonably possible</em>, in
-      particular by exercising due care in forecasting — and says that drawing imbalance energy is
-      <strong>only permissible to the extent it offsets non-forecastable deviations</strong>. Running deliberately
-      imbalanced because the price looks attractive is a breach of contract, not a strategy.
+    <div class="note rv" style="margin-top:18px">
+      <strong>So: yes, a BRP can absolutely end up paying you.</strong> In model C it pays by construction.
+      In model B it pays whenever your deviation is offset by another customer&rsquo;s. Only in model A does it
+      purely pass the bill through — and even then it carries your <strong>credit risk</strong> toward the TSO,
+      which is why it asks for collateral. If a quoted fee looks suspiciously low, you are in model A and you own the tail.
     </div>
 
-    <h3 class="rv" style="margin-top:36px">Why you buy the role instead of holding it</h3>
-    <p class="rv" style="max-width:72ch">
-      There is <strong>no licence and no prequalification</strong> to be a BRP. It is a contract, not a permit —
-      anyone can sign one. What stops a ten-truck depot is not permission, it is fixed cost:
-    </p>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>Requirement</th><th>What it actually means</th><th>For 10 trucks (~6 MWh/day)</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Collateral</strong> (Ziffer 14.2)</td><td>one week of consumption plus 48 hours of exports, × the 12-month mean reBAP, posted as a bank guarantee</td><td><strong style="color:var(--crit)">the usual killer</strong></td></tr>
-          <tr><td><strong>A schedule desk</strong></td><td>reachable staff, EDI@Energy messaging, and someone watching intraday all day</td><td><strong style="color:var(--crit)">not viable</strong></td></tr>
-          <tr><td><strong>Forecasting</strong> (Ziffer 5.2)</td><td>&ldquo;due care&rdquo; is a contractual duty the TSO can investigate</td><td>possible, but you would be doing it alone</td></tr>
-          <tr><td><strong>Data validation</strong> (§ 26 StromNZV)</td><td>check every metered value, object promptly and electronically</td><td>ongoing overhead</td></tr>
-          <tr><td>One contract <em>per control area</em></td><td>Germany has four TSOs; nationwide means four contracts</td><td>paperwork, but free</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="rv" style="max-width:72ch;margin-top:12px">
-      So you rent the role. What you are renting is: <strong>their balance group and their contract with the TSO;
-      schedule nomination on your behalf; market access; some share of the imbalance risk; and settlement
-      handling.</strong> Often you also get your own <strong>Unterbilanzkreis</strong> (sub-balance group) — your
-      energy ring-fenced and settled separately inside their group, so you keep your own trading upside, and under
-      <em>Ziffer 13.5</em> you post no collateral of your own.
-    </p>
-
-    <h3 class="rv" style="margin-top:40px">&ldquo;Are there only three kinds of BRP contract?&rdquo;</h3>
-
+    <h3 class="rv" style="margin-top:34px">&ldquo;Are there only three?&rdquo; — no</h3>
     <div class="bigidea rv">
-      <p style="margin:0"><strong>No. There are not three models — there are about six independent dials, and a
-      contract is wherever somebody set them.</strong></p>
+      <p style="margin:0"><strong>There are not three models. There are about six independent dials, and a contract
+      is wherever somebody set them.</strong></p>
       <p style="margin:.7em 0 0;font-size:14px">
-        The three offers in the simulator are <em>archetypes</em>: three common combinations, chosen because they sit
-        far apart and make the trade-off visible. Real offers mix and match, and two contracts with the same name can
-        behave completely differently.
+        The three above are <em>archetypes</em> — common combinations, chosen because they sit far apart and make the
+        trade-off visible. Real offers mix and match, and two contracts with the same name can behave completely
+        differently.
       </p>
     </div>
 
-    <h4 class="rv" style="margin-top:22px;font-size:15px;font-weight:650">The six dials</h4>
-    <div class="scroll rv panel" style="margin-top:10px;padding:0">
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
       <table>
-        <thead><tr><th>#</th><th>Dial</th><th>One end</th><th>The other end</th><th>Why you care</th></tr></thead>
+        <thead><tr><th>Dial</th><th>One end</th><th>The other end</th><th>Why you care</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td><strong>Price exposure</strong></td><td>fixed €/MWh for the year</td><td>full spot pass-through</td><td>decides whether smart charging earns you anything at all</td></tr>
-          <tr><td>2</td><td><strong>Who forecasts you</strong></td><td>they do, from history</td><td>you send them a plan daily</td><td>whoever forecasts also, in practice, owns the error</td></tr>
-          <tr><td>3</td><td><strong>Imbalance allocation</strong></td><td>fully absorbed by them</td><td>1:1 pass-through to you</td><td>the fat-tail risk</td></tr>
-          <tr><td>4</td><td><strong>Netting</strong></td><td>netted against their whole portfolio first</td><td>your meter settled alone</td><td>diversification is worth real money</td></tr>
-          <tr><td>5</td><td><strong>Symmetry</strong></td><td>charges and credits both at 100 %</td><td>full charge, haircut on credits</td><td><strong>the clause nobody reads</strong></td></tr>
-          <tr><td>6</td><td><strong>Market access</strong></td><td>day-ahead only</td><td>day-ahead + intraday + your own sub-balance group</td><td>decides whether you can fix a bad forecast</td></tr>
+          <tr><td><strong>Price exposure</strong></td><td>fixed €/MWh for the year</td><td>full spot pass-through</td><td>decides whether smart charging earns anything at all</td></tr>
+          <tr><td><strong>Who forecasts you</strong></td><td>they do, from history</td><td>you send a plan daily</td><td>whoever forecasts also owns the error in practice</td></tr>
+          <tr><td><strong>Imbalance allocation</strong></td><td>fully absorbed by them</td><td>1:1 pass-through to you</td><td>the fat-tail risk</td></tr>
+          <tr><td><strong>Netting</strong></td><td>netted against their portfolio first</td><td>your meter settled alone</td><td>diversification is worth real money</td></tr>
+          <tr><td><strong>Symmetry</strong></td><td>charges and credits both at 100 %</td><td>full charge, haircut on credits</td><td><strong>the clause nobody reads</strong></td></tr>
+          <tr><td><strong>Market access</strong></td><td>day-ahead only</td><td>+ intraday + your own sub-balance group</td><td>decides whether you can fix a bad forecast</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h4 class="rv" style="margin-top:26px;font-size:15px;font-weight:650">Products you will actually be offered in Germany</h4>
+    <h3 class="rv" style="margin-top:28px">What you will actually be offered in Germany</h3>
     <p class="rv" style="max-width:72ch">
-      These are the names that appear on real term sheets. Note that most of them are <em>supply</em> products with
-      balance-group service bundled in — being &ldquo;in someone&rsquo;s Bilanzkreis&rdquo; is usually a consequence
-      of how you buy your energy, not a separate purchase.
-    </p>
-    <div class="scroll rv panel" style="margin-top:10px;padding:0">
-      <table>
-        <thead><tr><th>German name</th><th>What it is</th><th>Your imbalance exposure</th><th>Good for a depot?</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Vollversorgung</strong><br><span class="chip">full supply, fixed price</span></td><td>One fixed €/MWh for everything you consume. The supplier carries forecasting, trading and imbalance entirely.</td><td><strong style="color:var(--good)">None</strong></td><td>Simple and safe — and you capture <strong>zero</strong> value from flexible charging, because every hour costs the same.</td></tr>
-          <tr><td><strong>Strukturierte Beschaffung</strong><br><span class="chip">tranche model</span></td><td>You buy your expected volume in tranches over months or years, then settle the difference against spot.</td><td>partial — on the unhedged residual</td><td>Common for industry. Rewards <em>predictability</em>, not flexibility.</td></tr>
-          <tr><td><strong>Spotmarktbelieferung / dynamischer Tarif</strong></td><td>You pay the day-ahead (sometimes intraday) price plus a margin, hour by hour or quarter hour by quarter hour.</td><td>varies — often still absorbed by the supplier</td><td><strong style="color:var(--good)">The entry-level flexibility product.</strong> Smart charging starts paying immediately.</td></tr>
-          <tr><td><strong>Bilanzkreis&shy;management / BKV-Dienstleistung</strong></td><td>A pure service: they hold the Bilanzkreis and nominate, you do your own buying.</td><td><strong style="color:var(--crit)">Usually fully yours</strong></td><td>Only if you have someone to run the trading.</td></tr>
-          <tr><td><strong>Fahrplan&shy;management</strong></td><td>They build and file your schedules, often priced per schedule or per MWh.</td><td>depends on the supply contract underneath</td><td>Often sold alongside the above.</td></tr>
-          <tr><td><strong>Unterbilanzkreis</strong> model</td><td>Your own ring-fenced sub-account inside their balance group.</td><td>yours, but cleanly separated and measurable</td><td><strong style="color:var(--good)">The structure the simulator models.</strong> You keep the upside and the visibility.</td></tr>
-          <tr><td><strong>Aggregator / Flexibilitäts&shy;vermarktung</strong></td><td>Revenue-share on flexibility sold from your site — usually bundled with supply (see section 6).</td><td>varies wildly; read the neutralisation terms</td><td>Only after the four signatures in section 6 are secured.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4 class="rv" style="margin-top:26px;font-size:15px;font-weight:650">The three archetypes in the simulator</h4>
-    <p class="rv" style="max-width:72ch">Read these as three settings of dials 3, 4, 5 and 6 — not as an exhaustive list.</p>
-    <div class="scroll rv panel" style="margin-top:10px;padding:0">
-      <table>
-        <thead><tr><th>Archetype</th><th>What they do with your deviation</th><th>What you pay</th><th>Who carries the tail</th></tr></thead>
-        <tbody>
-          <tr><td><strong>A · Pass-through</strong><br><span class="chip">Durchleitung</span></td><td>Your metered deviation × reBAP, straight to you</td><td>your own imbalance cost 1:1, plus a small service fee</td><td><strong style="color:var(--crit)">You</strong> — including −9 999 and +15 000 €/MWh quarter hours</td></tr>
-          <tr><td><strong>B · Pooled / netted</strong></td><td>Netted against other customers first; you get your share of the residual</td><td>a higher €/MWh fee in exchange</td><td><strong>Shared.</strong> Diversification is the product</td></tr>
-          <tr><td><strong>C · Full-service</strong><br><span class="chip">&ldquo;imbalance insurance&rdquo;</span></td><td>Absorbed entirely, inside an agreed tolerance band</td><td>a predictable premium, plus penalties outside the band</td><td><strong style="color:var(--good)">The BRP</strong> — priced accordingly</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note rv" style="margin-top:16px">
-      <strong>So: does a BRP ever actually pay you?</strong> Yes, routinely. In archetype C it pays by construction.
-      In B it pays whenever your deviation is cancelled out by another customer&rsquo;s. Even in A it pays you
-      directly whenever your deviation <em>helped</em> the system — that is the sign flip from section 3. The only
-      thing a BRP never does is carry your risk for free; if a quoted fee looks suspiciously low, you are in
-      archetype A and you own the tail.
-    </div>
-
-    <h3 class="rv" style="margin-top:40px">What the monthly invoice looks like</h3>
-    <p class="rv" style="max-width:72ch">
-      A depot on a spot-pass-through contract with its own sub-balance group gets something like this. Only the
-      middle block is &ldquo;energy&rdquo;; the rest is the bit people forget.
+      Most of these are <em>supply</em> products with balance-group service bundled in — being &ldquo;in
+      someone&rsquo;s Bilanzkreis&rdquo; is usually a consequence of how you buy energy, not a separate purchase.
     </p>
     <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>Line</th><th>Basis</th><th>Who actually sets it</th></tr></thead>
+        <thead><tr><th>German name</th><th>What it is</th><th>Good for a depot?</th></tr></thead>
         <tbody>
-          <tr><td>Day-ahead energy</td><td>your nominated MWh × each quarter hour&rsquo;s clearing price</td><td>the exchange</td></tr>
-          <tr><td>Intraday adjustments</td><td>volumes you re-traded × the price you got</td><td>the market, and your reaction time</td></tr>
-          <tr><td><strong>Imbalance energy</strong></td><td>deviation × reBAP, <strong>either sign</strong></td><td>the TSO, then filtered by your contract</td></tr>
-          <tr><td>Exchange + clearing fees</td><td>€/MWh traded</td><td>EPEX / ECC</td></tr>
-          <tr><td>BRP fee</td><td>€/month + €/MWh</td><td>your contract</td></tr>
-          <tr><td><strong>Netzentgelt</strong> — Arbeitspreis</td><td>ct/kWh withdrawn</td><td>your DSO&rsquo;s published price sheet</td></tr>
-          <tr><td><strong>Netzentgelt</strong> — Leistungspreis</td><td><strong>€/kW on your annual peak</strong></td><td>your DSO — and see section 11</td></tr>
-          <tr><td>Levies (KWKG, Offshore, § 19 StromNEV)</td><td>ct/kWh</td><td>set annually; <strong>2.946 ct/kWh in 2026</strong></td></tr>
-          <tr><td>Stromsteuer</td><td>ct/kWh</td><td><strong>2.050 ct/kWh</strong></td></tr>
-          <tr><td>Konzessionsabgabe</td><td>ct/kWh</td><td>your municipality</td></tr>
-          <tr><td>VAT</td><td>on the lot</td><td>the tax office</td></tr>
+          <tr><td><strong>Vollversorgung</strong><br><span class="chip">full supply, fixed price</span></td><td>One fixed €/MWh for everything. The supplier carries forecasting, trading and imbalance entirely.</td><td>Safe — and you capture <strong>zero</strong> value from flexible charging, because every hour costs the same.</td></tr>
+          <tr><td><strong>Strukturierte Beschaffung</strong><br><span class="chip">tranche model</span></td><td>You buy your expected volume in tranches over time, then settle the difference against spot.</td><td>Rewards <em>predictability</em>, not flexibility.</td></tr>
+          <tr><td><strong>Spotmarktbelieferung / dynamischer Tarif</strong></td><td>You pay the day-ahead price plus a margin, quarter hour by quarter hour.</td><td><strong style="color:var(--good)">The entry-level flexibility product.</strong> Smart charging starts paying immediately.</td></tr>
+          <tr><td><strong>Bilanzkreismanagement</strong></td><td>A pure service: they hold the Bilanzkreis and nominate, you do your own buying.</td><td>Only if you have someone to run the trading.</td></tr>
+          <tr><td><strong>Unterbilanzkreis</strong> model</td><td>Your own ring-fenced sub-account inside their balance group.</td><td><strong style="color:var(--good)">The structure the simulator models.</strong> You keep the upside and the visibility.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="panel rv" style="margin-top:22px">
+
+    <div class="panel rv" style="margin-top:18px">
       <h3>Checklist for reading an offer</h3>
       <div class="two-col" style="font-size:13.5px;color:var(--ink-2);margin-top:10px">
-        <p>☐ Where does it sit on each of the six dials? Get it in writing.</p>
-        <p>☐ Is my imbalance netted inside the Bilanzkreis before allocation, or settled per meter?</p>
+        <p>☐ Which of A / B / C is it, in writing?</p>
+        <p>☐ Is imbalance netted inside the Bilanzkreis before allocation, or per customer?</p>
         <p>☐ Is there a tolerance band, and what happens outside it?</p>
-        <p>☐ <strong>Is the reBAP passed through symmetrically?</strong> Charged in full but credited at 60 % is a
-          private two-price scheme — legal, common, and invisible unless you look.</p>
-        <p>☐ Who keeps the upside when I am long in a negative-price quarter hour?</p>
-        <p>☐ Who forecasts me, and who owns the error if the forecast is theirs?</p>
-        <p>☐ What nomination cut-off do <em>they</em> impose — often 13:00, not 14:30?</p>
-        <p>☐ Do I get intraday access, and can I initiate a trade or only request one?</p>
-        <p>☐ Do I get my own Unterbilanzkreis, so my performance is even measurable?</p>
+        <p>☐ <strong>Is the reBAP passed through symmetrically?</strong> A contract that charges you the full price but credits you only part of it is a private two-price scheme.</p>
+        <p>☐ Who keeps the upside when you are long in a negative-price hour?</p>
+        <p>☐ What nomination cut-off do <em>they</em> impose on you — often 13:00, not 14:30?</p>
         <p>☐ Collateral: how much, in what form, reviewed how often?</p>
-        <p>☐ Termination notice — and what happens to my metering points the day after?</p>
-        <p>☐ How financially solid are they? A BRP default drops your meters into fallback supply overnight.</p>
+        <p>☐ Termination notice, and what happens to your metering points afterwards?</p>
       </div>
     </div>
   </div>
@@ -1461,11 +1307,10 @@ positive price + short group → <strong>you pay</strong>
 <section id="buying">
   <div class="wrap">
     <div class="secnum rv">Section 8</div>
-    <h2 class="rv">Buying the power: what actually happens in the auction</h2>
+    <h2 class="rv">Buying the power: what happens in the auction</h2>
     <p class="sub rv">
-      The most common sticking point, asked almost word for word every time:
+      The question asked almost word for word every time:
       <em>&ldquo;we don&rsquo;t know the prices before we bid — so what exactly are we doing?&rdquo;</em>
-      It is a very good question, and the answer changes how you think about the whole day.
     </p>
 
     <div class="bigidea rv">
@@ -1473,34 +1318,28 @@ positive price + short group → <strong>you pay</strong>
         <strong>You do not submit a price. You submit how much you want <em>at every possible price</em>.</strong>
       </p>
       <p style="margin:.7em 0 0;font-size:14px">
-        A day-ahead bid is not &ldquo;1.6 MW at 70 €/MWh&rdquo;. It is a <strong>curve</strong>: <em>&ldquo;for the
-        quarter hour 02:00–02:15, I will take 1.6 MW if the price is at or below 70; I will take 0.8 MW if it is
-        between 70 and 120; above 120 I take nothing.&rdquo;</em> You are declaring your <strong>willingness to
-        pay</strong>, not guessing the outcome.
+        A day-ahead bid is not &ldquo;1.6 MW at 70 €/MWh&rdquo;. It is a <strong>curve</strong>: <em>&ldquo;for
+        02:00–02:15 I will take 1.6 MW at or below 70; 0.8 MW between 70 and 120; nothing above 120.&rdquo;</em>
+        You declare your <strong>willingness to pay</strong>, not a guess at the outcome.
       </p>
     </div>
 
-    <h3 class="rv" style="margin-top:34px">How the auction resolves it</h3>
-    <p class="rv" style="max-width:72ch">
-      Every buyer submits a curve like that. Every seller submits the mirror image — <em>&ldquo;I will generate
-      400 MW if the price is at least 45&rdquo;</em>. The exchange collects all of them in secret (this is why it is
-      called a <strong>blind auction</strong> — nobody sees anyone else&rsquo;s bids, ever), stacks them into one
-      demand curve and one supply curve, and finds where they cross.
+    <p class="rv" style="max-width:72ch;margin-top:20px">
+      Every buyer submits a curve like that and every seller the mirror image. The exchange collects them all in
+      secret — this is why it is a <strong>blind auction</strong>, nobody ever sees anyone else&rsquo;s bids — stacks
+      them into one demand curve and one supply curve, and finds where they cross.
     </p>
 
-    <div class="rv" style="margin-top:20px"><div class="scroll">
+    <div class="rv" style="margin-top:16px"><div class="scroll">
       <svg viewBox="0 0 900 380" role="img" aria-label="Supply and demand curves crossing to set the market clearing price; everyone pays the crossing price regardless of what they bid">
         <line x1="70" y1="330" x2="860" y2="330" stroke="var(--line-2)" stroke-width="1.5"/>
         <line x1="70" y1="30" x2="70" y2="330" stroke="var(--line-2)" stroke-width="1.5"/>
         <text class="svgtxt sm" x="440" y="356" text-anchor="middle">volume (MW)</text>
         <text class="svgtxt sm" x="20" y="180" transform="rotate(-90 20 180)" text-anchor="middle">price (€/MWh)</text>
-
         <text class="svgtxt sm" x="44" y="300" text-anchor="end">0</text>
         <text class="svgtxt sm" x="44" y="236" text-anchor="end">40</text>
         <text class="svgtxt sm" x="44" y="172" text-anchor="end">80</text>
         <text class="svgtxt sm" x="44" y="108" text-anchor="end">120</text>
-
-        <!-- supply staircase: cheapest first -->
         <polyline points="70,300 190,300 190,268 320,268 320,236 450,236 450,172 580,172 580,108 700,108 700,44 830,44"
                   fill="none" stroke="var(--s3)" stroke-width="2.5"/>
         <text class="svgtxt sm" x="96" y="292" fill="var(--s3)">wind</text>
@@ -1510,20 +1349,15 @@ positive price + short group → <strong>you pay</strong>
         <text class="svgtxt sm" x="598" y="100" fill="var(--s3)">gas CCGT</text>
         <text class="svgtxt sm" x="716" y="36" fill="var(--s3)">peakers</text>
         <text class="svgtxt lb" x="600" y="330" fill="var(--s3)">SUPPLY — sorted cheapest first</text>
-
-        <!-- demand curve: downward staircase -->
         <polyline points="120,40 250,40 250,90 380,90 380,140 520,140 520,200 640,200 640,262 780,262"
                   fill="none" stroke="var(--s1)" stroke-width="2.5"/>
         <text class="svgtxt lb" x="120" y="30" fill="var(--s1)">DEMAND — sorted by willingness to pay</text>
-
-        <!-- crossing -->
         <circle cx="520" cy="172" r="7" fill="var(--s2)"/>
         <line x1="70" y1="172" x2="520" y2="172" stroke="var(--s2)" stroke-width="1.5" stroke-dasharray="5 4"/>
         <line x1="520" y1="172" x2="520" y2="330" stroke="var(--s2)" stroke-width="1.5" stroke-dasharray="5 4"/>
         <text class="svgtxt" x="534" y="162" fill="var(--s2)">they cross here</text>
         <text class="svgtxt" x="534" y="180" fill="var(--s2)">→ clearing price 80 €/MWh</text>
         <text class="svgtxt sm" x="520" y="348" text-anchor="middle" fill="var(--s2)">cleared volume</text>
-
         <rect x="600" y="230" width="270" height="86" rx="9" fill="var(--panel)" stroke="var(--s2)" stroke-width="1.5"/>
         <text class="svgtxt" x="616" y="252" fill="var(--s2)">Everyone pays 80.</text>
         <text class="svgtxt sm" x="616" y="272">The buyer willing to pay 200 pays 80.</text>
@@ -1532,146 +1366,79 @@ positive price + short group → <strong>you pay</strong>
       </svg>
     </div></div>
 
-    <div class="grid g3 rv" style="margin-top:20px">
+    <div class="grid g3 rv" style="margin-top:18px">
       <div class="panel">
         <h3>Uniform pricing</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Everyone who clears pays — or receives — <strong>the same
-        price</strong>: the one where the curves cross. Not what they bid. This is why bidding a high limit is not
-        dangerous: it only affects <em>whether</em> you get the energy, never what you pay for it.</p>
+        <p style="font-size:14px;color:var(--ink-2)">Everyone who clears pays <strong>the same price</strong> — where
+        the curves cross, not what they bid. So a high bid limit buys certainty, never expense.</p>
       </div>
       <div class="panel">
         <h3>It is blind</h3>
-        <p style="font-size:14px;color:var(--ink-2)">You never see other bids, before or after. You submit by
-        <strong>12:00</strong>, the EUPHEMIA algorithm clears all coupled European zones at once, and results appear
-        around <strong>12:45</strong>. There is no haggling and no second round.</p>
+        <p style="font-size:14px;color:var(--ink-2)">You submit by <strong>12:00</strong>, the algorithm clears all
+        coupled European zones at once, results appear around <strong>12:45</strong>. No haggling, no second round.</p>
       </div>
       <div class="panel">
-        <h3>One clearing per quarter hour</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Since <strong>1 October 2025</strong> the German day-ahead
-        auction clears <strong>96 separate products</strong>, one per quarter hour. Each gets its own price. Your
-        bid curve is per quarter hour too.</p>
+        <h3>96 separate clearings</h3>
+        <p style="font-size:14px;color:var(--ink-2)">Since <strong>1 October 2025</strong> the German auction clears
+        one product per <strong>quarter hour</strong>, each with its own price. Your bid curve is per quarter hour too.</p>
       </div>
     </div>
 
-    <h3 class="rv" style="margin-top:38px">So what do <em>you</em> submit? Two honest options</h3>
-
-    <div class="grid g2 rv" style="margin-top:14px">
+    <h3 class="rv" style="margin-top:34px">So what do you actually submit?</h3>
+    <div class="grid g2 rv" style="margin-top:12px">
       <div class="worked" style="--acc:var(--s1)">
         <div class="worked-h"><span class="chip b">Option 1 · price-dependent</span></div>
-        <p><strong>&ldquo;I&rsquo;ll charge in this quarter hour only if it is cheap enough.&rdquo;</strong></p>
-        <p class="calc">02:00–02:15 → 1.6 MW at ≤ 70 €/MWh
-02:00–02:15 → 0.0 MW above 70 €/MWh</p>
-        <p>This is what flexible demand is <em>supposed</em> to do, and it is the economically correct answer: your
-        bid tells the market what your flexibility is actually worth.</p>
+        <p><strong>&ldquo;Charge in this quarter hour only if it is cheap enough.&rdquo;</strong> This is what flexible
+        demand is supposed to do — your bid tells the market what your flexibility is worth.</p>
         <p class="worked-note"><strong>The catch:</strong> if the price comes in above your limit you get
-        <em>nothing</em> in that quarter hour. Do that across too many quarter hours and your trucks do not charge.
-        You now need a fallback — which means, in practice, bidding a very high limit somewhere.</p>
+        <em>nothing</em> that quarter hour. Do that too often and your trucks do not charge.</p>
       </div>
       <div class="worked" style="--acc:var(--s2)">
         <div class="worked-h"><span class="chip o">Option 2 · price-taker, against a forecast</span></div>
-        <p><strong>&ldquo;Forecast tomorrow&rsquo;s prices, decide when to charge, then buy that shape at any price.&rdquo;</strong></p>
-        <p class="calc">forecast tomorrow&rsquo;s 96 prices
-→ pick the cheapest feasible charging windows
-→ submit those volumes with a high price limit
-→ they clear whatever the outcome</p>
-        <p>You are guaranteed the energy. You are not guaranteed to have picked the right hours — if your forecast was
-        wrong, you have simply bought expensive power with certainty.</p>
-        <p class="worked-note"><strong>This is what almost everyone actually does</strong>, including every depot
-        optimiser on the market. The skill is not in the bidding, it is in the forecast.</p>
+        <p><strong>&ldquo;Forecast tomorrow&rsquo;s prices, pick the cheapest windows, then bid to clear for
+        certain.&rdquo;</strong> You are guaranteed the energy; you are not guaranteed to have picked the right hours.</p>
+        <p class="worked-note"><strong>This is what almost everyone does.</strong> The skill is not in the bidding, it
+        is in the forecast.</p>
       </div>
     </div>
 
-    <div class="note warn rv" style="margin-top:18px">
-      <strong>Be aware of how the simulator simplifies this.</strong> When you pick &ldquo;cheapest hours&rdquo; in
-      the simulator, it optimises against the day&rsquo;s <em>actual</em> cleared prices — that is, it assumes a
-      perfect forecast. Real life is option 2 with an imperfect forecast, so the real-world gap between
-      &ldquo;cheapest hours&rdquo; and &ldquo;flat&rdquo; is <strong>narrower than the simulator shows</strong>.
-      Treat the simulator&rsquo;s arbitrage saving as an upper bound, not an estimate.
+    <div class="note warn rv" style="margin-top:16px">
+      <strong>How the simulator simplifies this.</strong> &ldquo;Cheapest hours&rdquo; optimises against the day&rsquo;s
+      <em>actual</em> cleared prices — a perfect forecast. Real life is option 2 with a worse one, so treat the
+      simulator&rsquo;s arbitrage saving as an <strong>upper bound</strong>, not an estimate.
     </div>
 
-    <h3 class="rv" style="margin-top:38px">And what is the BRP doing in all this?</h3>
-    <p class="rv" style="max-width:72ch">
-      This is the other half of the question, and the answer depends entirely on which contract you signed — which is
-      why section 7 matters before this one. There are two arrangements:
-    </p>
-
-    <div class="grid g2 rv" style="margin-top:14px">
+    <h3 class="rv" style="margin-top:32px">And what is the BRP doing?</h3>
+    <div class="grid g2 rv" style="margin-top:12px">
       <div class="panel">
-        <h3>They decide — &ldquo;full supply&rdquo;</h3>
-        <p style="font-size:14px;color:var(--ink-2)">The BRP forecasts your consumption from history, buys the energy
-        it thinks you will need, nominates it, and sends you a bill at your agreed tariff. <strong>You are not
-        involved in the auction at all</strong> and probably never see a day-ahead price.</p>
-        <p style="font-size:14px;color:var(--ink-2)">Simple, safe — and there is nothing for flexible charging to
-        capture, because your tariff does not change hour to hour.</p>
+        <h3>They decide — full supply</h3>
+        <p style="font-size:14px;color:var(--ink-2)">The BRP forecasts you from history, buys what it thinks you need,
+        nominates it and bills you at your agreed tariff. <strong>You are not involved in the auction at all</strong>
+        and may never see a day-ahead price — and there is nothing for flexible charging to capture.</p>
       </div>
       <div class="panel" style="border-color:var(--s1)">
         <h3>You decide — they execute <span class="chip b">the simulator&rsquo;s model</span></h3>
-        <p style="font-size:14px;color:var(--ink-2)">You send them a charging plan by their cut-off (often
-        <strong>13:00</strong>, earlier than the TSO&rsquo;s 14:30). They place the order on the exchange in your
-        name — you almost certainly are not an exchange member yourself — and then nominate the matching schedule to
-        the TSO by 14:30.</p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>The decision is yours; the access is theirs.</strong>
-        That is precisely the service you are paying the €/MWh fee for.</p>
+        <p style="font-size:14px;color:var(--ink-2)">You send a charging plan by their cut-off (often
+        <strong>13:00</strong>). They place the order on the exchange in your name — you are not an exchange member —
+        and nominate the matching schedule to the TSO by 14:30. <strong>The decision is yours; the access is
+        theirs.</strong></p>
       </div>
     </div>
 
     <div class="note legal rv" style="margin-top:16px">
-      <strong>One thing the BRP always does, in both arrangements:</strong> turn the trade into a
-      <strong>nomination</strong>. A trade is a contract with a counterparty; a nomination is a promise to the system
-      operator. Until 14:30 D-1 your purchase is just paperwork between traders — after it, the TSO has built its
-      reserve plan around your quarter hours. That is the moment your plan becomes physically real, and it is the
-      step that has no equivalent in any other commodity market.
+      <strong>What the BRP always does, either way:</strong> turn the trade into a <strong>nomination</strong>. A trade
+      is a contract with a counterparty; a nomination is a promise to the system operator. Until 14:30 D-1 your
+      purchase is paperwork between traders — after it, the TSO has built its reserve plan around your quarter hours.
     </div>
 
-    <h3 class="rv" style="margin-top:38px">Then intraday: a completely different mechanism</h3>
+    <h3 class="rv" style="margin-top:32px">Intraday is not another auction</h3>
     <p class="rv" style="max-width:72ch">
-      People assume intraday is &ldquo;another auction&rdquo;. Mostly it is not. Continuous intraday works like a
-      share market: a live <strong>order book</strong> where buyers and sellers post offers and a trade happens the
-      instant two of them overlap. There is no clearing price and no fixed moment — just whatever someone will deal
-      at, right now.
+      Continuous intraday works like a share market: a live <strong>order book</strong> where a trade happens the
+      instant two offers overlap. So there is a <strong>bid–ask spread</strong> — you buy at the ask and sell at the
+      bid, and every round trip costs you the gap before any fee. Liquidity thins as delivery approaches, so the
+      spread widens exactly when you most need to trade. You can deal until <strong>5 minutes before</strong> the
+      quarter hour inside Germany.
     </p>
-
-    <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel">
-        <h3>What that means in practice</h3>
-        <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
-          <li>There is a <strong>bid–ask spread</strong>. You buy at the ask and sell at the bid, so every round trip
-            costs you the gap — before any fee.</li>
-          <li><strong>Liquidity thins</strong> as delivery approaches and near quiet quarter hours, so the spread
-            widens exactly when you most need to trade.</li>
-          <li>You can trade until <strong>5 minutes before</strong> the quarter hour inside Germany (60 minutes
-            cross-border), but your schedule change to the TSO still needs a quarter hour of lead time.</li>
-          <li>There are also three <strong>intraday auctions</strong> (IDA1, IDA2, IDA3) that work like miniature
-            day-ahead auctions — useful for liquidity, but the continuous book is where most adjustment happens.</li>
-        </ul>
-      </div>
-      <div class="worked" style="--acc:var(--s2)">
-        <div class="worked-h"><span class="chip o">Worked example</span><span class="worked-amt" style="color:var(--crit)">− €5.63</span></div>
-        <p>At 11:00 you learn a truck will be back 40 minutes late, so you need <strong>0.25 MWh less</strong> at
-        16:45 and <strong>0.25 MWh more</strong> at 17:30 than you nominated.</p>
-        <p class="calc">sell 0.25 MWh at 16:45 · index 96.00 − spread 2.70 = 93.30 → <strong>+ €23.33</strong>
-buy  0.25 MWh at 17:30 · index 108.00 + spread 2.70 = 110.70 → <strong>− €27.68</strong>
-fees 0.5 MWh × (0.12 + 0.035 + 0.50) €/MWh → <strong>− €0.33</strong>
-──────────────── net <strong>− €5.63</strong></p>
-        <p class="worked-note">You paid €5.63 to move a quarter of a megawatt-hour by 45 minutes. Whether that was
-        worth it depends entirely on what the reBAP turned out to be in those two quarter hours — which you will not
-        know until weeks later. <strong>That uncertainty is the whole game.</strong></p>
-      </div>
-    </div>
-
-    <div class="panel rv" style="margin-top:24px;border-color:var(--s1)">
-      <h3>The four sentences that answer the original question</h3>
-      <ol style="font-size:15px;color:var(--ink-2);padding-left:22px;margin-top:10px;line-height:1.8">
-        <li>You never guess the price — you declare <strong>how much you want at each price</strong>, and the auction
-          finds the price for you.</li>
-        <li>Everyone who clears pays the <strong>same</strong> price, so a high bid limit buys certainty, not
-          expense.</li>
-        <li>In practice flexible buyers forecast tomorrow&rsquo;s prices, choose their hours, and then bid to clear
-          for certain — so <strong>the value comes from the forecast, not from the bidding</strong>.</li>
-        <li>Your BRP is either deciding for you (full supply) or executing and nominating for you (the flexible
-          case). Either way <strong>it is the BRP that turns the trade into a promise to the TSO</strong>.</li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -1863,11 +1630,7 @@ fees 0.5 MWh × (0.12 + 0.035 + 0.50) €/MWh → <strong>− €0.33</strong>
 <section id="depot">
   <div class="wrap">
     <div class="secnum rv">Section 11</div>
-    <h2 class="rv">Your depot: where you sit, and what you actually pay</h2>
-    <p class="sub rv">
-      Everything above, applied to ten electric trucks behind one grid connection — including a full breakdown of
-      every cost line, because the energy price is the <em>smaller</em> half of the bill.
-    </p>
+    <h2 class="rv">Where a ten-truck depot actually sits</h2>
 
     <div class="rv" style="margin-top:22px"><div class="scroll">
       <svg viewBox="0 0 900 330" role="img" aria-label="A depot sits inside a BRP's balance group and may join an aggregator's prequalified pool">
@@ -1886,17 +1649,19 @@ fees 0.5 MWh × (0.12 + 0.035 + 0.50) €/MWh → <strong>− €0.33</strong>
         <text class="svgtxt sm" x="56" y="196">· nominates your schedule by 14:30 D-1</text>
         <text class="svgtxt sm" x="56" y="214">· day-ahead and intraday execution · imbalance allocation</text>
 
-        <rect x="530" y="134" width="330" height="96" rx="10" fill="var(--panel)" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <text class="svgtxt" x="546" y="158" fill="var(--ink-3)">AGGREGATOR = BSP  (optional)</text>
-        <text class="svgtxt sm" x="546" y="178">· prequalified pool · sells FCR / aFRR / mFRR</text>
-        <text class="svgtxt sm" x="546" y="196">· NEEDS written consent from supplier AND BRP — section 6</text>
-        <text class="svgtxt sm" x="546" y="214">· out of scope for this project</text>
+        <rect x="530" y="134" width="330" height="96" rx="10" fill="var(--panel)" stroke="var(--s3)" stroke-width="2"/>
+        <text class="svgtxt" x="546" y="158" fill="var(--s3)">AGGREGATOR = BSP</text>
+        <text class="svgtxt sm" x="546" y="178">· prequalified pool · bids aFRR / mFRR</text>
+        <text class="svgtxt sm" x="546" y="196">· NEEDS written consent from your supplier AND your BRP</text>
+        <text class="svgtxt sm" x="546" y="214">· ≥ 1 MW of RELIABLE capacity, proven by a service run</text>
 
         <path d="M370 182 L 528 182" stroke="var(--line-2)" stroke-width="1.6" stroke-dasharray="4 4"/>
         <text class="svgtxt sm" x="400" y="176">consent</text>
 
         <path d="M205 232 L 205 268" stroke="var(--s1)" stroke-width="1.6" class="flowline"/>
+        <path d="M695 232 L 695 268" stroke="var(--s3)" stroke-width="1.6" class="flowline"/>
         <text class="svgtxt sm" x="214" y="254">Bilanzkreisvertrag</text>
+        <text class="svgtxt sm" x="704" y="254">Rahmenvertrag</text>
 
         <rect x="120" y="270" width="660" height="46" rx="10" fill="var(--panel)" stroke="var(--line-2)" stroke-width="1.5"/>
         <text class="svgtxt" x="450" y="290" text-anchor="middle">TSO — 50Hertz · Amprion · TenneT DE · TransnetBW</text>
@@ -1904,325 +1669,87 @@ fees 0.5 MWh × (0.12 + 0.035 + 0.50) €/MWh → <strong>− €0.33</strong>
       </svg>
     </div></div>
 
-    <h3 class="rv" style="margin-top:36px">Every line on the bill, and who sets it</h3>
+    <h3 class="rv" style="margin-top:32px">What the costs in the simulator actually are</h3>
     <p class="rv" style="max-width:74ch">
-      This is the part the simulator asks you to configure in step 4 of Setup, and it is the part nobody explains.
-      Figures are the <strong>2026 German values</strong>; the ones that vary by network operator are marked.
+      This is the panel the simulator asks you to configure in step 4 of Setup. Figures are 2026 German values.
     </p>
-
-    <div class="scroll rv panel" style="margin-top:14px;padding:0">
-      <table>
-        <thead><tr><th>Cost</th><th>What it actually is</th><th>Charged on</th><th>2026 value</th><th>Can you reduce it?</th></tr></thead>
-        <tbody>
-          <tr style="background:color-mix(in srgb,var(--s1) 7%,transparent)">
-            <td colspan="5" style="font-weight:700;color:var(--s1)">ENERGY — the part everyone talks about</td>
-          </tr>
-          <tr><td><strong>Day-ahead energy</strong></td><td>The wholesale price you bought at, per quarter hour</td><td>MWh</td><td>typically −50 … +300 €/MWh</td><td><strong style="color:var(--good)">Yes — charge in cheap quarter hours</strong></td></tr>
-          <tr><td><strong>Intraday adjustment</strong></td><td>Buying or selling the difference when your forecast moves</td><td>MWh re-traded</td><td>index ± the spread</td><td>Yes — forecast better and trade less</td></tr>
-          <tr><td><strong>Imbalance (reBAP)</strong></td><td>Your deviation from the nominated schedule, repriced</td><td>MWh of deviation</td><td>either sign; occasionally extreme</td><td>Yes — nominate accurately</td></tr>
-
-          <tr style="background:color-mix(in srgb,var(--s2) 7%,transparent)">
-            <td colspan="5" style="font-weight:700;color:var(--s2)">MARKET ACCESS — small, but real</td>
-          </tr>
-          <tr><td>Exchange fee, day-ahead</td><td>EPEX SPOT&rsquo;s trading fee</td><td>MWh traded</td><td>≈ 0.05–0.10 €/MWh</td><td>Barely</td></tr>
-          <tr><td>Exchange fee, intraday</td><td>Higher, because continuous trading costs more to run</td><td>MWh traded</td><td>≈ 0.10–0.15 €/MWh</td><td>Trade less often</td></tr>
-          <tr><td>Clearing fee</td><td>ECC (the clearing house) guaranteeing both sides of the trade</td><td>MWh traded</td><td>≈ 0.03–0.04 €/MWh</td><td>No</td></tr>
-          <tr><td><strong>Intraday spread</strong></td><td>Not a fee — the gap between the best buy and best sell price in the order book. You buy above the mid and sell below it.</td><td>MWh re-traded</td><td>≈ 1–5 €/MWh each way, wider near gate closure and at night</td><td><strong style="color:var(--good)">Yes — by trading earlier, and less</strong></td></tr>
-          <tr><td>BRP fee</td><td>Your balance-group service (section 7)</td><td>€/month + €/MWh</td><td>contract-specific</td><td>By negotiating, or changing archetype</td></tr>
-
-          <tr style="background:color-mix(in srgb,var(--s3) 7%,transparent)">
-            <td colspan="5" style="font-weight:700;color:var(--s3)">NETWORK, LEVIES AND TAX — usually the biggest block</td>
-          </tr>
-          <tr><td><strong>Netzentgelt — Arbeitspreis</strong></td><td>The per-kWh part of the network charge</td><td>kWh withdrawn</td><td><em>varies by DSO and voltage level</em></td><td>Only by consuming less</td></tr>
-          <tr style="background:color-mix(in srgb,var(--serious) 10%,transparent)"><td><strong>Netzentgelt — Leistungspreis</strong></td><td><strong>The per-kW part, charged on your single highest 15-minute peak of the entire year.</strong> One bad quarter hour in February sets the bill for all twelve months.</td><td>kW of annual peak</td><td><em>order of 100–180 €/kW·a</em>, varies by DSO</td><td><strong style="color:var(--good)">Yes — and this is usually the biggest single lever you have</strong></td></tr>
-          <tr><td>KWKG-Umlage</td><td>Levy funding combined heat and power</td><td>kWh</td><td><strong>0.446 ct/kWh</strong> (+61 % on 2025)</td><td>No</td></tr>
-          <tr><td>Offshore-Netzumlage</td><td>Levy funding offshore wind grid connections</td><td>kWh</td><td><strong>0.941 ct/kWh</strong></td><td>No</td></tr>
-          <tr><td>§ 19 StromNEV-Umlage</td><td>Levy funding the individual network charges granted to other users</td><td>kWh</td><td><strong>1.559 ct/kWh</strong></td><td>No</td></tr>
-          <tr><td><strong>Levies total</strong></td><td></td><td>kWh</td><td><strong>2.946 ct/kWh = 29.46 €/MWh</strong></td><td>No</td></tr>
-          <tr><td>Stromsteuer</td><td>Electricity tax</td><td>kWh</td><td><strong>2.050 ct/kWh = 20.50 €/MWh</strong></td><td>Only via sector-specific relief</td></tr>
-          <tr><td>Konzessionsabgabe</td><td>Fee to the municipality for the right to run cables under its streets</td><td>kWh</td><td>≈ 0.11 ct/kWh for commercial special-contract customers</td><td>No</td></tr>
-
-          <tr style="background:color-mix(in srgb,var(--crit) 7%,transparent)">
-            <td colspan="5" style="font-weight:700;color:var(--crit)">YOUR OWN COSTS — invisible on the bill, real on the balance sheet</td>
-          </tr>
-          <tr><td><strong>Battery degradation</strong></td><td>Wear you cause by cycling, above what driving alone would cause</td><td>kWh of throughput</td><td>you choose the assumption — this is the swing factor in every V2G case</td><td>Yes — cycle less, or not at all</td></tr>
-          <tr><td><strong>A missed departure</strong></td><td>A truck that leaves below its required SoC. A swapped vehicle, a late delivery, a broken promise to a customer.</td><td>per occurrence</td><td>hundreds to thousands of euros</td><td><strong>Never trade this away for energy savings</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note rv" style="margin-top:16px">
-      <strong>Add it up.</strong> Levies plus tax alone are <strong>≈ 50 €/MWh</strong> before you have paid for a
-      single kWh of electricity or a single euro of network charge. On a typical German industrial bill the
-      wholesale energy price is roughly a third of the total. <strong>Which is why optimising only the energy price
-      optimises the smaller half of the problem.</strong>
-    </div>
-
-    <h3 class="rv" style="margin-top:38px">The Leistungspreis trap — and the lever nobody uses</h3>
-    <p class="rv" style="max-width:74ch">
-      A depot with fast chargers has an unusual load shape: very high power, very few hours. That combination is
-      penalised twice by the German network tariff, and understanding why opens up the single largest saving
-      available to you.
-    </p>
-
-    <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel">
-        <h3>Why the tariff punishes you</h3>
-        <p style="font-size:14px;color:var(--ink-2)">German network charges for metered commercial customers
-        (<em>RLM</em>) come in two variants, split at <strong>2 500 Benutzungsstunden</strong> per year:</p>
-        <p class="calc">Benutzungsstunden = annual kWh ÷ annual peak kW</p>
-        <p style="font-size:14px;color:var(--ink-2)">Above 2 500 hours you get a low per-kWh charge and a high per-kW
-        charge. Below it, the opposite — <strong>an expensive per-kWh tariff.</strong></p>
-        <p style="font-size:14px;color:var(--ink-2)">Now run the depot&rsquo;s numbers: roughly 1 000 MWh a year
-        against a 1.6 MW peak.</p>
-        <p class="calc">1 000 000 kWh ÷ 1 600 kW ≈ <strong>625 hours</strong></p>
-        <p style="font-size:14px;color:var(--ink-2)">Far below 2 500. You land in the expensive tariff — and you also
-        pay the Leistungspreis on a peak you only touch for a few quarter hours a year.</p>
-      </div>
-      <div class="panel" style="border-color:var(--good)">
-        <h3>The lever: § 19(2) StromNEV</h3>
-        <p style="font-size:14px;color:var(--ink-2)">German law lets you negotiate an <strong>individual network
-        charge</strong> in two situations. One of them fits a depot almost perfectly:</p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>§ 19(2) sentence 1 — atypische Netznutzung.</strong> If
-        your annual peak reliably falls <em>outside</em> the high-load windows your network operator publishes
-        (<em>Hochlastzeitfenster</em>), you are not contributing to the system peak the network was built for — so you
-        can be charged individually. In practice the Leistungspreis is then billed on your highest peak
-        <em>within</em> those windows rather than your highest peak overall, and the charge can fall to as little as
-        <strong>20 % of the standard rate</strong>.</p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>§ 19(2) sentence 2 — intensive Netznutzung</strong>
-        needs at least <strong>7 000 Benutzungsstunden and 10 GWh a year</strong>. A truck depot will not reach that.
-        Ignore it.</p>
-        <div class="note warn" style="margin-top:10px">
-          <strong>Two hard conditions.</strong> The agreement must be notified to the Bundesnetzagentur or your state
-          regulator <strong>by 30 September</strong> of the year it is to apply. And it only works if you genuinely
-          stay out of the windows — which means a charging controller that treats the HLZF as a hard constraint,
-          every single day, not a preference.
-        </div>
-      </div>
-    </div>
-
-    <div class="note warn rv" style="margin-top:16px">
-      <strong>A correction worth having.</strong> <strong>§ 14a EnWG</strong> — the reduced grid charges for
-      controllable consumption devices — gets quoted constantly in EV-charging business cases. It applies only to
-      devices above 4.2 kW connected in <strong>low voltage</strong> and commissioned from 1 January 2024. A depot on
-      a medium-voltage connection with RLM metering is <strong>outside its scope entirely</strong>. Your instruments
-      are the Leistungspreis and § 19(2) StromNEV, not § 14a.
-    </div>
-
-    <h3 class="rv" style="margin-top:38px">The value stack, ranked honestly</h3>
     <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>#</th><th>What you optimise</th><th>Effort</th><th>What it needs</th><th>Typical size</th></tr></thead>
+        <thead><tr><th>Cost</th><th>What it actually is</th><th>2026 value</th></tr></thead>
         <tbody>
-          <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)"><td>1</td><td><strong>Peak power</strong> — the Leistungspreis, and § 19(2) if you qualify</td><td>low</td><td>load management only. <strong>No market role at all.</strong></td><td>often the <strong>largest single item</strong></td></tr>
-          <tr><td>2</td><td><strong>Day-ahead price</strong> — smart charging</td><td>low</td><td>a spot-linked tariff or a service BRP</td><td>10–30 % of the energy component</td></tr>
-          <tr><td>3</td><td><strong>Intraday re-optimisation</strong></td><td>medium</td><td>intraday access + someone or something watching</td><td>a few €/MWh</td></tr>
-          <tr><td>4</td><td><strong>Imbalance discipline</strong> — nominating what you will actually do</td><td>medium</td><td>a decent forecast of your own operation</td><td>small but relentless</td></tr>
-          <tr style="opacity:.62"><td>5</td><td><strong>Balancing markets</strong> — FCR / aFRR / mFRR<br><span class="chip">out of scope for this project</span></td><td>high</td><td>prequalification or an aggregator pool, plus four signatures (section 6)</td><td>lumpy; genuinely hard to hold reliably with trucks</td></tr>
+          <tr><td><strong>Grid fees, levies, tax</strong></td><td>One combined figure: the network Arbeitspreis, plus KWKG (0.446 ct/kWh), Offshore-Netzumlage (0.941), § 19 StromNEV (1.559), Stromsteuer (2.050) and Konzessionsabgabe</td><td>levies + tax alone ≈ <strong>50 €/MWh</strong>; the simulator&rsquo;s 95 €/MWh default adds a network Arbeitspreis</td></tr>
+          <tr style="background:color-mix(in srgb,var(--serious) 10%,transparent)"><td><strong>Peak power charge</strong><br><span class="chip">Leistungspreis</span></td><td><strong>Billed on your single highest 15-minute peak of the whole year.</strong> One bad quarter hour in February sets the bill for twelve months. Pro-rated to one day in the simulator.</td><td>order of 100–180 €/kW·a, varies by network operator</td></tr>
+          <tr><td>Exchange fee, day-ahead / intraday</td><td>What the power exchange charges per MWh traded; intraday is dearer because continuous trading costs more to run</td><td>≈ 0.05–0.15 €/MWh</td></tr>
+          <tr><td>Clearing fee</td><td>What the clearing house charges to guarantee both sides of every trade</td><td>≈ 0.03–0.04 €/MWh</td></tr>
+          <tr><td><strong>Intraday half-spread</strong></td><td><strong>Not a fee.</strong> The gap between the best buy and best sell price in the order book — you buy above the mid and sell below it, so a round trip costs twice this. The real price of changing your mind.</td><td>≈ 1–5 €/MWh each way, wider near gate closure</td></tr>
+          <tr><td>Cost of a missed departure</td><td>A truck that leaves below its required SoC: a swapped vehicle, a late delivery, a broken promise</td><td>deliberately large — it should dominate everything else</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note rv" style="margin-top:14px">
-      <strong>Note the ordering.</strong> The top item needs no market participation, no prequalification and no
-      counterparty — just a controller that refuses to let the depot peak when it should not. Anyone pitching
-      balancing-market revenue before they have asked about your Leistungspreis is selling you the fourth-best thing
-      first.
+      <strong>Add it up.</strong> Levies plus tax alone are ≈ 50 €/MWh before a single kWh of electricity or a euro
+      of network charge. On a typical German industrial bill the wholesale energy price is roughly a third of the
+      total — which is why optimising only the energy price optimises the smaller half of the problem.
     </div>
 
-    <h3 class="rv" style="margin-top:38px">The asymmetry that defines depot flexibility</h3>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th></th><th>Charging <em>more</em> than planned</th><th>Charging <em>less</em>, or discharging</th></tr></thead>
-        <tbody>
-          <tr><td>What it needs</td><td>a spare charger and grid headroom</td><td>stored energy you are willing not to drive on</td></tr>
-          <tr><td>Battery cost</td><td><strong style="color:var(--good)">none</strong> — you were going to charge anyway</td><td><strong style="color:var(--crit)">degradation</strong>, plus warranty exposure</td></tr>
-          <tr><td>Operational risk</td><td>low — you simply finish earlier</td><td><strong style="color:var(--crit)">high</strong> — a truck leaving at 70 % is a failed shift</td></tr>
-          <tr><td>When is it available?</td><td>whenever trucks are plugged in and not yet full</td><td>worst exactly when prices spike</td></tr>
-          <tr><td>Verdict</td><td><strong style="color:var(--good)">close to free flexibility</strong></td><td>a real cost that has to clear a high bar</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note legal rv" style="margin-top:14px">
-      Almost every depot flexibility case that works, works on the left-hand column: <strong>shifting charging in
-      time, not pushing energy back out.</strong> V2G is the harder, more expensive half — worth studying precisely
-      because it is not obviously worth doing.
-    </div>
-  </div>
-</section>
-
-<!-- ================= 12 ================= -->
-<section id="simulator">
-  <div class="wrap">
-    <div class="secnum rv">Section 12</div>
-    <h2 class="rv">Reading the simulator</h2>
-    <p class="sub rv">
-      Every screen, and what each number on it means. Open the simulator beside this section and work down.
-    </p>
-
-    <div class="note rv" style="margin-top:20px">
-      <strong>What the simulator is for.</strong> It runs <strong>one delivery day</strong> for a ten-truck depot,
-      quarter hour by quarter hour, and shows you where the money goes. It is a teaching instrument, not a
-      forecasting tool — the prices are synthetic, and the point is to make the <em>mechanisms</em> visible, not to
-      predict a number you can put in a business case.
-    </div>
-
-    <h3 class="rv" style="margin-top:32px">Step 1 · Setup</h3>
-
-    <div class="grid rv" style="margin-top:14px;gap:14px">
-      <div class="worked" style="--acc:var(--s1)">
-        <div class="worked-h"><span class="chip b">1 · Pick the day</span></div>
-        <p>Four synthetic German days. They differ only in <strong>prices and system conditions</strong> — same fleet,
-        same shifts, same forecast errors — so anything that changes between them is caused by the market, not by the
-        depot.</p>
-        <p class="worked-note">Start with <strong>Typical weekday</strong>. Then run <strong>Windy spring day</strong>
-        to see negative prices, and <strong>Scarcity event</strong> to see what one very bad quarter hour costs.</p>
-      </div>
-
-      <div class="worked" style="--acc:var(--s1)">
-        <div class="worked-h"><span class="chip b">2 · Pick your BRP</span></div>
-        <p>The three archetypes from section 7. The row that matters most and looks most boring is
-        <strong>&ldquo;credits passed through&rdquo;</strong>: a contract that charges you the full imbalance price
-        but pays you only 60 % of it is a private two-price scheme, and the settlement screen will show you exactly
-        what it costs.</p>
-        <p class="worked-note">These are three points on a six-dimensional space, not the only three contracts that
-        exist — see section 7.</p>
-      </div>
-
-      <div class="worked" style="--acc:var(--s1)">
-        <div class="worked-h"><span class="chip b">3 · The depot</span></div>
-        <p><strong>Grid connection (kW)</strong> — the hard ceiling on total simultaneous charging. Raising it lets
-        you charge faster in cheap hours, but it also raises the peak you will be billed for.</p>
-        <p><strong>Battery per truck / charger power</strong> — how much energy each truck holds and how fast it can
-        take it.</p>
-        <p><strong>Required SoC at departure</strong> — the operational promise. The dispatcher will break your
-        trading plan to keep this, which is exactly where imbalance comes from.</p>
-        <p><strong>SoC floor</strong> — never discharge below this.</p>
-        <p><strong>Battery degradation (€/kWh)</strong> — your assumed cost per kWh of throughput. <strong>The single
-        most leveraged number in the whole model.</strong> Move it and watch every V2G conclusion change.</p>
-        <p><strong>Round-trip efficiency</strong> — 94 % each way is about 88 % round trip, so a stored-and-returned
-        kWh loses roughly an eighth of itself.</p>
-      </div>
-
-      <div class="worked" style="--acc:var(--serious)">
-        <div class="worked-h"><span class="chip o">4 · Costs outside the energy price</span></div>
-        <p><strong>This is the panel people skip, and it is where most of the money is.</strong> Section 11 has the
-        full breakdown; in short:</p>
-        <p><strong>Grid fees, levies, tax (€/MWh)</strong> — one combined figure standing in for the network
-        Arbeitspreis, the KWKG / Offshore / § 19 levies (2.946 ct/kWh in 2026), Stromsteuer (2.050 ct/kWh) and the
-        Konzessionsabgabe. The default of 95 €/MWh is a realistic German commercial figure. <em>Note that this is
-        often larger than the wholesale energy price itself.</em></p>
-        <p><strong>Peak power charge (€/kW·a)</strong> — the Leistungspreis, billed on your <em>single highest
-        15-minute peak of the year</em>. The simulator pro-rates it to one day so you can see it alongside everything
-        else; in reality one bad quarter hour sets it for twelve months.</p>
-        <p><strong>Exchange fee, day-ahead / intraday</strong> — what EPEX charges per MWh traded. Intraday costs more
-        because continuous trading is more expensive to run.</p>
-        <p><strong>Clearing fee</strong> — what the clearing house charges to stand behind both sides of the trade.</p>
-        <p><strong>Intraday half-spread</strong> — <em>not</em> a fee. It is the gap between the best buy and best
-        sell price in the order book: you buy above the mid-price and sell below it, so a round trip costs you twice
-        this number. It is the real price of changing your mind.</p>
-        <p><strong>Spread widening near gate closure</strong> — a multiplier on that spread for quarter hours close to
-        the moment you find out you have a problem. Liquidity thins exactly when you need it.</p>
-        <p><strong>Cost of a missed departure</strong> — what it costs when a truck cannot leave. Deliberately large,
-        because it should dominate every other consideration.</p>
-      </div>
-    </div>
-
-    <h3 class="rv" style="margin-top:36px">Step 2 · Day-ahead</h3>
-    <p class="rv" style="max-width:74ch">
-      You choose <strong>when</strong> to charge. That choice becomes your purchase and then your nomination to the
-      TSO. Section 8 explains what is really happening behind the scenes.
-    </p>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>Strategy</th><th>What it does</th><th>What it teaches</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Cheapest hours</strong></td><td>Fills the cheapest quarter hours in each truck&rsquo;s plugged-in window</td><td>The upper bound on arbitrage value — it assumes a perfect price forecast (see section 8)</td></tr>
-          <tr><td><strong>Price threshold</strong></td><td>Prefers quarter hours below your threshold, then cheapest</td><td>Closest to how a real price-dependent bid behaves</td></tr>
-          <tr><td><strong>Flat</strong></td><td>Spreads charging evenly across the window</td><td><strong>Lowest peak.</strong> Compare its peak-power line against &ldquo;cheapest&rdquo; — flat often wins overall</td></tr>
-          <tr><td><strong>As soon as plugged in</strong></td><td>Charges immediately at full power</td><td>The naive baseline every uncontrolled depot does today</td></tr>
-        </tbody>
-      </table>
-    </div>
     <div class="note warn rv" style="margin-top:14px">
-      <strong>Run &ldquo;cheapest&rdquo; and &ldquo;flat&rdquo; back to back and compare the whole settlement, not
-      just the energy line.</strong> Cheapest charging concentrates load and pushes your peak to the grid limit;
-      flat charging pays more per MWh but can cost less in total. That trade-off is the single most useful thing the
-      simulator has to show you.
+      <strong>A correction worth having.</strong> <strong>§ 14a EnWG</strong> is quoted constantly in EV-charging
+      business cases, but it applies only to devices above 4.2 kW connected in <strong>low voltage</strong> and
+      commissioned from 1 January 2024 — a depot on a medium-voltage connection with RLM metering is outside its
+      scope entirely. Your real lever is <strong>§ 19(2) sentence 1 StromNEV</strong>: if your annual peak reliably
+      falls <em>outside</em> the network operator&rsquo;s published high-load windows
+      (<em>Hochlastzeitfenster</em>), you can negotiate an individual network charge — down to as little as
+      <strong>20 % of the standard rate</strong>. It must be notified to the regulator by <strong>30 September</strong>,
+      and it only works if the charging controller treats those windows as a hard constraint every single day.
     </div>
 
-    <h3 class="rv" style="margin-top:36px">Step 3 · Intraday</h3>
-    <p class="rv" style="max-width:74ch">
-      At 11:00 on the delivery day, two forecast errors are revealed — a truck delayed, another back early. A third
-      stays hidden until delivery, because that is the part no amount of trading can fix.
-    </p>
-    <p class="rv" style="max-width:74ch">
-      The one slider — <strong>how much of the revealed gap you close</strong> — is the whole decision. Closing it
-      costs you the spread and the fees now, with certainty. Leaving it open costs you the imbalance price later,
-      which you do not yet know. <strong>Slide it from 0 % to 100 % and watch the settlement screen.</strong> On a
-      calm day, leaving the gap open is often cheaper. On a scarcity day it is not.
-    </p>
 
-    <h3 class="rv" style="margin-top:36px">Step 4 · Delivery</h3>
-    <div class="grid g2 rv" style="margin-top:12px">
+    <div class="grid g2 rv" style="margin-top:24px">
       <div class="panel">
-        <h3>What to look at</h3>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>Nominated versus metered.</strong> Where the orange line
-        leaves the blue area, operations overrode your trading plan — a truck had to charge to make its departure.
-        <strong>That gap is the imbalance, and it is caused by the depot, not by the market.</strong></p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>The deviation bars.</strong> Blue where your deviation
-        earned money, red where it cost money. Notice that the colour does not follow the direction of the deviation
-        — it follows the sign flip from section 3.</p>
-        <p style="font-size:14px;color:var(--ink-2)"><strong>Fleet state of charge.</strong> Should never touch the
-        red floor line, and must be above the green departure line whenever a truck leaves.</p>
+        <h3>The four value stacks, ranked by accessibility</h3>
+        <div class="scroll"><table style="margin-top:8px">
+          <thead><tr><th>#</th><th>Stack</th><th>Effort</th><th>Needs</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Avoid peak grid charges</strong> (Leistungspreis, and § 19(2) StromNEV if you qualify)</td><td>low</td><td>load management only — <strong>no market role</strong></td></tr>
+            <tr><td>2</td><td>Day-ahead arbitrage (smart charging)</td><td>low</td><td>dynamic tariff or a service BRP</td></tr>
+            <tr><td>3</td><td>Intraday re-optimisation</td><td>medium</td><td>service BRP + a desk or an algo</td></tr>
+            <tr><td>4</td><td>Balancing markets</td><td>high</td><td>prequalification, or an aggregator pool</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note warn" style="margin-top:12px">
+          Note the ordering. <strong>Grid-charge optimisation usually beats every energy-market strategy for a depot</strong>,
+          and it needs no market role at all. Anyone pitching V2G revenue that ignores the Leistungspreis is selling you
+          the fourth-best thing first.
+        </div>
       </div>
-      <div class="panel">
-        <h3>The reBAP inspector</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Drag the quarter-hour slider and watch which of the three modules
-        binds. This is section 9 made concrete:</p>
-        <ul style="font-size:14px;color:var(--ink-2);padding-left:20px">
-          <li><strong>Module 1</strong> binds most of the time — the price of the balancing energy actually activated.</li>
-          <li><strong>Module 2</strong> binds when activation was cheap but the system was still out of balance — it
-            forces the price away from the intraday index so that being imbalanced is never cheaper than trading.</li>
-          <li><strong>Module 3</strong> binds only in genuine scarcity. Load the <em>Scarcity event</em> day to see it.</li>
-        </ul>
-        <p style="font-size:14px;color:var(--ink-2)">The table below lists every quarter hour where you deviated, plus
-        every quarter hour where something unusual happened in the pricing. Click a row to inspect it.</p>
-      </div>
-    </div>
 
-    <h3 class="rv" style="margin-top:36px">Step 5 · Settlement</h3>
-    <p class="rv" style="max-width:74ch">
-      The day&rsquo;s invoice. Two things are worth more attention than the headline number:
-    </p>
-    <div class="grid g2 rv" style="margin-top:12px">
       <div class="panel">
-        <h3>The line-by-line table</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Compare the <strong>subtotals</strong>, not the lines. On a
-        typical run, network charges and levies exceed the entire energy bill, and the imbalance line — the thing
-        everyone worries about — is among the smallest numbers on the page. That proportion is the lesson.</p>
-      </div>
-      <div class="panel">
-        <h3>The three-contract comparison</h3>
-        <p style="font-size:14px;color:var(--ink-2)">The same day, the same fleet, the same trading — priced under all
-        three BRP archetypes. Which one wins depends entirely on how volatile the reBAP was <em>that day</em>. Change
-        the scenario and the winner changes. <strong>There is no best contract, only a best contract for a given risk
-        appetite.</strong></p>
+        <h3>The asymmetry that defines depot flexibility</h3>
+        <div class="scroll"><table style="margin-top:8px">
+          <thead><tr><th></th><th>Downward (= negative balancing)</th><th>Upward (= positive balancing)</th></tr></thead>
+          <tbody>
+            <tr><td>Means</td><td>charge <strong>harder</strong> than planned</td><td>charge less, or discharge (V2G)</td></tr>
+            <tr><td>Needs</td><td>spare charger + grid headroom</td><td>stored energy you will not drive on</td></tr>
+            <tr><td>Battery cost</td><td>none</td><td><strong>degradation</strong> + warranty exposure</td></tr>
+            <tr><td>Operational risk</td><td>low — you finish earlier</td><td><strong>high</strong> — a truck leaving at 70 % is a failed shift</td></tr>
+            <tr><td>Available when?</td><td>whenever plugged in and not full</td><td>worst exactly when prices spike</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note legal" style="margin-top:12px">
+          <strong>Prequalify for the negative direction first.</strong> Downward flexibility from a charging depot is
+          close to free. Upward flexibility is a genuine cost that has to clear a high bar.
+        </div>
       </div>
     </div>
 
-    <div class="panel rv" style="margin-top:26px;border-color:var(--s1)">
-      <h3>Five experiments worth running</h3>
-      <ol style="font-size:14.5px;color:var(--ink-2);padding-left:22px;margin-top:10px;line-height:1.8">
-        <li><strong>Cheapest versus flat, on the same day.</strong> Watch the energy line fall and the peak-power line
-          rise. Which wins?</li>
-        <li><strong>Set battery degradation to 0.00 and then to 0.10 €/kWh</strong> with V2G on. The entire conclusion
-          about V2G flips. That is the honest state of the art.</li>
-        <li><strong>Set the intraday close slider to 0 %</strong> on the windy day and then on the scarcity day. Same
-          decision, opposite outcome.</li>
-        <li><strong>Lower the grid connection to 800 kW.</strong> Suddenly charging cannot be concentrated at all, the
-          arbitrage disappears — and the peak-power charge halves.</li>
-        <li><strong>Switch BRP to pass-through on the scarcity day.</strong> This is what carrying your own tail risk
-          actually feels like.</li>
+    <div class="panel rv" style="margin-top:22px;border-color:var(--s1)">
+      <h3>Can you be your own BRP?</h3>
+      <p style="font-size:14px;color:var(--ink-2)">There is no licence and no prequalification — it is a contract, not a permit. But for ten trucks (order of magnitude <strong>6 MWh/day</strong>) it is economically absurd: the collateral formula, a 24/7 schedule desk and EDI@Energy capability do not scale down. The realistic structures are:</p>
+      <ol style="font-size:14px;color:var(--ink-2);padding-left:20px">
+        <li><strong>Supplier with a dynamic tariff.</strong> Zero effort, zero exposure, almost none of the value.</li>
+        <li><strong>Service BRP + your own Unterbilanzkreis.</strong> You keep the trading decisions and the upside; they keep the TSO relationship and the collateral. <em>This is the structure the simulator models.</em></li>
+        <li><strong>Aggregator as BSP.</strong> Your depot joins someone else&rsquo;s prequalified pool — with your supplier&rsquo;s and BRP&rsquo;s written consent.</li>
+        <li><strong>Own BSP prequalification.</strong> Only at pool scale. 10 × 350 kW is nominally 3.5 MW; <em>reliably available</em> is a much smaller, time-varying number.</li>
       </ol>
     </div>
   </div>
@@ -2245,39 +1772,13 @@ fees 0.5 MWh × (0.12 + 0.035 + 0.50) €/MWh → <strong>− €0.33</strong>
 <script>
 (function(){
   // ---- scroll reveal ----
-  var rv = [].slice.call(document.querySelectorAll('.rv'));
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
-  rv.forEach(function(el,i){
+  document.querySelectorAll('.rv').forEach(function(el,i){
     el.style.transitionDelay = Math.min(i%6,5)*45 + 'ms';
     io.observe(el);
   });
-
-  // Safety net. Jumping to an anchor can skip straight past elements without ever
-  // intersecting them, which would leave them stuck at opacity 0. Anything at or above
-  // the bottom of the viewport is revealed regardless of whether the observer saw it.
-  var ticking = false;
-  function sweep(){
-    ticking = false;
-    var limit = window.innerHeight * 1.15;
-    for (var i = rv.length - 1; i >= 0; i--) {
-      if (rv[i].getBoundingClientRect().top < limit) {
-        rv[i].classList.add('in');
-        io.unobserve(rv[i]);
-        rv.splice(i, 1);
-      }
-    }
-    if (rv.length === 0) {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    }
-  }
-  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(sweep); } }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll, {passive:true});
-  window.addEventListener('hashchange', function(){ setTimeout(sweep, 60); });
-  sweep();
 
   // ---- reBAP module explorer ----
   var BP_CAP = 9999;

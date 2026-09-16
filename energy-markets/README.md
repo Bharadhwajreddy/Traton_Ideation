@@ -22,13 +22,15 @@ balance group contract. See [`docs/07-sources.md`](docs/07-sources.md).
 | 03 | [Being a BRP in Germany](docs/03-brp-rules-germany.md) | Every duty, deadline, collateral formula and termination rule, with contract clause numbers. |
 | 04 | [Balancing products](docs/04-balancing-products-germany.md) | FCR / aFRR / mFRR in detail: auctions, gate closures, remuneration, prequalification, dimensioning, and what 10 trucks can realistically offer. |
 | 05 | [Imbalance pricing — the reBAP](docs/05-imbalance-pricing-rebap.md) | The complete three-module formula, the four payment directions, financial neutrality, and the one-price vs two-price argument settled properly. |
-| 06 | [Depot participation and economics](docs/06-depot-participation-and-economics.md) | Connects all of the above to the 10-truck case: the value stack ranked honestly, the **2026 cost stack per MWh**, the Leistungspreis / Benutzungsstunden trap and the **§ 19(2) StromNEV** lever. **Also the full specification of the simulator**, including every default assumption and limitation. |
+| 06 | [Depot participation and economics](docs/06-depot-participation-and-economics.md) | Connects all of the above to the 10-truck case. **Also the full specification of the simulator**, including every default assumption. |
 | 07 | [Sources](docs/07-sources.md) | Links, decision numbers, and how to verify each class of claim. |
 
-**Visual version:** [`explainer.html`](explainer.html) — a twelve-part, single-file walkthrough for someone
-starting from zero: what ancillary services are, what a balance group is, what
-**contractual aggregation** means and whose permission you need, what actually happens inside a blind auction
-you cannot see, every line on a German electricity bill, and a guide to reading the simulator. It opens by settling the question this whole folder exists to answer —
+**Visual version:** [`explainer.html`](explainer.html) — a single-file, animated walkthrough of the same
+material for someone starting from zero. It opens by settling the question this whole folder exists to answer —
+*is the balancing market the same as the ancillary services market?* — then works through the roles, aggregation,
+the BRP, what happens inside the day-ahead auction, and the reBAP, finishing with an **interactive reBAP explorer**
+(move the system imbalance and intraday index and watch which of the three modules binds). Open it in a browser;
+no build step, no dependencies, works offline, light and dark. It opens by settling the question this whole folder exists to answer —
 *is the balancing market the same as the ancillary services market?* — then works through the three payments and
 the delivery-day timeline with worked examples, and finishes with an **interactive reBAP explorer**: move the system imbalance and intraday index and watch
 which of the three modules binds the price. Open it in a browser; no build step, no dependencies,
