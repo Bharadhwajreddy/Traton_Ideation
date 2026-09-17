@@ -42,11 +42,18 @@ export function applySurprises(
   revealed: ("intraday" | "delivery")[],
 ): EffectiveTruck[] {
   return trucks.map((t, i) => {
-    const s = surprises.find((x) => x.truck === i && revealed.includes(x.revealedAt));
+    // Every matching surprise applies, and they COMPOUND: a truck delayed at
+    // the intraday step and delayed again during delivery is late by the sum of
+    // both, not by whichever one happened to be listed first.
+    const mine = surprises.filter(
+      (x) => (x.truck === "all" || x.truck === i) && revealed.includes(x.revealedAt),
+    );
+    const shiftQh = mine.reduce((a, x) => a + x.returnShiftQh, 0);
+    const factor = mine.reduce((a, x) => a * x.consumptionFactor, 1);
     return {
       ...t,
-      effectiveReturnQh: Math.min(QH_PER_DAY, t.returnQh + (s?.returnShiftQh ?? 0)),
-      effectiveConsumptionKwh: t.shiftConsumptionKwh * (s?.consumptionFactor ?? 1),
+      effectiveReturnQh: Math.min(QH_PER_DAY, t.returnQh + shiftQh),
+      effectiveConsumptionKwh: t.shiftConsumptionKwh * factor,
     };
   });
 }

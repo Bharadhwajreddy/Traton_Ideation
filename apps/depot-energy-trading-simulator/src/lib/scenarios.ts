@@ -203,25 +203,18 @@ const scarcityShape: DayShape = {
  *  the scenarios differ only in prices, which is what makes them comparable. */
 const STANDARD_SURPRISES: Surprise[] = [
   {
-    truck: 2,
+    truck: "all",
     revealedAt: "intraday",
     returnShiftQh: 6,
-    consumptionFactor: 1.18,
-    label: "Truck 3 delayed 90 min at the customer site; heavier load than planned",
+    consumptionFactor: 1.15,
+    label: "All ten trucks held up 90 minutes at the customer site, and the load was heavier than planned (+15 % energy)",
   },
   {
-    truck: 5,
-    revealedAt: "intraday",
-    returnShiftQh: -3,
-    consumptionFactor: 0.88,
-    label: "Truck 6 back 45 min early, route shortened",
-  },
-  {
-    truck: 8,
+    truck: "all",
     revealedAt: "delivery",
-    returnShiftQh: 5,
-    consumptionFactor: 1.26,
-    label: "Truck 9 diverted — motorway closure, +26 % consumption (revealed only at delivery)",
+    returnShiftQh: 3,
+    consumptionFactor: 1.08,
+    label: "A further 45-minute delay on the way home — only discovered as it happens, too late to trade",
   },
 ];
 

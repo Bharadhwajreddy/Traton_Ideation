@@ -85,8 +85,13 @@ export interface DimensionedReserves {
 
 /** A forecast error that is revealed part-way through the day. */
 export interface Surprise {
-  /** Which truck (index into the fleet). */
-  truck: number;
+  /**
+   * Which truck this happens to. `"all"` means the whole fleet, together —
+   * which is the only value used by the shipped scenarios, because the ten
+   * trucks are meant to stay identical all day. Per-truck indices still work
+   * if you ever want to break the fleet up.
+   */
+  truck: number | "all";
   /** Phase at which the player learns about it. */
   revealedAt: "intraday" | "delivery";
   /** Shift in return time, in quarter hours. Positive = late. */

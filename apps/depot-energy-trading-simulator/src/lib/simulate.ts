@@ -60,11 +60,20 @@ export function simulate(input: SimulationInput): SimulationResult {
   const plan = planCharging(forecastFleet, depot, dayAheadPrices, input.planMode, input.priceThreshold);
   const dayAheadMw = plan.depotMw;
 
-  // --- 2. Intraday: re-forecast, then close some of the gap ---------------
+  // --- 2. Intraday: re-PLAN against the new reality, then close some of the gap
+  //
+  // This has to be a genuine re-plan, not just the old plan re-evaluated. When
+  // the fleet comes back late and needs more energy, a real depot moves its
+  // charging to different quarter hours — and it is that MOVE which has to be
+  // bought and sold intraday. Re-running the old plan would leave the trades
+  // near zero and make this whole stage look pointless, which it is not.
   const intradayFleet = applySurprises(depot.trucks, scenario.surprises, ["intraday"]);
+  const intradayPlan = planCharging(
+    intradayFleet, depot, dayAheadPrices, input.planMode, input.priceThreshold,
+  );
   const flat: PassiveBalancingConfig = { enabled: false, strength: 0 };
   const zeros = new Array(QH_PER_DAY).fill(0);
-  const expected = runDelivery(intradayFleet, depot, plan.perTruckKw, flat, zeros, zeros);
+  const expected = runDelivery(intradayFleet, depot, intradayPlan.perTruckKw, flat, zeros, zeros);
 
   const closable = brp.intradayAccess ? input.intradayCloseFraction : 0;
   const intradayDeltaMw = expected.actualMw.map((a, qh) => (a - dayAheadMw[qh]) * closable);
@@ -78,7 +87,9 @@ export function simulate(input: SimulationInput): SimulationResult {
   const actual = runDelivery(
     deliveryFleet,
     depot,
-    plan.perTruckKw,
+    // You charge to the plan you last re-planned, i.e. the intraday one. What
+    // is still wrong on the day is the delivery-revealed surprise alone.
+    intradayPlan.perTruckKw,
     input.passive,
     balanceSeries,
     rebapShortSeries,
