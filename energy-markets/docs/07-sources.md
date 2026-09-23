@@ -19,6 +19,28 @@ Retrieved September 2026. Where a document is versioned, the version actually re
 | A7 | **regelleistung.net** — tendering platform: tenders, results, prequalified provider lists, model contracts, PQ-Bedingungen (v. 05.07.2024), wind and EV/mobile-installation prequalification guides | The operational home of the German balancing market. | [regelleistung.net](https://www.regelleistung.net/en-us/) |
 | A8 | **PQ portal** | Where prequalification applications are filed. | [pq-portal.energy](https://www.pq-portal.energy/) |
 
+### Flexible connection agreements / limited network access (section 13)
+
+| # | Document | Why it matters | Link |
+|---|---|---|---|
+| F1 | **§ 17 Abs. 2b EnWG** — flexible Netzanschlussvereinbarung | The legal basis for limited network access for *all* grid users, incl. withdrawal (Entnahmeleistung). Introduced by the Solarspitzengesetz, in force since February 2025. Two sentences; no price, no compensation, no ceiling. | [gesetze-im-internet.de](https://www.gesetze-im-internet.de/enwg_2005/__17.html) |
+| F2 | **§ 8a EEG** | The parallel provision for renewables and co-located storage. Most published commentary is about this one, not F1. | [gesetze-im-internet.de](https://www.gesetze-im-internet.de/eeg_2014/__8a.html) |
+| F3 | **Directive (EU) 2024/1711**, inserting Art. 6a into Directive (EU) 2019/944 | The EU basis. Requires flexible connections to be made firm once the network is reinforced. Transposition deadline for this measure: 17.07.2026. | [eur-lex.europa.eu](https://eur-lex.europa.eu/eli/dir/2024/1711/oj/eng) |
+| F4 | **BNetzA — Netzanschluss** pages and *Flexibility in the electricity system* | The regulator's own position; primary source for the AgNes reform and the signalled 2027 work on FCAs. | [bundesnetzagentur.de](https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Netzanschluss/start.html) |
+| F5 | **Fachagentur Wind und Solar — Mustervertrag FCAs** | Model contracts, published during 2026. The closest thing to a standard. | [fachagentur-wind-solar.de](https://www.fachagentur-wind-solar.de/veroeffentlichungen/mustervertraege/mustervertrag-fcas) |
+| F6 | **MITNETZ STROM — FCA product page** | A live German DSO product. Confirms: no compensation, no legal right to be offered one. | [mitnetz-strom.de](https://www.mitnetz-strom.de/energie-einspeisen/fca---flexible-netzanschlussvereinbarung) |
+| F7 | **SachsenNetze — Flexible Netzanschlussvereinbarung gem. § 17 Abs. 2b EnWG** (Stand 09/2025) | A concrete standard-form contract to read for clause structure. | [sachsen-netze.de (PDF)](https://www.sachsen-netze.de/wps/wcm/connect/netze/13102dc5-edb4-4e8f-aee2-66635b2455ec/Flexible-Netzanschlussvereinbarung-SachsenNetze.pdf?MOD=AJPERES) |
+| F8 | **zfk.de** — trade press on the EWE/EnBW and E.ON FCA standards | Source for the **200 Volllaststunden** uncompensated ceiling and the **aFRR 30 % / FCR excluded** restrictions. Trade reporting on operator proposals — **not regulation**. | [zfk.de](https://www.zfk.de/energie/strom/flexible-netzanschluesse-fca-standard-branche-details) |
+| F9 | **Netzanschlusspaket / "Netzpaket 2026"** — cabinet draft of 29.07.2026 | Would let TSOs *require* an FCA (§ 17a Abs. 2 EnWG-RegE) and end first-come-first-served (§§ 17a, 17b). **Draft, not law.** | [cms.law summary](https://cms.law/de/deu/legal-updates/netzpaket-2026-neue-regeln-fuer-netzanschluesse-geplant) |
+| F10 | **ACM / Netbeheer Nederland** — alternatieve transportrechten | The Dutch scheme: non-firm contracts optional from 01.02.2024, **mandatory from 01.02.2025**, time-bound rights guaranteeing ~85 % of hours, with a published tariff discount. | [acm.nl](https://www.acm.nl/en/publications/more-affordable-transmission-agreements-peak-hours-promote-more-efficient-utilization-grid) · [netbeheernederland.nl](https://www.netbeheernederland.nl/artikelen/zo-werkt-het/zo-werkt-het-alternatieve-transportrechten) |
+
+> **Status warning.** Everything in this block except F1-F3 is either a draft, an
+> operator proposal or trade reporting. The commercial terms quoted in section 13 —
+> the 200-hour ceiling, the balancing restrictions, the −80 % connection-cost claim —
+> describe what is being *offered and argued about*, not what anyone is entitled to.
+
+---
+
 ### BNetzA decisions referenced
 
 | Decision | Date | Subject |
