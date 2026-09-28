@@ -2271,517 +2271,675 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
 <section id="flexconnect">
   <div class="wrap">
     <div class="secnum rv">Section 13</div>
-    <h2 class="rv">Limited network access &mdash; the flexible connection agreement</h2>
+    <h2 class="rv">Limited network access &mdash; a story in three countries</h2>
     <p class="sub rv">
-      Everything up to here was about <em>buying electricity</em>. This section is about something completely
-      different: <em>the right to draw it at all</em>. It is the newest idea in this document, it is moving fast,
-      and for a depot with a big connection it may matter more than anything else on this page.
+      Everything before this section was about <strong>buying electricity</strong>. This section is about something
+      else entirely: <strong>the right to draw it at all</strong>. It is told as a story, because the rules only make
+      sense once you have watched somebody run into them.
     </p>
 
     <div class="bigidea rv">
       <p style="margin:0">
-        <strong>A normal grid connection is a promise the grid operator makes to you. A flexible one is a promise
-        you make back.</strong>
+        <strong>There are two different things you buy in electricity, and almost everyone confuses them.</strong>
       </p>
       <p style="margin:.7em 0 0;font-size:14px">
-        Today your 1.6&nbsp;MW connection is <em>firm</em>: you may draw the full 1.6&nbsp;MW at any second of any
-        day, and the grid operator has to have built enough network to let you. Under a
-        <strong>flexible connection agreement</strong> &mdash; German:
-        <em>flexible Netzanschlussvereinbarung</em>, usually abbreviated <strong>FCA</strong> &mdash; you accept
-        that in some hours you may be held below that. In exchange you get connected
-        <strong>years earlier</strong> and often far more cheaply.
+        One is <strong>energy</strong> &mdash; kilowatt-hours, bought day-ahead and intraday. That was sections 1 to 12.
+        The other is <strong>capacity</strong> &mdash; the right to pull a certain number of kilowatts through your
+        connection, at any moment you like. You buy that once, from your grid operator, and then you own it for
+        decades. This section is entirely about the second one.
       </p>
     </div>
 
-    <div class="analogy rv" style="margin-top:22px">
-      <span class="chip">an analogy</span>
-      <p style="margin:.7em 0 0">
-        A firm connection is a <strong>reserved parking space</strong>. It is yours, it is always free, and you pay
-        for the privilege of nobody else ever using it.
-      </p>
-      <p style="margin:.7em 0 0">
-        A flexible connection is a <strong>season ticket to a car park</strong>. Much cheaper, available immediately
-        &mdash; and on the three days a year when the car park is full, you are told to come back later.
-      </p>
-      <p style="margin:.7em 0 0">
-        The entire question is: <strong>how often is &ldquo;full&rdquo;, and what does it cost you when it
-        happens?</strong>
-      </p>
-    </div>
-
-    <!-- ---------------------------------------------- vs BSP -->
-    <h3 class="rv" style="margin-top:38px">First, the question you asked: how is this different from being a BSP?</h3>
+    <!-- ============================================ PROLOGUE -->
+    <h3 class="rv" style="margin-top:38px">Prologue: what &ldquo;firm&rdquo; means, and why it is expensive</h3>
     <p class="rv" style="max-width:72ch">
-      They sound similar &mdash; both involve your trucks charging less than they otherwise would. They are
-      <strong>opposite in almost every respect</strong>, and mixing them up is the single most common error here.
-      The cleanest way to hold them apart:
+      Your depot has a <strong>1.6&nbsp;MW connection</strong>. Today that connection is <em>firm</em>. Firm is a
+      promise the grid operator makes to you: <strong>you may draw the full 1.6&nbsp;MW at any second of any day,
+      forever, and we will have built enough network to let you.</strong>
+    </p>
+    <p class="rv" style="max-width:72ch">
+      That promise is what you are really paying for in your network charges &mdash; and it is why, in a busy area,
+      a new connection can take years. The operator cannot promise what the cables cannot carry.
     </p>
 
-    <div class="bigidea rv" style="margin-top:14px">
-      <p style="margin:0;font-size:15px">
-        <strong>A BSP sells flexibility. An FCA gives it away.</strong>
+    <div class="analogy rv">
+      <span class="chip">hold on to this picture</span>
+      <p style="margin:.7em 0 0">
+        A firm connection is a <strong>reserved parking space</strong> with your name painted on it. Always free,
+        always yours, and you pay for the certainty that nobody else can ever take it.
       </p>
-      <p style="margin:.7em 0 0;font-size:14px">
-        As a BSP you <em>offer</em> to move your load, you are <em>selected</em> in a competitive auction, and you
-        are <strong>paid</strong>. Under an FCA the grid operator <em>tells</em> you to move it, there is no
-        auction, and in the normal case you are <strong>paid nothing</strong> &mdash; the payment was taken up front,
-        as a cheaper and faster connection.
+      <p style="margin:.7em 0 0">
+        Limited network access is a <strong>season ticket to the car park</strong>. Much cheaper, available now
+        &mdash; and on the handful of days when the car park is genuinely full, you are turned away.
+      </p>
+      <p style="margin:.7em 0 0">
+        The whole of this section is two questions: <strong>how often is it full, and who decides?</strong>
       </p>
     </div>
 
-    <div class="scroll rv panel" style="margin-top:16px;padding:0">
-      <table>
-        <thead><tr><th></th><th>Being a BSP<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(balancing service provider)</span></th><th>Having an FCA<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(flexible connection agreement)</span></th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>What it is</strong></td>
-            <td>A <strong>market role</strong>. You sell a service.</td>
-            <td>A <strong>connection contract</strong>. You buy access to the grid on cheaper terms.</td>
-          </tr>
-          <tr>
-            <td><strong>Which problem it solves</strong></td>
-            <td><strong>Frequency.</strong> Generation and consumption across the whole country do not match, right now.</td>
-            <td><strong>Capacity.</strong> This particular cable, substation or transformer cannot carry everything connected to it.</td>
-          </tr>
-          <tr>
-            <td><strong>Who you deal with</strong></td>
-            <td>The <strong>TSO</strong>, through <code>regelleistung.net</code> &mdash; and it is a national market.</td>
-            <td><strong>Your own grid operator</strong>, bilaterally. Usually the DSO. Very local.</td>
-          </tr>
-          <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)">
-            <td><strong>Do you get paid?</strong></td>
-            <td><strong style="color:var(--good)">Yes.</strong> Capacity price for standing ready, plus an energy price when actually called.</td>
-            <td><strong style="color:var(--crit)">No</strong> &mdash; not for the agreed limitation. You were paid in advance, in connection cost and waiting time.</td>
-          </tr>
-          <tr>
-            <td><strong>Can you say no?</strong></td>
-            <td><strong>Yes, every day.</strong> If you do not like the price, you do not bid. Nothing happens.</td>
-            <td><strong>No.</strong> Once signed, the limitation is a contractual obligation with liability attached if you breach it.</td>
-          </tr>
-          <tr>
-            <td><strong>Do you need prequalification?</strong></td>
-            <td><strong>Yes</strong> &mdash; a hard technical process, plus your BRP&rsquo;s written consent.</td>
-            <td><strong>No.</strong> It is a negotiation with one company.</td>
-          </tr>
-          <tr>
-            <td><strong>Effect on your bill</strong></td>
-            <td>Adds <strong>revenue</strong> on the energy side.</td>
-            <td>Cuts <strong>cost</strong> on the network side &mdash; the <em>Baukostenzuschuss</em>, and the expansion you would otherwise have had to pay for.</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- ============================================ GERMANY -->
+    <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
+      <span class="chip b">Part one &middot; Germany</span>
+      <h3 style="margin-top:10px">Anna and the substation that is already full</h3>
+    </div>
+
+    <p class="rv" style="max-width:72ch">
+      Anna runs a haulage depot outside Leipzig. Ten electric trucks are on order. She writes to her distribution
+      grid operator &mdash; her <strong>DSO</strong> &mdash; and asks for a 1.6&nbsp;MW connection.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      She is on solid ground. <strong>&sect;&nbsp;17 Abs.&nbsp;1 EnWG</strong> obliges grid operators to connect
+      customers on terms that are <em>&bdquo;angemessen, diskriminierungsfrei, transparent&ldquo;</em> &mdash;
+      reasonable, non-discriminatory, transparent. And the list of things they must connect names, word for word,
+      <em>&bdquo;Ladepunkte f&uuml;r Elektromobile&ldquo;</em>. <strong>Charging points for electric vehicles are
+      written into the connection obligation.</strong> Anna is not asking for a favour.
+    </p>
+
+    <div class="worked rv" style="--acc:var(--crit);margin-top:20px">
+      <div class="worked-h"><span class="chip">the reply she gets</span></div>
+      <p style="margin-top:.5em">
+        &ldquo;We cannot give you 1.6&nbsp;MW. The substation feeding your road is already committed &mdash; two
+        battery projects and a logistics park applied before you. To connect you firmly we would have to reinforce.
+        That is a queue of several years and a construction cost contribution of several hundred thousand euros.&rdquo;
+      </p>
+    </div>
+
+    <p class="rv" style="max-width:72ch;margin-top:18px">
+      Anna is now stuck between two useless answers: <strong>full power, in several years</strong>, or
+      <strong>nothing</strong>. Her trucks arrive in eight months.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      But she has one right worth using. Under <strong>&sect;&nbsp;17 Abs.&nbsp;2 EnWG</strong> the operator may
+      refuse &mdash; only if it <em>proves</em> connection is impossible or unreasonable, only <strong>in writing
+      with reasons</strong>, and, if Anna asks, the reasons must include <em>&bdquo;aussagekr&auml;ftige
+      Informationen&ldquo;</em> about <strong>which reinforcement works would be needed and what they would
+      cost</strong>. That entitlement is hers, and it is the lever for everything that follows.
+    </p>
+
+    <h3 class="rv" style="margin-top:34px">The third answer</h3>
+    <p class="rv" style="max-width:72ch">
+      There is a middle path between &ldquo;yes, in five years&rdquo; and &ldquo;no&rdquo;:
+    </p>
+    <div class="worked rv" style="--acc:var(--good)">
+      <div class="worked-h"><span class="chip g">the offer that unblocks her</span></div>
+      <p style="margin-top:.5em">
+        &ldquo;Connect now. Use your full 1.6&nbsp;MW almost all the time. But we keep the right to hold you below
+        it when this substation is under strain &mdash; and you accept that in writing.&rdquo;
+      </p>
+    </div>
+    <p class="rv" style="max-width:72ch;margin-top:16px">
+      That is a <strong>flexible Netzanschlussvereinbarung</strong> &mdash; in English a
+      <strong>flexible connection agreement</strong>, FCA. In Germany it has existed since
+      <strong>February 2025</strong>, under <strong>&sect;&nbsp;17 Abs.&nbsp;2b EnWG</strong>.
+    </p>
+
+    <h3 class="rv" style="margin-top:34px">So can Anna simply ask for one?</h3>
+    <p class="rv" style="max-width:72ch">
+      This is the question everybody asks, and the Bundesnetzagentur answers it directly in its own FAQ. Read these
+      three sentences slowly, because between them they contain the whole answer.
+    </p>
+
+    <div class="quote rv">
+      <p style="margin:0">
+        &bdquo;FCA dienen dazu, <strong>bei knappen Netzanschlusskapazit&auml;ten</strong> Netzanschl&uuml;sse in
+        m&ouml;glichst hohem Umfang mit Einschr&auml;nkungen zu erm&ouml;glichen.&ldquo;
+      </p>
+      <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
+        <strong>&ldquo;Where connection capacity is scarce.&rdquo;</strong> This is not a product you shop for. It is
+        what gets offered when the answer to a normal request would otherwise be no. If your DSO <em>can</em> give
+        you firm capacity, there is nothing here to ask for.
+      </p>
+    </div>
+
+    <div class="quote rv">
+      <p style="margin:0">
+        &bdquo;Es gibt derzeit die M&ouml;glichkeit, aber <strong>keine explizite gesetzliche Verpflichtung</strong>
+        f&uuml;r Netzbetreiber, FCA-Anschl&uuml;sse anzubieten.&ldquo;
+      </p>
+      <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
+        <strong>No obligation to offer.</strong> Anna has no right to an FCA. She cannot demand one, and no court
+        will hand her one.
+      </p>
+    </div>
+
+    <div class="quote rv">
+      <p style="margin:0">
+        &bdquo;Wenn der Netzbetreiber den Anschluss im gew&uuml;nschten Leistungsumfang nicht bereitstellen kann,
+        <strong>sollte er pr&uuml;fen</strong>, ob der Netzanschluss alternativ durch einen FCA-Vertrag
+        erm&ouml;glicht werden kann. <strong>Eine begr&uuml;ndungslose Verweigerung oder eine Verweigerung allein
+        aus generellen, ablehnenden Erw&auml;gungen entspricht nicht dem Ziel des Gesetzes.</strong>&ldquo;
+      </p>
+      <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
+        And there it is. <strong>A refusal with no reasons, or a blanket &ldquo;we don&rsquo;t do those&rdquo;, is
+        contrary to the purpose of the law</strong> &mdash; in the regulator&rsquo;s own words.
+      </p>
+    </div>
+
+    <div class="bigidea rv" style="margin-top:20px">
+      <p style="margin:0">
+        <strong>So the answer is neither &ldquo;yes, on request&rdquo; nor &ldquo;only if they feel like it&rdquo;.
+        It is a third thing.</strong>
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        The DSO decides <em>whether to offer</em>; Anna decides <em>whether to accept</em>. Neither can force the
+        other. But once the DSO has said it cannot give her firm capacity, it <strong>should examine</strong> an FCA,
+        and it cannot refuse in a single blank sentence.
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Which means Anna&rsquo;s move is not <em>&ldquo;give me an FCA&rdquo;</em>. It is:
+        <strong>&ldquo;You have told me in writing that you cannot provide 1.6&nbsp;MW. The Bundesnetzagentur says
+        you should now examine whether an FCA could work here. Please do, and put it in writing if you
+        won&rsquo;t.&rdquo;</strong> That is an email she can send this afternoon.
+      </p>
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">Which shape does she get? Not her choice either</h3>
+    <p class="rv" style="max-width:72ch">
+      Anna does not pick from a menu. <strong>The shape follows the grid problem</strong>, and the DSO&rsquo;s
+      engineers are the ones who diagnose that. The statute itself names only <strong>two</strong> shapes:
+    </p>
+    <div class="grid g2 rv" style="margin-top:14px">
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">&bdquo;statisch&ldquo; &mdash; one fixed ceiling</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          A single number, always in force. <em>You may never exceed 1.0&nbsp;MW.</em>
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)"><strong>For Anna: the easy one.</strong> She designs the
+          charging plan around it once and never thinks about it again.</p>
+      </div>
+      <div class="panel" style="border-color:var(--warning)">
+        <h3 style="color:var(--warning)">&bdquo;dynamisch&ldquo; &mdash; a ceiling in windows</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Lower in defined, <strong>known-in-advance</strong> periods. <em>Not above 0.8&nbsp;MW on winter weekdays,
+          17:00&ndash;20:00.</em>
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)"><strong>For Anna: fine, and possibly free.</strong> Her trucks
+          are out driving at 18:00. She may be giving up almost nothing.</p>
+      </div>
     </div>
 
     <div class="note warn rv" style="margin-top:16px">
-      <strong>And here is where the two actually collide &mdash; this is the part worth knowing.</strong>
-      Several German FCA drafts <em>restrict the balancing market participation of the asset that signed them</em>.
-      Reported terms include capping <strong>aFRR participation at 30&nbsp;% of installed capacity</strong> and
-      <strong>excluding FCR entirely</strong>, as a flat rule, regardless of whether the local grid is actually
-      congested at the time. Industry bodies call this excessive, on the grounds that awarded balancing capacity is
-      only rarely called. <strong>So the two are not independent choices.</strong> Signing an FCA can quietly
-      shrink the balancing revenue you were counting on &mdash; read that clause before anything else.
-    </div>
-
-    <!-- ---------------------------------------------- the three shapes -->
-    <h3 class="rv" style="margin-top:38px">The three shapes an FCA comes in</h3>
-    <p class="rv" style="max-width:72ch">
-      They differ in <strong>who knows what, and when</strong>. That is the only axis that matters, because it
-      decides whether you can plan around the limitation or merely react to it.
-    </p>
-
-    <div class="grid g3 rv" style="margin-top:14px">
-      <div class="panel" style="border-color:var(--good)">
-        <h3 style="color:var(--good)">1 &middot; Static</h3>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          A fixed cap, written into the contract. &ldquo;You may never exceed 1.0&nbsp;MW.&rdquo; Sometimes it
-          varies by time of day or season, but it is <strong>known on day one and never changes</strong>.
-        </p>
-        <p style="font-size:13.5px;color:var(--ink-2)"><strong>For a depot: the easy one.</strong> You know the
-          number, so you design the charging plan around it once and forget it.</p>
-      </div>
-      <div class="panel" style="border-color:var(--warning)">
-        <h3 style="color:var(--warning)">2 &middot; Dynamic, announced ahead</h3>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          The cap moves, but the grid operator tells you the new value <strong>in advance</strong>, on a cycle
-          &mdash; a day ahead, or a few hours ahead.
-        </p>
-        <p style="font-size:13.5px;color:var(--ink-2)"><strong>For a depot: workable, but it changes your
-          process.</strong> Your charging plan now has a second input that arrives daily, and it has to reach your
-          controller before you nominate.</p>
-      </div>
-      <div class="panel" style="border-color:var(--crit)">
-        <h3 style="color:var(--crit)">3 &middot; Fully dynamic, event-based</h3>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          You keep the full connection &mdash; until the grid operator sends a signal, and then you must drop to an
-          agreed floor, <strong>with little or no warning</strong>.
-        </p>
-        <p style="font-size:13.5px;color:var(--ink-2)"><strong>For a depot: the dangerous one.</strong> A truck must
-          leave at 06:00 at 90&nbsp;%. If the cut lands at 04:00, the missed departure is your problem, and the
-          contract does not care.</p>
-      </div>
-    </div>
-
-    <!-- ---------------------------------------------- benefits -->
-    <h3 class="rv" style="margin-top:38px">What you actually get out of it</h3>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>Benefit</th><th>Why it exists</th><th>How big</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Connected years earlier</strong></td>
-            <td>You stop waiting for the reinforcement. The limitation <em>is</em> the substitute for the copper that has not been laid yet.</td>
-            <td>Commonly quoted as <strong>months instead of years</strong>. Treat vendor figures as marketing until your own operator quotes you.</td>
-          </tr>
-          <tr>
-            <td><strong>A much smaller connection bill</strong></td>
-            <td>The <em>Baukostenzuschuss</em> is calculated on the capacity you book. Book less firm capacity, pay less.</td>
-            <td>Large, and the one genuinely bankable benefit. Numbers up to &minus;80&nbsp;% circulate; they are provider claims, not a tariff.</td>
-          </tr>
-          <tr>
-            <td><strong>A connection where there is simply no capacity</strong></td>
-            <td>In a congested area the honest alternative is often <strong>not a firm connection later &mdash; it is no connection at all.</strong></td>
-            <td>Binary. This is the real reason the instrument exists.</td>
-          </tr>
-          <tr>
-            <td><strong>It fits a depot almost suspiciously well</strong></td>
-            <td>Grid stress is on winter weekday evenings. Your trucks are <em>out driving</em> then, and charge overnight.</td>
-            <td>Your load is already where the grid wants it. You may be giving up very little.</td>
-          </tr>
-        </tbody>
-      </table>
+      <strong>A correction to an earlier version of this page.</strong> You will read elsewhere &mdash; in law-firm
+      briefings and operator material &mdash; about a <strong>third</strong> shape: &bdquo;volldynamisch&ldquo;,
+      fully dynamic, where the operator cuts you at short notice based on live grid conditions. That is real
+      commentary, but it is <strong>not in the statute</strong>, and the regulator treats it as not yet ready:
+      using fully dynamic concepts <em>&bdquo;setzt voraus, dass vorher geeignete, netzeben&uuml;bergreifende
+      Prozesse entwickelt und vorgehalten werden&ldquo;</em> &mdash; it requires cross-grid-level data processes
+      that largely do not exist yet. MITNETZ STROM says the same: it is their <em>goal</em>, not their product.
+      <strong>In practice today you will be offered static or windowed-dynamic.</strong>
     </div>
 
     <div class="note rv" style="margin-top:14px">
-      <strong>Why this is the section to read twice, for your thesis.</strong> In the simulator, the single largest
-      line on the depot&rsquo;s bill is not the electricity &mdash; it is the <strong>network charge</strong>, driven
-      by a peak that hits the full connection. An FCA attacks exactly that number, and it attacks it from the
-      <em>connection</em> side rather than the trading side. Every clever thing in sections 8 to 10 moves a few euros
-      per MWh. This moves the biggest number on the page.
+      <strong>One line that connects this section straight to the simulator.</strong> The regulator says FCA limits
+      must be applied <em>&bdquo;zeitlich vor dem Day-Ahead-Handel&ldquo;</em> &mdash; <strong>before day-ahead
+      trading</strong> &mdash; so that questions of balancing never arise. In the language of section 4: the limit
+      has to be known <strong>before you bid</strong>. Otherwise you promise power you are not allowed to take, and
+      the difference becomes imbalance.
     </div>
 
-    <!-- ---------------------------------------------- pricing -->
-    <h3 class="rv" style="margin-top:38px">How is it priced and billed?</h3>
+    <h3 class="rv" style="margin-top:34px">What does it actually save her? Less than you would think</h3>
     <p class="rv" style="max-width:72ch">
-      Here is the honest answer, and it is an uncomfortable one: <strong>in Germany, there is no published tariff
-      for this.</strong> &sect;&nbsp;17 Abs.&nbsp;2b EnWG says an operator <em>may offer</em> such an agreement and
-      describes what it may contain. It says nothing about price, nothing about compensation and nothing about how
-      long a limitation may last. Everything commercial is <strong>negotiated bilaterally</strong>, and terms
-      currently differ from one grid operator to the next.
+      The usual selling point is the <strong>Baukostenzuschuss</strong> &mdash; the one-off construction cost
+      contribution, calculated from the capacity you book. Book less firm capacity, pay less. Vendors quote
+      reductions of up to 80&nbsp;%.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      <strong>Be careful here.</strong> A legal analysis from the <em>Stiftung Umweltenergierecht</em> &mdash; an
+      independent research foundation, not a vendor &mdash; puts it much more cautiously, and raises a point that
+      changes the business case:
     </p>
 
     <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel">
-        <h3>Where the money actually changes</h3>
-        <ul style="font-size:13.5px;color:var(--ink-2);padding-left:20px;margin:.4em 0 0">
-          <li><strong>The Baukostenzuschuss falls.</strong> This is the main, real, up-front saving.</li>
-          <li><strong>You avoid financing a reinforcement</strong> you would otherwise have triggered.</li>
-          <li><strong>Your ongoing grid charge is still the normal tariff</strong> &mdash; based on your metered
-            peak and consumption, exactly as in section 11. The FCA lowers the <em>peak you are able to reach</em>;
-            it is not itself a discount on the &euro;/kW rate.</li>
-        </ul>
+      <div class="panel" style="border-color:var(--warning)">
+        <h3 style="color:var(--warning)">It is legally <em>open</em> whether the BKZ can be cut at all</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Whether an FCA may be paired with a reduced construction cost contribution was
+          <strong>&bdquo;vom Gesetzgeber offengelassen&ldquo;</strong> &mdash; left open by the legislator. There is
+          a good argument for it (the FCA adapts the connection to what the grid actually needs), the amount must be
+          <em>angemessen</em> under &sect;&nbsp;17 Abs.&nbsp;1, and the operator must apply a general,
+          non-discriminatory method. But <strong>it is not a right</strong>.
+        </p>
       </div>
       <div class="panel" style="border-color:var(--crit)">
-        <h3 style="color:var(--crit)">Where the money does <em>not</em> change</h3>
+        <h3 style="color:var(--crit)">And it may only be deferred, not waived</h3>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          <strong>Being curtailed pays you nothing.</strong> This is the clearest single difference from
-          <strong>redispatch</strong>, where being instructed to change output is compensated at cost. An FCA
-          limitation is not redispatch. It is a restriction you agreed to in advance, and the compensation was the
-          cheaper connection.
+          If the network is later reinforced and Anna gets a <em>&bdquo;vollst&auml;ndiger und dauerhafter&ldquo;</em>
+          connection, the analysis warns of <strong>&bdquo;ggf. Anfall BKZ in voller H&ouml;he&ldquo;</strong> &mdash;
+          the full contribution may then fall due.
         </p>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          Proposed standards from <strong>EWE and EnBW</strong> put a concrete ceiling on that:
-          <strong>up to 200 full-load hours a year</strong> uncompensated, and beyond that window the ordinary
-          redispatch compensation rules apply again. That ceiling is a <em>proposal</em>, not a regulated figure.
+          <strong>So the headline saving may be a deferral, not a discount.</strong> Anna must ask, in writing, what
+          happens to the BKZ on the day her connection becomes firm.
         </p>
       </div>
     </div>
 
     <div class="note warn rv" style="margin-top:14px">
-      <strong>The number to negotiate hardest on.</strong> Not the headline capacity, and not the price &mdash; the
-      <strong>cap on uncompensated curtailment</strong>. Without a stated ceiling in hours, you have signed an
-      open-ended obligation with no upper bound on what it can cost you. If the draft in front of you leaves that
-      blank, that blank <em>is</em> the negotiation.
+      <strong>This corrects something stated earlier on this page.</strong> An earlier version called the reduced
+      construction cost contribution &ldquo;the one genuinely bankable benefit&rdquo;. On the independent legal
+      reading it is not bankable at all &mdash; it is an open question with a possible clawback attached. The
+      <em>reliable</em> benefits of an FCA are <strong>speed</strong> and <strong>getting connected at all</strong>.
+      Treat any quoted BKZ saving as a negotiating position, and get the reinforcement scenario in writing.
     </div>
 
-    <!-- ---------------------------------------------- disadvantages -->
-    <h3 class="rv" style="margin-top:38px">The disadvantages, stated plainly</h3>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>Disadvantage</th><th>What it means for a truck depot specifically</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>No compensation</strong></td>
-            <td>Every hour you are held down is an hour of charging you must find somewhere else &mdash; or a truck that leaves less full.</td>
-          </tr>
-          <tr>
-            <td><strong>Missed departures are your risk, not the grid&rsquo;s</strong></td>
-            <td><strong>This is the one that should worry you.</strong> A depot is not a battery. A battery that cannot charge loses revenue; a truck that cannot charge <strong>cannot do the job it exists for.</strong> The contract will not carry that cost.</td>
-          </tr>
-          <tr>
-            <td><strong>It can shrink your balancing revenue</strong></td>
-            <td>See the aFRR and FCR restrictions above. If your business case leans on balancing income, check this clause first.</td>
-          </tr>
-          <tr>
-            <td><strong>You cannot forecast it</strong></td>
-            <td>Grid operators do not publish how often they expect to use their rights. Without a history you are pricing an unknown &mdash; which is exactly why the hours cap matters.</td>
-          </tr>
-          <tr>
-            <td><strong>Terms are not standardised</strong></td>
-            <td>Two operators, two very different contracts. You cannot reuse a neighbour&rsquo;s diligence, and you will need legal review.</td>
-          </tr>
-          <tr>
-            <td><strong>Liability for exceeding the limit</strong></td>
-            <td>The agreement carries penalties if you draw more than allowed. Your charging controller must treat the cap as a <strong>hard interlock</strong>, not a target.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ---------------------------------------------- rules -->
-    <h3 class="rv" style="margin-top:38px">What rules govern it, and can you demand one?</h3>
-
-    <div class="note legal rv" style="margin-top:12px">
-      <strong>The short answer: no, you cannot demand one.</strong> Unlike the balance group contract &mdash; where
-      &sect;&nbsp;26 StromNZV <em>obliges</em> the TSO to sign with any qualifying applicant &mdash;
-      &sect;&nbsp;17 Abs.&nbsp;2b EnWG is permissive. Operators <strong>&ldquo;can offer&rdquo;</strong> a flexible
-      agreement. There is no corresponding right to receive one.
-    </div>
-
-    <div class="scroll rv panel" style="margin-top:14px;padding:0">
-      <table>
-        <thead><tr><th>Level</th><th>The rule</th><th>What it does</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>EU</strong></td>
-            <td><strong>Directive (EU) 2024/1711</strong>, inserting <strong>Art. 6a</strong> into Directive (EU) 2019/944</td>
-            <td>Lets Member States create flexible connection agreements where capacity is limited. Requires that connections be <strong>made firm once the network is reinforced</strong> &mdash; unless reinforcement is not the efficient answer, in which case flexible access may be permanent. Transposition deadline for this specific measure: <strong>17 July 2026</strong>.</td>
-          </tr>
-          <tr style="background:color-mix(in srgb,var(--s1) 7%,transparent)">
-            <td><strong>Germany &mdash; you</strong></td>
-            <td><strong>&sect;&nbsp;17 Abs.&nbsp;2b EnWG</strong></td>
-            <td><strong>This is your paragraph.</strong> It covers all grid users &mdash; storage, data centres, charging depots &mdash; and permits limits on <strong>both withdrawal and feed-in</strong>. Introduced by the <em>Solarspitzengesetz</em>, in force since <strong>February 2025</strong>.</td>
-          </tr>
-          <tr>
-            <td><strong>Germany &mdash; renewables</strong></td>
-            <td><strong>&sect;&nbsp;8a EEG</strong></td>
-            <td>The parallel provision for renewable installations and co-located storage. <strong>Not your route</strong>, but it is what most of the published commentary is about, so read commentary carefully.</td>
-          </tr>
-          <tr>
-            <td><strong>Contract</strong></td>
-            <td>Bilateral, with your grid operator</td>
-            <td>Commentary identifies five elements any FCA must settle: <strong>the power limit</strong>, <strong>the time windows and the capacity in each</strong>, <strong>the duration</strong>, <strong>the technical control requirements</strong>, and <strong>liability for exceeding the limit</strong>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="rv" style="max-width:72ch;margin-top:14px">
-      Read &sect;&nbsp;17 Abs.&nbsp;2b for yourself &mdash; it is two sentences, and its brevity is the point:
+    <h3 class="rv" style="margin-top:34px">And if the DSO simply says no?</h3>
+    <p class="rv" style="max-width:72ch">
+      Anna&rsquo;s lawyer suggests a <em>Missbrauchsantrag</em> &mdash; a formal abuse complaint to the regulator.
+      The regulator, in the same FAQ, talks her out of it:
     </p>
     <div class="quote rv">
       <p style="margin:0">
-        &bdquo;Betreiber von Elektrizit&auml;tsversorgungsnetzen k&ouml;nnen Anschlussnehmern den Abschluss einer
-        flexiblen Netzanschlussvereinbarung anbieten. Eine flexible Netzanschlussvereinbarung nach Satz&nbsp;1 gibt
-        dem Betreiber von Elektrizit&auml;tsversorgungsnetzen das Recht, vom Anschlussnehmer eine statische oder
-        dynamische Begrenzung der maximalen Entnahme- oder Einspeiseleistung zu verlangen.&ldquo;
+        &bdquo;Ein Missbrauchsantrag ist ein formales juristisches Verfahren, das <strong>erheblich Zeit</strong> in
+        Anspruch nimmt&hellip; Eine <strong>Beschleunigung des Anschlussbegehrens ist dadurch nicht zu
+        erreichen.</strong> Auch an der <strong>objektiven Knappheit</strong> der zur Verf&uuml;gung stehenden
+        Anschlusskapazit&auml;t &auml;ndert sich dadurch nichts.&ldquo;
       </p>
       <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
-        That is the entire legal basis. No price, no compensation, no ceiling, no duration. Everything that protects
-        you has to come from the contract you negotiate.
+        You may complain. It will be slow, it will not connect you faster, and it will not create capacity that does
+        not exist. What the regulator recommends instead is that the <strong>industry build standard FCA
+        contracts</strong> &mdash; and it says it supports such efforts <em>&bdquo;nachdr&uuml;cklich&ldquo;</em>,
+        emphatically.
       </p>
     </div>
-
-    <!-- ---------------------------------------------- who -->
-    <h3 class="rv" style="margin-top:38px">Who is actually doing this in Germany right now?</h3>
-    <p class="rv" style="max-width:72ch">
-      It is real and live, not theoretical &mdash; but it is overwhelmingly aimed at <strong>batteries and
-      renewables</strong>, not yet at charging depots. Publicly documented as of this writing:
+    <p class="rv" style="max-width:72ch;margin-top:14px">
+      Hold on to that last sentence. <strong>It is exactly what the next two countries have already done</strong> —
+      and it is the thread that ties this whole story together.
     </p>
 
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+    <!-- ============================================ NETHERLANDS -->
+    <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
+      <span class="chip b">Part two &middot; the Netherlands</span>
+      <h3 style="margin-top:10px">Marieke, who is handed a menu</h3>
+    </div>
+
+    <p class="rv" style="max-width:72ch">
+      Marieke runs a bus depot near Rotterdam. Same problem as Anna: a congested grid and a long queue. What happens
+      next is entirely different.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      Her grid operator does not <em>decide whether</em> to offer her a flexible contract. In a congestion area
+      <strong>it has to</strong>. Optional from <strong>1 February 2024</strong>; <strong>mandatory from 1 February
+      2025</strong>.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      And she is not handed one vague &ldquo;flexible&rdquo; product to negotiate. She is handed a
+      <strong>menu</strong> &mdash; approved by the regulator <strong>ACM in July 2024</strong>, open to large
+      connections (above 3&times;80&nbsp;A):
+    </p>
+
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
       <table>
-        <thead><tr><th>Who</th><th>What they are doing</th></tr></thead>
+        <thead><tr><th>Contract</th><th>What it gives you</th><th>Who it suits</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>MITNETZ STROM</strong> (DSO, eastern Germany)</td>
-            <td>A named FCA product with public documentation. Currently for stand-alone battery storage and storage retrofits. States plainly that limitation under an FCA is <strong>not compensated</strong>, and that there is <strong>no legal right</strong> to be offered one.</td>
+            <td><strong>Standard ATO</strong></td>
+            <td>The ordinary firm contract. 24/7 on your contracted capacity.</td>
+            <td>Anyone who needs certainty and can wait.</td>
           </tr>
           <tr>
-            <td><strong>SachsenNetze</strong> (DSO)</td>
-            <td>Publishes a standard-form <em>Flexible Netzanschlussvereinbarung gem&auml;&szlig; &sect;&nbsp;17 Abs.&nbsp;2b EnWG</em> &mdash; worth reading as a concrete example of the clause structure.</td>
+            <td><strong>Non-firm (NFA)</strong></td>
+            <td>Transport whenever spare capacity exists. <strong>No guarantee at all</strong> if it disappears. Congestion areas only.</td>
+            <td>Assets that can simply stop.</td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)">
+            <td><strong>Tijdsblokgebonden</strong><br><span class="chip g">time-block</span></td>
+            <td><strong>Full power inside agreed blocks, none outside them.</strong></td>
+            <td><strong style="color:var(--good)">Overnight vehicle charging</strong> &mdash; named as the use case by the grid operators themselves.</td>
           </tr>
           <tr>
-            <td><strong>N-ERGIE Netz</strong> (DSO)</td>
-            <td>Publishes its own flexible connection agreement terms.</td>
-          </tr>
-          <tr>
-            <td><strong>EWE and EnBW</strong></td>
-            <td>Jointly proposed an industry <strong>standard</strong> for FCAs &mdash; the source of the <strong>200 full-load-hour</strong> uncompensated ceiling.</td>
-          </tr>
-          <tr>
-            <td><strong>E.ON</strong></td>
-            <td>A battery-storage FCA standard, stated as intended for nationwide rollout. Its full-load-hour ceiling was still open at the time of reporting.</td>
-          </tr>
-          <tr>
-            <td><strong>50Hertz</strong> (TSO)</td>
-            <td>Has published a position paper on how FCAs should be implemented at transmission level.</td>
-          </tr>
-          <tr>
-            <td><strong>Fachagentur Wind und Solar</strong></td>
-            <td>Producing <strong>model contracts</strong> during 2026, including for the harder case of several operators sharing one limited connection point.</td>
+            <td><strong>Tijdsduurgebonden</strong><br><span class="chip">time-duration</span></td>
+            <td>A guaranteed <strong>number of hours per year</strong>, with curtailment outside peaks on at least <strong>24 hours&rsquo; notice</strong>.</td>
+            <td>Currently TenneT high-voltage customers only.</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="note rv" style="margin-top:14px">
+      <strong>Look at the third row again.</strong> It is a named, regulator-approved product whose stated purpose is
+      <strong>charging vehicles at night</strong>. That is Anna&rsquo;s depot, exactly &mdash; except Anna has to
+      invent it in a bilateral negotiation, and Marieke picks it off a list.
+    </div>
+
+    <!-- ============================================ DENMARK -->
+    <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
+      <span class="chip b">Part three &middot; Denmark</span>
+      <h3 style="margin-top:10px">Lars, who gets the cheapest deal and the hardest terms</h3>
+    </div>
+
+    <p class="rv" style="max-width:72ch">
+      Lars runs a distribution depot outside Copenhagen. Denmark calls the same idea
+      <strong><em>begr&aelig;nset netadgang</em></strong> &mdash; literally <strong>&ldquo;limited network
+      access&rdquo;</strong>, which is the plainest name any of the three countries has given it.
+    </p>
+    <p class="rv" style="max-width:72ch">
+      Denmark is different in three ways, and each one matters.
+    </p>
+
+    <div class="grid g3 rv" style="margin-top:14px">
+      <div class="panel" style="border-color:var(--s3)">
+        <h3 style="color:var(--s3)">1 &middot; The industry wrote the contract &mdash; and the regulator approved it</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          <strong>Green Power Denmark</strong>, the industry association, drafted standardised terms and a standard
+          connection agreement with annexes on behalf of the grid companies, and submitted them to
+          <strong>Forsynings&shy;tilsynet</strong>, the Danish regulator, which approved them.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          <strong>This is precisely the route the Bundesnetzagentur says it wants</strong> &mdash; and Denmark has
+          already walked it.
+        </p>
+      </div>
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">2 &middot; You stop paying for network capacity</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Under the Danish DSO <strong>Radius Elnet</strong>&rsquo;s product, a limited-access customer
+          <strong>does not pay for capacity in the underlying network at all</strong> &mdash; only the operator&rsquo;s
+          own costs of processing, connecting, communication and metering.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          The interruptibility is compensated through a <strong>grid tariff rebate</strong>. Not a negotiation
+          &mdash; a published consequence.
+        </p>
+      </div>
+      <div class="panel" style="border-color:var(--crit)">
+        <h3 style="color:var(--crit)">3 &middot; And the terms are brutal</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Supply is not guaranteed. It <strong>&ldquo;can be reduced without notice&rdquo;</strong> and the reduction
+          may be <strong>anywhere from 0 to 100&nbsp;%</strong> of your capacity.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          There is <strong>no cap on hours</strong>, as a rule <strong>no message telling you how long it will last
+          or why</strong>, and reductions may be permanent and open-ended.
+        </p>
+      </div>
+    </div>
+
+    <div class="bigidea rv" style="margin-top:20px">
+      <p style="margin:0">
+        <strong>And here is the part that should stop you: in Denmark, Lars can actually get this today.</strong>
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Radius Elnet&rsquo;s limited network access is available <strong>for consumption</strong> &mdash; large
+        consumption sites at <strong>10&nbsp;kV and above</strong>. Production connections are still being built.
+        That is the exact opposite of Germany, where every live product targets generation and storage, and the
+        depot case does not exist yet.
+      </p>
     </div>
 
     <div class="note warn rv" style="margin-top:14px">
-      <strong>The gap, and it is your gap.</strong> Every live product above targets generation or storage. A
-      <strong>truck depot is pure withdrawal</strong> &mdash; and &sect;&nbsp;17 Abs.&nbsp;2b explicitly covers
-      <em>Entnahmeleistung</em>, so the legal route is open. But you would be an early case rather than a standard
-      one, and there is no product sheet to point at. For a thesis, that is not a weakness. <strong>It is the
-      opening.</strong>
+      <strong>But do not conclude Denmark has solved it.</strong> Denmark&rsquo;s transmission grid is under such
+      pressure that <strong>Energinet paused new large-load transmission connection agreements on 2 March
+      2026</strong>, with a queue reported at roughly <strong>60&nbsp;GW</strong> against a national peak demand of
+      about <strong>7&nbsp;GW</strong>. From <strong>1 February 2026</strong> Denmark abandoned first-come-first-served
+      for large loads, assessing projects in pools on maturity and &ldquo;grid-friendliness&rdquo;. Capacity
+      constraints upstream also mean grid companies <strong>cannot yet offer limited access to every larger
+      customer</strong>. The instrument is ahead; the copper is still behind.
     </div>
 
-    <!-- ---------------------------------------------- NL -->
-    <h3 class="rv" style="margin-top:38px">The country that is years ahead: the Netherlands</h3>
+    <!-- ============================================ COMPARISON -->
+    <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
+      <span class="chip b">The three answers, side by side</span>
+      <h3 style="margin-top:10px">Same question, three different people holding the pen</h3>
+    </div>
+
     <p class="rv" style="max-width:72ch">
-      If you want to know where Germany is heading, read the Dutch scheme &mdash; it is further along, it applies to
-      <strong>withdrawal</strong>, and unlike Germany it comes with an <strong>explicit tariff discount</strong>.
+      All three countries ask the customer for the same thing: <em>give up firmness, get connected sooner</em>. What
+      differs is <strong>who writes the deal</strong>.
     </p>
+
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+      <table>
+        <thead><tr><th></th><th>Germany</th><th>Netherlands</th><th>Denmark</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>What it is called</strong></td>
+            <td><em>flexible Netzanschluss&shy;vereinbarung</em> (FCA)</td>
+            <td><em>alternatieve transport&shy;rechten</em></td>
+            <td><em>begr&aelig;nset netadgang</em></td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--s1) 7%,transparent)">
+            <td><strong>Must the operator offer it?</strong></td>
+            <td><strong style="color:var(--crit)">No.</strong> But it &ldquo;should examine&rdquo; one, and a blank refusal is against the purpose of the law.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; mandatory in congestion areas since 01.02.2025.</td>
+            <td><strong>Offered as a standard product</strong>, where upstream capacity allows.</td>
+          </tr>
+          <tr>
+            <td><strong>Can the customer choose the form?</strong></td>
+            <td>No &mdash; diagnosed case by case by the operator.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; four named products.</td>
+            <td>Partly &mdash; you may put all or part of your site on limited access.</td>
+          </tr>
+          <tr>
+            <td><strong>Who wrote the contract?</strong></td>
+            <td>Each operator, separately. Sector model contracts only began appearing in 2026.</td>
+            <td>The regulator approved the product set (ACM, July 2024).</td>
+            <td><strong>The industry association</strong>, approved by the regulator.</td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)">
+            <td><strong>Is there a published price benefit?</strong></td>
+            <td><strong style="color:var(--crit)">No.</strong> Whether the BKZ may even be reduced is legally open.</td>
+            <td>Yes &mdash; cheaper contracts for off-peak use.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; tariff rebate; you stop paying for network capacity.</td>
+          </tr>
+          <tr>
+            <td><strong>Can a charging depot get it today?</strong></td>
+            <td><strong style="color:var(--crit)">Legally yes, in practice no</strong> &mdash; every live product targets generation and storage.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; night charging is a named use case.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; consumption sites from 10&nbsp;kV.</td>
+          </tr>
+          <tr>
+            <td><strong>Is there a cap on curtailment?</strong></td>
+            <td>Only if you negotiate one. A 200 full-load-hour ceiling is a <em>proposal</em> by EWE and EnBW, not a rule.</td>
+            <td>Built into the product &mdash; blocks, or a guaranteed number of hours with 24&nbsp;h notice.</td>
+            <td><strong style="color:var(--crit)">No.</strong> 0&ndash;100&nbsp;%, without notice, potentially permanent.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bigidea rv" style="margin-top:22px">
+      <p style="margin:0"><strong>The one sentence to take away.</strong></p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        <strong>Germany created the legal instrument but not the market for it.</strong> &sect;&nbsp;17
+        Abs.&nbsp;2b exists, it covers withdrawal, and it covers your depot &mdash; but there is no product, no
+        price, no menu and no duty to offer. The Netherlands created the instrument <em>and</em> the products.
+        Denmark created the instrument <em>and</em> the standard contract <em>and</em> the tariff consequence
+        &mdash; and let consumers have it first.
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Germany is not behind on the law. <strong>It is behind on the paperwork.</strong>
+      </p>
+    </div>
+
+    <!-- ============================================ SO WHAT -->
+    <h3 class="rv" style="margin-top:38px">What this means for your depot, honestly</h3>
     <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel" style="border-color:var(--s3)">
-        <h3 style="color:var(--s3)">What the Dutch actually built</h3>
-        <ul style="font-size:13.5px;color:var(--ink-2);padding-left:20px;margin:.4em 0 0">
-          <li><strong>Time-bound transport rights</strong> &mdash; a cheaper contract where the operator may
-            restrict you at peak times. Customers are entitled to power roughly <strong>85&nbsp;% of the
-            time</strong>.</li>
-          <li>Around <strong>9&nbsp;GW</strong> of capacity reported as available off-peak.</li>
-          <li>Explicitly aimed at <em>batteries, electrolysers and <strong>electric bus charging</strong></em>
-            &mdash; which is your case, almost exactly.</li>
-        </ul>
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">Why it fits you almost suspiciously well</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Grid stress in Germany lands on <strong>winter weekday evenings</strong>. Your trucks are out driving then.
+          They charge overnight, when the network is empty. A windowed-dynamic limit aimed at 17:00&ndash;20:00 might
+          cost you <strong>nothing at all</strong>.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          And in the simulator, the largest single line on the depot&rsquo;s bill is not the electricity &mdash; it
+          is the <strong>network charge driven by peak power</strong>. This is the instrument that attacks that
+          number from the connection side.
+        </p>
       </div>
-      <div class="panel">
-        <h3>The timeline, and why it matters</h3>
-        <ul style="font-size:13.5px;color:var(--ink-2);padding-left:20px;margin:.4em 0 0">
-          <li><strong>1 Feb 2024</strong> &mdash; operators <em>may</em> offer non-firm contracts in congested areas.</li>
-          <li><strong>1 Feb 2025</strong> &mdash; operators <strong>must</strong> offer them. This is the step Germany has not taken.</li>
-          <li><strong>1 Apr 2026</strong> &mdash; fully flexible &ldquo;non-firm ATO&rdquo; rights proposed to take effect.</li>
-          <li><strong>Feb 2026</strong> &mdash; a ministerial package of eight measures to shorten the connection queue; the four big operators each to tender regionally for flexibility in 2026.</li>
-        </ul>
+      <div class="panel" style="border-color:var(--crit)">
+        <h3 style="color:var(--crit)">And the one risk a battery does not have</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Every live product is designed for storage. <strong>A battery that cannot charge loses revenue. A truck
+          that cannot charge cannot do the job it exists for.</strong>
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          If a cut lands at 04:00 and a truck leaves at 06:00 under-charged, that is a missed delivery, and
+          <strong>no FCA carries that cost for you</strong>. This is why the Danish terms &mdash; 0 to 100&nbsp;%,
+          without notice &mdash; would be dangerous for a depot even though they are cheap.
+        </p>
       </div>
-    </div>
-    <div class="note rv" style="margin-top:14px">
-      <strong>The one structural difference worth putting in a thesis.</strong> The Dutch pair the restriction with a
-      <strong>published discount on the transport tariff</strong> &mdash; you give up firmness, you pay a lower
-      regulated price, and both halves are transparent. German &sect;&nbsp;17 Abs.&nbsp;2b pairs the restriction with
-      <strong>a negotiation</strong>. That is the single biggest weakness of the German design today, and the most
-      defensible thing you could argue should change.
-    </div>
-
-    <!-- ---------------------------------------------- germany plans -->
-    <h3 class="rv" style="margin-top:38px">Is Germany planning to go further? Yes &mdash; and quite far.</h3>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>What</th><th>Status</th><th>Why you should care</th></tr></thead>
-        <tbody>
-          <tr style="background:color-mix(in srgb,var(--warning) 9%,transparent)">
-            <td><strong>Netzanschlusspaket / &ldquo;Netzpaket 2026&rdquo;</strong></td>
-            <td>Draft bill <strong>adopted by the federal cabinet on 29 July 2026</strong>. Not yet law &mdash; passage in its current form is open.</td>
-            <td>It would let transmission operators <strong>make a connection conditional on signing an FCA</strong>, where capacity is demonstrably limited and the regulator approves (&sect;&nbsp;17a EnWG&#8209;RegE). <strong>That flips the instrument from an offer you may accept into a condition you may be given.</strong></td>
-          </tr>
-          <tr>
-            <td><strong>End of &ldquo;first come, first served&rdquo;</strong></td>
-            <td>In the same draft (&sect;&sect;&nbsp;17a, 17b EnWG&#8209;RegE)</td>
-            <td>Connection requests would be <strong>prioritised</strong> against criteria including system benefit and whether the site is genuinely location-bound. Queue position would stop being about who applied first.</td>
-          </tr>
-          <tr>
-            <td><strong>BNetzA rules for FCAs</strong></td>
-            <td>The regulator has signalled work on FCAs and construction cost contributions <strong>from 2027</strong>, alongside the <strong>AgNes</strong> grid-fee reform.</td>
-            <td>This is where a real tariff could finally appear &mdash; and where the Dutch-style published discount might arrive, if it arrives.</td>
-          </tr>
-          <tr>
-            <td><strong>Capacity reservation and digital process</strong></td>
-            <td>Proposed for installations from <strong>135 kW</strong>, with digital procedures required by <strong>2028</strong>.</td>
-            <td>A depot is far above 135 kW. This would become your application process.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ---------------------------------------------- resources -->
-    <h3 class="rv" style="margin-top:38px">Where to follow this &mdash; it moves monthly</h3>
-    <p class="rv" style="max-width:72ch">
-      This is the fastest-moving topic in this whole document. Anything here could be stale within a quarter, so
-      these are places to <em>watch</em>, not facts to cite.
-    </p>
-    <div class="scroll rv panel" style="margin-top:12px;padding:0">
-      <table>
-        <thead><tr><th>Source</th><th>What it is good for</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Bundesnetzagentur</strong> &mdash; Netzanschluss pages and the <em>Flexibility in the electricity system</em> paper</td>
-            <td>The regulator&rsquo;s own position. Primary source; everything else is commentary on it.</td>
-            <td><a href="https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Netzanschluss/start.html" target="_blank" rel="noreferrer">bundesnetzagentur.de</a></td>
-          </tr>
-          <tr>
-            <td><strong>Fachagentur Wind und Solar</strong> &mdash; FCA model contracts</td>
-            <td>The closest thing to a standard contract. Read before negotiating anything.</td>
-            <td><a href="https://www.fachagentur-wind-solar.de/veroeffentlichungen/mustervertraege/mustervertrag-fcas" target="_blank" rel="noreferrer">fachagentur-wind-solar.de</a></td>
-          </tr>
-          <tr>
-            <td><strong>zfk.de</strong> (Zeitung f&uuml;r kommunale Wirtschaft)</td>
-            <td>German trade press. Where operator standards and disputes get reported first.</td>
-            <td><a href="https://www.zfk.de/" target="_blank" rel="noreferrer">zfk.de</a></td>
-          </tr>
-          <tr>
-            <td><strong>Modo Energy</strong> &mdash; FCA research and documentation</td>
-            <td>The best quantitative analysis, in English. Battery-focused, so translate to your case.</td>
-            <td><a href="https://modoenergy.com/research/en/germany-november-2025-flexible-connection-agreements-fcas-regulatory-reform" target="_blank" rel="noreferrer">modoenergy.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Aurora Energy Research</strong></td>
-            <td>Webinars and modelling on FCAs and dynamic grid fees in Germany.</td>
-            <td><a href="https://auroraer.com/" target="_blank" rel="noreferrer">auroraer.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Netbeheer Nederland</strong> and <strong>ACM</strong></td>
-            <td>The Dutch scheme, in operation. Your best evidence for what Germany could look like.</td>
-            <td><a href="https://www.netbeheernederland.nl/artikelen/zo-werkt-het/zo-werkt-het-alternatieve-transportrechten" target="_blank" rel="noreferrer">netbeheernederland.nl</a></td>
-          </tr>
-          <tr>
-            <td><strong>Law firm briefings</strong> &mdash; Gleiss Lutz, Kapellmann, R&ouml;dl, Dentons, CMS</td>
-            <td>Free, frequent, and specific about clause-level risk. The most efficient way to track the Netzpaket.</td>
-            <td>&mdash;</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <div class="note legal rv" style="margin-top:18px">
-      <strong>The honest summary, if you read only this box.</strong> Limited network access is a
-      <strong>connection product, not a market role</strong> &mdash; it is the opposite of being a BSP: you give up
-      flexibility instead of selling it, and you are paid up front in cheaper access rather than per event. In
-      Germany it has existed since <strong>February 2025</strong> under <strong>&sect;&nbsp;17 Abs.&nbsp;2b
-      EnWG</strong>, it is live at several DSOs but <strong>only for batteries and renewables so far</strong>, there
-      is <strong>no tariff and no compensation</strong>, and the protective terms &mdash; above all a ceiling on
-      uncompensated hours &mdash; exist only if you negotiate them. The Netherlands already does the withdrawal case
-      properly, with a published discount. Germany&rsquo;s draft <strong>Netzpaket 2026</strong> would make FCAs
-      something an operator can <em>require</em> rather than merely offer. <strong>For a depot whose largest single
-      cost is a network charge driven by peak power, this is the most consequential open question in this entire
-      document.</strong>
+      <strong>The four things to settle before signing anything.</strong> The statute requires an FCA to state the
+      <em>level</em> of the limit, the <em>periods</em>, the <em>duration</em>, the <em>technical requirements</em>
+      and your <em>liability</em> for exceeding it. Those are the headings. These are the answers to fight for:
+      <strong>(1)</strong> a ceiling on curtailment expressed in hours per year; <strong>(2)</strong> minimum notice
+      before a cut, in writing; <strong>(3)</strong> what happens to the Baukostenzuschuss on the day the connection
+      becomes firm; <strong>(4)</strong> whether the agreement restricts balancing-market participation &mdash;
+      several German drafts cap aFRR at 30&nbsp;% of capacity and exclude FCR outright.
+    </div>
+
+    <!-- ============================================ SOURCES -->
+    <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
+      <span class="chip b">Additional information</span>
+      <h3 style="margin-top:10px">Where to read further &mdash; and what is actually in each one</h3>
+    </div>
+
+    <p class="rv" style="max-width:72ch">
+      This is the fastest-moving topic in this document. Below is every source behind this section, with what it is
+      good for and what to be careful of. <strong>Read them in this order</strong> &mdash; the first three are
+      primary, the rest are commentary.
+    </p>
+
+    <div class="scroll rv panel" style="margin-top:14px;padding:0">
+      <table>
+        <thead><tr><th>Source</th><th>What is in it, and why it matters to you</th></tr></thead>
+        <tbody>
+          <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)">
+            <td><strong>1 &middot; Bundesnetzagentur &mdash; FAQ flexible Netzanschlussvereinbarungen</strong><br>
+              <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Netzanschluss/FAQ_FCA/FCA_table.html" target="_blank" rel="noreferrer">bundesnetzagentur.de</a><br>
+              <span class="chip g">start here</span></td>
+            <td><strong>The single most useful page in German on this topic, and it is short.</strong> It is the source
+              of every German quotation in this section: that FCAs are for scarce capacity, that there is no duty to
+              offer, that the operator <em>should examine</em> one, that a blank refusal is against the purpose of the
+              law, that fully dynamic concepts are not yet operationally ready, that limits must be applied before
+              day-ahead trading, and that an abuse complaint will not help you. <strong>If you read one link, read
+              this one.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>2 &middot; &sect;&nbsp;17 EnWG</strong><br>
+              <a href="https://www.gesetze-im-internet.de/enwg_2005/__17.html" target="_blank" rel="noreferrer">gesetze-im-internet.de</a></td>
+            <td>The law itself, on the federal justice ministry&rsquo;s portal. <strong>Absatz 1</strong> is the
+              connection obligation &mdash; and it names charging points for electric vehicles explicitly.
+              <strong>Absatz 2</strong> is the reasoned-refusal right, including your entitlement to be told what
+              reinforcement would cost. <strong>Absatz 2b</strong> is the FCA itself: two sentences plus the five
+              mandatory contract headings. Free, authoritative, always current.</td>
+          </tr>
+          <tr>
+            <td><strong>3 &middot; &sect;&nbsp;8a EEG</strong><br>
+              <a href="https://www.gesetze-im-internet.de/eeg_2014/__8a.html" target="_blank" rel="noreferrer">gesetze-im-internet.de</a></td>
+            <td>The parallel provision for renewables and green-power storage. <strong>Not your route as a depot</strong>
+              &mdash; but most published German commentary is written about &sect;&nbsp;8a, not &sect;&nbsp;17
+              Abs.&nbsp;2b. Knowing which one an article is discussing will save you a great deal of confusion.</td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--s3) 7%,transparent)">
+            <td><strong>4 &middot; Fachagentur Wind und Solar &mdash; Mustervertr&auml;ge FCAs</strong><br>
+              <a href="https://www.fachagentur-wind-solar.de/veroeffentlichungen/mustervertraege/mustervertrag-fcas" target="_blank" rel="noreferrer">fachagentur-wind-solar.de</a><br>
+              <span class="chip">free downloads</span></td>
+            <td><strong>The closest thing Germany has to a standard FCA contract, and you can download it.</strong>
+              The <em>zweiseitiger Grundvertrag</em> (operator &harr; one plant operator) is published, with a
+              <strong>glossary</strong> and an explanatory <em>Beiblatt</em>. Two more follow by the end of 2026: a
+              multi-party contract, and a cooperation contract between operators sharing one connection point. Built
+              on a <strong>modular &ldquo;Baukasten&rdquo; principle</strong> &mdash; core clauses plus optional
+              blocks &mdash; by a working group of BDEW, bne, BEE, BWE, BSW, VKU, VDE, two DSOs and RWE/Alterric, with
+              the law firm <strong>Dombert</strong> drafting, and BNetzA and the ministry kept informed.
+              <strong>The caveat that matters to you:</strong> it is addressed to operators of <em>generation and
+              green-storage</em> plant, not to consumers &mdash; so the clause structure is reusable, the scope is
+              not.</td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--s3) 7%,transparent)">
+            <td><strong>5 &middot; Stiftung Umweltenergierecht &mdash; Madita Franke, &bdquo;Was sollte in flexiblen Netzanschlussvertr&auml;gen geregelt werden und welche Fallstricke lauern?&ldquo;</strong> (28. W&uuml;rzburger Gespr&auml;che, 22.09.2025)<br>
+              <a href="https://stiftung-umweltenergierecht.de/wp-content/uploads/2025/10/Franke_Flexible_Netzanschlussvereinbarungen_BNK_2025-09-22.pdf" target="_blank" rel="noreferrer">stiftung-umweltenergierecht.de (PDF)</a><br>
+              <span class="chip">independent</span></td>
+            <td><strong>The best independent legal analysis, and the source of the warning above.</strong> A research
+              foundation, not a law firm pitching for work and not a vendor. It sets &sect;&nbsp;8a EEG against
+              &sect;&nbsp;17 Abs.&nbsp;2b EnWG, confirms there is <strong>no <em>Kontrahierungszwang</em></strong> &mdash;
+              no duty to contract &mdash; under &sect;&nbsp;17 Abs.&nbsp;2b, and dedicates a whole section to the
+              <strong>Baukostenzuschuss</strong>: that a reduction was <em>left open by the legislator</em>, that the
+              BGH confirmed the underlying <em>Leistungspreismodell</em> in July 2025, and that the <strong>full BKZ
+              may fall due later</strong> if the connection becomes firm. Its three named pitfalls are fully dynamic
+              limitation, the duration of the agreement, and the BKZ.</td>
+          </tr>
+          <tr>
+            <td><strong>6 &middot; A live DSO product &mdash; MITNETZ STROM</strong><br>
+              <a href="https://www.mitnetz-strom.de/energie-einspeisen/fca---flexible-netzanschlussvereinbarung" target="_blank" rel="noreferrer">mitnetz-strom.de</a></td>
+            <td>What one German operator will actually sign today. Confirms in its own words that there is
+              <strong>no compensation</strong> for an FCA limitation, that there is <strong>no legal right</strong> to
+              be offered one, and that <strong>static limitation is not currently used</strong> while fully dynamic is
+              an aspiration. Currently for stand-alone batteries and storage retrofits. Compare with
+              <a href="https://www.sachsen-netze.de/wps/wcm/connect/netze/13102dc5-edb4-4e8f-aee2-66635b2455ec/Flexible-Netzanschlussvereinbarung-SachsenNetze.pdf?MOD=AJPERES" target="_blank" rel="noreferrer">SachsenNetze&rsquo;s standard form (PDF)</a>
+              and <a href="https://www.n-ergie-netz.de/unternehmen/erzeugungsanlagen/flexible-netzanschlussvereinbarungen" target="_blank" rel="noreferrer">N-ERGIE Netz</a>
+              to see how much the terms vary between operators.</td>
+          </tr>
+          <tr>
+            <td><strong>7 &middot; zfk.de &mdash; German trade press</strong><br>
+              <a href="https://www.zfk.de/energie/strom/flexible-netzanschluesse-fca-standard-branche-details" target="_blank" rel="noreferrer">zfk.de</a></td>
+            <td>Where operator standards and industry rows get reported first. <strong>The source of the two numbers
+              everyone repeats:</strong> the <strong>200 full-load-hour</strong> uncompensated ceiling proposed by EWE
+              and EnBW, and the <strong>aFRR capped at 30&nbsp;% / FCR excluded</strong> balancing restrictions that
+              critics call excessive. <strong>Handle with care:</strong> these are proposals and reporting, not
+              regulation. Do not cite them as law.</td>
+          </tr>
+          <tr>
+            <td><strong>8 &middot; Netbeheer Nederland &amp; ACM</strong><br>
+              <a href="https://www.netbeheernederland.nl/artikelen/zo-werkt-het/zo-werkt-het-alternatieve-transportrechten" target="_blank" rel="noreferrer">netbeheernederland.nl</a> ·
+              <a href="https://www.acm.nl/en/publications/more-affordable-transmission-agreements-peak-hours-promote-more-efficient-utilization-grid" target="_blank" rel="noreferrer">acm.nl</a></td>
+            <td>The Dutch four-product menu, from the grid operators&rsquo; own joint association and from the
+              regulator. <strong>Your best evidence for what a mature version of this looks like</strong> &mdash; and
+              the only place where overnight vehicle charging is named as a design target rather than an afterthought.</td>
+          </tr>
+          <tr>
+            <td><strong>9 &middot; Green Power Denmark &amp; Radius Elnet</strong><br>
+              <a href="https://greenpowerdenmark.dk/nyheder/fleksibel-elproduktion-faar-tilbud-om-billigere-adgang-til-elnettet" target="_blank" rel="noreferrer">greenpowerdenmark.dk</a> ·
+              <a href="https://radiuselnet.dk/ny-tilslutning/tilslutning/typer-af-tilslutninger/begraenset-netadgang/" target="_blank" rel="noreferrer">radiuselnet.dk</a></td>
+            <td>The Danish model. Green Power Denmark shows <strong>the industry-standardisation route the BNetzA says
+              it wants</strong>, approved by Forsyningstilsynet. Radius Elnet is the operational product &mdash; and
+              the important page for you, because it is <strong>for consumption, from 10&nbsp;kV</strong>, with the
+              tariff consequence and the harsh 0&ndash;100&nbsp;% terms both stated openly.</td>
+          </tr>
+          <tr>
+            <td><strong>10 &middot; Law-firm briefings</strong><br>
+              Gleiss Lutz · Kapellmann · R&ouml;dl · Dentons · CMS · Chatham Partners</td>
+            <td>Free, frequent, clause-level, and the quickest way to track the <strong>Netzpaket 2026</strong> as it
+              moves through parliament. <strong>Where the &ldquo;three models&rdquo; framing comes from</strong> &mdash;
+              static, dynamic, fully dynamic. Useful shorthand, but remember the statute names only two and the
+              regulator treats the third as not yet ready.</td>
+          </tr>
+          <tr>
+            <td><strong>11 &middot; Modo Energy and Aurora Energy Research</strong><br>
+              <a href="https://modoenergy.com/research/en/germany-november-2025-flexible-connection-agreements-fcas-regulatory-reform" target="_blank" rel="noreferrer">modoenergy.com</a> ·
+              <a href="https://auroraer.com/" target="_blank" rel="noreferrer">auroraer.com</a></td>
+            <td>The quantitative end, in English &mdash; what an FCA does to a project&rsquo;s revenue. Both are
+              <strong>battery-focused</strong>, so every number needs translating to a load that must hit a departure
+              time rather than a price. Modo is also the clearest English explanation of how FCA terms interact with
+              ancillary-service revenue.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn rv" style="margin-top:18px">
+      <strong>How to weigh these against each other.</strong> Sources 1 to 3 are law and regulator &mdash; cite them
+      freely. Sources 4 and 5 are sector and academic work &mdash; excellent, but describe practice and open
+      questions, not entitlements. Sources 6 to 11 are operators, press and consultants &mdash; they tell you what is
+      being <em>offered and argued about</em>. <strong>The 200-hour ceiling, the 30&nbsp;% aFRR cap and the
+      &minus;80&nbsp;% connection-cost figure all come from this last group.</strong> None of them is a rule, and a
+      thesis that cites them as regulation will be marked down for it.
     </div>
 
     <p class="rv" style="font-size:12.5px;color:var(--ink-3);margin-top:14px">
-      <strong>A word on sourcing.</strong> &sect;&nbsp;17 Abs.&nbsp;2b EnWG and Directive (EU) 2024/1711 are
-      primary law and quoted as such. The commercial terms &mdash; the 200 full-load-hour ceiling, the aFRR and FCR
-      restrictions, the &minus;80&nbsp;% connection-cost figure &mdash; come from operator proposals, trade press
-      and advisory commentary, <strong>not from regulation</strong>. They describe what is being offered and argued
-      about, not what anyone is entitled to. Verify against the specific contract in front of you before relying on
-      any of them.
+      <strong>Dates matter here more than anywhere else on this page.</strong> &sect;&nbsp;17 Abs.&nbsp;2b EnWG has
+      applied since February 2025. The Dutch obligation has applied since 1 February 2025 and the product set was
+      approved in July 2024. Denmark paused new large-load transmission connections on 2 March 2026 and dropped
+      first-come-first-served on 1 February 2026. The German <em>Netzpaket 2026</em> was adopted by the federal
+      cabinet on 29 July 2026 and is <strong>a draft, not law</strong> &mdash; if it passes, transmission operators
+      would be able to <strong>require</strong> an FCA rather than merely offer one, which reverses the question this
+      section opened with. Check each of these before you cite it.
     </p>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <p><strong>Sources.</strong> Standard-Bilanzkreisvertrag Strom (BNetzA BK6-18-061, in force 01.08.2020; superseded by BK6-23-102, applicable 01.10.2024) ·
