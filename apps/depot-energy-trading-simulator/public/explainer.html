@@ -2694,258 +2694,329 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
     <!-- ============================================ DENMARK -->
     <div class="rv" style="margin-top:44px;padding-top:10px;border-top:2px solid var(--line)">
       <span class="chip b">Part three &middot; Denmark</span>
-      <h3 style="margin-top:10px">Lars, and a completely different machine</h3>
+      <h3 style="margin-top:10px">Lars, who gets to choose</h3>
     </div>
 
     <p class="rv" style="max-width:72ch">
       Lars runs a distribution depot outside Copenhagen. Denmark calls the idea
-      <strong><em>begr&aelig;nset netadgang</em></strong> &mdash; literally <strong>&ldquo;limited network
-      access&rdquo;</strong>, the plainest name any of the three countries has given it.
+      <strong><em>begr&aelig;nset netadgang</em></strong> &mdash; <strong>&ldquo;limited network access&rdquo;</strong>,
+      the plainest name any of the three countries has given it.
     </p>
     <p class="rv" style="max-width:72ch">
-      Do not assume it is the German instrument with Danish labels. <strong>It is built differently, priced
-      differently, and operated differently.</strong> Everything below comes from one document: the sector guideline
-      <em>&bdquo;Vilk&aring;r og betingelser for tilslutning med begr&aelig;nset netadgang for
-      forbrugsanl&aelig;g&ldquo;</em> &mdash; <strong>for consumption facilities</strong> &mdash; notified to the
-      Danish regulator Forsyningstilsynet under &sect;&nbsp;73b of the Electricity Supply Act.
+      Everything in this part comes from one document: the sector guideline <em>&bdquo;Vilk&aring;r og betingelser for
+      tilslutning med begr&aelig;nset netadgang <strong>for forbrugsanl&aelig;g</strong>&ldquo;</em> &mdash;
+      <strong>for consumption facilities</strong>, not generation &mdash; notified to the Danish regulator
+      Forsyningstilsynet under &sect;&nbsp;73b of the Electricity Supply Act in December 2019, taken to effect
+      20&nbsp;March 2020, and amended since, most recently in 2024. The link is in the sources table at the end.
     </p>
 
     <div class="bigidea rv" style="margin-top:20px">
       <p style="margin:0">
-        <strong>The one structural difference, before any detail.</strong>
+        <strong>The difference from Anna&rsquo;s story, in one line.</strong>
       </p>
       <p style="margin:.7em 0 0;font-size:14px">
-        A German FCA is a <strong>number in a contract</strong>. You agree a ceiling, and you keep yourself under it.
-        Danish limited access is a <strong>live control link</strong>. The grid company&rsquo;s control centre can
-        reach into your site and turn you down, in real time, and your equipment must obey.
-      </p>
-      <p style="margin:.7em 0 0;font-size:14px">
-        <strong>That is why the Danish static/dynamic question has a different answer than you expect.</strong>
+        Anna reaches a flexible connection <em>after</em> being told she cannot have a firm one. <strong>Lars can ask
+        for limited access directly</strong> &mdash; the guideline says both <em>new connections</em> and
+        <em>extensions of an existing supply</em> may request it. It is a <strong>product he can choose</strong>, not
+        only a rescue after a refusal.
       </p>
     </div>
 
-    <h3 class="rv" style="margin-top:34px">Where it came from &mdash; and why that matters</h3>
+    <h3 class="rv" style="margin-top:34px">Act 1 &mdash; Lars works out what he needs, and finds three doors</h3>
     <p class="rv" style="max-width:72ch">
-      Denmark did not invent this for batteries. It grew out of the <em>elpatron</em> scheme: from 2014 the industry
-      body notified an arrangement letting <strong>electric boilers and heat pumps</strong> connect on reduced
-      security of supply <strong>in exchange for the connection contribution being removed</strong>. The regulator
-      took that notification to effect in <strong>April 2015</strong>, and grid companies rolled it out.
+      Lars needs a maximum grid import of about <strong>2&nbsp;MW</strong>. In Denmark that opens three options, not two:
     </p>
-    <p class="rv" style="max-width:72ch">
-      The consumption guideline in force today is the <strong>extension</strong> of that scheme &mdash; notified
-      December 2019, taken to effect by the regulator&rsquo;s secretariat on <strong>20 March 2020</strong>, and
-      amended several times since, most recently in <strong>2024</strong>.
-    </p>
-    <div class="note rv" style="margin-top:14px">
-      <strong>Why the origin matters for your thesis.</strong> Denmark&rsquo;s scheme was built for
-      <strong>flexible electrical loads</strong> from the start &mdash; boilers and heat pumps, things that can be
-      turned down without anybody getting hurt. Germany&rsquo;s was built for <strong>generation</strong>. That is
-      the single best explanation for why a Danish depot fits the framework and a German depot does not: the two
-      countries started from opposite ends of the meter.
+    <div class="grid g3 rv" style="margin-top:14px">
+      <div class="panel">
+        <h3>A &middot; Full access</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">The ordinary connection, ordinary security of supply,
+          ordinary published connection charge, prices and tariffs.</p>
+      </div>
+      <div class="panel" style="border-color:var(--warning)">
+        <h3 style="color:var(--warning)">B &middot; Limited access</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">The whole 2&nbsp;MW is interruptible. Cheapest to connect,
+          and the riskiest thing a truck depot could sign.</p>
+      </div>
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">C &middot; Partly limited</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)"><em>Delvist begr&aelig;nset netadgang.</em> Part of the site
+          firm, part interruptible. <strong>This is the one a depot should want</strong> &mdash; see the design box
+          at the end of this part.</p>
+      </div>
     </div>
 
-    <h3 class="rv" style="margin-top:34px">Is it static or dynamic, like Germany?</h3>
+    <h3 class="rv" style="margin-top:34px">Act 2 &mdash; Is Lars even eligible?</h3>
     <p class="rv" style="max-width:72ch">
-      <strong>Neither. Denmark does not use that taxonomy at all.</strong> There is one product, and what varies is
-      not the <em>shape of a contractual ceiling</em> but <strong>which of two physical situations your site is
-      in</strong>:
+      Not every site qualifies. The distribution-level framework is aimed at <strong>business customers with
+      interruptible consumption connected at 10&ndash;60&nbsp;kV</strong>. A small depot on ordinary low voltage does
+      not automatically fall inside it. And the guideline is explicit that practical connection
+      <em>&bdquo;afh&aelig;nger af de lokale forhold og betingelser i det enkelte netselskab&ldquo;</em> &mdash; it
+      depends on the individual grid company&rsquo;s local conditions, and that company must have adopted the
+      approved method.
     </p>
+    <div class="note warn rv" style="margin-top:14px">
+      <strong>And the guideline will talk you out of it in the wrong location.</strong> It states plainly that the
+      arrangement <em>&bdquo;ikke [er] attraktiv for kunder, som beder om tilslutning til steder i nettet, hvor der
+      ikke er ledig kapacitet&ldquo;</em> &mdash; not attractive where there is no spare capacity, because you would
+      simply be interrupted very often &mdash; and that <strong>the grid company must tell you this when you
+      ask</strong>. Limited access is for places with capacity in <em>most</em> network states, not a way into a
+      genuinely full network.
+    </div>
 
+    <h3 class="rv" style="margin-top:34px">Act 3 &mdash; What Lars actually stops paying (read this carefully)</h3>
+    <p class="rv" style="max-width:72ch">
+      This is the single most misread part of the Danish scheme, so here it is precisely.
+    </p>
     <div class="grid g2 rv" style="margin-top:14px">
       <div class="panel" style="border-color:var(--good)">
-        <h3 style="color:var(--good)">Situation 1 &mdash; it fits, for now</h3>
+        <h3 style="color:var(--good)">Reduced: the one-off connection payment</h3>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          At maximum load and normal switching, your full power <em>can</em> be delivered without breaching the
-          network&rsquo;s loading or voltage limits.
+          <em>&bdquo;tilslutningsbetalingen er reduceret ift. betalingen ved tilslutning p&aring; de almindelige
+          vilk&aring;r&ldquo;</em> &mdash; the <strong>connection payment</strong> is reduced against what you would
+          pay on ordinary terms. In the original heat-pump scheme the <em>tilslutningsbidrag</em> was removed
+          outright.
         </p>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          You are still on limited access &mdash; you can still be cut during abnormal switching states &mdash; but
-          in normal operation you get what you asked for.
+          <strong>This is capital, not tariff.</strong> It is the up-front contribution for building the connection
+          &mdash; Denmark&rsquo;s counterpart to the German <em>Baukostenzuschuss</em>.
+        </p>
+      </div>
+      <div class="panel" style="border-color:var(--crit)">
+        <h3 style="color:var(--crit)">Not reduced: everything ongoing</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Lars still pays <em>&bdquo;de l&oslash;bende priser i form af abonnement og tariffer
+          <strong>som alle andre kunder</strong>&ldquo;</em> &mdash; the running subscription and network tariffs
+          <strong>like every other customer</strong>.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          In fact he pays <strong>more</strong>: an extra subscription for the special operational monitoring the
+          limited access requires, plus every actual cost of the connection bay, control and monitoring gear, online
+          metering, the remote-control interface, the communication channels, and the case handling and design work.
+        </p>
+      </div>
+    </div>
+    <div class="note rv" style="margin-top:14px">
+      <strong>So &ldquo;you stop paying for network capacity&rdquo; would be the wrong way to put it.</strong> You get
+      a discount on the <strong>one-off cost of getting connected</strong>. Your monthly network bill is normal, and
+      slightly higher because of the monitoring. The premise of the whole scheme is that the connection happens
+      <em>&bdquo;uden meromkostninger for nettets &oslash;vrige kundegrupper&ldquo;</em> &mdash; without shifting
+      costs onto everyone else &mdash; which is exactly why the ongoing tariffs cannot be discounted.
+    </div>
+    <div class="note warn rv" style="margin-top:14px">
+      <strong>And the corresponding restriction.</strong> On limited access Lars uses only the
+      <strong>existing spare capacity</strong>. He <em>cannot</em> pay to have the transformer or the upstream
+      network reinforced to get more, without moving to a full connection agreement. The connection must not trigger
+      uncovered reinforcement investment locally or upstream.
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">Act 4 &mdash; How the limit is enforced: a live control link</h3>
+    <p class="rv" style="max-width:72ch">
+      Here is the deepest difference from Germany. <strong>A German FCA is a number in a contract that you keep
+      yourself under. Danish limited access is a control link the grid company operates.</strong>
+    </p>
+    <div class="worked rv" style="--acc:var(--s2);margin-top:16px">
+      <div class="worked-h"><span class="chip">the control chain</span></div>
+      <p style="margin-top:.5em"><strong>1 &middot; Lars builds the link and pays for it.</strong> Automatic
+      control-system monitoring and remote control, online metering with <strong>remote transfer of meter data to the
+      grid company&rsquo;s control centre</strong> (<em>driftscentral</em>), plus his own local control equipment,
+      meter board, the <strong>interface to their remote-control equipment and the communication channels</strong>.</p>
+      <p style="margin-top:.7em"><strong>2 &middot; The link is fail-safe, and this clause is the striking one.</strong>
+      The control system must be built so that <em>&bdquo;et negativt eller et <strong>manglende</strong> signal fra
+      fjernkontrollen vil udkoble anl&aelig;gget og blokere for indkobling&ldquo;</em> &mdash; a negative
+      <em>or missing</em> signal disconnects the site and blocks reconnection. <strong>Silence is not
+      permission.</strong></p>
+      <p style="margin-top:.7em"><strong>3 &middot; Turn down rather than trip, where possible.</strong> If the load
+      can be modulated, the guideline prefers a control that <em>reduces</em> power over a full disconnection.
+      <strong>For a charging depot this is everything</strong> &mdash; chargers can throttle; a heat pump mostly
+      cannot.</p>
+      <p style="margin-top:.7em"><strong>4 &middot; If monitoring and control cannot be implemented</strong> &mdash;
+      or would be disproportionately complicated &mdash; <strong>the grid company must refuse the limited-access
+      connection.</strong> No control link, no product.</p>
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">Act 5 &mdash; When the grid is short, who gets cut?</h3>
+    <p class="rv" style="max-width:72ch">
+      There is a genuine trap here, and it is worth getting right because <strong>Denmark uses two different rules
+      depending on whether you are consuming or generating</strong>.
+    </p>
+    <div class="grid g2 rv" style="margin-top:14px">
+      <div class="panel" style="border-color:var(--good)">
+        <h3 style="color:var(--good)">Consumption &mdash; proportional</h3>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          <em>&bdquo;alle kunder blive beordret til at reducere deres effekttr&aelig;k med <strong>samme procentvise
+          andel</strong> af den samlede tilsluttede effekt med begr&aelig;nset netadgang&ldquo;</em>.
+        </p>
+        <p style="font-size:13.5px;color:var(--ink-2)">
+          Where several limited-access customers sit in the same area and the constraint can be solved by curtailing
+          any of them, <strong>all are cut by the same percentage</strong> of their connected limited-access
+          capacity. <strong>This is the rule that applies to a truck depot.</strong>
         </p>
       </div>
       <div class="panel" style="border-color:var(--warning)">
-        <h3 style="color:var(--warning)">Situation 2 &mdash; it does not fit at peak</h3>
+        <h3 style="color:var(--warning)">Production &mdash; last in, first out</h3>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          At maximum load, your draw <em>would</em> breach the loading or voltage limits at network peak. So you are
-          turned down when that peak arrives.
+          The parallel guideline for <em>production</em> facilities uses a different principle: the grid company
+          curtails the <strong>most recently connected</strong> installation first.
         </p>
         <p style="font-size:13.5px;color:var(--ink-2)">
-          <strong>And situation 1 can become situation 2</strong> as the area&rsquo;s load grows or the network is
-          rebuilt &mdash; <em>&bdquo;Ejeren af anl&aelig;gget b&aelig;rer det fulde &oslash;konomiske ansvar
-          herfor&ldquo;</em>. The owner carries that entirely.
+          <strong>Do not mix these up.</strong> Commentary written about Danish solar and wind describes the
+          last-in-first-out rule; it is from the production document and <em>does not</em> govern a consumption site.
         </p>
       </div>
     </div>
-
-    <div class="note warn rv" style="margin-top:16px">
-      <strong>So the Danish answer to &ldquo;how much will I be cut?&rdquo; is not a contract clause. It is an
-      estimate, and it is explicitly not binding.</strong> The grid company <em>must</em> give an estimate at
-      connection of how many hours a year the capacity can be expected to be available, based on historical loading
-      data and expected load growth &mdash; but <em>&bdquo;kan p&aring; ingen m&aring;de g&oslash;res ansvarlig
-      for, at dette timetal overholdes&ldquo;</em>: <strong>it cannot in any way be held responsible for that number
-      being met.</strong> Compare Germany, where the 200-hour ceiling is at least a <em>proposal</em> for a binding
-      cap. Denmark gives you a better forecast and a weaker promise.
+    <div class="note rv" style="margin-top:14px">
+      <strong>And the risk is local, not national.</strong> Two depots in different parts of Denmark do not face the
+      same interruption frequency &mdash; it depends on the constrained substation each sits behind. Sites at the
+      same location see roughly the same risk because they share the same physical grid.
     </div>
 
-    <h3 class="rv" style="margin-top:34px">How the communication actually works</h3>
+    <h3 class="rv" style="margin-top:34px">Act 6 &mdash; How much warning does Lars get?</h3>
+    <div class="scroll rv panel" style="margin-top:12px;padding:0">
+      <table>
+        <thead><tr><th>What happens</th><th>Notice</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Your limitation is increased</strong> &mdash; a new large customer connects, an existing one
+              expands, or the network is rebuilt</td>
+            <td><em>&bdquo;varsles af netselskabet p&aring; forh&aring;nd&ldquo;</em> &mdash; <strong>notified in
+              advance.</strong> The sector guideline does not fix a period; individual grid companies&rsquo;
+              connection agreements may set one. <strong>Check yours.</strong></td>
+          </tr>
+          <tr style="background:color-mix(in srgb,var(--crit) 7%,transparent)">
+            <td><strong>A network fault</strong>, and the temporary rebuilds or reconfigurations that follow</td>
+            <td><em>&bdquo;kan ikke varsles&ldquo;</em> &mdash; <strong>cannot be notified.</strong> No warning.</td>
+          </tr>
+          <tr>
+            <td><strong>Abnormal switching states</strong> in normal operation</td>
+            <td>You may be cut or turned down, in both situation 1 and situation 2.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note rv" style="margin-top:14px">
+      <strong>This is why you will read both &ldquo;with notice&rdquo; and &ldquo;without notice&rdquo; about
+      Denmark.</strong> Both are true. You are warned when the grid <em>plans</em> to squeeze you and not when it
+      <em>breaks</em>. A depot has to survive the second case on its own.
+    </div>
+
+    <h3 class="rv" style="margin-top:34px">Act 7 &mdash; How many hours will he lose? Nobody will promise</h3>
     <p class="rv" style="max-width:72ch">
-      This is the part with no German equivalent, and it is worth reading closely &mdash; it is a piece of
-      engineering, not a piece of drafting.
+      The grid company <strong>must</strong> give an estimate at connection of how many hours a year the capacity can
+      be expected to be available, based on historical loading data and expected load growth. And then:
     </p>
-
-    <div class="worked rv" style="--acc:var(--s2);margin-top:16px">
-      <div class="worked-h"><span class="chip">the control chain</span></div>
-      <p style="margin-top:.5em"><strong>1 &middot; You build the link, and you pay for it.</strong> Lars pays the
-      establishment cost of automatic control-system monitoring and remote control, with online metering and
-      <strong>remote transfer of meter data to the grid company&rsquo;s control centre</strong>
-      (<em>driftscentral</em>). He also pays for his own local control equipment, meter board, the
-      <strong>interface to the grid company&rsquo;s remote-control equipment, and the communication channels</strong>.</p>
-      <p style="margin-top:.7em"><strong>2 &middot; The link must be fail-safe, and this is the striking
-      clause.</strong> The site&rsquo;s control system must be designed so that
-      <em>&bdquo;et negativt eller et <strong>manglende</strong> signal fra fjernkontrollen vil udkoble
-      anl&aelig;gget og blokere for indkobling&ldquo;</em> &mdash; <strong>a negative <em>or missing</em> signal from
-      the remote control disconnects the site and blocks it from reconnecting.</strong> Silence is not permission.
-      If the link drops, you stop.</p>
-      <p style="margin-top:.7em"><strong>3 &middot; Turn down rather than trip, where you can.</strong> The guideline
-      says that if the load can be modulated, a control that <em>reduces</em> power is preferable to a total
-      disconnection when there is no room for the full nominal draw. <strong>For a depot this is the whole
-      game</strong> &mdash; a charging site can throttle; a boiler mostly cannot.</p>
-      <p style="margin-top:.7em"><strong>4 &middot; Everyone in the area shares the cut, proportionally.</strong>
-      Where several limited-access customers sit in the same geographic area and the constraint can be solved by
-      curtailing any of them, all are ordered to reduce <em>&bdquo;med samme procentvise andel&ldquo;</em> &mdash;
-      <strong>by the same percentage share</strong> of their connected limited-access capacity. So a 25&nbsp;%
-      instruction on Lars&rsquo;s 1.6&nbsp;MW leaves him a 1.2&nbsp;MW ceiling &mdash; a maximum, not a target.</p>
+    <div class="quote rv">
+      <p style="margin:0">
+        &bdquo;Netselskabet kan <strong>p&aring; ingen m&aring;de g&oslash;res ansvarlig</strong> for, at dette
+        timetal overholdes, og ejeren af anl&aelig;gget b&aelig;rer det fulde &oslash;konomiske ansvar for
+        begr&aelig;nsninger i netadgangen.&ldquo;
+      </p>
+      <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
+        The grid company <strong>cannot in any way be held responsible</strong> for that number being met, and the
+        owner carries the full economic risk. So Denmark gives you a better forecast than Germany and a
+        <strong>weaker promise</strong>: the estimate is planning information, not a contractual cap. Unless your
+        individual agreement makes it binding, that is all it is.
+      </p>
+    </div>
+    <div class="note legal rv" style="margin-top:14px">
+      <strong>And the risk clause reaches into the rest of this document.</strong> The owner bears all direct and
+      indirect losses, expressly including <em>&bdquo;ubalance i afregning&ldquo;</em> &mdash; <strong>imbalance
+      settlement</strong> &mdash; and loss from being unable to deliver regulating reserves. If the grid company
+      turns Lars down after he has promised that power to his balance group, <strong>the imbalance cost is
+      his.</strong> Germany attacks the same hazard from the other end, by telling operators to set FCA limits
+      <em>before</em> day-ahead trading. Two countries, one collision, two different fixes.
     </div>
 
-    <div class="note rv" style="margin-top:16px">
-      <strong>Notice and no notice &mdash; both are true, and the distinction is the practical one.</strong>
-      <strong>Planned</strong> increases in your limitation &mdash; a new large customer connecting, an existing one
-      expanding, a network rebuild &mdash; <em>&bdquo;varsles af netselskabet p&aring; forh&aring;nd&ldquo;</em>, are
-      notified in advance. <strong>Faults</strong> are not: <em>&bdquo;havari i nettet og deraf f&oslash;lgende
-      midlertidige ombygninger&hellip; kan ikke varsles&ldquo;</em>. So you get warning when the grid <em>plans</em>
-      to squeeze you, and none when it <em>breaks</em>. A depot has to be able to survive the second case.
-    </div>
-
-    <h3 class="rv" style="margin-top:34px">The contract, and who checks it</h3>
+    <h3 class="rv" style="margin-top:34px">Act 8 &mdash; The contract, and who checks it</h3>
     <p class="rv" style="max-width:72ch">
-      In Germany the FCA is a private agreement and nobody but the two parties sees it. <strong>In Denmark the
-      contract itself is regulated.</strong>
+      In Germany the FCA is private and nobody but the two parties sees it. <strong>In Denmark the contract itself is
+      supervised.</strong>
     </p>
     <div class="scroll rv panel" style="margin-top:12px;padding:0">
       <table>
-        <thead><tr><th>Step</th><th>What the guideline requires</th></tr></thead>
+        <thead><tr><th>Requirement</th><th>What the guideline says</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>The document</strong></td>
-            <td>A <em>nettilslutningsaftale</em> &mdash; network connection agreement &mdash; carrying the specific
-              technical and economic terms for that customer. The special access conditions and the cost allocation
-              <strong>must be written into it</strong>.</td>
+            <td>A <em>nettilslutningsaftale</em> carrying the specific technical and economic terms, with the special
+              access conditions and cost allocation written into it. It comes with appendices &mdash; connection
+              basis, timetable and payments, technical basis, special conditions, documentation, operating
+              notifications.</td>
           </tr>
           <tr style="background:color-mix(in srgb,var(--good) 8%,transparent)">
             <td><strong>Regulator sign-off</strong></td>
             <td><strong>The agreement must be notified to and method-approved by Forsyningstilsynet.</strong> A grid
-              company may use the sector standard agreement if it notifies the regulator; if it writes its own, that
-              one must be notified and method-approved too. <strong>There is no unsupervised private contract.</strong></td>
+              company may use the sector standard agreement if it notifies the regulator; a bespoke one must be
+              notified and method-approved too. <strong>No unsupervised private contract.</strong></td>
           </tr>
           <tr>
-            <td><strong>Mandatory honesty clause</strong></td>
-            <td>The uncertainty about how much network access you will have, <strong>now and in future</strong>, must
-              be <em>made clear to the customer and written into the agreement</em> &mdash; along with the fact that
-              the customer bears the full economic loss.</td>
-          </tr>
-          <tr>
-            <td><strong>Homework on the operator</strong></td>
-            <td>The grid company <em>should</em> model the costs and the possible operating patterns for each
-              individual connection before offering it.</td>
+            <td><strong>Mandatory honesty</strong></td>
+            <td>The uncertainty about how much access you will have, <strong>now and in future</strong>, must be made
+              clear to the customer <em>and written into the agreement</em>, together with the fact that the customer
+              bears the full economic loss.</td>
           </tr>
           <tr>
             <td><strong>Right-sizing</strong></td>
-            <td>The capacity made available must match the customer&rsquo;s <strong>actual current need</strong> at
-              the time of connection &mdash; and the grid company may demand documentation of that need at any time.
-              You cannot book headroom you do not use.</td>
+            <td>The capacity made available must match your <strong>actual current need</strong>, and the grid company
+              may demand documentation of that need at any time. You cannot book headroom you do not use.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3 class="rv" style="margin-top:34px">What Lars pays, and what he does not</h3>
-    <div class="grid g2 rv" style="margin-top:14px">
-      <div class="panel" style="border-color:var(--good)">
-        <h3 style="color:var(--good)">He does not pay the connection contribution</h3>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          That is the deal: reduced security of supply in exchange for a reduced <em>tilslutningsbetaling</em>. He
-          uses only <strong>existing spare capacity</strong> &mdash; and correspondingly, he
-          <strong>cannot pay to have the network reinforced</strong> for more capacity while on limited access
-          without moving to a full connection agreement.
-        </p>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          The guideline&rsquo;s premise: the connection must happen <strong>without imposing costs on other customer
-          groups</strong>, and must not trigger uncovered reinforcement investment locally or upstream.
-        </p>
-      </div>
-      <div class="panel" style="border-color:var(--warning)">
-        <h3 style="color:var(--warning)">He pays every actual cost, and all the risk</h3>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          Connection bay, control and monitoring equipment, online metering, the remote-control interface,
-          communication channels, case handling and design &mdash; <strong>and a running subscription for the special
-          operational monitoring</strong>, on top of the normal subscription and net tariff, billed through his
-          electricity supplier via the DataHub.
-        </p>
-        <p style="font-size:13.5px;color:var(--ink-2)">
-          And the risk clause is comprehensive: the owner bears <strong>all direct and indirect losses</strong>,
-          expressly including <em>&bdquo;ubalance i afregning&ldquo;</em> &mdash; <strong>imbalance settlement</strong>
-          &mdash; and loss from being unable to deliver regulating reserves.
-        </p>
-      </div>
-    </div>
-
-    <div class="note legal rv" style="margin-top:16px">
-      <strong>Read that last clause twice, because it is the bridge to the rest of this document.</strong> If the
-      Danish grid company turns Lars down, and he had already promised that power to his balance group, the
-      resulting <strong>imbalance cost is his</strong> &mdash; the grid company owes him nothing for it. Limited
-      network access and balance responsibility are <strong>separate layers that can collide</strong>, and Denmark
-      says in writing which way the loss falls. Germany&rsquo;s regulator addresses the same problem from the other
-      end, by telling operators to set FCA limits <em>before</em> day-ahead trading so the clash never arises.
-      <strong>Two countries, one hazard, two different fixes.</strong>
-    </div>
-
-    <h3 class="rv" style="margin-top:34px">And Denmark answers the question Germany leaves open</h3>
-    <p class="rv" style="max-width:72ch">
-      Remember the German problem: nobody has written down what happens to your money if you later want a firm
-      connection. <strong>The Danish guideline writes it down.</strong>
-    </p>
+    <h3 class="rv" style="margin-top:34px">Act 9 &mdash; If Lars later wants firm access</h3>
     <div class="quote rv">
       <p style="margin:0">
         &bdquo;S&aring;fremt samme tilslutningspunkt kan anvendes, <strong>fratr&aelig;kkes en standardrabat for
-        feltomkostning</strong>, som m&aring;tte v&aelig;re indeholdt i standardtilslutningsbidraget. <strong>Tidligere
-        etableringsomkostninger og l&oslash;bende omkostninger til automatisk kontrolsystem&shy;overv&aring;gning og
-        fjernkontrol tilbagef&oslash;res ikke til kunden ved overgang til fuld netadgang.</strong>&ldquo;
+        feltomkostning</strong>&hellip; <strong>Tidligere etableringsomkostninger og l&oslash;bende omkostninger til
+        automatisk kontrolsystem&shy;overv&aring;gning og fjernkontrol tilbagef&oslash;res ikke til kunden ved
+        overgang til fuld netadgang.</strong>&ldquo;
       </p>
       <p style="margin:.7em 0 0;font-size:13px;color:var(--ink-3)">
-        If you switch to full network access later, <strong>you pay the ordinary connection contribution then</strong>
-        &mdash; minus a published standard rebate for the bay cost, if the same connection point can be reused. What
-        you already spent on establishing the connection, and on the control and remote-monitoring equipment the
-        limited access required, <strong>is not refunded</strong>.
+        You pay the ordinary connection contribution <strong>at that point</strong>, minus a published standard
+        rebate for the bay cost if the same connection point can be reused. What you already spent on establishing
+        the connection and on the control and monitoring equipment is <strong>not refunded</strong>. Conversion may
+        also need a fresh network assessment, reinforcement and revised technical arrangements.
       </p>
     </div>
-    <div class="note rv" style="margin-top:14px">
-      <strong>Set that against the German Baukostenzuschuss question.</strong> Denmark reaches roughly the same
-      economic answer &mdash; going firm later costs you the normal contribution at that point &mdash; but it
-      <strong>states the rule in advance, in a document the regulator has seen, with the rebate published.</strong>
-      A Danish depot can model the conversion before signing. A German depot cannot, because nobody has written it
-      down. <strong>The difference is not the amount of money. It is whether you can calculate it.</strong>
+    <div class="note warn rv" style="margin-top:14px">
+      <strong>Do not assume limited access ripens into firm access.</strong> Under the ordinary product the grid is
+      <em>not</em> reinforced on account of permanently limited-access customers &mdash; only full-access demand
+      drives network dimensioning. At transmission level Denmark separates this cleanly: <strong>permanent</strong>
+      limited access means you accept long-term interruptibility and do not cause reinforcement, while
+      <strong>temporary</strong> limited access is for a customer who ultimately wants full access and is counted as
+      future full-access demand in planning. <strong>That distinction is the clearest thing Germany could copy</strong>
+      &mdash; &sect;&nbsp;17 Abs.&nbsp;2b allows both durations but draws no economic or planning line between them.
     </div>
 
-    <div class="note warn rv" style="margin-top:14px">
-      <strong>Two Danish cautions, stated by the guideline itself.</strong> First, the scheme is
-      <strong>not attractive where there is no spare capacity</strong> &mdash; you would simply be interrupted very
-      often &mdash; and the grid company <em>must tell you so</em> when you enquire. It is designed for places where
-      a site can run without causing permanent overloads, not as a way into a full network. Second, Denmark&rsquo;s
-      transmission grid is under such pressure that <strong>Energinet paused new large-load transmission connection
-      agreements on 2 March 2026</strong>, with a queue reported at roughly <strong>60&nbsp;GW</strong> against a
-      national peak of about <strong>7&nbsp;GW</strong>; from <strong>1 February 2026</strong> first-come-first-served
-      was dropped for large loads in favour of pooled assessment on maturity and grid-friendliness.
-      <strong>The instrument is ahead of the copper here too.</strong>
+    <div class="note warn rv" style="margin-top:16px">
+      <strong>The catch, as of this writing: Denmark has paused it for larger customers.</strong> Because of capacity
+      constraints in Energinet&rsquo;s transmission network &mdash; and after the regulator rejected a proposed model
+      &mdash; grid companies reported in <strong>August 2026</strong> that they <strong>cannot enter new
+      limited-access connection agreements</strong> for larger commercial customers before autumn 2026 at the
+      earliest, with <em>&bdquo;endnu ingen sikker tidshorisont for en l&oslash;sning&ldquo;</em> &mdash; still no
+      confirmed timeline. Energinet is consulting on a revised combined TSO&ndash;DSO arrangement. Separately,
+      Energinet paused new <strong>large-load transmission</strong> connection agreements on <strong>2 March
+      2026</strong>, with a queue reported near <strong>60&nbsp;GW</strong> against a national peak of about
+      <strong>7&nbsp;GW</strong>, and dropped first-come-first-served for large loads on <strong>1 February
+      2026</strong>. <strong>Denmark has the better framework and, right now, no more room than Germany.</strong>
+    </div>
+
+    <div class="bigidea rv" style="margin-top:22px">
+      <p style="margin:0">
+        <strong>The design lesson for a truck depot &mdash; and it is not &ldquo;go fully flexible&rdquo;.</strong>
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        A fully interruptible depot is a depot that can miss a departure. The right Danish structure is
+        <strong>option C</strong>: a <strong>firm base</strong> covering the building, workshop, IT and the chargers
+        serving trucks with urgent departures &mdash; plus a <strong>limited-access layer</strong> carrying the
+        schedulable overnight charging that can genuinely be turned down.
+      </p>
+      <p style="margin:.7em 0 0;font-size:14px">
+        Worked through: 0.5&nbsp;MW firm + 1.5&nbsp;MW limited = 2.0&nbsp;MW normally. In a severe local restriction
+        the limited layer can go to zero and Lars still has <strong>0.5&nbsp;MW</strong> &mdash; enough to keep the
+        site alive and the urgent trucks moving. That is a survivable failure mode. A single 2&nbsp;MW
+        limited-access connection is not.
+      </p>
     </div>
 
     <!-- ============================================ COMPARISON -->
@@ -2976,10 +3047,10 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <td><strong>Offered as a standard product</strong>, where upstream capacity allows.</td>
           </tr>
           <tr>
-            <td><strong>Can the customer choose the form?</strong></td>
-            <td>No &mdash; diagnosed case by case by the operator.</td>
-            <td><strong style="color:var(--good)">Yes</strong> &mdash; four named products.</td>
-            <td>Partly &mdash; you may put all or part of your site on limited access.</td>
+            <td><strong>Can the customer ask for it directly?</strong></td>
+            <td><strong style="color:var(--warning)">You may raise it</strong>, but the instrument is aimed at scarce capacity and there is no duty to offer one.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; four named products to choose from.</td>
+            <td><strong style="color:var(--good)">Yes</strong> &mdash; new connections <em>and</em> extensions may request it, in full or <em>in part</em>.</td>
           </tr>
           <tr>
             <td><strong>Who wrote the contract?</strong></td>
@@ -2991,31 +3062,31 @@ footer{padding:36px 0 60px;font-size:12.5px;color:var(--ink-3)}
             <td><strong>Is there a published price benefit?</strong></td>
             <td><strong style="color:var(--crit)">No.</strong> Whether the BKZ may even be reduced is legally open.</td>
             <td>Yes &mdash; cheaper contracts for off-peak use.</td>
-            <td><strong style="color:var(--good)">Yes</strong> &mdash; tariff rebate; you stop paying for network capacity.</td>
+            <td><strong style="color:var(--good)">Yes, but only on the one-off connection payment.</strong> Ongoing subscription and network tariffs are normal &mdash; in fact slightly higher, because of the monitoring subscription.</td>
           </tr>
           <tr>
             <td><strong>Can a charging depot get it today?</strong></td>
             <td><strong style="color:var(--crit)">Legally yes, in practice no</strong> &mdash; every live product targets generation and storage.</td>
             <td><strong style="color:var(--good)">Yes</strong> &mdash; night charging is a named use case.</td>
-            <td><strong style="color:var(--good)">Yes</strong> &mdash; consumption sites from 10&nbsp;kV.</td>
+            <td><strong style="color:var(--warning)">The framework fits, but it is paused.</strong> Consumption at 10&ndash;60&nbsp;kV is covered &mdash; yet grid companies reported in Aug 2026 that they cannot sign new limited-access agreements for larger customers, with no confirmed timeline.</td>
           </tr>
           <tr>
             <td><strong>Is there a cap on curtailment?</strong></td>
             <td>Only if you negotiate one. A 200 full-load-hour ceiling is a <em>proposal</em> by EWE and EnBW, not a rule.</td>
             <td>Built into the product &mdash; blocks, or a guaranteed number of hours with 24&nbsp;h notice.</td>
-            <td><strong style="color:var(--crit)">No.</strong> You get a non-binding <em>estimate</em> of available hours, and the grid company cannot be held to it.</td>
+            <td><strong style="color:var(--crit)">No.</strong> A mandatory but <em>non-binding</em> estimate: the grid company &bdquo;kan p&aring; ingen m&aring;de g&oslash;res ansvarlig&ldquo; for meeting it.</td>
           </tr>
           <tr style="background:color-mix(in srgb,var(--s2) 7%,transparent)">
             <td><strong>How is the limit actually enforced?</strong></td>
             <td>You keep yourself under a <strong>contractual ceiling</strong>. Liability if you breach it.</td>
             <td>Contractual rights per product; you stay inside them.</td>
-            <td><strong>A live remote-control link</strong> to the grid company&rsquo;s control centre, which you build and pay for. <strong>Fail-safe: a missing signal disconnects you.</strong></td>
+            <td><strong>A live remote-control link</strong> to the grid company&rsquo;s control centre, which you build and pay for. <strong>Fail-safe: a missing signal disconnects you.</strong> No control link, no product.</td>
           </tr>
           <tr>
             <td><strong>What shapes exist?</strong></td>
             <td><em>statisch</em> or <em>dynamisch</em> &times; temporary or permanent.</td>
             <td>Four named products to choose from.</td>
-            <td><strong>No shape taxonomy at all</strong> &mdash; one product; what varies is whether your site fits at peak today (situation 1) or does not (situation 2).</td>
+            <td><strong>No static/dynamic taxonomy.</strong> The choice is full / limited / <em>partly</em> limited &mdash; and, at transmission level, permanent vs temporary limited access.</td>
           </tr>
           <tr>
             <td><strong>Who sees the contract?</strong></td>
